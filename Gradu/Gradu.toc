@@ -1,0 +1,11 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Inroduction}{2}
+\contentsline {chapter}{\numberline {2}Background}{3}
+\contentsline {section}{\numberline {2.1}Direct sum and direct product}{3}
+\contentsline {section}{\numberline {2.2}Category theory}{4}
+\contentsline {subsection}{\numberline {2.2.1}Dual of category}{6}
+\contentsline {subsection}{\numberline {2.2.2}Direct and inverse systems}{7}
+\contentsline {section}{\numberline {2.3}Nerve of covering}{9}
+\contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{9}
+\contentsline {subsection}{\numberline {2.3.2}Coverings}{10}
+\contentsline {chapter}{\numberline {3}Cech homology}{12}

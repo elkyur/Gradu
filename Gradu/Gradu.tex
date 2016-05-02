@@ -1,0 +1,475 @@
+\documentclass[12pt,a4paper,leqno]{report}
+
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amsfonts}         
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fixltx2e}
+\usepackage{tikz}
+\usepackage{mathabx}
+\usetikzlibrary{calc}
+
+
+
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\No}{\mathbb{N}_0}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\ob}{\operatorname{ob}}
+
+\newcommand\opn{\mathrel{\ooalign{$\subset$\cr
+			\hidewidth\hbox{$\circ\mkern.5mu$}\cr}}}
+\newcommand\cls{\mathrel{\ooalign{$\subset$\cr
+			\hidewidth\hbox{$c\mkern.5mu$}\cr}}}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}%
+
+\theoremstyle{plain}
+\newtheorem{lause}[equation]{Theorem}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{kor}[equation]{Corollary}
+\newtheorem{vaite}{Väite}
+
+
+
+
+\theoremstyle{definition}
+\newtheorem{maar}[equation]{Definition}
+\newtheorem{konj}[equation]{Conjecture}
+\newtheorem{esim}[equation]{Example}
+
+\theoremstyle{remark}
+\newtheorem{huom}[equation]{Huomautus}
+
+\pagestyle{plain}
+\setcounter{page}{1}
+\addtolength{\hoffset}{-1.15cm}
+\addtolength{\textwidth}{2.3cm}
+\addtolength{\voffset}{0.45cm}
+\addtolength{\textheight}{-0.9cm}
+
+
+\title{Cech (co)homology}
+\author{Yury Elkin}
+\date{}
+
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Inroduction}\label{johd}
+
+
+
+\chapter{Background}
+
+In this chapter we will a few details about algebra, category theory and abstract simplicial complexes. We assume that reader is familiar with basic concepts of homology and cohomology theory and constructions related to them.
+
+\section{Direct sum and direct product}
+In this section we will recall a few details about Direct sums and direct products
+\begin{maar}
+Let $\{A_i\}_{i \in J}$ be family of groups. Direct product of groups is the cartesian product $\prod_{i \in J} A_i$ where addition is defined componentwise $(a+b)_i = a_i+_ib_i$
+\end{maar}
+\begin{maar}
+Let $\{A_i\}_{i \in J}$ be family of groups. Direct sum of groups is subgroup of direct product  $\bigoplus_{i \in J}A_i = \{x \in \prod_{i \in J} A_i \mid x_i \neq 0$ for only finetely many $i \} $
+\end{maar}
+For direct sums and direct products we have following universal properties:
+\begin{lem}\label{Universalpropertyproduct}
+Let $A = \prod_{i \in J} A_i$ be direct sum and $D$ arbitary group. Then for every set homomorphisms $\{f_i:D \rightarrow A_i\}_{i \in J}$ there exists unique homomorphism $f:D \rightarrow A$ for which and for every $i \in J$ condition $pr_i \circ f = f_i $ holds.
+\end{lem}
+\begin{proof}
+trivial	
+\end{proof}
+\begin{lem}\label{Universalpropertysum}
+	Let $A = \bigoplus_{i \in J}A_i$ be direct sum and $D$ arbitary group. Then for every set homomorphisms $\{f_i:A_i \rightarrow D\}_{i \in J}$ there exists unique homomorphism $f:A \rightarrow D$ for which and for every $i \in J$ condition $ f \circ i_i = f_i $ holds.
+\end{lem}
+\begin{proof}
+trivial
+\end{proof}
+\section{Category theory}
+
+In this thesis we will present theory in a categorical way, which will make the construction more general. First lets recall definition of a category. 
+
+\begin{maar}
+A category C consist of a following ingredients: A class of objects $\ob(C)$, class of morphisms $\hom(C)$ for which and for every object $A$, $B$ in $\ob(C)$ there exists subclass $Hom(A,B)$ and a rule of composition $Comp:Hom(A,B) \times Hom(A,D) \rightarrow Hom(A,D)$. For which following conditions hold:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	
+	
+	\item Composition is associative. Let $f:A \rightarrow B$, $g: B \rightarrow D$ and $h: D \rightarrow E$ be functors between categories then $(f \circ g) \circ h = f \circ (g \circ h)$
+	
+	\item For every category $A \in \ob(C)$ there exists identity functor $1_A \in \hom(A,A)$ for which following condition hold: Let $f:A \rightarrow B$ and $g: B \rightarrow A$ be arbitrary functors then $f \circ 1_A = f$ and $1_A \circ g = g$.
+	
+\end{enumerate}
+\end{maar}
+It is easy to see that topological spaces with continuous functions and abelian groups with homomorphisms form a category. We denote those categories by TOP and AB. Next we will define concept of functor between categories.
+\begin{maar}
+Let $C$ and $C'$ be categories and $F$ rule between them. We say that $F$ is functor between categories if following conditions hold:
+
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	
+	
+	\item For every object $A \in \ob(C)$ there exists unique element $F(A) \in C'$.
+	
+	\item Let $A$ and $B$ be objects in $\ob(C)$ and $f:A \rightarrow B$ functor between them. Then there exists unique functor $F(f):F(A) \rightarrow F(B)$.
+	
+	\item if $f$ and $g$ are morphisms in $\hom(C)$, then following condition holds: $F(f) \circ F(g) = F(f \circ g)$.
+	
+	\item Identity element is mapped to identity element. Let $A$ be object in $\ob(C)$ and $1_A$ identity functor corresponding to it. Then $T(1_A)$ is identity functor of $T(A)$.
+		
+
+\end{enumerate}
+
+\end{maar}
+All homotopy, homology and cohomology groups form functor from TOP to AB. For details see Rotman [\ref{rotman}]. Now we will introduce new concept called natural transformation
+
+\begin{maar}
+Let $C$ and $D$ be categories and $F:C \rightarrow D$ and $G:C \rightarrow D$ functors between them. Then the following family of functors is natural transformation: $$\{\phi_X: F(X) \rightarrow G(X)\}_{X \in C}$$ 
+if following conditions hold:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	
+	
+	\item For every object $X \in C$ there exists unique morphism $\phi_X: F(X) \rightarrow G(X) $
+	
+	\item For every functor $f:X \rightarrow Y$: $\phi_Y \circ F(f) = G(f) \circ \phi_X $
+	
+\end{enumerate}
+\end{maar}
+
+Next we will define limit and colimit concepts for arbitary categories, which will be later applied to directed systems.
+
+\begin{maar}
+Let $C$ be indexed category in a such way that there exists category $J$ with functor $F:J \rightarrow C$. Let $N$ be fixed object of $\ob(C)$. We define cone from $N$ to $F$ to be indexed family of morphisms $$\{\omega_X: N \rightarrow F(X)\}_{X \in J}$$ which satisfies following property: Let $f:X \rightarrow Y$ be morphism in $C$ then the following diagram commutes
+$$
+\begin{tikzpicture}
+
+\node (w) at (2,0) {\(N\)};
+
+\node (x2) at (0.7,-0.7) {\(\omega_X\)};
+
+\node (x) at (0,-2) {\(F(X)\)};
+
+\node (y2) at (3.3,-0.7) {\(\omega_Y\)};
+
+\node (y) at (4,-2) {\(F(Y)\)};
+
+\node (f) at (2,-2.4){\(F(f)\)};
+
+
+\draw[->] (w) -- (y);
+\draw[->] (w) -- (x);
+\draw[->] (x) -- (y);
+
+
+\end{tikzpicture}
+$$
+We denote this structure by $(N, \omega)$
+\end{maar}
+
+\begin{maar}
+Let $C$ be indexed category which is indexed by category $J$ and functor $F$. Let $D$ be object of category $C$ which forms cone together with function $\phi$. We say that $(D, \phi)$ is limit of $C$ if following property holds: Let $(N, \omega)$ be any other cone of category $C$, then there exists unique morphism $u:N \rightarrow D$ in such way that following diagram commutes:
+\end{maar} 
+$$
+\begin{tikzpicture}
+
+\node (w) at (2,0) {\(N\)};
+
+\node (x2) at (0.7,-0.7) {\(\omega_X\)};
+
+\node (x) at (0,-2) {\(F(X)\)};
+
+\node (y2) at (3.3,-0.7) {\(\omega_Y\)};
+
+\node (y) at (4,-2) {\(F(Y)\)};
+
+\node (f) at (2,-2.4){\(F(f)\)};
+
+\node (d) at (2,-1){\(D\)};
+
+\node (phid) at (1.4,-1.6){\(\phi_X\)};
+\node (phid2) at (2.6,-1.6){\(\phi_Y\)};
+
+
+\draw[->] (w) -- (y);
+\draw[->] (w) -- (x);
+\draw[->] (x) -- (y);
+\draw[dashed][->] (w) -- (d);
+\draw[->] (d) -- (x);
+\draw[->] (d) -- (y);
+
+
+\end{tikzpicture}
+$$
+Next we will proof that we have two limits $N$ and $D$ of category $C$ then there exists isomorphism between those two objects. In other words $N$ and $D$ can be identified and the limit of category $C$ can be denoted simply as $\displaystyle {\lim_\rightarrow C}$ 
+\begin{lause}
+Let $N$ and $D$ be limits of category $C$. Then there exists isomorphism between them.
+\end{lause}
+\begin{proof}
+Because $N$ and $D$ are both limits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $. Because of the symmetry it is enough $u \circ v = id_N$. This follows from equations: $\omega_X \circ u \circ v  = \phi_X \circ u = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. Because the diagram commutes for $id_N$ by uniqueness condition we see that $u \circ v = id_N$. 
+\end{proof}
+\subsection{Dual of category}
+To simplify definitions we will define concept of dual of category. In this section we will interpret category as model of first order logic
+\begin{maar}
+Let $\omega$ be statement in this model. We get dual statement $\omega^{op}$ by following procedure:
+
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	
+	\item Interchange every occurrence of source with target
+	\item Reorder every composition. That is replace $a \circ b$ with $b \circ a$.
+	
+\end{enumerate}
+\end{maar}
+Next we will give important example of dual statement. 
+\begin{maar}
+Colimit of category $C$ is dual statement of limit of $C$. We define co-cone to be dual of cone. Let $J$ be index category of $C$ then we say that co-cone $D$ is colimit of category $C$ if for every other co-cone $N$ there exists unique morphism $u:D \rightarrow N$ in such way that the diagram below commutes
+$$
+\begin{tikzpicture}
+
+\node (w) at (2,0) {\(N\)};
+
+\node (x2) at (0.7,-0.7) {\(\omega_X\)};
+
+\node (x) at (0,-2) {\(F(X)\)};
+
+\node (y2) at (3.3,-0.7) {\(\omega_Y\)};
+
+\node (y) at (4,-2) {\(F(Y)\)};
+
+\node (f) at (2,-2.4){\(F(f)\)};
+
+\node (d) at (2,-1){\(D\)};
+
+\node (phid) at (1.4,-1.6){\(\phi_X\)};
+\node (phid2) at (2.6,-1.6){\(\phi_Y\)};
+
+
+\draw[->] (y) -- (w);
+\draw[->] (x) -- (w);
+\draw[->] (y) -- (x);
+\draw[dashed][->] (d) -- (w);
+\draw[->] (x) -- (d);
+\draw[->] (y) -- (d);
+
+
+\end{tikzpicture}
+$$
+\end{maar}
+Like limits colimits are unique. 
+
+\begin{lause}
+Let $N$ and $D$ be colimits of category $C$. Then there exists isomorphism between them.
+\end{lause}
+\begin{proof}
+Because $N$ and $D$ are both colimits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $. Because of the symmetry it is enough $u \circ v = id_N$. This follows from equations: $u \circ v \circ \omega_X = u \circ \phi_X = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. Because the diagram commutes for $id_N$ by uniqueness condition we see that $u \circ v = id_N$. 
+\end{proof}
+\subsection{Direct and inverse systems}
+In this section we will categorical definition of direct and inverse systems. It appears that those concepts are dual of each other. We will begin by defining Quasi ordering relation:
+
+\begin{maar}
+Let $a \leq b$ be relation in set $\lambda$. We say that this relation is quasi-ordering if following conditions hold:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	
+	
+	\item $a \leq a$ for all $a \in \lambda$
+	\item if $a \leq b$ and $b \leq c$ then $a \leq c$ for all $a,b,c \in \lambda$
+	
+\end{enumerate}
+
+\end{maar}
+\begin{maar}
+Let $\lambda$ be quasi-ordered set and $\mathcal{L}$ a category then a direct $\lambda$-system consist of functor $D$ which assigns unique object $D(\lambda) \in \mathcal{L}$ and a family of morphism in such way that for every pair $a \leq b$ there exists unique morphism $D^b_a: D(a) \rightarrow D(b)$. The family of morphisms satisfies following conditions:
+
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	
+	\item For every triple $a \leq b \leq c$ in $\lambda$ functions commute in a following way: $D^c_b \circ D^b_a = D^c_a$
+	\item For every $a \in \lambda$: $D^a_a = id_a$
+	
+\end{enumerate}
+
+\end{maar}
+
+The structure in above definition can be also viewed as category $C$ in such way that $\ob(C) = D(\lambda)$ and for every $D(a),D(b) \in \ob(C)$ there exists exactly one morphism in $\hom(D(a),D(b)$. In other words $\lambda$ is indexation of subcategory of $\mathcal{L}$. We can define dual concept of above definition in a following way:
+
+\begin{maar}
+Let $\lambda$ be quasi-ordered set and $\mathcal{L}$ category. Then inverse system is dual of a direct system. Let $I$ be functor from $\lambda$ to $\mathcal{L}$ in such way that for every pair $a \leq b$ there exists unique morphism $I^b_a: I(b) \rightarrow I(a)$ and following properties hold: $I^c_b \circ I^b_a = I^c_a$ and $I^a_a = id_a$.
+\end{maar}
+
+\begin{esim}
+Let SET be category of sets with order relation in such way that $U \leq V \Leftrightarrow U \subset V$ now for every $U,V$ we define $D_U^V U \rightarrow V $ to be just inclusion from $U$ to $V$. Clearly this forms direct system. 
+\end{esim}
+
+Next we define a bit more complex category 
+
+\begin{maar}
+Direct system together with natural transformations between them form. We will denote elements of this category shortly $(\lambda, \mathcal{L})$
+\end{maar}
+Taking dual and using functor $I$ instead of $D$ we see that natural transformation with inverse system form category. We will denote this category by $(\lambda, \mathcal{L}^{op})$. Now we can define limit of the category $(\lambda, \mathcal{L})$. We see that for every quasi-order $\lambda$ and object $k$ in $\mathcal{L}^{op}$ we can define inverse system by mapping every element $\lambda$ to the object $k$ and every functor between objects in $\lambda$ to identity functor. This forms inverse system which we will denote by $K$. Now natural transformations $\phi_a : D(a) \rightarrow K$ between $K$ and arbitrary element in $(\lambda, \mathcal{L})$ induces following: co(cone) 
+$$
+\begin{tikzpicture}
+
+\node (w) at (2,0) {\(K\)};
+
+\node (x2) at (0.7,-0.7) {\(\phi_a\)};
+
+\node (x) at (0,-2) {\(D(a)\)};
+
+\node (y2) at (3.3,-0.7) {\(\phi_b\)};
+
+\node (y) at (4,-2) {\(D(b)\)};
+
+\node (f) at (2,-2.4){\(D^b_a\)};
+
+
+\draw[->] (y) -- (w);
+\draw[->] (x) -- (w);
+\draw[->] (x) -- (y);
+
+
+\end{tikzpicture}
+$$
+So we can define (co)limit of this structure in unique way if it exists. We will now give important example of this construction and show that in case category is $AB$ there exists such limit. TO prove this result we first recall following lemma:
+
+
+\begin{lause}
+Let $D:\lambda \rightarrow AB$ be a direct system of groups. Let $G$ be the subgroup of $\bigoplus_{a \in \lambda} D(a) $ with is generated by $\{i_ax_{a}-i_bD^b_ax_a\}$. Then limit of this system is $L = \bigoplus_{a \in \lambda} D(a) / G $
+\end{lause}
+\begin{proof}
+Let $\{v_a:D(a) \rightarrow L\}$ induce cone $L$ and $K$ be any other cocone induced by functors $\{\phi_a:D(a) \rightarrow K\}$. We have to prove that there exists unique homomorphism $u:L \rightarrow K$ for which condition $u \circ v_a = \phi_a $ holds for all $a \in \ob(\mathcal{L})$. Lets first assume that such homomorphism exists and prove that it is unique. Because images of functors $v_a$ generate space $L$ it follow that $u$ must be unique  \newline
+We will now construct morphism $u$. Using lemma \ref{Universalpropertysum} we can find unique homomorphism $u':\bigoplus_{a \in \lambda} D(a) \rightarrow K$ for which $u' \circ i_a = \phi_a$ holds. Now we see that for every generator of subgroup G $u'(i_ax_{a}-i_bD^b_ax_a) = \phi_a(x_a) - \phi_bD_a^bx_a = \phi_a(x_a)-\phi_a(x_a) = 0$. Now we can define $u$ in such way that every element $x + D$ maps to element $\phi'(x)$. We will denote the projection map from $\bigoplus_{a \in \lambda} D(a)$ to $L$ by $p$. Now we see that $u \circ v_a = u \circ p \circ i_a = u' \circ i_a = \phi_a $.
+\end{proof}
+\begin{lause}
+Let $I: \lambda \rightarrow AB$ be a inverse system of groups. Then limit of this system is group $L = \{x \in \prod_{i \in J} I_i \mid x_a = I^a_bx_b $ for all $a \leq b\}$
+\end{lause}
+\begin{proof}
+Let $\{v_a: L \rightarrow I(a)\}_{a \in \lambda}$ induce cone $L$ and $K$ be any other cone induced by functors $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$. We construct function $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$. By lemma \ref{Universalpropertyproduct} we know that there exists unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$. 
+\end{proof}
+
+\section{Nerve of covering}
+In this chapter we will give abstract definition of simplicial complex. 
+
+
+\subsection{Abstract simplicial complex}
+We assume that reader knows already basic facts about simplicial complexes if not we suggest to take a look at [1]. We start by defining infinite dimensional simplicial complex.
+\begin{maar}
+Let $X$ be set of vertices. Then abstract simplicial complex consist of collection $\{S_i\}_{i \in I}$ of finite dimensional simplexes which have edges in set $X$. The collection has property which is for every simplex face of it belongs to the collection. For every point in abstract simplicial complex $\mathcal{S}(X)$ we define coordinates in a following way: Let $x \in \bigcup_{i \in I}S_i$ then $x \in S_i$ for some $i \in I$. Then for point $x$ we define coordinates $x = \sum_{x_i \in X}a_ix_i$ for which $a_i>0$ only for finitely many $i \in I$ and $\sum_{i \in I}a_i = 1$ holds.
+
+\end{maar}
+It is easy to see that coordinates are well defined. If $x$ belongs to two different simplex $S$ and $S'$ then $x$ belongs to finite simplicial complex spanned by generators of $S \cup S'$. Thus the statement reduces to finite dimensional case. Because face of any simplex in the collection belongs to collection we see that simplicial complex spanned by generators $S \cup S'$ is union of some faces of simplex which we get by taking vertices to be $S \cup S'$ and thus $x$ has well defined coordinates. 
+\begin{maar}
+Let set $X$ together with collection $\mathcal{A} = \{S_i\}_{i \in I}$ be simplicial complex. Then we say that $A$ is subcomplex if vertices of it are spanned by $X$ and it consist of subfamily of $\mathcal{A}$.
+\end{maar}
+If $\mathcal{S}(X)$ is simplicial complex and $\mathcal{S}(A)$ its subcomplex they form topological pair which we will denote by $(\mathcal{S}(X), \mathcal{S}(A))$  Next we will recall the definition of simplicial map.
+\begin{maar}
+Let $(X,A)$ and $(Y,B)$ be simplicial complexes and $f$ map between pairs. Then we say that map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and images of vertexes of simplex in $A$ span some simplex in $B$.
+\end{maar}
+\begin{maar}
+Let $f:(X,A) \rightarrow Y$ and $g:(X,A) \rightarrow (Y,B)$ be simplicial maps then we say that maps are contiguous if for every simplex $s = \{a_1, ..., a_n\}$ in $X (A)$ there exists simplex $k$ in $Y (B)$ for which span$(f(a_1), ..., f(a_n)) \subset k$ and span$(g(a_1), ..., g(a_n)) \subset k $ 
+\end{maar}
+\begin{lem}
+If $f:(X,A) \rightarrow (Y,B)$ and $g:(X,A) \rightarrow (Y,B)$ are contiguous maps then they are homotopic.
+\end{lem}
+\begin{proof}
+We define $H:X \times [0,1] \rightarrow Y$ in a following way:  $$H(x,t) = tf(x)+(1-t)g(x)$$
+It is easy to see that $H(x,0) = f(x)$ and $H(x,1) = g(x)$, also because $f(x)$ and $g(x)$ both belong to same simplex $H(x,t)$ is well defined at every point. 
+\end{proof}
+\subsection{Coverings}
+We begin by recalling definition of covering
+\begin{maar}
+Let $X$ be a topological space and $\{A_i\}_{i \in J}$ collection of its open subsets. Then we say that  $\{A_i\}_{i \in J}$ is covering of $X$ if $\bigcup_{i \in J}A_i = X$.
+\end{maar}
+We will denote set of all open coverings of space $X$ by COV$(X)$. Because in homology we are interested in pair of spaces we give definition of covering for the pair. 
+\begin{maar}
+Let $(X,A)$ be topological pair. Then we say that $\{(U_i, V_i )\}_{i \in J}$ is covering of $(X,A)$ if $V_i \subset U_i$ , $\{U_i\}_{i \in J}$ covers $X$ and $\{V_i\}_{i \in J}$ covers $A$. 
+\end{maar}
+Respectively we will define set of all coverings of pair $(X,A)$ to be  COV$(X,A)$. Now we are ready to define nerve of the covering. 
+\begin{maar}
+Let $(U_i,V_i)_{i \in J}$ be covering of some topological pair $(X,A)$. Then nerve of this covering is following abstract simplicial complex $\mathcal{S}(X,A)$:  
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+\item We define vertex set of the complex $\mathcal{S}(X)$ to be $\{U_i\}_{i \in J}$ and vertex set of subcomplex $\mathcal{S}(A)$ to be $\{V_i\}_{i \in J}$. 
+\item Let $I \subset J$, then for every such $I$ for which $\bigcap_{i \in I}U_i \neq \emptyset$ define simplex in simplicial complex $\mathcal{S}(X)$. In other words $\mathcal{S}(X)$ consist of simplexes defined by all non-empty intersection of spanning sets. In subcomplex $\mathcal{A}$ we define simplex for every non-empty intersection $\bigcap_{i \in I}V_i \cap A$ where $I$ is some subspace of $J$.
+\end{enumerate}
+\end{maar}
+It is easy to see that the simplicial complex is well defined. We can interpret simplicial complex $\mathcal{S}(X)$ as collection of faces of one big complex, then it is enough to show that every face of any simplexes in the collection belongs to the collection. We see that if  $\bigcap_{i \in N}U_i \neq \emptyset$, then for every $M \subset N$ intersection of $\bigcap_{i \in M}U_i $ is non empty. In coverings of topological pair $(X,A)$ we can define quasi order in a natural way. First we will recall definition of refinement.
+\begin{maar}
+Let $\alpha = \{(U_i,V_i)\}_{i \in I}$ and $\beta = \{(U'_i,V'_i)\}_{i \in J}$ be coverings of some pair $(X,A)$. Then covering $\beta$ is called refinement of $\alpha$ if for every $(U'_i,V'_i) \in \beta$ there exists some $(U_i,V_i) \in \alpha$ for which $U'_i \subset U_i$   and $V'_i \subset V_i$.
+\end{maar}
+Now we define quasi order in a following way: $\alpha \leq \beta$ if $\beta$ is refinement of $\alpha$. Clearly the quasi order is well defined. Any covering is refinement of itself and if we $a \leq b$ and $b \leq c$ then for every set $U_c$ we can find $U_b$ for which $U_c \subset U_b$ and $U_b \subset U_a$ for some $U_a$. Then we see that $U_c \subset U_a$  so actually $c$ is refinement of $a$. 
+
+\begin{maar}
+Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta$ be covering of $(Y,A)$, then define $f^{-1}\beta$ to be covering of $(X,A)$ which is induced by elements $(f^{-1}U_i, f^{-1}V_i)_{i \in J_{\beta}}$.
+\end{maar}
+\begin{lem}
+Let $F:(X,A) \rightarrow (Y,B)$ be function between pairs and let $\alpha$ and $\beta$ be covers for $(X,A)$ and $(Y,B)$ for which $\alpha = f^{-1}\beta$ holds. Then map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$ defined by $(f^{-1}U_i, f^{-1}V_i) \rightarrow (U_i, V_i)$ is well defined.
+\end{lem}
+\begin{proof}
+Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$, so the lemma holds.
+\end{proof}
+
+Let $\beta$ and $\alpha$ be coverings for which $\alpha \leq \beta$. Now we can define projection map from $p^\beta_\alpha:\mathcal{S}(X,A)_\beta \rightarrow \mathcal{S}(X,A)_\alpha$. For every $U_i \in \beta$ we map it to the set $U'_i \in \alpha$ for which $U_i \subset U_i'$. We will now show that family of projection maps is closed under composition.
+\begin{lem}\label{compofprojmaps}
+Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps . Then $p^\gamma_\beta \circ p^\beta_\alpha$ is also projection map.
+\end{lem}
+Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define same homology groups.
+\begin{lem}
+Let $\beta$ and $\alpha$ be any coverings of $(X,A)$ and $p^\beta_\alpha$ and $p'^\beta_\alpha$ be any projection maps. The maps are contiguous simplicial maps.
+\end{lem}
+\begin{proof}
+We are going to proof that the maps are simplicial first. Let $s$ be simplex in $\mathcal{S}(X,A)_\alpha$ spanned by some sets $\{U_i\}_{i \in J}$ for which $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $U_i'$ in $\mathcal{S}(X,A)_\beta$ for which $U_i \subset U_i'$. Intersection $\bigcap_{i \in J}U'_i$ is clearly non empty, so every simplex maps inside some simplex. \newline
+To prove that the maps are contiguous we form simplex in $\mathcal{S}(Y,B) $ and prove that images of both maps belong to it. For every vertex $U_i$ in $\mathcal{S}(X,A)$ is mapped to $U'_i$ and $U''_i$ by $p^\beta_\alpha$ and $p'^\beta_\alpha$ respectively. Now if $\bigcap_{i \in J}U_i \neq \emptyset$ then also $\bigcap_{i \in J}U'_i \cap \bigcap_{i \in J}U''_i \neq \emptyset$. In case if the vertexes belong to $\mathcal{S}(A)$ it is easy to see that projection map maps them to some simplex in $\mathcal{S}(B)$.  
+\end{proof}
+By using this lemma and the fact that contiguous simplicial maps induce same homology groups we can define unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}(X,A)_{\beta}) \rightarrow H_q(\mathcal{S}(X,A)_{\alpha})$ for every $q \in \N$.
+\chapter{Cech homology}
+
+In this chapter we will construct Cech homology and prove main results related to it.  We will first define inverse system of homology groups of the nerves.
+
+\begin{maar}
+Let $\alpha$ be element of COV$(X,A)$ Then we can define group $H_{q,a}$ using the singular homology groups in a following way: $$H_{q,a} = H_q(\mathcal{S}(X,A)_{\alpha})$$. 
+For every coverings of $\alpha, \beta$ in $(X,A)$ for which $\alpha \leq \beta$ we define the maps to be
+$$I^{\beta}_{\alpha}: H_{q,\beta} \rightarrow  H_{q,\alpha}$$ 
+maps $I_{\beta}^{\alpha}$ are induced by some maps $p^\beta_\alpha$ which are unique up to homotopy.
+\end{maar}
+\begin{lem}
+Let $q \in \N$ be fixed number and let $(X,A)$ be topological pair. Then groups $H_{q,a}$ together with maps $I_{\beta}^{\alpha}$ form inverse system of groups.
+\end{lem}
+\begin{proof}
+First we have to show that $I_{\alpha}^{\alpha}$ is identity function for every $\alpha \in$ COV$(X,A)$. We already know that identity map between simplicial complexes is projection map and because identity map induces identity map between the complexes by uniqueness of $I_{\alpha}^{\alpha}$ we see that the map has to be identity map between corresponding homology groups.\newline Now for every coverings $\alpha, \beta, \gamma$ of pair $(X,A)$ for which relation $\alpha \leq \beta \leq \gamma$ holds we have to show that $I_{\beta}^{\gamma} \circ I_{\alpha}^{\beta} = I^{\gamma}_{\alpha}$. By lemma \ref{compofprojmaps} the composition of corresponding projection maps $p_{\beta}^{\gamma} \circ p_{\alpha}^{\beta}$ is projection map. Thus it defines map $I^{\gamma}_{\alpha}$.
+\end{proof}
+Now we are ready to define the cech homology groups $ \check{\mathrm{H}}_n$.
+\begin{maar}
+Let $(X,A)$ be topological pair. Then cech homology group are defined to be inverse limits of $H_{q,\alpha}$ where $\alpha$ belongs to COV$(X,A)$. Simply denoted  $\check{\mathrm{H}}_q = \lim_{\rightarrow}\{H_{q,\alpha}\}$
+\end{maar}
+\begin{thebibliography}{9}
+
+\bibitem{Rotman}\label{rotman}
+
+J. Rotman An Introduction to Algebraic Topology (Graduate Texts in Mathematics), Springer 
+
+\bibitem{First}
+L. Górniewicz, Topological Fixed Point Theory of Multivalued Mappings, Kluwer Academic
+Publishers, 1999.
+
+\bibitem{Second} 
+I. L. Glicksberg, A further generalization of the Kakutani fixed point theorem with
+application to Nash equilibrium points, Proc. Amer. Math. Soc. 3 (1952), 170–174.
+
+
+\bibitem{Vaisala}\label{vai}
+M. BAYE, G. TIAN, ANU J. ZHOU, “The Existence of Pure Nash Equilibrium in Games 
+with Nonquasiconcave Payoffs,” Texas A  M University, mimeo, 1990. 
+
+
+
+\end{thebibliography}
+
+\end{document}
