@@ -338,7 +338,7 @@ $$
 
 \end{tikzpicture}
 $$
-So we can define (co)limit of this structure in unique way if it exists. We will now give important example of this construction and show that in case category is $AB$ there exists such limit. TO prove this result we first recall following lemma:
+So we can define (co)limit of this structure in unique way if it exists. We will now give important example of this construction and show that in case category is $AB$ there exists such limit. To prove this result we first recall following lemma:
 
 
 \begin{lause}
@@ -352,7 +352,7 @@ We will now construct morphism $u$. Using lemma \ref{Universalpropertysum} we ca
 Let $I: \lambda \rightarrow AB$ be a inverse system of groups. Then limit of this system is group $L = \{x \in \prod_{i \in J} I_i \mid x_a = I^a_bx_b $ for all $a \leq b\}$
 \end{lause}
 \begin{proof}
-Let $\{v_a: L \rightarrow I(a)\}_{a \in \lambda}$ induce cone $L$ and $K$ be any other cone induced by functors $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$. We construct function $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$. By lemma \ref{Universalpropertyproduct} we know that there exists unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$. 
+Let $\{v_a: L \rightarrow I(a)\}_{a \in \lambda}$ induce cone $L$ and $K$ be any other cone induced by functors $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$. We construct function $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$. By lemma \ref{Universalpropertyproduct} we know that there exists unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$. It is easy to see that $u'$ maps actually every element to $L$. Assume that $\beta$ and $\alpha$ are elements which satisfy $a \leq b$ condition. Then $I^{a}_b \circ pr_b \circ u'= I^{a}_b \circ \phi_b = \phi_a = pr_a \circ u'$. We can define $u$ to be $u'$.
 \end{proof}
 
 \section{Nerve of covering}
@@ -434,21 +434,22 @@ By using this lemma and the fact that contiguous simplicial maps induce same hom
 In this chapter we will construct Cech homology and prove main results related to it.  We will first define inverse system of homology groups of the nerves.
 
 \begin{maar}
-Let $\alpha$ be element of COV$(X,A)$ Then we can define group $H_{q,a}$ using the singular homology groups in a following way: $$H_{q,a} = H_q(\mathcal{S}(X,A)_{\alpha})$$. 
+Let $\alpha$ be element of COV$(X,A)$ and $G$ abelian group. Then we can define group $H_{q,a}(X,A;G)$ using the singular homology groups in a following way: $$H_{q,a}(X,A;G) = H_q(\mathcal{S}(X,A)_{\alpha};G)$$. 
 For every coverings of $\alpha, \beta$ in $(X,A)$ for which $\alpha \leq \beta$ we define the maps to be
 $$I^{\beta}_{\alpha}: H_{q,\beta} \rightarrow  H_{q,\alpha}$$ 
 maps $I_{\beta}^{\alpha}$ are induced by some maps $p^\beta_\alpha$ which are unique up to homotopy.
 \end{maar}
 \begin{lem}
-Let $q \in \N$ be fixed number and let $(X,A)$ be topological pair. Then groups $H_{q,a}$ together with maps $I_{\beta}^{\alpha}$ form inverse system of groups.
+Let $q \in \N$ be fixed number, let $(X,A)$ be topological pair and $G$ abelian group. Then groups $H_{q,a}(X,A;G)$ together with maps $I_{\beta}^{\alpha}$ form inverse system of groups.
 \end{lem}
 \begin{proof}
 First we have to show that $I_{\alpha}^{\alpha}$ is identity function for every $\alpha \in$ COV$(X,A)$. We already know that identity map between simplicial complexes is projection map and because identity map induces identity map between the complexes by uniqueness of $I_{\alpha}^{\alpha}$ we see that the map has to be identity map between corresponding homology groups.\newline Now for every coverings $\alpha, \beta, \gamma$ of pair $(X,A)$ for which relation $\alpha \leq \beta \leq \gamma$ holds we have to show that $I_{\beta}^{\gamma} \circ I_{\alpha}^{\beta} = I^{\gamma}_{\alpha}$. By lemma \ref{compofprojmaps} the composition of corresponding projection maps $p_{\beta}^{\gamma} \circ p_{\alpha}^{\beta}$ is projection map. Thus it defines map $I^{\gamma}_{\alpha}$.
 \end{proof}
 Now we are ready to define the cech homology groups $ \check{\mathrm{H}}_n$.
 \begin{maar}
-Let $(X,A)$ be topological pair. Then cech homology group are defined to be inverse limits of $H_{q,\alpha}$ where $\alpha$ belongs to COV$(X,A)$. Simply denoted  $\check{\mathrm{H}}_q = \lim_{\rightarrow}\{H_{q,\alpha}\}$
+Let $(X,A)$ be topological pair and $G$ abelian group. Then cech homology groups with coefficients $G$ are defined to be inverse limits of $H_{q,\alpha}$ where $\alpha$ belongs to COV$(X,A)$. Simply denoted  $\check{\mathrm{H}}_q = \lim_{\rightarrow}\{H_{q,\alpha}\}$
 \end{maar}
+
 \begin{thebibliography}{9}
 
 \bibitem{Rotman}\label{rotman}
