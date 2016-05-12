@@ -355,8 +355,13 @@ Let $I: \lambda \rightarrow AB$ be a inverse system of groups. Then limit of thi
 Let $\{v_a: L \rightarrow I(a)\}_{a \in \lambda}$ induce cone $L$ and $K$ be any other cone induced by functors $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$. We construct function $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$. By lemma \ref{Universalpropertyproduct} we know that there exists unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$. It is easy to see that $u'$ maps actually every element to $L$. Assume that $\beta$ and $\alpha$ are elements which satisfy $a \leq b$ condition. Then $I^{a}_b \circ pr_b \circ u'= I^{a}_b \circ \phi_b = \phi_a = pr_a \circ u'$. We can define $u$ to be $u'$.
 \end{proof}
 
-\subsection{Cofinal subsets of a Category}
-In this section we recall definition of cofinal subset and prove that the limit of subcategory of the direct system is same than limit over the whole system.
+\subsection{Cofinal functors}
+We will first define cofinality in abstract way.
+
+\begin{maar}
+A functor $L:J' \rightarrow J $ is cofinal if for every element $k \in J$ there exists $j' \in J'$ and morphism $Lj' \rightarrow k$.
+\end{maar}
+
 \begin{maar}
 Let $C$ be category, the objects of which are induced by quasi-ordered set $\lambda$ and let $A$ be its subcategory. The subcategory $A$ is cofinal subset of $C$ if for every element $\beta \in X$ we can find element $\alpha \in A$ for which condition $\beta \leq \alpha$ holds.
 \end{maar}
@@ -463,7 +468,12 @@ First we have to show that $I_{\alpha}^{\alpha}$ is identity function for every 
 Now we are ready to define the cech homology groups $ \check{\mathrm{H}}_n$.
 \begin{maar}
 Let $(X,A)$ be topological pair and $G$ abelian group. Then cech homology groups with coefficients $G$ are defined to be inverse limits of $H_{q,\alpha}(X,A;G)$ where $\alpha$ belongs to COV$(X,A)$. Simply denoted  $\check{\mathrm{H}}_q(X,A;G) = \lim_{\rightarrow}\{H_{q,\alpha}(X,A;G)\}$
+
 \end{maar}
+Because coverings can be infinite the limits are not necessary defined. However there is a way to evade this problem. 
+\begin{lem}
+Let 
+\end{lem}
 
 \begin{thebibliography}{9}
 

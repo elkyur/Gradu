@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {2.2}Category theory}{4}
 \contentsline {subsection}{\numberline {2.2.1}Dual of category}{6}
 \contentsline {subsection}{\numberline {2.2.2}Direct and inverse systems}{7}
-\contentsline {subsection}{\numberline {2.2.3}Cofinal subsets of a Category}{9}
+\contentsline {subsection}{\numberline {2.2.3}Cofinal functors}{9}
 \contentsline {section}{\numberline {2.3}Nerve of covering}{9}
 \contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{9}
 \contentsline {subsection}{\numberline {2.3.2}Coverings}{10}
