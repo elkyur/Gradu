@@ -439,29 +439,70 @@ Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$
 
 Let $\beta$ and $\alpha$ be coverings for which $\alpha \leq \beta$. Now we can define projection map from $p^\beta_\alpha:\beta \rightarrow \alpha$. For every $U_i \in \beta$ we map it to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$. We can extend those maps to the corresponding maps between abstract simplicial complex. 
 \begin{lem}
-Let $\beta$ and $\alpha$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and $p$ be projection map defined above. Then induced map $p*:\mathcal{S}(X,A)_\beta \rightarrow \mathcal{S}(X,A)_\alpha$ is piecewise linear map induced by edges $U \in \mathcal{S}(X,A)_\beta$ which are mapped to edges $U' \in \mathcal{S}(X,A)_\alpha$ induced by map $p$. 
+Let $\beta$ and $\alpha$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and $p$ be projection map defined above. Then map $p'^\beta_\alpha:\mathcal{S}(X,A)_\beta \rightarrow \mathcal{S}(X,A)_\alpha$ defined to be piecewise linear map induced by edges $U \in \mathcal{S}(X,A)_\beta$ and map $p$ is well-defined.
 \end{lem}
 \begin{proof}
-
+Let $x$ be arbitary element of $\mathcal{S}(X,A)_\beta$, then it belongs to some simplex. Let $S$ be simplex which is intersection of all simplices in $\mathcal{S}(X,A)_\beta$ which have property that intersection with $\{x\}$ is non-empty. In simplex $S$ point $x$ has unique representation $x = \sum_{i \in J}r_ia_i$ where elements $a_i$ are edges and $r_i$ such non-negative real numbers for which $\sum_{i \in J}r_i = 1$. By definition of map $p'$ this point is mapped to $p'(x) = \sum_{i \in J}r_ip^\beta_\alpha(a_i) $ which is uniquely determined so map $p'$ is well-defined.
 \end{proof}
 
+We denote map $p'^\beta_\alpha$ described above just as $p^\beta_\alpha$. It is clear from context which of the maps is used. We will prove now that the map $p$ is simplicial 
+
+\begin{lem}
+Projection maps $p^\beta_\alpha$ are simplicial.
+\end{lem}
+\begin{proof}
+Let $s$ be simplex in $\mathcal{S}(X,A)_\alpha$ spanned by some sets $\{U_i\}_{i \in J}$ for which $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $U_i'$ in $\mathcal{S}(X,A)_\beta$ for which $U_i \subset U_i'$. Intersection $\bigcap_{i \in J}U'_i$ is clearly non empty, so every simplex is mapped inside some simplex. \newline	
+\end{proof}
 
 We will now show that the family of projection maps is closed under composition.
 \begin{lem}\label{compofprojmaps}
-Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps . Then $p^\gamma_\beta \circ p^\beta_\alpha$ is also projection map.
+Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps . Then $p^\beta_\alpha \circ p^\gamma_\beta$ is also projection map.
 \end{lem}
 \begin{proof}
-Let $U \subset $ 
+Let $U \in \gamma$, then there exists $U' \in \beta$ and $U'' \in \alpha $ for which condition $U \subset U' \subset U''$ is satisfied. By properties of inclusion $U \subset U''$ and thus $p^\beta_\alpha \circ p^\gamma_\beta$ is projection map.
 \end{proof}
 Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define same homology groups.
 \begin{lem}
-Let $\beta$ and $\alpha$ be any coverings of $(X,A)$ and $p^\beta_\alpha$ and $p'^\beta_\alpha$ be any projection maps. The maps are contiguous simplicial maps.
+Let $\alpha$ and $\beta$ be any coverings of $(X,A)$ for which condition  $\alpha \leq \beta$ is satisfied. Then projection maps $p^\beta_\alpha$ and $p'^\beta_\alpha$ are contiguous.
 \end{lem}
 \begin{proof}
-We are going to proof that the maps are simplicial first. Let $s$ be simplex in $\mathcal{S}(X,A)_\alpha$ spanned by some sets $\{U_i\}_{i \in J}$ for which $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $U_i'$ in $\mathcal{S}(X,A)_\beta$ for which $U_i \subset U_i'$. Intersection $\bigcap_{i \in J}U'_i$ is clearly non empty, so every simplex is mapped inside some simplex. \newline
-To prove that the maps are contiguous we form simplex in $\mathcal{S}(Y,B) $ and prove that images of both maps belong to it. For every vertex $U_i$ in $\mathcal{S}(X,A)$ is mapped to $U'_i$ and $U''_i$ by $p^\beta_\alpha$ and $p'^\beta_\alpha$ respectively. Now if $\bigcap_{i \in J}U_i \neq \emptyset$ then also $\bigcap_{i \in J}U'_i \cap \bigcap_{i \in J}U''_i \neq \emptyset$. In case if the vertexes belong to $\mathcal{S}(A)$ it is easy to see that projection map maps them to some simplex in $\mathcal{S}(B)$.  
+
+To prove that the maps are contiguous we form simplex in $\mathcal{S}(Y,B) $ and prove that images of both maps belong to it. Every vertex $U_i$ in $\mathcal{S}(X,A)$ is mapped to $U'_i$ and $U''_i$ by $p^\beta_\alpha$ and $p'^\beta_\alpha$ respectively. Now if $\bigcap_{i \in J}U_i \neq \emptyset$ then also $\bigcap_{i \in J}U'_i \cap \bigcap_{i \in J}U''_i \neq \emptyset$. In case if the vertexes belong to $\mathcal{S}(A)$ it is easy to see that projection map maps them to some simplex in $\mathcal{S}(B)$.  
 \end{proof}
 By using this lemma and the fact that contiguous simplicial maps induce same homology groups we can define unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}(X,A)_{\beta}) \rightarrow H_q(\mathcal{S}(X,A)_{\alpha})$ for every $q \in \N$.
+
+For projection maps and induced homomorphisms we have following useful lemma.
+
+
+
+\begin{lem}
+	Let $f:(X,A) \rightarrow (Y,B) $ and $\alpha$ and $\beta$ coverings of $(Y,B)$ for which $\alpha \leq \beta$ holds. Then for coverings $\alpha' = f^{-1}\alpha$ and $\beta' = f^{-1}\beta$ condition $\alpha' \leq \beta'$ holds. Let $p^\beta_\alpha$ and $p^{beta'}_{\alpha'}$
+	
+	$$
+	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(K\)};
+	
+	\node (x) at (0,-2) {\(D(a)\)};
+	
+	\node (y) at (4,-2) {\(D(b)\)};
+	
+	\node (z) at (4,0) {A};
+	
+	\node (f) at (2,-2.4){\(D^b_a\)};
+	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+\end{lem}
 \chapter{Cech homology}
 
 In this chapter we will construct Cech homology and prove main results related to it.  We will first define inverse system of homology groups of the nerves.
