@@ -430,22 +430,31 @@ Now we define quasi order in a following way: $\alpha \leq \beta$ if $\beta$ is 
 Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta$ be covering of $(Y,A)$, then define $f^{-1}\beta$ to be covering of $(X,A)$ which is induced by elements $(f^{-1}U_i, f^{-1}V_i)_{i \in J_{\beta}}$.
 \end{maar}
 \begin{lem}
-Let $F:(X,A) \rightarrow (Y,B)$ be function between pairs and let $\alpha$ and $\beta$ be covers for $(X,A)$ and $(Y,B)$ for which $\alpha = f^{-1}\beta$ holds. Then map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$ defined by $(f^{-1}U_i, f^{-1}V_i) \rightarrow (U_i, V_i)$ is well defined.
+Let $F:(X,A) \rightarrow (Y,B)$ be function between pairs and let $\alpha$ and $\beta$ be covers for $(X,A)$ and $(Y,B)$ for which $\alpha = f^{-1}\beta$ holds. The 
+ Then map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$ defined by $(f^{-1}U_i, f^{-1}V_i) \rightarrow (U_i, V_i)$ is well defined.
 \end{lem}
 \begin{proof}
 Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$, so the lemma holds.
 \end{proof}
 
-Let $\beta$ and $\alpha$ be coverings for which $\alpha \leq \beta$. Now we can define projection map from $p^\beta_\alpha:\mathcal{S}(X,A)_\beta \rightarrow \mathcal{S}(X,A)_\alpha$. For every $U_i \in \beta$ we map it to the set $U'_i \in \alpha$ for which $U_i \subset U_i'$. We will now show that family of projection maps is closed under composition.
+Let $\beta$ and $\alpha$ be coverings for which $\alpha \leq \beta$. Now we can define projection map from $p^\beta_\alpha:\beta \rightarrow \alpha$. For every $U_i \in \beta$ we map it to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$. We can extend those maps to the corresponding maps between abstract simplicial complex. 
+\begin{lem}
+Let $\beta$ and $\alpha$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and $p$ be projection map defined above. Then induced map $p*:\mathcal{S}(X,A)_\beta \rightarrow \mathcal{S}(X,A)_\alpha$ is piecewise linear map induced by edges $U \in \mathcal{S}(X,A)_\beta$ which are mapped to edges $U' \in \mathcal{S}(X,A)_\alpha$ induced by map $p$. 
+\end{lem}
+
+We will now show that the family of projection maps is closed under composition.
 \begin{lem}\label{compofprojmaps}
 Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps . Then $p^\gamma_\beta \circ p^\beta_\alpha$ is also projection map.
 \end{lem}
+\begin{proof}
+Let $U \subset $ 
+\end{proof}
 Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define same homology groups.
 \begin{lem}
 Let $\beta$ and $\alpha$ be any coverings of $(X,A)$ and $p^\beta_\alpha$ and $p'^\beta_\alpha$ be any projection maps. The maps are contiguous simplicial maps.
 \end{lem}
 \begin{proof}
-We are going to proof that the maps are simplicial first. Let $s$ be simplex in $\mathcal{S}(X,A)_\alpha$ spanned by some sets $\{U_i\}_{i \in J}$ for which $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $U_i'$ in $\mathcal{S}(X,A)_\beta$ for which $U_i \subset U_i'$. Intersection $\bigcap_{i \in J}U'_i$ is clearly non empty, so every simplex maps inside some simplex. \newline
+We are going to proof that the maps are simplicial first. Let $s$ be simplex in $\mathcal{S}(X,A)_\alpha$ spanned by some sets $\{U_i\}_{i \in J}$ for which $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $U_i'$ in $\mathcal{S}(X,A)_\beta$ for which $U_i \subset U_i'$. Intersection $\bigcap_{i \in J}U'_i$ is clearly non empty, so every simplex is mapped inside some simplex. \newline
 To prove that the maps are contiguous we form simplex in $\mathcal{S}(Y,B) $ and prove that images of both maps belong to it. For every vertex $U_i$ in $\mathcal{S}(X,A)$ is mapped to $U'_i$ and $U''_i$ by $p^\beta_\alpha$ and $p'^\beta_\alpha$ respectively. Now if $\bigcap_{i \in J}U_i \neq \emptyset$ then also $\bigcap_{i \in J}U'_i \cap \bigcap_{i \in J}U''_i \neq \emptyset$. In case if the vertexes belong to $\mathcal{S}(A)$ it is easy to see that projection map maps them to some simplex in $\mathcal{S}(B)$.  
 \end{proof}
 By using this lemma and the fact that contiguous simplicial maps induce same homology groups we can define unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}(X,A)_{\beta}) \rightarrow H_q(\mathcal{S}(X,A)_{\alpha})$ for every $q \in \N$.
@@ -471,9 +480,15 @@ Let $(X,A)$ be topological pair and $G$ abelian group. Then cech homology groups
 
 \end{maar}
 Because coverings can be infinite the limits are not necessary defined. However there is a way to evade this problem. 
-\begin{lem}
-Let 
-\end{lem}
+
+\section{Induced homomorphisms}
+In this section we will investigate 
+
+\section{Dimension axiom}
+In this section we will prove that the cech homology theory satisfies the dimension axiom.
+
+
+
 
 \begin{thebibliography}{9}
 
