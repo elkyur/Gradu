@@ -476,23 +476,27 @@ For projection maps and induced homomorphisms we have following useful lemma.
 
 
 \begin{lem}
-	Let $f:(X,A) \rightarrow (Y,B) $ and $\alpha$ and $\beta$ coverings of $(Y,B)$ for which $\alpha \leq \beta$ holds. Then for coverings $\alpha' = f^{-1}\alpha$ and $\beta' = f^{-1}\beta$ condition $\alpha' \leq \beta'$ holds. Let $p^\beta_\alpha$ and $p^{beta'}_{\alpha'}$
-	
-	$$
+	Let $f:(X,A) \rightarrow (Y,B) $ and $\alpha$ and $\beta$ coverings of $(Y,B)$ for which $\alpha \leq \beta$ holds. Then for coverings $\alpha' = f^{-1}\alpha$ and $\beta' = f^{-1}\beta$ condition $\alpha' \leq \beta'$ holds. Let $p^\beta_\alpha$ be projection map for the coverings, then there exists projection map $p^{\beta'}_{\alpha'} $ for which the the diagram commutes.
+		$$
 	\begin{tikzpicture}
 	
 	
 	
-	\node (w) at (0,0) {\(K\)};
+	\node (w) at (0,0) {\(\mathcal{S}(X,A)_{\beta'}\)};
 	
-	\node (x) at (0,-2) {\(D(a)\)};
+	\node (x) at (0,-2) {\(\mathcal{S}(Y,B)_{\beta}\)};
 	
-	\node (y) at (4,-2) {\(D(b)\)};
+	\node (y) at (4,-2) {\(\mathcal{S}(Y,B)_{\alpha}\)};
 	
-	\node (z) at (4,0) {A};
+	\node (z) at (4,0) {\(\mathcal{S}(X,A)_{\alpha'}\)};
 	
-	\node (f) at (2,-2.4){\(D^b_a\)};
+	\node (f) at (2,-2.4){\(p^\beta_\alpha\)};
 	
+	\node (g) at (2,-0.4){\(p^{\beta'}_{\alpha'}\)};
+	
+	\node (s) at (0.3,-1) {\(f_{\beta}\)};
+	
+	\node (s2) at (4.3,-1) {\(f_{\alpha}\)};	
 	
 	\draw[->] (z) -- (y);
 	\draw[->] (w) -- (x);
@@ -502,7 +506,13 @@ For projection maps and induced homomorphisms we have following useful lemma.
 	
 	\end{tikzpicture}
 	$$
+
 \end{lem}
+
+\begin{proof}
+Let $\{U_i\}_{i \in J}$ be some simplex in $\mathcal{S}(X,A)_{\beta'}$. For every edge $U$ the set $f^{-1} \circ p \circ f(U) $ is non-empty because $p$ maps $f(U)$ to larger set. Thus for every edge $U_i$ there is corresponding edge in $\mathcal{S}(X,A)_{\alpha'}$. We can now define map $p^{\beta'}_{\alpha'}: \mathcal{S}(X,A)_{\beta'} \rightarrow \mathcal{S}(X,A)_{\alpha}$ in such way that edge $U$ is mapped to the edge $f^{-1}pfU $ and we extend this map by linearity. Now by defining map $p^{\beta'}_{\alpha'}$ in such way for every simplex we get well-defined map for which the diagram commutes.
+\end{proof}
+
 \chapter{Cech homology}
 
 In this chapter we will construct Cech homology and prove main results related to it.  We will first define inverse system of homology groups of the nerves.
