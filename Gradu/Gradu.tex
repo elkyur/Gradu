@@ -107,9 +107,9 @@ A category C consist of a following ingredients: A class of objects $\ob(C)$, cl
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	
-	\item Composition is associative. Let $f:A \rightarrow B$, $g: B \rightarrow D$ and $h: D \rightarrow E$ be functors between categories then $(f \circ g) \circ h = f \circ (g \circ h)$
+	\item Composition is associative. Let $f:A \rightarrow B$, $g: B \rightarrow D$ and $h: D \rightarrow E$ be morphisms between categories then $(f \circ g) \circ h = f \circ (g \circ h)$
 	
-	\item For every category $A \in \ob(C)$ there exists identity functor $1_A \in \hom(A,A)$ for which following condition hold: Let $f:A \rightarrow B$ and $g: B \rightarrow A$ be arbitrary functors then $f \circ 1_A = f$ and $1_A \circ g = g$.
+	\item For every object $A \in \ob(C)$ there exists identity morphism $1_A \in \hom(A,A)$ for which following condition hold: Let $f:A \rightarrow B$ and $g: B \rightarrow A$ be arbitrary morphisms then $f \circ 1_A = f$ and $1_A \circ g = g$.
 	
 \end{enumerate}
 \end{maar}
@@ -122,11 +122,11 @@ Let $C$ and $C'$ be categories and $F$ rule between them. We say that $F$ is fun
 	
 	\item For every object $A \in \ob(C)$ there exists unique element $F(A) \in C'$.
 	
-	\item Let $A$ and $B$ be objects in $\ob(C)$ and $f:A \rightarrow B$ functor between them. Then there exists unique functor $F(f):F(A) \rightarrow F(B)$.
+	\item Let $A$ and $B$ be objects in $\ob(C)$ and $f:A \rightarrow B$ morphism between them. Then there exists unique functor $F(f):F(A) \rightarrow F(B)$.
 	
 	\item if $f$ and $g$ are morphisms in $\hom(C)$, then following condition holds: $F(f) \circ F(g) = F(f \circ g)$.
 	
-	\item Identity element is mapped to identity element. Let $A$ be object in $\ob(C)$ and $1_A$ identity functor corresponding to it. Then $T(1_A)$ is identity functor of $T(A)$.
+	\item Identity element is mapped to the identity element. Let $A$ be object in $\ob(C)$ and $1_A$ identity morphism corresponding to it. Then $T(1_A)$ is identity morphism of $T(A)$.
 		
 
 \end{enumerate}
@@ -349,10 +349,30 @@ Let $\{v_a:D(a) \rightarrow L\}$ induce cone $L$ and $K$ be any other cocone ind
 We will now construct morphism $u$. Using lemma \ref{Universalpropertysum} we can find unique homomorphism $u':\bigoplus_{a \in \lambda} D(a) \rightarrow K$ for which $u' \circ i_a = \phi_a$ holds. Now we see that for every generator of subgroup G $u'(i_ax_{a}-i_bD^b_ax_a) = \phi_a(x_a) - \phi_bD_a^bx_a = \phi_a(x_a)-\phi_a(x_a) = 0$. Now we can define $u$ in such way that every element $x + D$ maps to element $\phi'(x)$. We will denote the projection map from $\bigoplus_{a \in \lambda} D(a)$ to $L$ by $p$. Now we see that $u \circ v_a = u \circ p \circ i_a = u' \circ i_a = \phi_a $.
 \end{proof}
 \begin{lause}
-Let $I: \lambda \rightarrow AB$ be a inverse system of groups. Then limit of this system is group $L = \{x \in \prod_{i \in J} I_i \mid x_a = I^a_bx_b $ for all $a \leq b\}$
+Let $I: \lambda \rightarrow AB$ be a inverse system of groups. Then limit of this system is group $L = \{x \in \prod_{i \in J} I_i \mid x_a = I^b_ax_b $ for all $a \leq b\}$
 \end{lause}
 \begin{proof}
 Let $\{v_a: L \rightarrow I(a)\}_{a \in \lambda}$ induce cone $L$ and $K$ be any other cone induced by functors $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$. We construct function $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$. By lemma \ref{Universalpropertyproduct} we know that there exists unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$. It is easy to see that $u'$ maps actually every element to $L$. Assume that $\beta$ and $\alpha$ are elements which satisfy $a \leq b$ condition. Then $I^{a}_b \circ pr_b \circ u'= I^{a}_b \circ \phi_b = \phi_a = pr_a \circ u'$. We can define $u$ to be $u'$.
+\end{proof}
+
+\subsection{Morphisms between systems}
+To be able to define morphisms between Cech homology groups we need concept of limit homomorphism. In this section we will define limit morphism between systems and investigate properties of it. Concepts used in this chapter can be presented in more general case. However, for our use case its enough to restrict ourselves to the category of Abelian groups.
+
+\begin{maar}
+Function $\phi:X \rightarrow Y$ is order preserving if for every elements $a$ and $b$ in set $X$ for which $a \leq b$, the condition $\phi(a) \leq \phi(b)$ is satisfied.
+\end{maar}
+
+\begin{maar}
+Let $(I,\lambda)$ and $(I',\lambda')$ be inverse systems and $\phi:\lambda' \rightarrow \lambda$ an order preserving functor. Let $ \{f_a:I(\phi(a)) \rightarrow I(a)\}_{a \in \lambda}$ be natural transformation between $I$ and $I'$. Then we say that $\{f_a\}_{a \in \lambda}$ is an inverse system of morphisms of the $I$ into $I'$.
+\end{maar}
+Now we would like to define limit for the system of homomorphisms between inverse systems of groups.
+
+\begin{lem}
+Let $(I, \lambda)$ and $(I',\lambda')$ be inverse systems of groups. Then $$f:\lim_{\rightarrow} I \rightarrow \lim_{\rightarrow}I' : f(x) = \prod_{a \in \lambda}f_a(proj_{\phi(a)}(x))$$
+is well defined function between limit groups.
+\end{lem}
+\begin{proof}
+We have to show that the image is in the subgroup $$L = \{x \in \prod_{i \in \lambda'} I'(i) \mid x_a = I^b_ax_b \text{ for all } a \leq b \}.$$ Let $b$ be some index, then: $I'^{b}_{a}x'_b = I'^{b}_{a}f_b(x_{\phi(b)}) = f_bI'^{\phi(b)}_{\phi(a)}(x_{\phi(b)}) = f_ax_{\phi(a)} = x'_a$ . In this equation we used property which says that the morphisms define natural transformation.
 \end{proof}
 
 \subsection{Cofinal functors}
@@ -537,7 +557,11 @@ Let $(X,A)$ be topological pair and $G$ abelian group. Then cech homology groups
 Because coverings can be infinite the limits are not necessary defined. However there is a way to evade this problem. 
 
 \section{Induced homomorphisms}
-In this section we will investigate 
+In this section we will investigate properties of induced homomorphism.
+
+\begin{lause}
+Let $f:(X,A) \rightarrow (Y,B)$ be continuous function between pairs of spaces, then 
+\end{lause}
 
 \section{Dimension axiom}
 In this section we will prove that the cech homology theory satisfies the dimension axiom.
