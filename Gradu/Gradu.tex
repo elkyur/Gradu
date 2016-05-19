@@ -355,7 +355,7 @@ Let $I: \lambda \rightarrow AB$ be a inverse system of groups. Then limit of thi
 Let $\{v_a: L \rightarrow I(a)\}_{a \in \lambda}$ induce cone $L$ and $K$ be any other cone induced by functors $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$. We construct function $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$. By lemma \ref{Universalpropertyproduct} we know that there exists unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$. It is easy to see that $u'$ maps actually every element to $L$. Assume that $\beta$ and $\alpha$ are elements which satisfy $a \leq b$ condition. Then $I^{a}_b \circ pr_b \circ u'= I^{a}_b \circ \phi_b = \phi_a = pr_a \circ u'$. We can define $u$ to be $u'$.
 \end{proof}
 
-\subsection{Morphisms between systems}
+\subsection{Morphisms between systems}\label{limitmorphism}
 To be able to define morphisms between Cech homology groups we need concept of limit homomorphism. In this section we will define limit morphism between systems and investigate properties of it. Concepts used in this chapter can be presented in more general case. However, for our use case its enough to restrict ourselves to the category of Abelian groups.
 
 \begin{maar}
@@ -367,7 +367,7 @@ Let $(I,\lambda)$ and $(I',\lambda')$ be inverse systems and $\phi:\lambda' \rig
 \end{maar}
 Now we would like to define limit for the system of homomorphisms between inverse systems of groups.
 
-\begin{lem}
+\begin{lem}\label{limitmorphismgroup}
 Let $(I, \lambda)$ and $(I',\lambda')$ be inverse systems of groups. Then $$f:\lim_{\rightarrow} I \rightarrow \lim_{\rightarrow}I' : f(x) = \prod_{a \in \lambda}f_a(proj_{\phi(a)}(x))$$
 is well defined function between limit groups.
 \end{lem}
@@ -493,10 +493,16 @@ By using this lemma and the fact that contiguous simplicial maps induce same hom
 
 For projection maps and induced homomorphisms we have following useful lemma.
 
+\begin{lem}\label{preimageorder}
+Let $\alpha$ be covering of pair $(X,A)$ and $\beta$ covering of pair $(Y,B)$ for which $\alpha \leq \beta$ holds and $f:(X,A) \rightarrow (Y,B)$ a function between pairs. Then pre-image $f^{-1}\beta$ of covering $\beta$ is refinement of $f^{-1}\alpha$.
+\end{lem}
+\begin{proof}
+This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \subset F^{-1}V$.
 
+\end{proof}
 
-\begin{lem}
-	Let $f:(X,A) \rightarrow (Y,B) $ and $\alpha$ and $\beta$ coverings of $(Y,B)$ for which $\alpha \leq \beta$ holds. Then for coverings $\alpha' = f^{-1}\alpha$ and $\beta' = f^{-1}\beta$ condition $\alpha' \leq \beta'$ holds. Let $p^\beta_\alpha$ be projection map for the coverings, then there exists projection map $p^{\beta'}_{\alpha'} $ for which the the diagram commutes.
+\begin{lem}\label{squarelemmaforcoverings}
+	Let $f:(X,A) \rightarrow (Y,B) $ and $\alpha$ and $\beta$ coverings of $(Y,B)$ for which $\alpha \leq \beta$ holds. Let $p^\beta_\alpha$ be projection map for the coverings, then there exists projection map $p^{\beta'}_{\alpha'} $ for which the the diagram commutes.
 		$$
 	\begin{tikzpicture}
 	
@@ -556,12 +562,54 @@ Let $(X,A)$ be topological pair and $G$ abelian group. Then cech homology groups
 \end{maar}
 Because coverings can be infinite the limits are not necessary defined. However there is a way to evade this problem. 
 
+\section{Well-definedness of the Cech homology groups}
+In this section we will provide condition for the spaces which will guarantee that the Cech groups are well-defined. 
+...
+From now on in this chapter we assume that the topological spaces are such for which the Cech groups  are well-defined. 
+
 \section{Induced homomorphisms}
-In this section we will investigate properties of induced homomorphism.
+In this section we will investigate properties of induced homomorphism. Earlier we defined Cech homology groups to be limit of the groups induced by coverings of the pair. In section \ref{limitmorphism} we defined concept of limit homomorphism. In next theorem we will show that such homomorphism exists.
 
 \begin{lause}
-Let $f:(X,A) \rightarrow (Y,B)$ be continuous function between pairs of spaces, then 
+Let $f:(X,A) \rightarrow (Y,B)$ be continuous function between pairs of spaces. Let $\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of pair }(Y,B)\}$ be family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces maps between corresponding cech homology groups. $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha})$$
+We denote family of functions described above with $\mathcal{A}_q$ . Then every such collections is natural transformation of the Cech homology groups and thus the limit function is well defined. 
 \end{lause}
+\begin{proof}
+We can define function $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(A,B)$ to map every set $U$ of $\alpha$ to set $f^{-1}U$ of $f^{-1}\alpha$. By lemma \ref{preimageorder} this map preserves order. Let $\beta$ and $\alpha$ be some coverings of pair $(Y,B)$. We denote $\alpha'$ and $\beta'$ to be preimages of $\alpha$ and $\beta$ under map $f$. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have following commutable diagram:
+	$$
+	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(H_q(\mathcal{S}(X,A)_{\beta'})\)};
+	
+	\node (x) at (0,-2) {\(H_q(\mathcal{S}(Y,B)_{\beta})\)};
+	
+	\node (y) at (4,-2) {\(H_q(\mathcal{S}(Y,B)_{\alpha})\)};
+	
+	\node (z) at (4,0) {\(H_q(\mathcal{S}(X,A)_{\alpha'})\)};
+	
+	\node (f) at (2,-2.4){\(I^\beta_\alpha\)};
+	
+	\node (g) at (2,-0.4){\(I^{\beta'}_{\alpha'}\)};
+	
+	\node (s) at (0.4,-1) {\(f'_{\beta,q}\)};
+	
+	\node (s2) at (4.4,-1) {\(f'_{\alpha,q}\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+	
+The fact that collection $\mathcal{A}_q$ is natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists limit homomorphism $$f_q:\check{\mathrm{H}}(X,A;G) \rightarrow \check{\mathrm{H}}(Y,B;G) $$
+\end{proof}
+
+
 
 \section{Dimension axiom}
 In this section we will prove that the cech homology theory satisfies the dimension axiom.

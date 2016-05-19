@@ -11,5 +11,6 @@
 \contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{10}
 \contentsline {subsection}{\numberline {2.3.2}Coverings}{11}
 \contentsline {chapter}{\numberline {3}Cech homology}{15}
-\contentsline {section}{\numberline {3.1}Induced homomorphisms}{16}
-\contentsline {section}{\numberline {3.2}Dimension axiom}{16}
+\contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{16}
+\contentsline {section}{\numberline {3.2}Induced homomorphisms}{16}
+\contentsline {section}{\numberline {3.3}Dimension axiom}{17}
