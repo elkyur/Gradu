@@ -6,12 +6,12 @@
 \contentsline {subsection}{\numberline {2.2.1}Dual of category}{6}
 \contentsline {subsection}{\numberline {2.2.2}Direct and inverse systems}{7}
 \contentsline {subsection}{\numberline {2.2.3}Morphisms between systems}{9}
-\contentsline {subsubsection}{Morphisms between inverse systems}{9}
-\contentsline {subsection}{\numberline {2.2.4}Cofinal functors}{10}
-\contentsline {section}{\numberline {2.3}Nerve of covering}{10}
-\contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{10}
-\contentsline {subsection}{\numberline {2.3.2}Coverings}{11}
-\contentsline {chapter}{\numberline {3}Cech homology}{15}
-\contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{16}
-\contentsline {section}{\numberline {3.2}Induced homomorphisms}{16}
-\contentsline {section}{\numberline {3.3}Dimension axiom}{17}
+\contentsline {subsubsection}{\numberline {2.2.3.1}Morphisms between inverse systems}{9}
+\contentsline {subsection}{\numberline {2.2.4}Cofinal functors}{11}
+\contentsline {section}{\numberline {2.3}Nerve of covering}{12}
+\contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{12}
+\contentsline {subsection}{\numberline {2.3.2}Coverings}{13}
+\contentsline {chapter}{\numberline {3}Cech homology}{16}
+\contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{17}
+\contentsline {section}{\numberline {3.2}Induced homomorphisms}{17}
+\contentsline {section}{\numberline {3.3}Dimension axiom}{18}
