@@ -78,82 +78,116 @@
 
 \chapter{Background}
 
-In this chapter we will a few details about algebra, category theory and abstract simplicial complexes. We assume that reader is familiar with basic concepts of homology and cohomology theory and constructions related to them.
+In this chapter we will recall a few details about algebra, category theory and abstract simplicial complexes. We assume that the reader is familiar with basic concepts of homology and cohomology theory and constructions related to them.
 
 \section{Direct sum and direct product}
-In this section we will recall a few details about Direct sums and direct products
+In this section we will recall a few details about direct sums and direct products.
 \begin{maar}
-Let $\{A_i\}_{i \in J}$ be family of groups. Direct product of groups is the cartesian product $\prod_{i \in J} A_i$ where addition is defined componentwise $(a+b)_i = a_i+_ib_i$
+Let $\{A_i\}_{i \in J}$ be a family of groups. The direct product of these groups is the Cartesian product $\prod_{i \in J} A_i$ where addition is defined component-wise $(a+b)_i = a_i+_ib_i$
 \end{maar}
 \begin{maar}
-Let $\{A_i\}_{i \in J}$ be family of groups. Direct sum of groups is subgroup of direct product  $\bigoplus_{i \in J}A_i = \{x \in \prod_{i \in J} A_i \mid x_i \neq 0$ for only finetely many $i \} $
+Let $\{A_i\}_{i \in J}$ be a family of groups. The direct sum of these groups is the subgroup of direct product given by  $\bigoplus_{i \in J}A_i = \{x \in \prod_{i \in J} A_i \mid x_i \neq 0 \text{ for only finetely many } i \}. $
 \end{maar}
 For direct sums and direct products we have following universal properties:
 \begin{lem}\label{Universalpropertyproduct}
-Let $A = \prod_{i \in J} A_i$ be direct sum and $D$ arbitary group. Then for every set homomorphisms $\{f_i:D \rightarrow A_i\}_{i \in J}$ there exists unique homomorphism $f:D \rightarrow A$ for which and for every $i \in J$ condition $pr_i \circ f = f_i $ holds.
+Let $A = \prod_{i \in J} A_i$ be the direct sum and $D$ an arbitrary group. Then for every set of homomorphisms $\{f_i:D \rightarrow A_i\}_{i \in J}$ there exists a unique homomorphism $f:D \rightarrow A$ for which condition $pr_i \circ f = f_i $ holds for every $i \in J$.
 \end{lem}
 \begin{proof}
-trivial	
+Proved in [\ref{algebra2}] theorem 3.7.
 \end{proof}
 \begin{lem}\label{Universalpropertysum}
-	Let $A = \bigoplus_{i \in J}A_i$ be direct sum and $D$ arbitary group. Then for every set homomorphisms $\{f_i:A_i \rightarrow D\}_{i \in J}$ there exists unique homomorphism $f:A \rightarrow D$ for which and for every $i \in J$ condition $ f \circ i_i = f_i $ holds.
+	Let $A = \bigoplus_{i \in J}A_i$ be direct sum and $D$ arbitary group. Then for every set homomorphisms $\{f_i:A_i \rightarrow D\}_{i \in J}$ there exists unique homomorphism $f:A \rightarrow D$ for which and for every $i \in J$ condition $ f \circ j_i = f_i $ holds.
 \end{lem}
 \begin{proof}
-trivial
+Proved in [\ref{algebra2}] theorem 3.6.
 \end{proof}
 \section{Category theory}
 
-In this thesis we will present theory in a categorical way, which will make the construction more general. First lets recall definition of a category. 
+In this thesis we will present theory in a categorical way, which will make the construction more general. First lets recall the definition of a category. 
 
 \begin{maar}
-A category C consist of a following ingredients: A class of objects $\ob(C)$, class of morphisms $\hom(C)$ for which and for every object $A$, $B$ in $\ob(C)$ there exists subclass $Hom(A,B)$ and a rule of composition $Comp:Hom(A,B) \times Hom(A,D) \rightarrow Hom(A,D)$. For which following conditions hold:
+A category C consist of the following ingredients: A class of objects $\ob(C)$, a class of morphisms $\hom(C)$ for which and for every objects $A$, $B$ in $\ob(C)$ there exists a subclass $Hom(A,B)$ and a rule of composition $Comp:Hom(A,B) \times Hom(B,D) \rightarrow Hom(A,D)$ for which following conditions hold:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	
-	\item Composition is associative. Let $f:A \rightarrow B$, $g: B \rightarrow D$ and $h: D \rightarrow E$ be morphisms between categories then $(f \circ g) \circ h = f \circ (g \circ h)$
+	\item Composition is associative. Let $f:A \rightarrow B$, $g: B \rightarrow D$ and $h: D \rightarrow E$ be morphisms between objects then $(f \circ g) \circ h = f \circ (g \circ h)$
 	
-	\item For every object $A \in \ob(C)$ there exists identity morphism $1_A \in \hom(A,A)$ for which following condition hold: Let $f:A \rightarrow B$ and $g: B \rightarrow A$ be arbitrary morphisms then $f \circ 1_A = f$ and $1_A \circ g = g$.
+	\item For every object $A \in \ob(C)$ there exists identity morphism $1_A \in \hom(A,A)$ for which the following condition holds: Let $f:A \rightarrow B$ and $g: B \rightarrow A$ be arbitrary morphisms then $f \circ 1_A = f$ and $1_A \circ g = g$.
 	
 \end{enumerate}
 \end{maar}
-It is easy to see that topological spaces with continuous functions and abelian groups with homomorphisms form a category. We denote those categories by TOP and AB. Next we will define concept of functor between categories.
+It is easy to see that topological spaces with continuous functions and abelian groups with homomorphisms form a category. We denote those categories by TOP and AB. Next we will define the concept of a functor between categories.
 \begin{maar}
-Let $C$ and $C'$ be categories and $F$ rule between them. We say that $F$ is functor between categories if following conditions hold:
+Let $C$ and $C'$ be categories and $F$ map between them. We say that $F$ is functor between categories if the following conditions hold:
 
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	
-	\item For every object $A \in \ob(C)$ there exists unique element $F(A) \in C'$.
+	\item For every object $A \in \ob(C)$ there exists a unique object $F(A) \in C'$.
 	
-	\item Let $A$ and $B$ be objects in $\ob(C)$ and $f:A \rightarrow B$ morphism between them. Then there exists unique functor $F(f):F(A) \rightarrow F(B)$.
+	\item Let $A$ and $B$ be objects in $\ob(C)$ and $f:A \rightarrow B$ a morphism between them. Then there exists a unique morphism $F(f):F(A) \rightarrow F(B)$.
 	
-	\item if $f$ and $g$ are morphisms in $\hom(C)$, then following condition holds: $F(f) \circ F(g) = F(f \circ g)$.
+	\item if $f$ and $g$ are morphisms in $\hom(C)$, then the following condition holds: $F(f) \circ F(g) = F(f \circ g)$.
 	
-	\item Identity element is mapped to the identity element. Let $A$ be object in $\ob(C)$ and $1_A$ identity morphism corresponding to it. Then $T(1_A)$ is identity morphism of $T(A)$.
+	\item The identity element is mapped to the identity element. Let $A$ be an object in $\ob(C)$ and $1_A$ the identity morphism corresponding to it. Then $F(1_A)$ is identity morphism of $F(A)$.
 		
 
 \end{enumerate}
 
 \end{maar}
-All homotopy, homology and cohomology groups form functor from TOP to AB. For details see Rotman [\ref{rotman}]. Now we will introduce new concept called natural transformation
+Homology and cohomology groups form a functor from TOP to AB. For details see Rotman [\ref{rotman}]. Now we will introduce a new concept called natural transformation.
 
 \begin{maar}
-Let $C$ and $D$ be categories and $F:C \rightarrow D$ and $G:C \rightarrow D$ functors between them. Then the following family of functors is natural transformation: $$\{\phi_X: F(X) \rightarrow G(X)\}_{X \in C}$$ 
-if following conditions hold:
+Let $C$ and $D$ be categories and $F:C \rightarrow D$ and $G:C \rightarrow D$ functors between them. Then the following family of functors is a natural transformation: $$\{\phi_X: F(X) \rightarrow G(X)\}_{X \in C}$$ 
+if the following conditions hold:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	
-	\item For every object $X \in C$ there exists unique morphism $\phi_X: F(X) \rightarrow G(X) $
+	\item For every object $X \in C$ there exists a unique morphism $\phi_X: F(X) \rightarrow G(X) $
 	
-	\item For every functor $f:X \rightarrow Y$: $\phi_Y \circ F(f) = G(f) \circ \phi_X $
+	\item For every morphism $f:X \rightarrow Y$ the following diagram commutes:
+	
+	$$ 	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(F(X)\)};
+	
+	\node (x) at (0,-2) {\(F(Y)\)};
+	
+	\node (y) at (4,-2) {\(G(Y)\)};
+	
+	\node (z) at (4,0) {\(G(X)\)};
+	
+	\node (f) at (2,-2.4){\(\phi_Y\)};
+	
+	\node (g) at (2,-0.4){\(\phi_X\)};
+	
+	\node (s) at (0.6,-1) {\(F(f)\)};
+	
+	\node (s2) at (4.6,-1) {\(G(f)\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+	
+	or in other words $\phi_Y \circ F(f) = G(f) \circ \phi_X $ holds.
 	
 \end{enumerate}
 \end{maar}
 
-Next we will define limit and colimit concepts for arbitary categories, which will be later applied to directed systems.
+
+Next we will define the concepts of limit and colimit for arbitrary categories, which will be later applied to directed and inverse systems.
 
 \begin{maar}
-Let $C$ be indexed category in a such way that there exists category $J$ with functor $F:J \rightarrow C$. Let $N$ be fixed object of $\ob(C)$. We define cone from $N$ to $F$ to be indexed family of morphisms $$\{\omega_X: N \rightarrow F(X)\}_{X \in J}$$ which satisfies following property: Let $f:X \rightarrow Y$ be morphism in $C$ then the following diagram commutes
+Let $C$ be an indexed category in such a way that there exists a category $J$ with a functor $F:J \rightarrow C$. Let $N$ be fixed object of $\ob(C)$. We define the cone from $N$ to $F$ to be an indexed family of morphisms $$\{\omega_X: N \rightarrow F(X)\}_{X \in J}$$ which satisfies following property: If $f:X \rightarrow Y$ is a morphism in $C$ then the following diagram commutes
+
+
 $$
 \begin{tikzpicture}
 
@@ -177,11 +211,11 @@ $$
 
 \end{tikzpicture}
 $$
-We denote this structure by $(N, \omega)$
+We denote this structure by $(N, \omega)$.
 \end{maar}
 
 \begin{maar}
-Let $C$ be indexed category which is indexed by category $J$ and functor $F$. Let $D$ be object of category $C$ which forms cone together with function $\phi$. We say that $(D, \phi)$ is limit of $C$ if following property holds: Let $(N, \omega)$ be any other cone of category $C$, then there exists unique morphism $u:N \rightarrow D$ in such way that following diagram commutes:
+Let $C$ be an indexed category which is indexed by a category $J$ and a functor $F$. Let $f:X \rightarrow Y$ be arbitrary morphism in category $J$ and let $D$ be an object of the category $C$ which forms a cone together with a family of morphisms $\{\phi_X\}_{X \in \ob(C)}$ and morphism $f$. We say that $(D, \phi)$ is a limit of $C$ if the following property holds: If $N$ together with family $\{\omega_X\}_{X \in \ob(C)} $ and morphism $f$ is any other cone of category $C$, then there exists a unique morphism $u:N \rightarrow D$ in such way that the following diagram commutes:
 \end{maar} 
 $$
 \begin{tikzpicture}
@@ -214,17 +248,18 @@ $$
 
 \end{tikzpicture}
 $$
-Next we will proof that we have two limits $N$ and $D$ of category $C$ then there exists isomorphism between those two objects. In other words $N$ and $D$ can be identified and the limit of category $C$ can be denoted simply as $\displaystyle {\lim_\rightarrow C}$ 
+Next we will prove that if we have two limits $N$ and $D$ of a category $C$ then there exists an isomorphism between those two objects. In other words $N$ and $D$ can be identified and the limit of category $C$ can be denoted simply as $\displaystyle {\lim_\rightarrow C}$ .
+
 \begin{lause}
-Let $N$ and $D$ be limits of category $C$. Then there exists isomorphism between them.
+Let $N$ and $D$ be limits of a category $C$. Then there exists an isomorphism between them.
 \end{lause}
 \begin{proof}
-Because $N$ and $D$ are both limits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $. Because of the symmetry it is enough $u \circ v = id_N$. This follows from equations: $\omega_X \circ u \circ v  = \phi_X \circ u = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. Because the diagram commutes for $id_N$ by uniqueness condition we see that $u \circ v = id_N$. 
+Because $N$ and $D$ are both limits there exists morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $. Because of the symmetry it is enough $u \circ v = id_N$. This follows from equations $\omega_X \circ u \circ v  = \phi_X \circ u = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. Because the diagram commutes for $id_N$ then by the uniqueness condition we see that $u \circ v = id_N$. 
 \end{proof}
-\subsection{Dual of category}
-To simplify definitions we will define concept of dual of category. In this section we will interpret category as model of first order logic
+\subsection{Dual category}
+To simplify definitions we will define the concept of dual category. In this section we will interpret category as a model of first order logic
 \begin{maar}
-Let $\omega$ be statement in this model. We get dual statement $\omega^{op}$ by following procedure:
+Let $\omega$ be a statement in this model. We get a dual statement $\omega^{op}$ by following procedure:
 
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
@@ -232,10 +267,11 @@ Let $\omega$ be statement in this model. We get dual statement $\omega^{op}$ by 
 	\item Reorder every composition. That is replace $a \circ b$ with $b \circ a$.
 	
 \end{enumerate}
+%% Tarkistus suoritettu tähän asti
 \end{maar}
-Next we will give important example of dual statement. 
+Next we will give an important example of a dual statement. 
 \begin{maar}
-Colimit of category $C$ is dual statement of limit of $C$. We define co-cone to be dual of cone. Let $J$ be index category of $C$ then we say that co-cone $D$ is colimit of category $C$ if for every other co-cone $N$ there exists unique morphism $u:D \rightarrow N$ in such way that the diagram below commutes
+The colimit of a category $C$ is the dual statement of limit of $C$. We define the co-cone to be dual of cone. Let $J$ be index category of $C$ then we say that co-cone $D$ is colimit of category $C$ if for every other co-cone $N$ there exists unique morphism $u:D \rightarrow N$ in such way that the diagram below commutes
 $$
 \begin{tikzpicture}
 
@@ -374,13 +410,13 @@ Let $(I,\lambda)$ be inverse system and $\phi: \lambda' \rightarrow \lambda$ som
 \end{maar}
 
 \begin{maar}
-Let $(I,\lambda)$ and $(I',\lambda')$ be inverse systems and $\phi:\lambda' \rightarrow \lambda$ an order and limit preserving functor. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a)\}_{a \in \lambda}$ be natural transformation between $I\phi$ and $I'$. Then we say that $\{f_a\}_{a \in \lambda}$ is an inverse system of morphisms corresponding to functor $\phi$ of the system $I$ into system $I'$.
+Let $(I,\lambda)$ and $(I',\lambda')$ be inverse systems and $\phi:\lambda' \rightarrow \lambda$ an order and limit preserving functor. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \lambda\}$ be natural transformation between $I\phi$ and $I'$. Then we say that $\{f_a\}_{a \in \lambda}$ is an inverse system of morphisms corresponding to functor $\phi$ of the system $I$ into system $I'$.
 \end{maar}
 
 In next theorem we prove that it is possible to define limit of the morphism between systems in an unique way. We recall that exists of limit implies that for every objects of category $I$ there exists unique functor $u_{I,a}:\lim I \rightarrow I(a)$.
 
 \begin{lem}
-Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems for which limit exists. Let $\{f_a\}$ be inverse system of morphisms corresponding to that pair. Then there exists unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which condition $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds. 
+Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems for which limit exists. Let $\{f_a\}$ be inverse system of morphisms corresponding to that pair. Then there exists unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which and for every $a \in \lambda'$ condition $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds.
 \end{lem}
 \begin{proof}
 Consider following diagram
@@ -519,8 +555,57 @@ Both maps $\lim f \circ u_{I, \phi(a)}$ and $u_{I',a} \circ f_a$ complete the di
 For composition of two limits we have following result:
 
 \begin{lem}
-Let $(I, \lambda)$, $(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems and let $\phi:\lambda' \rightarrow \lambda$ and $\phi':\lambda'' \rightarrow \lambda'$ functors between systems. Let $\{f_a\}_{a \in \phi'(\lambda'')}$ and $\{g_a\}_{a \in \lambda''}$ be family of morphisms corresponding to $\phi$ and $\phi'$.
+Let $(I, \lambda)$, $(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems with limits and let $\phi:\lambda' \rightarrow \lambda$ and $\phi':\lambda'' \rightarrow \lambda'$ functors between systems. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \phi'(\lambda'')\}$ and $ \{g_a:I'(\phi(a)) \rightarrow I''(a) \mid a \in \lambda''\}$ be family of morphisms corresponding to $\phi$ and $\phi'$. Let $\lim(f \circ g):I \rightarrow I''$ be limit of the family $\{g_af_{\phi(a)}:I(\phi \phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$.  Then $\lim(f \circ g) = \lim f \circ \lim g $ holds.
 \end{lem}
+\begin{proof}
+To prove this we will use previous lemma and following commutable diagram:
+	$$
+	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(I(\phi(\phi'(a)))\)};
+	
+	\node (x) at (0,-2) {\(\lim I\)};
+	
+	\node (y) at (4,-2) {\(\lim I'\)};
+	
+	\node (z) at (4,0) {\(I'(\phi'(a))\)};
+	
+	\node (p) at (8,0) {\(I''(a)\)};
+	
+	\node (p2) at (8,-2) {\(\lim I''\)};
+	
+	\node (f) at (2,-2.4){\(\lim f\)};\
+	
+	\node (f2) at (6,-2.4){\(\lim g\)};
+	
+	\node (g) at (2,-0.4){\(f_{\phi'(a)}\)};
+	
+	\node (g2) at (6,-0.4){\(g_{a}\)};
+	
+	\node (s) at (0.6,-1) {\(u_{I,\phi \phi'a}\)};
+	
+	\node (s2) at (4.6,-1) {\(u_{I', \phi'a}\)};	
+	
+	\node (s3) at (8.6,-1) {\(u_{I'', a}\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[dashed][->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	\draw[dashed][->] (y) -- (p2);
+	\draw[->] (p) -- (p2);
+	\draw[->] (z) -- (p);
+	
+	
+	\end{tikzpicture}
+	$$
+	By definition of limit morphism condition $\lim (f \circ g) \circ u_{I, \phi(\phi'(a))} = u_{I'',a} \circ (g_a \circ f_{\phi(a)})$ holds for limit of the composition. By uniqueness of limit homomorphism it is enough to show that the composition of two limit functors satisfies the condition. This follows from following equations:
+	$$\lim g \circ \lim f \circ u_{I, \phi(\phi'(a))} = \lim g  \circ u_{I, \phi'(a)} \circ f_{\phi'(a)} = u_{I'',a} \circ g_a \circ f_{\phi(a)} $$
+	
+
+\end{proof}
 
 Now we would like to define limit for the system of homomorphisms between inverse systems of groups.
 
@@ -532,8 +617,8 @@ is well defined function between limit groups.
 We have to show that the image is in the subgroup $$L = \{x \in \prod_{i \in \lambda'} I'(i) \mid x_a = I^b_ax_b \text{ for all } a \leq b \}.$$ Let $b$ be some index, then: $I'^{b}_{a}x'_b = I'^{b}_{a}f_b(x_{\phi(b)}) = f_bI'^{\phi(b)}_{\phi(a)}(x_{\phi(b)}) = f_ax_{\phi(a)} = x'_a$ . In this equation we used property which says that the morphisms define natural transformation.
 \end{proof}
 
-\subsection{Cofinal functors}
-We will first define cofinality in abstract way.
+\subsection{Cofinal subsystems}
+Final and cofinal functors can be defined
 
 \begin{maar}
 A functor $L:J' \rightarrow J $ is cofinal if for every element $k \in J$ there exists $j' \in J'$ and morphism $Lj' \rightarrow k$.
@@ -795,6 +880,9 @@ with Nonquasiconcave Payoffs,” Texas A  M University, mimeo, 1990.
 
 \bibitem{categorytheory}
 Saunders Mac Lane: Categories for the Working Mathematician (Graduate Texts in Mathematics)
+
+\bibitem{algebra2}\label{algebra2}
+Jokke Häsä: Algebra II, 2016. 
 
 \end{thebibliography}
 
