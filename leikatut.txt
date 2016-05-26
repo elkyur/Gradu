@@ -1,0 +1,6 @@
+Tullaan tarvittaessa palauttamaan osaksi tutkielmaa.
+
+\begin{maar}
+A functor $L:J' \rightarrow J $ is cofinal if for every element $k \in J$ there exists $j' \in J'$ and morphism $Lj' \rightarrow k$.
+\end{maar}
+

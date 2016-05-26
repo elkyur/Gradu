@@ -271,7 +271,7 @@ Let $\omega$ be a statement in this model. We get a dual statement $\omega^{op}$
 \end{maar}
 Next we will give an important example of a dual statement. 
 \begin{maar}
-The colimit of a category $C$ is the dual statement of limit of $C$. We define the co-cone to be dual of cone. Let $J$ be index category of $C$ then we say that co-cone $D$ is colimit of category $C$ if for every other co-cone $N$ there exists unique morphism $u:D \rightarrow N$ in such way that the diagram below commutes
+The colimit of a category $C$ is the dual statement of limit of $C$. We define the cocone to be dual of cone. Let $J$ be index category of $C$ then we say that a cocone induced by $D$ is the colimit of category $C$ if for every other cocone induced by $N$ there exists a unique morphism $u:D \rightarrow N$ in such a way that the diagram below commutes:
 $$
 \begin{tikzpicture}
 
@@ -313,10 +313,10 @@ Let $N$ and $D$ be colimits of category $C$. Then there exists isomorphism betwe
 Because $N$ and $D$ are both colimits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $. Because of the symmetry it is enough $u \circ v = id_N$. This follows from equations: $u \circ v \circ \omega_X = u \circ \phi_X = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. Because the diagram commutes for $id_N$ by uniqueness condition we see that $u \circ v = id_N$. 
 \end{proof}
 \subsection{Direct and inverse systems}
-In this section we will categorical definition of direct and inverse systems. It appears that those concepts are dual of each other. We will begin by defining Quasi ordering relation:
+In this section we will give a categorical definition of direct and inverse systems. It appears that those concepts are dual of each other. We will begin by defining quasi-ordering relation:
 
 \begin{maar}
-Let $a \leq b$ be relation in set $\lambda$. We say that this relation is quasi-ordering if following conditions hold:
+Let $a \leq b$ be a relation in a set $\lambda$. We say that this relation is a quasi-ordering if the following conditions hold:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	
@@ -617,15 +617,17 @@ is well defined function between limit groups.
 We have to show that the image is in the subgroup $$L = \{x \in \prod_{i \in \lambda'} I'(i) \mid x_a = I^b_ax_b \text{ for all } a \leq b \}.$$ Let $b$ be some index, then: $I'^{b}_{a}x'_b = I'^{b}_{a}f_b(x_{\phi(b)}) = f_bI'^{\phi(b)}_{\phi(a)}(x_{\phi(b)}) = f_ax_{\phi(a)} = x'_a$ . In this equation we used property which says that the morphisms define natural transformation.
 \end{proof}
 
-\subsection{Cofinal subsystems}
-Final and cofinal functors can be defined
+\subsection{Finality properties of subsystems}
+Final and cofinal functors can be defined in a categorical way. However, for our purpose it is enough to investigate finality in special case of the category being system.
 
+
+%% continue here:
 \begin{maar}
-A functor $L:J' \rightarrow J $ is cofinal if for every element $k \in J$ there exists $j' \in J'$ and morphism $Lj' \rightarrow k$.
+Let $\lambda$ be a category with quasi-order relation on its objects and let $\omega$ be its subcategory. Then we say that $\omega$ is cofinal subcategory of $\lambda$, if for every element $a \in \ob(\lambda)$ there exist 
 \end{maar}
 
 \begin{maar}
-Let $C$ be category, the objects of which are induced by quasi-ordered set $\lambda$ and let $A$ be its subcategory. The subcategory $A$ is cofinal subset of $C$ if for every element $\beta \in X$ we can find element $\alpha \in A$ for which condition $\beta \leq \alpha$ holds.
+Let $\lambda$ be category, the objects of which are induced by quasi-ordered set $\lambda$ and let $A$ be its subcategory. The subcategory $A$ is cofinal subset of $C$ if for every element $\beta \in X$ we can find element $\alpha \in A$ for which condition $\beta \leq \alpha$ holds.
 \end{maar}
 Now for inverse and direct systems we have following theorem:
 \begin{lause}

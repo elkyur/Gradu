@@ -7,10 +7,10 @@
 \contentsline {subsection}{\numberline {2.2.2}Direct and inverse systems}{7}
 \contentsline {subsection}{\numberline {2.2.3}Morphisms between systems}{9}
 \contentsline {subsubsection}{\numberline {2.2.3.1}Morphisms between inverse systems}{9}
-\contentsline {subsection}{\numberline {2.2.4}Cofinal subsystems}{12}
+\contentsline {subsection}{\numberline {2.2.4}Finality properties of subsystems}{12}
 \contentsline {section}{\numberline {2.3}Nerve of covering}{12}
-\contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{12}
-\contentsline {subsection}{\numberline {2.3.2}Coverings}{13}
+\contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{13}
+\contentsline {subsection}{\numberline {2.3.2}Coverings}{14}
 \contentsline {chapter}{\numberline {3}Cech homology}{17}
 \contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{18}
 \contentsline {section}{\numberline {3.2}Induced homomorphisms}{18}
