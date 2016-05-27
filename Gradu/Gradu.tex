@@ -293,7 +293,7 @@ Next we will give a few important example of a dual statement.
 We will denote the cocone over object $N$ as $\bigtriangledown(F,N,\Omega_N)$
 
 \begin{maar}
-	Let $C$ be a category which is indexed by a category $J$ and let $F$ be the indexing functor. We say the object $D \in \ob(C)$ is a colimit of the functor $F$ if following conditions are satisfied:
+	Let $C$ be a category which is indexed by a category $J$ and let $F$ be the indexing functor. We say the object $D \in \ob(C)$ is a colimit of the functor $F$ if the following conditions are satisfied:
 	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 		\item There exists family of morphisms $\Omega_D$ which induce cocone structure $\bigtriangledown(F, D, \Omega_D)$.
 		\item If $\bigtriangledown(F, N, \phi)$ is any other cone structure, then there exists unique morphism $u:N \rightarrow D$ which makes the following diagram commute. 
@@ -332,91 +332,68 @@ $$
 \end{tikzpicture}
 $$
 
-Like limits colimits are unique. 
+Like in the case of limits, colimits are unique. 
 
 \begin{lause}
-Let $N$ and $D$ be colimits of category $C$. Then there exists isomorphism between them.
+Let $F$ be indexing functor and let $N$ and $D$ be colimits of a functor $F$. Then there exists isomorphism between objects $N$ and $D$.
 \end{lause}
 \begin{proof}
-Because $N$ and $D$ are both colimits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $. Because of the symmetry it is enough $u \circ v = id_N$. This follows from equations: $u \circ v \circ \omega_X = u \circ \phi_X = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. Because the diagram commutes for $id_N$ by uniqueness condition we see that $u \circ v = id_N$. 
+Because $N$ and $D$ are both colimits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $ as above. Because of the symmetry it is enough to show that $u \circ v = id_N$ holds. This follows from the equations $u \circ v \circ \omega_X = u \circ \phi_X = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. The diagram commutes for $id_N$ and thus by the uniqueness condition we see that $u \circ v = id_N$. 
 \end{proof}
 \subsection{Direct and inverse systems}
 In this section we will give a categorical definition of direct and inverse systems. It appears that those concepts are dual of each other. We will begin by defining quasi-ordering relation:
 
 \begin{maar}
-Let $a \leq b$ be a relation in a set $\lambda$. We say that this relation is a quasi-ordering if the following conditions hold:
+Let $\lambda$ be a category and let $a \leq b$ be a relation in an object class $\ob(\lambda)$. We say that this relation is a quasi-ordering if the following conditions hold:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	
-	\item $a \leq a$ for all $a \in \lambda$
-	\item if $a \leq b$ and $b \leq c$ then $a \leq c$ for all $a,b,c \in \lambda$
+	\item $a \leq a$ for all $a \in \ob(\lambda)$
+	\item if $a \leq b$ and $b \leq c$ then $a \leq c$ for all $a,b,c \in \ob(\lambda)$
 	
 \end{enumerate}
 
 \end{maar}
 \begin{maar}
-Let $\lambda$ be quasi-ordered set and $\mathcal{L}$ a category then a direct $\lambda$-system consist of functor $D$ which assigns unique object $D(\lambda) \in \mathcal{L}$ and a family of morphism in such way that for every pair $a \leq b$ there exists unique morphism $D^b_a: D(a) \rightarrow D(b)$. The family of morphisms satisfies following conditions:
-
+Let $\lambda$ and $C$ be categories and $D:\lambda \rightarrow C$ an indexing functor. We say that functor $D$ is a direct system indexed by $\lambda$ if the following condition hold:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
-	\item For every triple $a \leq b \leq c$ in $\lambda$ functions commute in a following way: $D^c_b \circ D^b_a = D^c_a$
-	\item For every $a \in \lambda$: $D^a_a = id_a$
+	\item For every pair $a \leq b$ in $\ob(\lambda)$ there exists unique morphism $D^b_a: D(a) \rightarrow D(b)$.
+	\item For every triple $a \leq b \leq c$, the morphisms commute in a following way: $D^c_b \circ D^b_a = D^c_a$.
+	\item For every $a \in \lambda$: $D^a_a $ is identity morphism $id_a$.
 	
 \end{enumerate}
-
 \end{maar}
 
-The structure in above definition can be also viewed as category $C$ in such way that $\ob(C) = D(\lambda)$ and for every $D(a),D(b) \in \ob(C)$ there exists exactly one morphism in $\hom(D(a),D(b)$. In other words $\lambda$ is indexation of subcategory of $\mathcal{L}$. We can define dual concept of above definition in a following way:
+The dual of direct system is inverse system. 
 
 \begin{maar}
-Let $\lambda$ be quasi-ordered set and $\mathcal{L}$ category. Then inverse system is dual of a direct system. Let $I$ be functor from $\lambda$ to $\mathcal{L}$ in such way that for every pair $a \leq b$ there exists unique morphism $I^b_a: I(b) \rightarrow I(a)$ and following properties hold: $I^c_b \circ I^b_a = I^c_a$ and $I^a_a = id_a$.
+Let $\lambda$ and $C$ be categories and $I:\lambda \rightarrow C$ an indexing functor. We say that functor $I$ is an inverse system indexed by $\lambda$ if the following condition hold:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	
+	\item For every pair $a \leq b$ in $\ob(\lambda)$ there exists unique morphism $I^b_a: I(b) \rightarrow I(a)$.
+	\item For every triple $a \leq b \leq c$, the morphisms commute in a following way: $I^b_a \circ I^c_b = I^c_a$.
+	\item For every $a \in \lambda$: $I^a_a $ is identity morphism $id_a$.
+	
+\end{enumerate}
 \end{maar}
 
 \begin{esim}
-Let SET be category of sets with order relation in such way that $U \leq V \Leftrightarrow U \subset V$ now for every $U,V$ we define $D_U^V U \rightarrow V $ to be just inclusion from $U$ to $V$. Clearly this forms direct system. 
+Let SET be the category of sets with order relation defined by $U \leq V \Leftrightarrow U \subset V$. Now for every $U,V$ we define $D_U^V: U \rightarrow V $ to be just inclusion from $U$ to $V$. Clearly this forms a direct system. 
 \end{esim}
 
-Next we define a bit more complex category 
-
-\begin{maar}
-Direct systems together with natural transformations between them form Category. We will denote elements of this category shortly $(\lambda, \mathcal{L})$
-\end{maar}
-Taking dual and using functor $I$ instead of $D$ we see that natural transformation with inverse system form category. We will denote this category by $(\lambda, \mathcal{L}^{op})$. Now we can define limit of the category $(\lambda, \mathcal{L})$. We see that for every quasi-order $\lambda$ and object $k$ in $\mathcal{L}^{op}$ we can define inverse system by mapping every element $\lambda$ to the object $k$ and every functor between objects in $\lambda$ to identity functor. This forms inverse system which we will denote by $K$. Now natural transformations $\phi_a : D(a) \rightarrow K$ between $K$ and arbitrary element in $(\lambda, \mathcal{L})$ induces following: co(cone) 
-$$
-\begin{tikzpicture}
-
-\node (w) at (2,0) {\(K\)};
-
-\node (x2) at (0.7,-0.7) {\(\phi_a\)};
-
-\node (x) at (0,-2) {\(D(a)\)};
-
-\node (y2) at (3.3,-0.7) {\(\phi_b\)};
-
-\node (y) at (4,-2) {\(D(b)\)};
-
-\node (f) at (2,-2.4){\(D^b_a\)};
-
-
-\draw[->] (y) -- (w);
-\draw[->] (x) -- (w);
-\draw[->] (x) -- (y);
-
-
-\end{tikzpicture}
-$$
-So we can define (co)limit of this structure in unique way if it exists. We will now give important example of this construction and show that in case category is $AB$ there exists such limit. To prove this result we first recall following lemma:
-
+ Earlier we defined the concept of limit for general indexing functors. We can interpret direct and inverse system as indexing functors, taking the $\lambda$ to be indexing set. In general systems the limit may not exist. However, for our purpose it is enough to show that such limit can be found in category of abelian groups.
 
 \begin{lause}
-Let $D:\lambda \rightarrow AB$ be a direct system of groups. Let $G$ be the subgroup of $\bigoplus_{a \in \lambda} D(a) $ with is generated by $\{i_ax_{a}-i_bD^b_ax_a\}$. Then limit of this system is $L = \bigoplus_{a \in \lambda} D(a) / G $
+Let $D:\lambda \rightarrow AB$ be a direct system of groups. Let $i_a: D(a) \rightarrow \bigoplus_{a \in \ob(\lambda)} D(a)$  let $G$ be the subgroup of $\bigoplus_{a \in \lambda} D(a) $ with is generated by $\{i_ax_{a}-i_bD^b_ax_a\}$. Then the colimit of this system is an object $L = \bigoplus_{a \in \lambda} D(a) / G $.
 \end{lause}
 \begin{proof}
-Let $\{v_a:D(a) \rightarrow L\}$ induce cone $L$ and $K$ be any other cocone induced by functors $\{\phi_a:D(a) \rightarrow K\}$. We have to prove that there exists unique homomorphism $u:L \rightarrow K$ for which condition $u \circ v_a = \phi_a $ holds for all $a \in \ob(\mathcal{L})$. Lets first assume that such homomorphism exists and prove that it is unique. Because images of functors $v_a$ generate space $L$ it follow that $u$ must be unique  \newline
-We will now construct morphism $u$. Using lemma \ref{Universalpropertysum} we can find unique homomorphism $u':\bigoplus_{a \in \lambda} D(a) \rightarrow K$ for which $u' \circ i_a = \phi_a$ holds. Now we see that for every generator of subgroup G $u'(i_ax_{a}-i_bD^b_ax_a) = \phi_a(x_a) - \phi_bD_a^bx_a = \phi_a(x_a)-\phi_a(x_a) = 0$. Now we can define $u$ in such way that every element $x + D$ maps to element $\phi'(x)$. We will denote the projection map from $\bigoplus_{a \in \lambda} D(a)$ to $L$ by $p$. Now we see that $u \circ v_a = u \circ p \circ i_a = u' \circ i_a = \phi_a $.
+We denote $p$ to be the projection map: $p: \bigoplus_{a \in \ob(\lambda)} D(a) \rightarrow L$. Let $v$ be the family of morphisms $ \{v_a = p \circ i_a:D(a) \rightarrow L\}_{a \in \ob(\lambda)}$ which induces cocone $\triangledown(I,L,v)$ and let $K$ be any other object with family of morphisms $\phi = \{\phi_a:D(a) \rightarrow K\}_{a \in \ob(\lambda)}$ which induces cocone  $\triangledown(I,K, \phi)$. We have to prove that there exists unique homomorphism $u:L \rightarrow K$ for which condition $u \circ v_a = \phi_a $ holds for all $a \in \ob(\lambda)$. We will first show that such homomorphism exists \newline
+Using lemma \ref{Universalpropertysum} we can find unique homomorphism $u':\bigoplus_{a \in \lambda} D(a) \rightarrow K$ for which $u' \circ i_a = \phi_a$ holds. Now we see that for every generator of subgroup G the following equations hold: $$u'(i_ax_{a}-i_bD^b_ax_a) = \phi_a(x_a) - \phi_bD_a^bx_a = \phi_a(x_a)-\phi_a(x_a) = 0.$$ Now we can define $u$ in such way that it maps every element $x + D$ to element $\phi'(x)$. We will denote the projection map from $\bigoplus_{a \in \lambda} D(a)$ to $L$ by $p$. Now we see that $$u \circ v_a = u \circ p \circ i_a = u' \circ i_a = \phi_a.$$
+To prove that the homomorphism $u$ is unique we notice that the homomorphisms $v_a$ generate group $L$.
 \end{proof}
 \begin{lause}
-Let $I: \lambda \rightarrow AB$ be a inverse system of groups. Then limit of this system is group $L = \{x \in \prod_{i \in J} I_i \mid x_a = I^b_ax_b $ for all $a \leq b\}$
+Let $I: \lambda \rightarrow AB$ be a inverse system of groups. Then the limit of this system is group $L = \{x \in \prod_{i \in J} I_i \mid x_a = I^b_ax_b $ for all $a \leq b\}$
 \end{lause}
 \begin{proof}
 Let $\{v_a: L \rightarrow I(a)\}_{a \in \lambda}$ induce cone $L$ and $K$ be any other cone induced by functors $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$. We construct function $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$. By lemma \ref{Universalpropertyproduct} we know that there exists unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$. It is easy to see that $u'$ maps actually every element to $L$. Assume that $\beta$ and $\alpha$ are elements which satisfy $a \leq b$ condition. Then $I^{a}_b \circ pr_b \circ u'= I^{a}_b \circ \phi_b = \phi_a = pr_a \circ u'$. We can define $u$ to be $u'$.

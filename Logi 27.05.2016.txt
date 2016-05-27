@@ -5,3 +5,5 @@ P‰iv‰ 27.05.2016 raportti:
 - Uusi merkint‰ kolmio rakenteelle
 - M‰‰ritelm‰‰ kategorian raja-arvolle muokattu. T‰st‰ l‰htien puhutaan indeksoivan funktorin raja-arvosta.
 - Alikategorian m‰‰ritelm‰ lis‰tty
+- Cocone m‰‰ritelm‰ lis‰tty ja lis‰tty merkint‰ kolmio rakenteen duaalille
+- Muokattu "Direct and inverse systems" osiota. \lambda ei ole joukko, vaan kategoria. Direct ja inverse systemit ovat funktoreita. 

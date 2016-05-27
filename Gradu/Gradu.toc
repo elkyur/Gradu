@@ -5,13 +5,13 @@
 \contentsline {section}{\numberline {2.2}Category theory}{4}
 \contentsline {subsection}{\numberline {2.2.1}Dual category}{7}
 \contentsline {subsection}{\numberline {2.2.2}Direct and inverse systems}{8}
-\contentsline {subsection}{\numberline {2.2.3}Morphisms between systems}{10}
-\contentsline {subsubsection}{\numberline {2.2.3.1}Morphisms between inverse systems}{10}
-\contentsline {subsection}{\numberline {2.2.4}Finality properties of subsystems}{13}
+\contentsline {subsection}{\numberline {2.2.3}Morphisms between systems}{9}
+\contentsline {subsubsection}{\numberline {2.2.3.1}Morphisms between inverse systems}{9}
+\contentsline {subsection}{\numberline {2.2.4}Finality properties of subsystems}{12}
 \contentsline {section}{\numberline {2.3}Nerve of covering}{13}
 \contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{13}
 \contentsline {subsection}{\numberline {2.3.2}Coverings}{14}
-\contentsline {chapter}{\numberline {3}Cech homology}{18}
-\contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{19}
-\contentsline {section}{\numberline {3.2}Induced homomorphisms}{19}
-\contentsline {section}{\numberline {3.3}Dimension axiom}{20}
+\contentsline {chapter}{\numberline {3}Cech homology}{17}
+\contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{18}
+\contentsline {section}{\numberline {3.2}Induced homomorphisms}{18}
+\contentsline {section}{\numberline {3.3}Dimension axiom}{19}
