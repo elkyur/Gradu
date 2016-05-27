@@ -96,7 +96,7 @@ Let $A = \prod_{i \in J} A_i$ be the direct sum and $D$ an arbitrary group. Then
 Proved in [\ref{algebra2}] theorem 3.7.
 \end{proof}
 \begin{lem}\label{Universalpropertysum}
-	Let $A = \bigoplus_{i \in J}A_i$ be direct sum and $D$ arbitary group. Then for every set homomorphisms $\{f_i:A_i \rightarrow D\}_{i \in J}$ there exists unique homomorphism $f:A \rightarrow D$ for which and for every $i \in J$ condition $ f \circ j_i = f_i $ holds.
+	Let $A = \bigoplus_{i \in J}A_i$ be the direct sum and $D$ an arbitrary group. Then for every set of homomorphisms $\{f_i:A_i \rightarrow D\}_{i \in J}$ there exists a unique homomorphism $f:A \rightarrow D$ for which the condition $ f \circ j_i = f_i $ holds for every $i \in J$.
 \end{lem}
 \begin{proof}
 Proved in [\ref{algebra2}] theorem 3.6.
@@ -113,6 +113,15 @@ A category C consist of the following ingredients: A class of objects $\ob(C)$, 
 	\item Composition is associative. Let $f:A \rightarrow B$, $g: B \rightarrow D$ and $h: D \rightarrow E$ be morphisms between objects then $(f \circ g) \circ h = f \circ (g \circ h)$
 	
 	\item For every object $A \in \ob(C)$ there exists identity morphism $1_A \in \hom(A,A)$ for which the following condition holds: Let $f:A \rightarrow B$ and $g: B \rightarrow A$ be arbitrary morphisms then $f \circ 1_A = f$ and $1_A \circ g = g$.
+	
+\end{enumerate}
+\end{maar}
+\begin{maar}
+We say that a category $D$ is subcategory of category $C$. If the following conditions are satisfied:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	
+	\item Collection of objects $\ob(D)$ is subcollection of $\ob(C)$
+	\item Collection of morphisms $\hom(D)$ is subcollection of $\hom(D)$.
 	
 \end{enumerate}
 \end{maar}
@@ -185,7 +194,11 @@ if the following conditions hold:
 Next we will define the concepts of limit and colimit for arbitrary categories, which will be later applied to directed and inverse systems.
 
 \begin{maar}
-Let $C$ be an indexed category in such a way that there exists a category $J$ with a functor $F:J \rightarrow C$. Let $N$ be fixed object of $\ob(C)$. We define the cone from $N$ to $F$ to be an indexed family of morphisms $$\{\omega_X: N \rightarrow F(X)\}_{X \in J}$$ which satisfies following property: If $f:X \rightarrow Y$ is a morphism in $C$ then the following diagram commutes
+	Let $C$ and $J$ be categories, then we say that the category $C$ is indexed by the category $J$ if there exists a functor $F:J \rightarrow C$.	
+\end{maar}	
+We call the functor $F$ described above an indexed functor. Because the functor $F$ has the information about the domain $J$ and the range $C$, we can treat functor $F$ as the subcategory $F(J)$ of $C$.
+\begin{maar}
+Let $C$ be a category indexed by $J$ and let $F:J \rightarrow C$ be the indexing functor. Let $N$ be fixed object of the category $C$. We define the cone from $N$ to $F$ to be an indexed family of morphisms $$\Omega_N = \{\omega_X: N \rightarrow F(X)\}_{X \in J}$$ which satisfies following property: If $f:X \rightarrow Y$ is a morphism in $C$ then the following diagram commutes
 
 
 $$
@@ -211,12 +224,16 @@ $$
 
 \end{tikzpicture}
 $$
-We denote this structure by $(N, \omega)$.
+From now on we will denote the cone structure described above by $\bigtriangleup(F, N, \Omega_N)$. 
 \end{maar}
 
 \begin{maar}
-Let $C$ be an indexed category which is indexed by a category $J$ and a functor $F$. Let $f:X \rightarrow Y$ be arbitrary morphism in category $J$ and let $D$ be an object of the category $C$ which forms a cone together with a family of morphisms $\{\phi_X\}_{X \in \ob(C)}$ and morphism $f$. We say that $(D, \phi)$ is a limit of $C$ if the following property holds: If $N$ together with family $\{\omega_X\}_{X \in \ob(C)} $ and morphism $f$ is any other cone of category $C$, then there exists a unique morphism $u:N \rightarrow D$ in such way that the following diagram commutes:
-\end{maar} 
+Let $C$ be a category which is indexed by a category $J$ and let $F$ be the indexing functor. We say the object $D \in \ob(C)$ is a limit of the functor $F$ if following conditions are satisfied:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+\item There exists family of morphisms $\Omega_D$ which induce cone structure $\bigtriangleup(F, D, \Omega_D)$.
+\item If $\bigtriangleup(F, N, \phi)$ is any other cone structure, then there exists unique morphism $u:N \rightarrow D$ which makes the following diagram commute. 
+\end{enumerate}
+\end{maar}
 $$
 \begin{tikzpicture}
 
@@ -248,16 +265,16 @@ $$
 
 \end{tikzpicture}
 $$
-Next we will prove that if we have two limits $N$ and $D$ of a category $C$ then there exists an isomorphism between those two objects. In other words $N$ and $D$ can be identified and the limit of category $C$ can be denoted simply as $\displaystyle {\lim_\rightarrow C}$ .
+Next we will prove that if we have two limits $N$ and $D$ of a functor $F$ then there exists an isomorphism between those two objects. In other words $N$ and $D$ can be identified and the limit of functor $F$ can be denoted simply as $\displaystyle {\lim_\rightarrow C}$ .
 
 \begin{lause}
-Let $N$ and $D$ be limits of a category $C$. Then there exists an isomorphism between them.
+Let $F:J \rightarrow C$ be an indexing functor. Let $N$ and $D$ be limits of a functor $F$. Then there exists an isomorphism between them.
 \end{lause}
 \begin{proof}
-Because $N$ and $D$ are both limits there exists morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $. Because of the symmetry it is enough $u \circ v = id_N$. This follows from equations $\omega_X \circ u \circ v  = \phi_X \circ u = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. Because the diagram commutes for $id_N$ then by the uniqueness condition we see that $u \circ v = id_N$. 
+Because $N$ and $D$ are both limits there exists morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $ as above. Because of the symmetry it is enough to show that $u \circ v = id_N$. This follows from the equations $\omega_X \circ u \circ v  = \phi_X \circ u = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. Because the diagram commutes for $id_N$ then by the uniqueness condition we see that $u \circ v = id_N$. 
 \end{proof}
 \subsection{Dual category}
-To simplify definitions we will define the concept of dual category. In this section we will interpret category as a model of first order logic
+To simplify definitions we will define the concept of dual category. 
 \begin{maar}
 Let $\omega$ be a statement in this model. We get a dual statement $\omega^{op}$ by following procedure:
 
@@ -269,19 +286,30 @@ Let $\omega$ be a statement in this model. We get a dual statement $\omega^{op}$
 \end{enumerate}
 %% Tarkistus suoritettu tähän asti
 \end{maar}
-Next we will give an important example of a dual statement. 
+Next we will give a few important example of a dual statement. 
 \begin{maar}
-The colimit of a category $C$ is the dual statement of limit of $C$. We define the cocone to be dual of cone. Let $J$ be index category of $C$ then we say that a cocone induced by $D$ is the colimit of category $C$ if for every other cocone induced by $N$ there exists a unique morphism $u:D \rightarrow N$ in such a way that the diagram below commutes:
+	Let $F:J \rightarrow C$ be the indexing functor. We define cocone to be the dual structure of the cone. 
+\end{maar}
+We will denote the cocone over object $N$ as $\bigtriangledown(F,N,\Omega_N)$
+
+\begin{maar}
+	Let $C$ be a category which is indexed by a category $J$ and let $F$ be the indexing functor. We say the object $D \in \ob(C)$ is a colimit of the functor $F$ if following conditions are satisfied:
+	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+		\item There exists family of morphisms $\Omega_D$ which induce cocone structure $\bigtriangledown(F, D, \Omega_D)$.
+		\item If $\bigtriangledown(F, N, \phi)$ is any other cone structure, then there exists unique morphism $u:N \rightarrow D$ which makes the following diagram commute. 
+	\end{enumerate}
+\end{maar}
+
 $$
 \begin{tikzpicture}
 
 \node (w) at (2,0) {\(N\)};
 
-\node (x2) at (0.7,-0.7) {\(\omega_X\)};
+\node (x2) at (0.7,-0.7) {\(\phi_X\)};
 
 \node (x) at (0,-2) {\(F(X)\)};
 
-\node (y2) at (3.3,-0.7) {\(\omega_Y\)};
+\node (y2) at (3.3,-0.7) {\(\phi_Y\)};
 
 \node (y) at (4,-2) {\(F(Y)\)};
 
@@ -289,8 +317,8 @@ $$
 
 \node (d) at (2,-1){\(D\)};
 
-\node (phid) at (1.4,-1.6){\(\phi_X\)};
-\node (phid2) at (2.6,-1.6){\(\phi_Y\)};
+\node (phid) at (1.4,-1.6){\(\omega_X\)};
+\node (phid2) at (2.6,-1.6){\(\omega_Y\)};
 
 
 \draw[->] (y) -- (w);
@@ -303,7 +331,7 @@ $$
 
 \end{tikzpicture}
 $$
-\end{maar}
+
 Like limits colimits are unique. 
 
 \begin{lause}

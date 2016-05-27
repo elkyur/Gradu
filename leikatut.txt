@@ -4,3 +4,10 @@ Tullaan tarvittaessa palauttamaan osaksi tutkielmaa.
 A functor $L:J' \rightarrow J $ is cofinal if for every element $k \in J$ there exists $j' \in J'$ and morphism $Lj' \rightarrow k$.
 \end{maar}
 
+\begin{maar}
+Let $C$ be a category which is indexed by a category $J$ and let $F$ be the indexing functor. Let $f:X \rightarrow Y$ be an arbitrary morphism in the category $J$ and let $D$ be an object of the category $C$ which forms a cone together with a family of morphisms $\{\phi_X\}_{X \in \ob(C)}$ and morphism $f$. We say that $(D, \phi)$ is a limit of $C$ if the following property holds: If $N$ together with family $\{\omega_X\}_{X \in \ob(C)} $ and morphism $f$ is any other cone of category $C$, then there exists a unique morphism $u:N \rightarrow D$ in such way that the following diagram commutes:
+\end{maar} 
+
+In this section we will interpret category as a model of first order logic
+
+The colimit of a category $C$ is the dual statement of limit of $C$. We define the cocone to be dual of cone. Let $J$ be index category of $C$ then we say that a cocone induced by $D$ is the colimit of category $C$ if for every other cocone induced by $N$ there exists a unique morphism $u:D \rightarrow N$ in such a way that the diagram below commutes:
