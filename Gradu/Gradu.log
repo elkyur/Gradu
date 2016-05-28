@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  27 MAY 2016 17:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  28 MAY 2016 14:55
 entering extended mode
 **Gradu.tex
 (C:\Users\Serafim\Documents\BabasChess\Gradu\Gradu\Gradu\Gradu.tex
@@ -858,22 +858,22 @@ Overfull \hbox (21.48087pt too wide) in paragraph at lines 89--90
 
 [3
 
-] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16]
+] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
 Chapter 3.
-[17
+[19
 
-] [18] [19] [20
+] [20] [21] [22
 
 ]
 (C:\Users\Serafim\Documents\BabasChess\Gradu\Gradu\Gradu\Gradu.aux) ) 
 Here is how much of TeX's memory you used:
- 13577 strings out of 493921
- 258254 string characters out of 3144870
- 288463 words of memory out of 3000000
- 16592 multiletter control sequences out of 15000+200000
+ 13578 strings out of 493921
+ 258270 string characters out of 3144870
+ 289933 words of memory out of 3000000
+ 16593 multiletter control sequences out of 15000+200000
  30919 words of font info for 83 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,8n,54p,809b,698s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,8n,54p,1038b,698s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users
 \Serafim\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.p
 k> <C:\Users\Serafim\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
@@ -904,9 +904,9 @@ type1/matha8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/mathabx-
 type1/mathx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
 s/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
 onts/symbols/msbm10.pfb>
-Output written on Gradu.pdf (21 pages, 298206 bytes).
+Output written on Gradu.pdf (23 pages, 303247 bytes).
 PDF statistics:
- 468 PDF objects out of 1000 (max. 8388607)
+ 475 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

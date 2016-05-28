@@ -7,3 +7,4 @@ P‰iv‰ 27.05.2016 raportti:
 - Alikategorian m‰‰ritelm‰ lis‰tty
 - Cocone m‰‰ritelm‰ lis‰tty ja lis‰tty merkint‰ kolmio rakenteen duaalille
 - Muokattu "Direct and inverse systems" osiota. \lambda ei ole joukko, vaan kategoria. Direct ja inverse systemit ovat funktoreita. 
+- Poistettu turhaa teksti‰ "Direct and inverse system" osiosta. 

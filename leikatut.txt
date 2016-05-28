@@ -58,3 +58,10 @@ $$
 \end{tikzpicture}
 $$
 So we can define (co)limit of this structure in unique way if it exists.
+
+\begin{maar}
+Let $X$ be set of vertices. Then abstract simplicial complex consist of collection $\{S_i\}_{i \in I}$ of finite dimensional simplexes which have edges in set $X$. The collection has property which is for every simplex face of it belongs to the collection. For every point in abstract simplicial complex $\mathcal{S}(X)$ we define coordinates in a following way: Let $x \in \bigcup_{i \in I}S_i$ then $x \in S_i$ for some $i \in I$. Then for point $x$ we define coordinates $x = \sum_{x_i \in X}a_ix_i$ for which $a_i>0$ only for finitely many $i \in I$ and $\sum_{i \in I}a_i = 1$ holds.
+
+\end{maar}
+
+It is easy to see that coordinates are well defined. If $x$ belongs to two different simplex $S$ and $S'$ then $x$ belongs to finite simplicial complex spanned by generators of $S \cup S'$. Thus the statement reduces to finite dimensional case. Because face of any simplex in the collection belongs to collection we see that simplicial complex spanned by generators $S \cup S'$ is union of some faces of simplex which we get by taking vertices to be $S \cup S'$ and thus $x$ has well defined coordinates. 
