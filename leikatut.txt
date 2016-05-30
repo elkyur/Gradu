@@ -65,3 +65,7 @@ Let $X$ be set of vertices. Then abstract simplicial complex consist of collecti
 \end{maar}
 
 It is easy to see that coordinates are well defined. If $x$ belongs to two different simplex $S$ and $S'$ then $x$ belongs to finite simplicial complex spanned by generators of $S \cup S'$. Thus the statement reduces to finite dimensional case. Because face of any simplex in the collection belongs to collection we see that simplicial complex spanned by generators $S \cup S'$ is union of some faces of simplex which we get by taking vertices to be $S \cup S'$ and thus $x$ has well defined coordinates. 
+
+\begin{maar}
+Let $(I,\lambda)$ be inverse system and $\phi: \lambda' \rightarrow \lambda$ some functor. Let $(I \phi, \lambda' )$ be inverse system described above. Then we say $\phi$ is limit preserving functor, if it satisfies $\phi(I^{-1}(\lim I)) = I^{-1}(\lim(I \phi) )$ \footnote{Because we defined $\phi$ to be functor between $\lambda$ and $\lambda'$ we have to use functo $I^{-1}$, which is well-defined because of bijectivity of functor $I$. }
+\end{maar}
