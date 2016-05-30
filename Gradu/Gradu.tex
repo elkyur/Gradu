@@ -645,7 +645,39 @@ Let $(I,\lambda)$ be inverse system and let $(I',\lambda')$ be its subsystem gen
 Let $\lim I'$ be limit of inverse system $I'$. It is enough to show that $\lim I'$ is also the limit of $I$. We will first show that $\lim I'$ forms a cone in $I$ and then prove that for any other cone induced by object $N$ in $I$ there exists unique morphism $u:N \rightarrow \lim I'$ \newline
  Let $I(b$ be arbitrary object of inverse system $I$. Then by definition of cofinal subcategory there exists element $a' \in I'$ for which $a \leq a'$ holds. Thus there exists a morphisms $I^{a'}_a$. Because $\lim I'$ is limit of inverse system $I'$ it forms cone $\bigtriangleup(I',\lim I',\rho)$, where $\rho$ is some collection of morphisms $\{\rho_{a}: \lim I' \rightarrow I'(a)\}_{a \in \ob(\lambda')}$. Using $\rho$ we form a new collection of morphisms $\rho'$ defined by $\{I^{a'}_a \circ \rho_{a'}:\}_{a \in \ob(\lambda)} $. Because $I^{a'}_a \circ \rho_{a'}$ can vary on the choice of $a$, the composition may be not uniquely determined. However, if $a''$ is another element for which relation $a \leq a''$ holds, then there exists element $t$ for which conditions $a \leq t$ and $a'' \leq t$ are satisfied. Because the following equations hold $$I^{a'}_a \circ \rho_{a'} = I^{a'}_a \circ I^{t}_{a'} \circ \rho_t = I^t_a \circ \rho_t = I_a^{a''} \circ I^{t}_{a''} \circ \rho_{t} = I^{a''}_a \circ p_{a''}$$ 
  we can conclude that $I^{a'}_a \circ \rho_{a'} = I^{a''}_a \circ p_{a''}$ and thus the family of the homomorphisms is well-defined and $\lim(I')$ forms a cone $\bigtriangleup(I,\lim I', \rho' )$\newline
- Now if there exists another cone $\bigtriangleup(I,N,\omega)$
+ Now if there exists another cone $\bigtriangleup(I,N,\omega)$ , we have construct map $u:N \rightarrow \lim I'$ and prove that it is unique. Let $a$ and $b$ be objects of $\lambda$, then there exists objects $a'$ and $b'$ for which relations $a \leq a'$ and $b \leq b'$ hold. Restricting collection $\omega$ to the morphisms indexed by $\lambda'$ we get cone $\bigtriangleup(I',N,\omega')$ of $I'$. Because $\lim I'$ is the limit of the functor $I'$, there exists a unique homomorphism $u:N \rightarrow \lim I'$. It is left to prove that following diagram commutes:
+  $$
+ \begin{tikzpicture}
+ 
+ \node (w) at (2,0) {\(N\)};
+ 
+ \node (x2) at (0.5,-0.7) {\(f_a \omega_{\phi(a)}\)};
+ 
+ \node (x) at (0,-2) {\(I'(a)\)};
+ 
+ \node (y2) at (3.5,-0.7) {\(f_b \omega_{\phi(b)}\)};
+ 
+ \node (y) at (4,-2) {\(I'(b)\)};
+ 
+ \node (f) at (2,-2.4){\(I'^{a}_{b}\)};
+ 
+ \node (d) at (2,-1){\(\lim I'\)};
+ 
+ \node (phid) at (1.4,-1.6){\(\rho'_a\)};
+ \node (phid2) at (2.6,-1.6){\(\rho'_b\)};
+ 
+ 
+ \draw[->] (w) -- (y);
+ \draw[->] (w) -- (x);
+ \draw[->] (x) -- (y);
+ \draw[dashed][->] (w) -- (d);
+ \draw[->] (d) -- (x);
+ \draw[->] (d) -- (y);
+ 
+ 
+ \end{tikzpicture}
+ $$
+
 \end{proof}
 
 
