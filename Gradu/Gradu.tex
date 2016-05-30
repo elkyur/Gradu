@@ -760,28 +760,45 @@ It is easy to see that the simplicial complex is well defined. We can interpret 
 \begin{maar}
 Let $\alpha = \{(U_i,V_i)\}_{i \in I}$ and $\beta = \{(U'_i,V'_i)\}_{i \in J}$ be coverings of some pair $(X,A)$. Then covering $\beta$ is called refinement of $\alpha$ if for every $(U'_i,V'_i) \in \beta$ there exists some $(U_i,V_i) \in \alpha$ for which $U'_i \subset U_i$   and $V'_i \subset V_i$.
 \end{maar}
-Now we define quasi order in a following way: $\alpha \leq \beta$ if $\beta$ is refinement of $\alpha$. Clearly the quasi order is well defined. Any covering is refinement of itself and if we $a \leq b$ and $b \leq c$ then for every set $U_c$ we can find $U_b$ for which $U_c \subset U_b$ and $U_b \subset U_a$ for some $U_a$. Then we see that $U_c \subset U_a$  so actually $c$ is refinement of $a$. 
+Now we are ready to define the quasi order in the collection of coverings of an arbitary topological space.
+\begin{lem}
+Let $\text{COV}(X,A)$ be collection of all coverings of the pair $(X,A)$, then order defined by $\alpha \leq \beta$ if and only if $\beta$ is refinement of $\alpha$ is quasi-order.
+\end{lem}
+\begin{proof}
+	Any covering is refinement of itself and if we $a \leq b$ and $b \leq c$ then for every set $U_c$ we can find $U_b$ for which $U_c \subset U_b$ and $U_b \subset U_a$ for some $U_a$. Then we see that $U_c \subset U_a$  so actually $c$ is refinement of $a$. 
+\end{proof}
+ 
+\begin{maar}
+Let $\beta$ and $\alpha$ be coverings for which $\alpha \leq \beta$. Then we define $\mathcal{P}(\alpha, \beta)$ to be collection of the following projection maps $p^\beta_\alpha:\beta \rightarrow \alpha$: Every $U_i \in \beta$ is mapped to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$ holds.
+\end{maar}
+\begin{lem}
+The collection of coverings $\text{COV}(X,A)$ is a category defined in the following way:
+\begin{enumerate}
+	\item The objects of $\text{COV}(X,A)$ are all open coverings of the pair $(X,A)$.
+	\item We define $\text{Hom}(\beta,\alpha)$ to be $\mathcal{P}(\alpha, \beta)$, if $\alpha \leq \beta$. Else we define $\text{Hom}(\beta,\alpha)$ to be empty set.  
+
+\end{enumerate}
+\end{lem}
 
 \begin{maar}
 Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta$ be covering of $(Y,A)$, then define $f^{-1}\beta$ to be covering of $(X,A)$ which is induced by elements $(f^{-1}U_i, f^{-1}V_i)_{i \in J_{\beta}}$.
 \end{maar}
 \begin{lem}
-Let $F:(X,A) \rightarrow (Y,B)$ be function between pairs and let $\alpha$ and $\beta$ be covers for $(X,A)$ and $(Y,B)$ for which $\alpha = f^{-1}\beta$ holds. The 
- Then map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$ defined by $(f^{-1}U_i, f^{-1}V_i) \rightarrow (U_i, V_i)$ is well defined.
+Let $F:(X,A) \rightarrow (Y,B)$ be function between pairs and let $\alpha$ and $\beta$ be covers for $(X,A)$ and $(Y,B)$ for which $\alpha = f^{-1}\beta$ holds. Then a map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$ defined by $(f^{-1}U_i, f^{-1}V_i) \rightarrow (U_i, V_i)$ is well defined.
 \end{lem}
 \begin{proof}
 Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$, so the lemma holds.
 \end{proof}
 
-Let $\beta$ and $\alpha$ be coverings for which $\alpha \leq \beta$. Now we can define projection map from $p^\beta_\alpha:\beta \rightarrow \alpha$. For every $U_i \in \beta$ we map it to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$. We can extend those maps to the corresponding maps between abstract simplicial complex. 
+
 \begin{lem}
-Let $\beta$ and $\alpha$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and $p$ be projection map defined above. Then map $p'^\beta_\alpha:\mathcal{S}(X,A)_\beta \rightarrow \mathcal{S}(X,A)_\alpha$ defined to be piecewise linear map induced by edges $U \in \mathcal{S}(X,A)_\beta$ and map $p$ is well-defined.
+Let $\beta$ and $\alpha$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and $p$ be a projection map belonging to $\mathcal{P}(\alpha,\beta)$. Let map $p'^\beta_\alpha:\mathcal{S}(X,A)_\beta \rightarrow \mathcal{S}(X,A)_\alpha$ be a map between simplices defined by edges $U \in \mathcal{S}(X,A)_\beta$ with requirment of being piecewise linear on the other elements. Then the map $p'$ is well-defined.
 \end{lem}
 \begin{proof}
 Let $x$ be arbitary element of $\mathcal{S}(X,A)_\beta$, then it belongs to some simplex. Let $S$ be simplex which is intersection of all simplices in $\mathcal{S}(X,A)_\beta$ which have property that intersection with $\{x\}$ is non-empty. In simplex $S$ point $x$ has unique representation $x = \sum_{i \in J}r_ia_i$ where elements $a_i$ are edges and $r_i$ such non-negative real numbers for which $\sum_{i \in J}r_i = 1$. By definition of map $p'$ this point is mapped to $p'(x) = \sum_{i \in J}r_ip^\beta_\alpha(a_i) $ which is uniquely determined so map $p'$ is well-defined.
 \end{proof}
 
-We denote map $p'^\beta_\alpha$ described above just as $p^\beta_\alpha$. It is clear from context which of the maps is used. We will prove now that the map $p$ is simplicial 
+We denote map $p'^\beta_\alpha$ described above just as $p^\beta_\alpha$. It is clear from context which of the maps is being used. We will prove now that the map $p$ is simplicial 
 
 \begin{lem}
 Projection maps $p^\beta_\alpha$ are simplicial.
@@ -887,8 +904,8 @@ From now on in this chapter we assume that the topological spaces are such for w
 In this section we will investigate properties of induced homomorphism. Earlier we defined Cech homology groups to be limit of the groups induced by coverings of the pair. In section \ref{limitmorphism} we defined concept of limit homomorphism. In next theorem we will show that such homomorphism exists.
 
 \begin{lause}
-Let $f:(X,A) \rightarrow (Y,B)$ be continuous function between pairs of spaces. Let $\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of pair }(Y,B)\}$ be family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces maps between corresponding cech homology groups. $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha})$$
-We denote family of functions described above with $\mathcal{A}_q$ . Then every such collections is natural transformation of the Cech homology groups and thus the limit function is well defined. 
+Let $f:(X,A) \rightarrow (Y,B)$ be continuous function between pairs of spaces. Let $\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of pair }(Y,B)\}$ be family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces maps between corresponding cech homology groups. $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
+We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collections is natural transformation of the Cech homology groups and thus the limit function is well defined. 
 \end{lause}
 \begin{proof}
 We can define function $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(A,B)$ to map every set $U$ of $\alpha$ to set $f^{-1}U$ of $f^{-1}\alpha$. By lemma \ref{preimageorder} this map preserves order. Let $\beta$ and $\alpha$ be some coverings of pair $(Y,B)$. We denote $\alpha'$ and $\beta'$ to be preimages of $\alpha$ and $\beta$ under map $f$. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have following commutable diagram:
