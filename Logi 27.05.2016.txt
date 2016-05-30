@@ -2,9 +2,9 @@
 - Lis‰tty m‰‰ritelm‰ "indeksoidulle kategorialle"
 - Uusi merkint‰ kolmio ja cokolmio rakenteelle
 - M‰‰ritelm‰‰ kategorian raja-arvolle muokattu. T‰st‰ l‰htien puhutaan indeksoivan funktorin raja-arvosta.
-- Alikategorian m‰‰ritelm‰ lis‰tty
+- Alikategorian ja isomorfismin m‰‰ritelm‰ lis‰tty
 - Cokolmion m‰‰ritelm‰ lis‰tty.
-- Muokattu "Direct and inverse systems" osiota. \lambda ei ole joukko, vaan kategoria. Direct ja inverse systemit ovat funktoreita. 
+- Muokattu "Direct and inverse systems" osiota. Lambda ei ole joukko, vaan kategoria. Direct ja inverse systemit ovat funktoreita. 
 - Poistettu turhaa teksti‰ "Direct and inverse system" ja "Morphisms between systems" osioista. 
 - Finality osioon laadittu todistus
 - Lauseita 2.22 ja 2.23 korjattu (morfismit rajakategoriassa ovat tiettyj‰ morfismeja , ei mielivaltaisia kuten aikaisemmin kirjoitin) 
