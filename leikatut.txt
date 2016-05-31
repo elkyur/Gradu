@@ -69,3 +69,5 @@ It is easy to see that coordinates are well defined. If $x$ belongs to two diffe
 \begin{maar}
 Let $(I,\lambda)$ be inverse system and $\phi: \lambda' \rightarrow \lambda$ some functor. Let $(I \phi, \lambda' )$ be inverse system described above. Then we say $\phi$ is limit preserving functor, if it satisfies $\phi(I^{-1}(\lim I)) = I^{-1}(\lim(I \phi) )$ \footnote{Because we defined $\phi$ to be functor between $\lambda$ and $\lambda'$ we have to use functo $I^{-1}$, which is well-defined because of bijectivity of functor $I$. }
 \end{maar}
+
+[label=(\arabic*),ref=(\arabic*)]

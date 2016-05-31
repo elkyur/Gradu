@@ -429,8 +429,6 @@ Consider following diagram
 \begin{diagram}\label{morphismbetweenlimits}
 \begin{tikzpicture}
 
-
-
 \node (w) at (2,0,0) {\(I(\phi(n))\)};
 
 \node (x2) at (0.7,-0.7,0) {\(\omega_{\phi(a)}\)};
@@ -560,7 +558,7 @@ Both maps $\lim f \circ u_{I, \phi(a)}$ and $u_{I',a} \circ f_a$ complete the di
 \end{proof}
 For composition of two limits we have following result:
 
-\begin{lem}
+\begin{lem}\label{compositionlimitmorphism}
 Let $(I, \lambda)$, $(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems with limits and let $\phi:\lambda' \rightarrow \lambda$ and $\phi':\lambda'' \rightarrow \lambda'$ functors between systems. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \phi'(\lambda'')\}$ and $ \{g_a:I'(\phi(a)) \rightarrow I''(a) \mid a \in \lambda''\}$ be family of morphisms corresponding to $\phi$ and $\phi'$. Let $\lim(f \circ g):I \rightarrow I''$ be limit of the family $\{g_af_{\phi(a)}:I(\phi \phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$.  Then $\lim(f \circ g) = \lim f \circ \lim g $ holds.
 \end{lem}
 \begin{proof}
@@ -771,15 +769,25 @@ Let $\text{COV}(X,A)$ be collection of all coverings of the pair $(X,A)$, then o
 \begin{maar}
 Let $\beta$ and $\alpha$ be coverings for which $\alpha \leq \beta$. Then we define $\mathcal{P}(\alpha, \beta)$ to be collection of the following projection maps $p^\beta_\alpha:\beta \rightarrow \alpha$: Every $U_i \in \beta$ is mapped to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$ holds.
 \end{maar}
+We will now show that the family of projection maps is closed under composition.
+\begin{lem}\label{compofprojmaps}
+	Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps . Then $p^\beta_\alpha \circ p^\gamma_\beta$ is also projection map.
+\end{lem}
+\begin{proof}
+	Let $U \in \gamma$, then there exists $U' \in \beta$ and $U'' \in \alpha $ for which condition $U \subset U' \subset U''$ is satisfied. By properties of inclusion $U \subset U''$ and thus $p^\beta_\alpha \circ p^\gamma_\beta$ is a projection map.
+\end{proof}
 \begin{lem}
 The collection of coverings $\text{COV}(X,A)$ is a category defined in the following way:
-\begin{enumerate}
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	\item The objects of $\text{COV}(X,A)$ are all open coverings of the pair $(X,A)$.
 	\item We define $\text{Hom}(\beta,\alpha)$ to be $\mathcal{P}(\alpha, \beta)$, if $\alpha \leq \beta$. Else we define $\text{Hom}(\beta,\alpha)$ to be empty set.  
+	\item The composition of maps is defined to be the usual composition of functions.
 
 \end{enumerate}
 \end{lem}
-
+\begin{proof}
+By lemma \ref{compofprojmaps} the composition of two projection maps is projection map and thus is well-defined. For every $\alpha$ there exists well-defiend projection map $p^{\alpha}_{\alpha}$ which acts like identity map on the $\text{COV}(X,A)$. The associativity condition holds, because every morphism is a function.
+\end{proof}
 \begin{maar}
 Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta$ be covering of $(Y,A)$, then define $f^{-1}\beta$ to be covering of $(X,A)$ which is induced by elements $(f^{-1}U_i, f^{-1}V_i)_{i \in J_{\beta}}$.
 \end{maar}
@@ -789,8 +797,6 @@ Let $F:(X,A) \rightarrow (Y,B)$ be function between pairs and let $\alpha$ and $
 \begin{proof}
 Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$, so the lemma holds.
 \end{proof}
-
-
 \begin{lem}
 Let $\beta$ and $\alpha$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and $p$ be a projection map belonging to $\mathcal{P}(\alpha,\beta)$. Let map $p'^\beta_\alpha:\mathcal{S}(X,A)_\beta \rightarrow \mathcal{S}(X,A)_\alpha$ be a map between simplices defined by edges $U \in \mathcal{S}(X,A)_\beta$ with requirment of being piecewise linear on the other elements. Then the map $p'$ is well-defined.
 \end{lem}
@@ -805,14 +811,6 @@ Projection maps $p^\beta_\alpha$ are simplicial.
 \end{lem}
 \begin{proof}
 Let $s$ be simplex in $\mathcal{S}(X,A)_\alpha$ spanned by some sets $\{U_i\}_{i \in J}$ for which $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $U_i'$ in $\mathcal{S}(X,A)_\beta$ for which $U_i \subset U_i'$. Intersection $\bigcap_{i \in J}U'_i$ is clearly non empty, so every simplex is mapped inside some simplex. \newline	
-\end{proof}
-
-We will now show that the family of projection maps is closed under composition.
-\begin{lem}\label{compofprojmaps}
-Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps . Then $p^\beta_\alpha \circ p^\gamma_\beta$ is also projection map.
-\end{lem}
-\begin{proof}
-Let $U \in \gamma$, then there exists $U' \in \beta$ and $U'' \in \alpha $ for which condition $U \subset U' \subset U''$ is satisfied. By properties of inclusion $U \subset U''$ and thus $p^\beta_\alpha \circ p^\gamma_\beta$ is projection map.
 \end{proof}
 Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define same homology groups.
 \begin{lem}
@@ -905,10 +903,10 @@ In this section we will investigate properties of induced homomorphism. Earlier 
 
 \begin{lause}
 Let $f:(X,A) \rightarrow (Y,B)$ be continuous function between pairs of spaces. Let $\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of pair }(Y,B)\}$ be family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces maps between corresponding cech homology groups. $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
-We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collections is natural transformation of the Cech homology groups and thus the limit function is well defined. 
+We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collections is natural transformation of the Cech homology groups and the limit function is well defined. 
 \end{lause}
 \begin{proof}
-We can define function $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(A,B)$ to map every set $U$ of $\alpha$ to set $f^{-1}U$ of $f^{-1}\alpha$. By lemma \ref{preimageorder} this map preserves order. Let $\beta$ and $\alpha$ be some coverings of pair $(Y,B)$. We denote $\alpha'$ and $\beta'$ to be preimages of $\alpha$ and $\beta$ under map $f$. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have following commutable diagram:
+We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(A,B)$ to map every object $\alpha$ to $f^{-1}\alpha$. By lemma \ref{preimageorder} this functor preserves order. Let $\beta$ and $\alpha$ be some coverings of pair $(Y,B)$. We denote $\alpha'$ and $\beta'$ to be the preimage categories of $\alpha$ and $\beta$ under map $f$. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have a following commutable diagram:
 	$$
 	\begin{tikzpicture}
 	
@@ -939,14 +937,26 @@ We can define function $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(A,B)$ to map
 	\end{tikzpicture}
 	$$
 	
-The fact that collection $\mathcal{A}_q$ is natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists limit homomorphism $$f_q:\check{\mathrm{H}}(X,A;G) \rightarrow \check{\mathrm{H}}(Y,B;G) $$
+The fact that collection $\mathcal{A}_q$ is natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists limit homomorphism $$f_q:\check{\mathrm{H}}_q(X,A;G) \rightarrow \check{\mathrm{H}}_q(Y,B;G) $$
 \end{proof}
-
+We will show now that the Cech homology group is a functor. 
+\begin{lause}
+Cech homology groups are functors from the category of the topological pairs to the category of abelian groups 
+\end{lause}
+\begin{proof}
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+\item Every pair of spaces is mapped uniquely to some abelian group.
+\item The limit of identity map is an identity homomorphism.
+\item Let $f:(X,A) \rightarrow (Y,B)$ and $g:(Y,B) \rightarrow (Z,C)$ be continuous maps between pairs. We know that $(g \circ f)_{*} = g_* \circ f_*$ holds for the singular homology groups. Then by using theorem \ref{compositionlimitmorphism} we see that the limit homomorphism $\lim ((g \circ f)_*)$ equals $\lim g_* \circ \lim f_*$.
+\end{enumerate}
+\end{proof}
 
 
 \section{Dimension axiom}
 In this section we will prove that the cech homology theory satisfies the dimension axiom.
+\begin{lause}
 
+\end{lause}
 
 
 
