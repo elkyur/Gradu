@@ -958,9 +958,61 @@ In this section we will prove that the cech homology theory satisfies the dimens
 
 \end{lause}
 
+\chapter{Applications}
+
+\section{Lefschetz fixed-point theorem}
+[Theory of this will be presented later]
+
+\section{Kakutani fixed point theorem}
+
+The fixed point theorem of Kakutani can be derived for Lefchetz fixed-point theorem.
+
+\begin{maar}
+Let $X$ be vector space with topological structure and $K$ topological field. If vector addition $+:X \times X \rightarrow X$ and scalar multiplication $\cdot:K \times X \rightarrow X $ are continuous we say that $X$ is topological vector space over field $K$ or shortly $L(X,K)$ 
+\end{maar}
+Topological vector space has following property:
+\begin{lause}
+Kakutani fixed point theorem. Let $S$ be a non empty, compact and convex subset of a locally convex Hausdorff space. Let $f:S \rightarrow 2^s$ be a multivalued function on $S$ which has closed graph and the property that $f(x)$ is convex and non-empty for all $x \in S$. Then the set of fixed points of $f$ is non-empty and compact.
+\end{lause}
+
+
+
+\section{Continuous game theory}
+In this section we will apply theory developed in previous chapters to game theory. We define $n$ player continuous game structure $Cgs(J, \mathcal{A})$ in a following way:
+
+\begin{maar}
+Let $J$ be finite indexing set and $\mathcal{A}$ collection of continuous utility functions $\{u_i:X_i \rightarrow \R \}_{i \in J}$ with a compact domain. Then we say that $Cgs(J, \mathcal{A})$ is a continuous game.
+\end{maar}
+Now we give definition of Nash equilibrium for Cgs.
+
+\begin{maar}
+Let $Cgs(J, \mathcal{A})$ be continuous game we say that point $x^{*} \in \prod_{i \in J}X_i$ is Nash equilibrium if for every $k \in J$ and every $x'_k \in X_k$ following condition holds:
+$$u_k(x*) \geq u_k(x_1, ..., x'_k, ... , x_n) $$ 
+\end{maar}
+Next we will prove important lemma which says that game has equilibrium only and only if specific function has fixed point. 
+\begin{lem}
+$Cgs(n, \mathcal{A})$ has Nash equilibrium only and only if following set value function $$g:\prod_{i \in J}X_i \rightarrow \prod_{i \in J}2^{X_i}: g_k(x) = \argmax_{t \in X_k}u_k(x_1, ... x_{k}, t, x_{k+1},...,x_{n})$$
+has a fixed point $x \in g(x)$  
+\end{lem}
+\begin{proof}
+Trivial (Just check definitions)
+\end{proof}
+
+\subsection{General version of resource optimization problem}
+Consider a game where a set of players compete in a multiple competitions at the same. Every player has limited energy and they can allocate it freely. Every competition is won by a player who allocated most energy in it and the goal of the players is to maximize the amount of the competitions they win.
+
+\begin{maar}
+We define the continuous game structure of the game described above as follows:
+\begin{enumerate}
+\item The choice space for every player consists of continuous functions $f:[0,1]\rightarrow \R$ for which $\int_{0}^{1}f(x) dx = 1 $
+\item The evaluation function $u_n(x):\prod_{i \in J}X_i \rightarrow [0,1]$ is defined to be: $$u_n(f) = m^*(\{x \in [0,1] \mid f_n(x) \geq f_i(x)\})$$
+\end{enumerate}
+\end{maar}
+We will show that in some cases there exists an equalibrium.
 
 
 \begin{thebibliography}{9}
+\item
 
 \bibitem{Rotman}\label{rotman}
 
