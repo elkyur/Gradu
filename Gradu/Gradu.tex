@@ -11,6 +11,7 @@
 \usepackage{fixltx2e}
 \usepackage{tikz}
 \usepackage{mathabx}
+\usepackage[toc,page]{appendix}
 \usetikzlibrary{calc}
 
 
@@ -955,8 +956,21 @@ Cech homology groups are functors from the category of the topological pairs to 
 \section{Dimension axiom}
 In this section we will prove that the cech homology theory satisfies the dimension axiom.
 \begin{lause}
-
+Let $X = \{x\}$ be a space which consist of one point. Then the cech homology groups $\check{\mathrm{H}}_n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
 \end{lause}
+\begin{proof}
+For the space $X$ there exists only one open covering $\alpha = \{x\}$ and thus the inverse system of the corresponding singular homology groups is trivial. It is easy to see that the limit of this system is the group $H_q(\mathcal{S}(X)_a; G)$ together with the identity homomorphisms. The simplex $\mathcal{S}(X)_{\alpha}$ consists only of one edge and thus is homeomorphic to a one point space. From the dimension axiom of singular homology it is easy to see that
+$$\check{\mathrm{H}}_n(X; G) = \left\{
+	\begin{array}{ll}
+		G  & \mbox{if } n = 0 \\
+		0 & \mbox{if } n \geq 1
+	\end{array}
+\right. $$
+\end{proof}
+
+\section{Homotopy axiom}
+The main result of this section is the homotopy axiom of Cech homology which states that if two spaces are homotopic then their all Cech homology groups are isomorphic.
+
 
 \chapter{Applications}
 
@@ -1011,8 +1025,21 @@ We define the continuous game structure of the game described above as follows:
 We will show that in some cases there exists an equalibrium.
 
 
+\begin{appendices}
+
+\chapter{Homology axioms}
+For homology theories we have a following interface:
+\begin{maar}
+A homology theory consists of a family of the functors from category of topological pairs to category of abelian groups $\{H_n\}_{n \in \N}$ and natural transformations $\{\delta_n:H_n(X,A) \rightarrow H_{n-1}(A,\emptyset)\}_{n \in \N} $ . For the homological theory the following axioms are satisfied:
+\begin{enumerate}
+\item text here
+\end{enumerate} 
+\end{maar}
+
+\end{appendices}
+
+
 \begin{thebibliography}{9}
-\item
 
 \bibitem{Rotman}\label{rotman}
 
