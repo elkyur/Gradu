@@ -118,20 +118,20 @@ A category C consist of the following ingredients: A class of objects $\ob(C)$, 
 \end{enumerate}
 \end{maar}
 \begin{maar}
-We say that a category $D$ is a subcategory of category $C$. If the following conditions are satisfied:
+We say that a category $D$ is a subcategory of category $C$, if the following conditions are satisfied:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
-	\item Collection of objects $\ob(D)$ is subcollection of $\ob(C)$
-	\item Collection of morphisms $\hom(D)$ is subcollection of $\hom(D)$.
+	\item The collection of objects $\ob(D)$ is a subcollection of $\ob(C)$
+	\item The collection of morphisms $\hom(D)$ is a subcollection of $\hom(D)$.
 	
 \end{enumerate}
 \end{maar}
 \begin{maar}
-Let $C$ be a category and $A, B$ its objects and let $f:A \rightarrow B$ be some morphism between them. We say that $f$ is isomorphism, if there exists a morphism $g:B \rightarrow A$ for which equations $g \circ f = id_A$ and $f \circ g = id_B$ hold. 
+Let $C$ be a category and $A, B$ its objects and let $f:A \rightarrow B$ be some morphism between them. We say that $f$ is an isomorphism, if there exists a morphism $g:B \rightarrow A$ for which the equations $g \circ f = id_A$ and $f \circ g = id_B$ hold. 
 \end{maar}
 It is easy to see that topological spaces with continuous functions and abelian groups with homomorphisms form a category. We denote those categories by TOP and AB. Next we will define the concept of a functor between categories.
 \begin{maar}
-Let $C$ and $C'$ be categories and $F$ map between them. We say that $F$ is functor between categories if the following conditions hold:
+Let $C$ and $C'$ be categories and let $F$ be a map between them. We say that $F$ is a functor between categories if the following conditions hold:
 
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
@@ -140,9 +140,9 @@ Let $C$ and $C'$ be categories and $F$ map between them. We say that $F$ is func
 	
 	\item Let $A$ and $B$ be objects in $\ob(C)$ and $f:A \rightarrow B$ a morphism between them. Then there exists a unique morphism $F(f):F(A) \rightarrow F(B)$.
 	
-	\item if $f$ and $g$ are morphisms in $\hom(C)$, then the following condition holds: $F(f) \circ F(g) = F(f \circ g)$.
+	\item If $f$ and $g$ are morphisms in $\hom(C)$, then the following condition holds: $F(f) \circ F(g) = F(f \circ g)$.
 	
-	\item The identity element is mapped to the identity element. Let $A$ be an object in $\ob(C)$ and $1_A$ the identity morphism corresponding to it. Then $F(1_A)$ is identity morphism of $F(A)$.
+	\item The identity element is mapped to the identity element. Let $A$ be an object in $\ob(C)$ and $1_A$ the identity morphism corresponding to it. Then $F(1_A)$ is the identity morphism of $F(A)$.
 		
 
 \end{enumerate}
@@ -151,7 +151,7 @@ Let $C$ and $C'$ be categories and $F$ map between them. We say that $F$ is func
 Homology and cohomology groups form a functor from TOP to AB. For details see Rotman [\ref{rotman}]. Now we will introduce a new concept called natural transformation.
 
 \begin{maar}
-Let $C$ and $D$ be categories and $F:C \rightarrow D$ and $G:C \rightarrow D$ functors between them. Then the following family of functors is a natural transformation: $$\{\phi_X: F(X) \rightarrow G(X)\}_{X \in C}$$ 
+Let $C$ and $D$ be categories and let $F:C \rightarrow D$ and $G:C \rightarrow D$ be functors. Then the following family of functors is a natural transformation: $$\{\phi_X: F(X) \rightarrow G(X)\}_{X \in C}$$ 
 if the following conditions hold:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
@@ -195,14 +195,14 @@ if the following conditions hold:
 \end{maar}
 
 
-Next we will define the concepts of limit and colimit for arbitrary categories, which will be later applied to directed and inverse systems.
+Next we will define the concepts of limit and colimit for arbitrary categories, which will be later applied to direct and inverse systems.
 
 \begin{maar}
-	Let $C$ and $J$ be categories, then we say that the category $C$ is indexed by the category $J$ if there exists a functor $F:J \rightarrow C$.	
+	Let $C$ and $J$ be categories. We say that the category $C$ is indexed by the category $J$ if there exists a functor $F:J \rightarrow C$.	
 \end{maar}	
-We call the functor $F$ described above an indexed functor. Because the functor $F$ has the information about the domain $J$ and the range $C$, we can treat functor $F$ as the subcategory $F(J)$ of $C$.
+We call the functor $F$ described above an indexing functor. It is easy to see that the functor induces a subcategory $F(J)$ of $C$. In the case where functor $F$ is bijective e.g every object and morphism is mapped to a distinct element in the image , we can equate those concepts.
 \begin{maar}
-Let $C$ be a category indexed by $J$ and let $F:J \rightarrow C$ be the indexing functor. Let $N$ be fixed object of the category $C$. We define the cone from $N$ to $F$ to be an indexed family of morphisms $$\Omega_N = \{\omega_X: N \rightarrow F(X)\}_{X \in J}$$ which satisfies following property: If $f:X \rightarrow Y$ is a morphism in $C$ then the following diagram commutes
+Let $C$ be a category indexed by $J$ and let $F:J \rightarrow C$ be the indexing functor. Let $N$ be a fixed object of the category $C$. We define the cone from $N$ to $F$ to be an indexed family of morphisms $$\Omega_N = \{\omega_X: N \rightarrow F(X)\}_{X \in J}$$ which satisfies the following property: If $f:X \rightarrow Y$ is a morphism in $C$ then the following diagram commutes
 
 
 $$
@@ -232,10 +232,10 @@ From now on we will denote the cone structure described above by $\bigtriangleup
 \end{maar}
 
 \begin{maar}
-Let $C$ be a category which is indexed by a category $J$ and let $F$ be the indexing functor. We say the object $D \in \ob(C)$ is a limit of the functor $F$ if following conditions are satisfied:
+Let $C$ be a category which is indexed by a category $J$ and let $F$ be the indexing functor. We say that the object $D \in \ob(C)$ is a limit of the functor $F$ if the following conditions are satisfied:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-\item There exists family of morphisms $\Omega_D$ which induce cone structure $\bigtriangleup(F, D, \Omega_D)$.
-\item If $\bigtriangleup(F, N, \phi)$ is any other cone structure, then there exists unique morphism $u:N \rightarrow D$ which makes the following diagram commute. 
+\item There exists a family of morphisms $\Omega_D$ which induce the cone structure $\bigtriangleup(F, D, \Omega_D)$.
+\item If $\bigtriangleup(F, N, \phi)$ is any other cone structure, then there exists a unique morphism $u:N \rightarrow D$ which makes the following diagram commute. 
 \end{enumerate}
 \end{maar}
 $$
@@ -269,38 +269,37 @@ $$
 
 \end{tikzpicture}
 $$
-Next we will prove that if we have two limits $N$ and $D$ of a functor $F$ then there exists an isomorphism between those two objects. In other words $N$ and $D$ can be identified and the limit of functor $F$ can be denoted simply as $\displaystyle {\lim_\rightarrow C}$ .
+Next we will prove that if we have two limits $N$ and $D$ of a functor $F$ then there exists an isomorphism between those two objects. In other words $N$ and $D$ can be identified and the limit of the functor $F$ can be denoted simply as $\displaystyle {\lim_\rightarrow C}$ .
 
 \begin{lause}
-Let $F:J \rightarrow C$ be an indexing functor. Let $N$ and $D$ be limits of a functor $F$. Then there exists an isomorphism between them.
+Let $F:J \rightarrow C$ be an indexing functor. Let $(N,\omega)$ and $(D, \phi)$ be limits of a functor $F$. Then there exists an isomorphism between them.
 \end{lause}
 \begin{proof}
-Because $N$ and $D$ are both limits there exists morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $ as above. Because of the symmetry it is enough to show that $u \circ v = id_N$. This follows from the equations $\omega_X \circ u \circ v  = \phi_X \circ u = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. Because the diagram commutes for $id_N$ then by the uniqueness condition we see that $u \circ v = id_N$. 
+Because $N$ and $D$ are both limits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $ as above. Because of the symmetry it is enough to show that $v \circ u = id_N$. This follows directly from the equation $\omega_X \circ v \circ u  = \phi_X \circ u = \omega_X$. Because the diagram commutes for $id_N$ then by the uniqueness condition we see that $v \circ u = id_N$. 
 \end{proof}
 \subsection{Dual category}
-To simplify definitions we will define the concept of dual category. 
+To simplify definitions we will define the concept of a dual category. 
 \begin{maar}
-Let $\omega$ be a statement in this model. We get a dual statement $\omega^{op}$ by following procedure:
-
+The dual of any concept in the category theory can be obtained in a following way:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	\item Interchange every occurrence of source with target
-	\item Reorder every composition. That is replace $a \circ b$ with $b \circ a$.
+	\item Reorder every composition. That is, replace $a \circ b$ with $b \circ a$.
 	
 \end{enumerate}
 %% Tarkistus suoritettu tähän asti
 \end{maar}
-Next we will give a few important example of a dual statement. 
+Next we will give a few important examples of a dual statement. 
 \begin{maar}
 	Let $F:J \rightarrow C$ be the indexing functor. We define cocone to be the dual structure of the cone. 
 \end{maar}
 We will denote the cocone over object $N$ as $\bigtriangledown(F,N,\Omega_N)$
 
 \begin{maar}
-	Let $C$ be a category which is indexed by a category $J$ and let $F$ be the indexing functor. We say the object $D \in \ob(C)$ is a colimit of the functor $F$ if the following conditions are satisfied:
+	Let $C$ be a category which is indexed by a category $J$ and let $F$ be the indexing functor. We say that the object $D \in \ob(C)$ is a colimit of the functor $F$ if the following conditions are satisfied:
 	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-		\item There exists family of morphisms $\Omega_D$ which induce cocone structure $\bigtriangledown(F, D, \Omega_D)$.
-		\item If $\bigtriangledown(F, N, \phi)$ is any other cone structure, then there exists unique morphism $u:N \rightarrow D$ which makes the following diagram commute. 
+		\item There exists a family of morphisms $\Omega_D$ which induces a cocone structure $\bigtriangledown(F, D, \Omega_D)$.
+		\item If $\bigtriangledown(F, N, \phi)$ is any other cocone structure, then there exists a unique morphism $u:D \rightarrow N$ which makes the following diagram commute. 
 	\end{enumerate}
 \end{maar}
 
@@ -339,10 +338,10 @@ $$
 Like in the case of limits, colimits are unique. 
 
 \begin{lause}
-Let $F$ be indexing functor and let $N$ and $D$ be colimits of a functor $F$. Then there exists isomorphism between objects $N$ and $D$.
+Let $F$ be an indexing functor and let $(N, \phi)$ and $(D, \omega)$ be colimits of $F$. Then there exists an isomorphism between objects $N$ and $D$.
 \end{lause}
 \begin{proof}
-Because $N$ and $D$ are both colimits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $ as above. Because of the symmetry it is enough to show that $u \circ v = id_N$ holds. This follows from the equations $u \circ v \circ \omega_X = u \circ \phi_X = \omega_X$ and $u \circ v \circ \omega_Y = u \circ \phi_Y = \omega_Y$. The diagram commutes for $id_N$ and thus by the uniqueness condition we see that $u \circ v = id_N$. 
+Because $N$ and $D$ are both colimits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $ as above. Because of the symmetry it is enough to show that $u \circ v = id_D$ holds. This follows from the equation $u \circ v \circ \omega_X = u \circ \phi_X = \omega_X$. The diagram commutes for $id_D$ and thus by the uniqueness condition we see that $u \circ v = id_D$. 
 \end{proof}
 \subsection{Direct and inverse systems}
 In this section we will give a categorical definition of direct and inverse systems. It appears that those concepts are dual of each other. We will begin by defining quasi-ordering relation:
