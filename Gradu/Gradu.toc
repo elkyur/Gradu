@@ -7,19 +7,19 @@
 \contentsline {subsection}{\numberline {2.2.2}Direct and inverse systems}{8}
 \contentsline {subsection}{\numberline {2.2.3}Morphisms between systems}{10}
 \contentsline {subsubsection}{\numberline {2.2.3.1}Morphisms between inverse systems}{10}
-\contentsline {subsection}{\numberline {2.2.4}Finality properties of subsystems}{12}
+\contentsline {subsection}{\numberline {2.2.4}Finality properties of subsystems}{13}
 \contentsline {section}{\numberline {2.3}Nerve of covering}{14}
 \contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{14}
-\contentsline {subsection}{\numberline {2.3.2}Coverings}{15}
-\contentsline {chapter}{\numberline {3}Cech homology}{19}
-\contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{20}
-\contentsline {section}{\numberline {3.2}Induced homomorphisms}{20}
-\contentsline {section}{\numberline {3.3}Dimension axiom}{21}
-\contentsline {section}{\numberline {3.4}Homotopy axiom}{21}
-\contentsline {chapter}{\numberline {4}Applications}{22}
-\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{22}
-\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{22}
-\contentsline {section}{\numberline {4.3}Continuous game theory}{22}
-\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{23}
-\contentsline {chapter}{Appendices}{24}
-\contentsline {chapter}{\numberline {A}Homology axioms}{25}
+\contentsline {subsection}{\numberline {2.3.2}Coverings}{16}
+\contentsline {chapter}{\numberline {3}Cech homology}{20}
+\contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{21}
+\contentsline {section}{\numberline {3.2}Induced homomorphisms}{21}
+\contentsline {section}{\numberline {3.3}Dimension axiom}{22}
+\contentsline {section}{\numberline {3.4}Homotopy axiom}{22}
+\contentsline {chapter}{\numberline {4}Applications}{23}
+\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{23}
+\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{23}
+\contentsline {section}{\numberline {4.3}Continuous game theory}{23}
+\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{24}
+\contentsline {chapter}{Appendices}{25}
+\contentsline {chapter}{\numberline {A}Homology axioms}{26}
