@@ -15,11 +15,11 @@
 \contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{21}
 \contentsline {section}{\numberline {3.2}Induced homomorphisms}{21}
 \contentsline {section}{\numberline {3.3}Dimension axiom}{22}
-\contentsline {section}{\numberline {3.4}Homotopy axiom}{22}
-\contentsline {chapter}{\numberline {4}Applications}{23}
-\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{23}
-\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{23}
-\contentsline {section}{\numberline {4.3}Continuous game theory}{23}
-\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{24}
-\contentsline {chapter}{Appendices}{25}
-\contentsline {chapter}{\numberline {A}Homology axioms}{26}
+\contentsline {section}{\numberline {3.4}Homotopy axiom}{23}
+\contentsline {chapter}{\numberline {4}Applications}{24}
+\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{24}
+\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{24}
+\contentsline {section}{\numberline {4.3}Continuous game theory}{24}
+\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{25}
+\contentsline {chapter}{Appendices}{26}
+\contentsline {chapter}{\numberline {A}Homology axioms}{27}
