@@ -635,8 +635,14 @@ Final and cofinal functors can be defined in a more general way [\ref{categoryth
 \end{maar}
 
 \begin{maar}
-Let $\lambda$ be a category with a quasi-order relation on its objects and let $\lambda'$ be its subcategory. Then we say that $\lambda'$ is a cofinal subcategory of $\lambda$, if $\lambda'$ is directed and dense in $\lambda$.
+Let $\lambda$ be a directed category with a quasi-order relation on its objects and let $\lambda'$ be its subcategory. Then we say that $\lambda'$ is a cofinal subcategory of $\lambda$, if $\lambda'$ is dense in $\lambda$.
 \end{maar}
+\begin{lem}\label{subcategorydirectness}
+Let $\lambda$ be a directed category and $\lambda'$ its dense subcategory. Then $\lambda'$ is directed category. 
+\end{lem}
+\begin{proof}
+Let $\alpha$ and $\beta$ be objects of $\lambda$. Then there exists $t \in \lambda$ for which $\alpha \leq \gamma$ and $\beta \leq \gamma$ hold. By density property there exists $\gamma' \in \lambda'$ for which condition $\gamma \leq \gamma'$ holds. Now claim follows directly from the equations $\alpha \leq \gamma \leq \gamma' $ and $\beta \leq \gamma \leq \gamma'$. 
+\end{proof}
 
 Now for the inverse system we have the following theorem:
 
@@ -646,7 +652,7 @@ Let $(I,\lambda)$ be an inverse system and let $(I',\lambda')$ be its subsystem 
 \end{lause}
 \begin{proof}
 Let $\lim I'$ be the limit of the inverse system $I'$. It is enough to show that $\lim I'$ is also the limit of $I$. We will first show that $\lim I'$ forms a cone in $I$ and then prove that for any other cone induced by an object $N$ in $I$ there exists a unique morphism $u:N \rightarrow \lim I'$. \newline
- Let $a$ be an arbitrary object of the indexing category $\lambda$. Then by the definition of cofinal subcategory there exists element $a' \in \lambda'$ for which $a \leq a'$ holds. Thus there exists a morphism $I^{a'}_a$. Because $\lim I'$ is the limit of the inverse system $I'$ it forms cone $\bigtriangleup(I',\lim I',\rho)$, where $\rho$ is some collection of morphisms $\{\rho_{a}: \lim I' \rightarrow I'(a)\}_{a \in \ob(\lambda')}$. Using $\rho$ we form a new collection of morphisms $\rho'$ defined by $\{I^{a'}_a \circ \rho_{a'}\}_{a \in \ob(\lambda)} $. Because $I^{a'}_a \circ \rho_{a'}$ can vary on the choice of $a$, the composition may be not uniquely determined. However, if $a''$ is another object of $\lambda'$ for which the relation $a \leq a''$ holds, then there exists an object $t$ for which the conditions $a \leq t$ and $a'' \leq t$ are satisfied. Because the following equations hold $$I^{a'}_a \circ \rho_{a'} = I^{a'}_a \circ I^{t}_{a'} \circ \rho_t = I^t_a \circ \rho_t = I_a^{a''} \circ I^{t}_{a''} \circ \rho_{t} = I^{a''}_a \circ \rho_{a''}$$ 
+ Let $a$ be an arbitrary object of the indexing category $\lambda$. Then by the definition of cofinal subcategory there exists element $a' \in \lambda'$ for which $a \leq a'$ holds. Thus there exists a morphism $I^{a'}_a$. Because $\lim I'$ is the limit of the inverse system $I'$ it forms cone $\bigtriangleup(I',\lim I',\rho)$, where $\rho$ is some collection of morphisms $\{\rho_{a}: \lim I' \rightarrow I'(a)\}_{a \in \ob(\lambda')}$. Using $\rho$ we form a new collection of morphisms $\rho'$ defined by $\{I^{a'}_a \circ \rho_{a'}\}_{a \in \ob(\lambda)} $. Because $I^{a'}_a \circ \rho_{a'}$ can vary on the choice of $a$, the composition may be not uniquely determined. However, if $a''$ is another object of $\lambda'$ for which the relation $a \leq a''$ holds, by lemma \ref{subcategorydirectness} there exists an object $t \in \lambda'$ for which the conditions $a \leq t$ and $a'' \leq t$ are satisfied. Because the following equations hold $$I^{a'}_a \circ \rho_{a'} = I^{a'}_a \circ I^{t}_{a'} \circ \rho_t = I^t_a \circ \rho_t = I_a^{a''} \circ I^{t}_{a''} \circ \rho_{t} = I^{a''}_a \circ \rho_{a''}$$ 
  we can conclude that $I^{a'}_a \circ \rho_{a'} = I^{a''}_a \circ \rho_{a''}$ and thus the family of homomorphisms is well-defined and $\lim(I')$ forms a cone $\bigtriangleup(I,\lim I', \rho' )$\newline
  Now if there exists another cone $\bigtriangleup(I,N,\omega)$ , we have to construct map $u:N \rightarrow \lim I'$ and prove that it is unique. Let $a$ and $b$ be objects of $\lambda$, then there exists objects $a'$ and $b'$ in $\lambda'$ for which relations $a \leq a'$ and $b \leq b'$ hold. Restricting the collection $\omega$ to the morphisms indexed by $\lambda'$ we get the cone $\bigtriangleup(I',N,\omega')$ of $I'$. Because $\lim I'$ is the limit of the functor $I'$, there exists a unique homomorphism $u:N \rightarrow \lim I'$. It is left to prove that the following diagram commutes:
   $$
