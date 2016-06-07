@@ -626,9 +626,16 @@ We have to show that the image is in the subgroup $$L = \{x \in \prod_{i \in \la
 \subsection{Finality properties of subsystems}
 Final and cofinal functors can be defined in a more general way [\ref{categorytheory}]. However, because we are mainly interested in properties of systems, in this section we will investigate the properties of those specific functors only in that special case. In the case of general categories, cofinality includes a concept of connectedness defined in [\ref{categorytheory}] page 217. In our definition we will use a stronger version of that concept.
 
-%% continue here:
 \begin{maar}
-Let $\lambda$ be a category with a quasi-order relation on its objects and let $\lambda'$ be its subcategory. Then we say that $\lambda'$ is a cofinal subcategory of $\lambda$, if for every two objects $a,b \in \ob(\lambda)$ there exist element in $t \in \ob(\lambda')$ in such a way that conditions $a \leq t$ and $b \leq t$ hold.
+	Let $\lambda$ be a category with a quasi-order relation on its objects. We say that $\lambda$ is directed category, if for every two objects $a \in \lambda$ and $b \in \lambda$ we find object $c \in \lambda$ for which relations $a \leq b$ and $ a \leq c$ hold. 
+\end{maar}
+\begin{maar}
+	Let $\lambda$ be a category with a quasi-order relation on its objects and $\lambda'$ its directed subcategory for which following condition holds: $$\text{For every }a \in \lambda \text{ there exists } b \in \lambda' \text{ for which } a \leq b.$$
+	Then we say that $\lambda'$ is dense in $\lambda$. 
+\end{maar}
+
+\begin{maar}
+Let $\lambda$ be a category with a quasi-order relation on its objects and let $\lambda'$ be its subcategory. Then we say that $\lambda'$ is a cofinal subcategory of $\lambda$, if $\lambda'$ is directed and dense in $\lambda$.
 \end{maar}
 
 Now for the inverse system we have the following theorem:
@@ -764,7 +771,26 @@ Let $(X,A)$ be a topological pair. Then we say that $\{(U_i, V_i )\}_{i \in J}$ 
 \end{enumerate}
 
 \end{maar}
-Respectively we will define the set of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. Now we are ready to give definition for the nerve of the covering.
+Respectively we will define the set of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. In coverings of topological pair $(X,A)$ we can define quasi order in a natural way. First we will recall definition of the refinement.
+\begin{maar}
+	Let $\alpha = \{(U_i,V_i)\}_{i \in I}$ and $\beta = \{(U'_i,V'_i)\}_{i \in J}$ be coverings of some pair $(X,A)$. Then the covering $\beta$ is called refinement of the covering $\alpha$, if for every $(U'_i,V'_i) \in \beta$ there exists some $(U_i,V_i) \in \alpha$ for which $U'_i \subset U_i$   and $V'_i \subset V_i$.
+\end{maar}
+Now we are ready to define the quasi order in the collection of coverings of an arbitary topological space.
+\begin{lem}
+	Let $\text{COV}(X,A)$ be the collection of all coverings of the pair $(X,A)$. Then the order $\leq$ defined by $\alpha \leq \beta$ if and only if $\beta$ is a refinement of $\alpha$, is quasi-order.
+\end{lem}
+\begin{proof}
+	Any covering is a refinement of itself and if we have coverings for which $a \leq b$ and $b \leq c$ holds, then for every set $U_c$ we can find $U_b$ for which $U_c \subset U_b$ and $U_b \subset U_a$ for some $U_a$. Then we see that $U_c \subset U_a$  so actually $c$ is refinement of $a$. 
+\end{proof}
+
+\subsubsection{Directed property of coverings}
+For the order relation in the category of coverings we have following theorem
+\begin{lem}
+Let $X$ be a topological space and let $\lambda$ be a subcategory of $\text{COV}(X)$ with property: Let $\alpha$ , $\beta$ be covering of $\lambda$. 
+\end{lem}
+
+\subsection{The construction}
+ Now we are ready to give definition for the nerve of the covering.
 
 \begin{maar}
 Let $X$ be a topological space with an open covering $\mathcal{U}(X) = \{U_i\}_{i \in J}$, then the nerve of this covering is a following abstract simplicial complex:
@@ -790,18 +816,6 @@ The simplicial pair described above is well-defined.
 \end{lem}
 \begin{proof}
 By lemma \ref{Welldefinessofnerve}, the simplicial complexes are well-defined. We only have to show that $\mathcal{S}(\mathcal{L}_A)_{\text{Con}(\mathcal{L}_A )}$ is subsimplex of $\mathcal{{S}}(\mathcal{L}_X)_{\text{Con}(\mathcal{L}_X)}$. This follows directly from the definition of the pair of coverings, where we assumed that $V_i \subset U_i$ for every $i \in J$. 
-\end{proof}
-
- In coverings of topological pair $(X,A)$ we can define quasi order in a natural way. First we will recall definition of the refinement.
-\begin{maar}
-Let $\alpha = \{(U_i,V_i)\}_{i \in I}$ and $\beta = \{(U'_i,V'_i)\}_{i \in J}$ be coverings of some pair $(X,A)$. Then the covering $\beta$ is called refinement of the covering $\alpha$, if for every $(U'_i,V'_i) \in \beta$ there exists some $(U_i,V_i) \in \alpha$ for which $U'_i \subset U_i$   and $V'_i \subset V_i$.
-\end{maar}
-Now we are ready to define the quasi order in the collection of coverings of an arbitary topological space.
-\begin{lem}
-Let $\text{COV}(X,A)$ be the collection of all coverings of the pair $(X,A)$. Then the order $\leq$ defined by $\alpha \leq \beta$ if and only if $\beta$ is a refinement of $\alpha$, is quasi-order.
-\end{lem}
-\begin{proof}
-	Any covering is a refinement of itself and if we have coverings for which $a \leq b$ and $b \leq c$ holds, then for every set $U_c$ we can find $U_b$ for which $U_c \subset U_b$ and $U_b \subset U_a$ for some $U_a$. Then we see that $U_c \subset U_a$  so actually $c$ is refinement of $a$. 
 \end{proof}
  
 \begin{maar}
@@ -1008,8 +1022,26 @@ $$\check{\mathrm{H}}_n(X; G) = \left\{
 \end{proof}
 
 \section{Homotopy axiom}
-The main result of this section is the homotopy axiom of Cech homology which states that if two spaces are homotopic then their all Cech homology groups are isomorphic.
+The main result of this section is the homotopy axiom of Cech homology which states that if two spaces are homotopic then their all Cech homology groups are isomorphic. In the beginning we will prove an important result regarding the singular homology groups of the nerve of the unit interval $[0,1]$. 
 
+\begin{maar}
+Let $X$ be a topological space and $\alpha$ its finite open covering. Then $\text{CLEAN}(\alpha)$ is a covering of space $X$, which is formed by removing every such element $A \in \alpha$ for which $A \subset B$ holds for some $B \in \alpha$ from the collection.
+\end{maar}
+
+\begin{lem}\label{cleanlemma}
+Let $X$ be a topological space and $\alpha$ its finite open covering. Let $\beta = \text{CLEAN}(\alpha)$ be the covering defined in previous definition. Then singular homology $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $ are isomorphic for every $q \in \N$.
+\end{lem}
+\begin{proof}
+Because $\beta$ is subcollection of $\alpha$, the relation $\alpha \leq \beta$ holds. Relation $\beta \leq \alpha$ holds, because if we take any element from $a \in \alpha$ which is not in $\beta$ by definition we will find an element $b \in \beta$ for which the relation $a \subset b$ holds. \newline
+Thus there exists morphisms $I^{\beta}_{\alpha}$ and $I^{\alpha}_{\beta}$ in the inverse system of abelian groups induced by coverings. By definition equations $I^{\beta}_{\alpha} \circ I^{\alpha}_{\beta} = I^{\beta}_{\beta} = id_{\beta}$ and $I^{\alpha}_{\beta} \circ I^{\beta}_{\alpha} = I^{\alpha}_{\beta} = id_{\alpha}$ hold. Thus $I^{\beta}_{\alpha}$ is an isomorphism between $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $. 
+\end{proof}
+
+\begin{lem}
+Let $\alpha$ be an open covering which is finite and every element in the collection is connected. Then every singular homology group of the nerve $\mathcal{S}([0,1])_{\alpha}$ is trivial. 
+\end{lem}
+\begin{proof}
+Using \ref{cleanlemma} we can reduce our problem to coverings which have property that  
+\end{proof}
 
 \chapter{Applications}
 
