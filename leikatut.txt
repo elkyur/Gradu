@@ -71,3 +71,5 @@ Let $(I,\lambda)$ be inverse system and $\phi: \lambda' \rightarrow \lambda$ som
 \end{maar}
 
 [label=(\arabic*),ref=(\arabic*)]
+
+Operaattori: \rhd

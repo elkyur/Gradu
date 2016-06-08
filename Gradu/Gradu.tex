@@ -715,6 +715,9 @@ In this chapter we will give a definition of an abstract simplicial complex.
 
 \subsection{Abstract simplicial complex}
 We assume that the reader knows already basic facts about simplicial complexex. If not we suggest to take a look at [\ref{rotman}]. 
+\begin{maar}
+	Let $S$ be some simplex and let $X$ be a collection of its faces. We define operator $\rhd:2^{X} \rightarrow X$ to denote simplex which is obtained by the intersection of all simplexes which contain every element in the domain. 
+\end{maar}
 
 \begin{maar}
 Let $X$ be a set and let $\mathcal{A} = \{S_i\}_{i \in J}$ be some finite collection of subsets of the set $X$. We say that $S$ forms an abstract simplicial complex over $X$, if a subset of any set $S_i$ in the collection $\mathcal{A}$.
@@ -778,10 +781,10 @@ Let $(X,A)$ be a topological pair. Then we say that $\{(U_i, V_i )\}_{i \in J}$ 
 
 \end{maar}
 Respectively we will define the set of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. In coverings of topological pair $(X,A)$ we can define quasi order in a natural way. First we will recall definition of the refinement.
-\begin{maar}
+\begin{maar}\label{coveringquasidefinition}
 	Let $\alpha = \{(U_i,V_i)\}_{i \in I}$ and $\beta = \{(U'_i,V'_i)\}_{i \in J}$ be coverings of some pair $(X,A)$. Then the covering $\beta$ is called refinement of the covering $\alpha$, if for every $(U'_i,V'_i) \in \beta$ there exists some $(U_i,V_i) \in \alpha$ for which $U'_i \subset U_i$   and $V'_i \subset V_i$.
 \end{maar}
-Now we are ready to define the quasi order in the collection of coverings of an arbitary topological space.
+Now we are ready to define the quasi order in the collection of coverings of an arbitrary topological space.
 \begin{lem}
 	Let $\text{COV}(X,A)$ be the collection of all coverings of the pair $(X,A)$. Then the order $\leq$ defined by $\alpha \leq \beta$ if and only if $\beta$ is a refinement of $\alpha$, is quasi-order.
 \end{lem}
@@ -789,11 +792,16 @@ Now we are ready to define the quasi order in the collection of coverings of an 
 	Any covering is a refinement of itself and if we have coverings for which $a \leq b$ and $b \leq c$ holds, then for every set $U_c$ we can find $U_b$ for which $U_c \subset U_b$ and $U_b \subset U_a$ for some $U_a$. Then we see that $U_c \subset U_a$  so actually $c$ is refinement of $a$. 
 \end{proof}
 
-\subsubsection{Directed property of coverings}
+\subsubsection{Directness property of coverings}
 For the order relation in the category of coverings we have following theorem
 \begin{lem}
-Let $X$ be a topological space and let $\lambda$ be a subcategory of $\text{COV}(X)$ with property: Let $\alpha$ , $\beta$ be covering of $\lambda$. 
+The category $\text{COV}(X)$ with the quasi-order defined in the definition \ref{coveringquasidefinition} is directed.
 \end{lem}
+\begin{proof}
+Let $\alpha$ and $\beta$ be objects of $\text{COV}(X)$. We will construct a covering $\gamma$ in the following way: 
+$$\gamma = \{U \cap V \mid U \in \alpha \text{ and } V \in \beta \}. $$
+If $W \in \gamma$, then $W = U \cap V$ for some $U \in \alpha$ and $V \in \beta$. Thus $W \subset U$ and $W \subset V$. Because we chose $W$ to be an arbitrary element of the collection , relations $\alpha \leq \gamma$ and $\beta \leq \gamma$ hold.
+\end{proof}
 
 \subsection{The construction}
  Now we are ready to give definition for the nerve of the covering.
@@ -1041,13 +1049,57 @@ Let $X$ be a topological space and $\alpha$ its finite open covering. Let $\beta
 Because $\beta$ is subcollection of $\alpha$, the relation $\alpha \leq \beta$ holds. Relation $\beta \leq \alpha$ holds, because if we take any element from $a \in \alpha$ which is not in $\beta$ by definition we will find an element $b \in \beta$ for which the relation $a \subset b$ holds. \newline
 Thus there exists morphisms $I^{\beta}_{\alpha}$ and $I^{\alpha}_{\beta}$ in the inverse system of abelian groups induced by coverings. By definition equations $I^{\beta}_{\alpha} \circ I^{\alpha}_{\beta} = I^{\beta}_{\beta} = id_{\beta}$ and $I^{\alpha}_{\beta} \circ I^{\beta}_{\alpha} = I^{\alpha}_{\beta} = id_{\alpha}$ hold. Thus $I^{\beta}_{\alpha}$ is an isomorphism between $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $. 
 \end{proof}
+\begin{maar}
+	Let $\alpha$ be a cleaned finite open covering of $[0,1]$, for which every element in the collection is connected. Trivial indexation of $\alpha$ is the following indexation: We order open intervals in the collection $(a,b) \in \alpha$ by the cordinate $a$ and number coverings.
+\end{maar}
+\begin{lem}
+Let $\alpha$ be a open covering of $[0,1]$m which is cleaned, finite and connected. Then the trivial indexation $[m]$ preserves order of the coordinate $b$ of open intervals.
+\end{lem}
+\begin{proof}
+If $b_n > b_{n+1}$ for some $n \in [m-1]$, then $(a_{n+1},b_{n+1}) \subset (a_{n}, b_n)$ which is a contradiction by the definition of the covering $\alpha$.
+\end{proof}
 
 \begin{lem}
 Let $\alpha$ be an open covering which is finite and every element in the collection is connected. Then every singular homology group of the nerve $\mathcal{S}([0,1])_{\alpha}$ is trivial. 
 \end{lem}
 \begin{proof}
-Using \ref{cleanlemma} we can reduce our problem to coverings which have property that  
+Using \ref{cleanlemma} we can reduce our problem to coverings which have property that no inclusion holds for any two element of the collection $\alpha$. We define indexation to be trivial indexation for covering $\alpha$. Let $\{f_n(x):\mathcal{S}([0,1])_{\alpha} \rightarrow  \mathcal{S}([0,1])_{\alpha} \}_{n \in [m]}$ be a collection of simplicial maps which are induced by the edges in the following way:
+$$f_n(v_i) = \left\{
+\begin{array}{ll}
+v_i  & \mbox{if } i \leq n \\
+v_n & \mbox{if } i \geq n
+\end{array}
+\right.$$
+We will now show that the maps defined above induce same homomorphisms between the corresponding groups. Because the indexation set is finite, it is enough to show that $f_{n}$ and $f_{n+1}$ are contiguous for every $n$ in the collection. Let $s$ be some simplex in the nerve $\mathcal{S}([0,1])_{\alpha}$. If simplex $s$ is spanned only by elements whose index is less than $n$, maps $f_{n}$ and $f_{n+1}$ are both identity on it. Now assume that $s$ contains atleast one edge the index of which is larger than $n-1$. Then the image of the element $s$ under the map $f_{n}$ can be presented as $\rhd(s',v_n)$, where $s'$ is simplex for which index of every edge is smaller than $n$. There are two possible representations for the image $f_{n+1}(s)$ namely $\rhd(s',v_n,v_{n+1})$ and $\rhd(s\,v_{n+1})$. If the representation of $f_{n+1}(s)$ is $\rhd(s',v_n,v_{n+1})$, we can choose the simplex to be $\rhd(s',v_n,v_{n+1})$, as it clear from definition that $\rhd(s',v_{n+1})$ is its face. In the second case we notice that because intersection $\bigcap_{a \in s'}a \cap v_{n+1}$ is non-empty and connected. Thus it is an open interval $(a_{n+1},b_{1}) $. Because condition $(a_n,b_n) \cap (a_{n+1},b_{1}) \neq \emptyset$ holds, we can choose $\rhd(s',v_n,v_{n+1})$ to be the simplex where image of $s$ of the both functions are contained.
 \end{proof}
+Next we define a class of nice coverings for the unit interval $[0,1]$ and prove that the subcategory which consists of the coverings defined is a subcategory of the Cech inverse system. 
+
+\begin{maar}
+Let $\alpha = \{U_i\}_{i \in [n]}$ be a connected open covering of unit interval $[0,1]$ for which the following conditions are satisfied:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	\item $0 \in U_0$ and $1 \in U_n$
+	\item $U_i \cap U_{i+1} \neq \emptyset$ for every $i \in [n-1]$ 
+	\item $U_i \cap U_j = \emptyset$ for all $|i - j| \geq 1$
+\end{enumerate}
+Then we say that covering $\alpha$ is regular.
+\end{maar}
+\begin{lem}
+The inverse system induced by the regular coverings of $[0,1]$ is cofinal in the Cech inverse system.
+\end{lem}
+\begin{proof}
+Let $\alpha$ be arbitrary covering of $[0,1]$. We modify the covering in the following ways:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+\item  We form covering $\beta$ by selecting some finite subcovering of $\alpha$. 
+\item  We split every non-connected element in the collection $\beta$ into connected elements.
+\item  We search for the removable elements i.e the the collection after removing the element covers the space $[0,1]$. We remove every such element and stop this process after no removable elements are found.
+\item We define the indexation to be the trivial indexation.
+\end{enumerate}
+The condition (1) and (2) are satisfied , because $\gamma$ is trivially indexed covering. Condition (3) is satisfied, because if two open intervals with are not neighbors have non-empty intersection then all the coverings between can be removed and that collection will still cover the set. Because covering $\gamma$ is obtained by removing and cutting elements, the relation $\beta \leq \gamma$ holds.
+\end{proof}
+\begin{maar}
+Let $(X,A)$ be topological pair and $\alpha = \{(V_i,U_i)\}_{i \in J}$ its covering. Fix $V_i$ and suppose that for every $x \in V_i$ there is a regular covering $\beta$ of an unit interval $[0,1]$ indexed by set $[n]$ for some $n \in \N$.
+\end{maar}
+
 
 \chapter{Applications}
 

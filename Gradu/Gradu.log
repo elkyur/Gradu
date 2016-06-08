@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  7 JUN 2016 18:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  8 JUN 2016 16:11
 entering extended mode
 **Gradu.tex
 (C:\Users\Serafim\Documents\BabasChess\Gradu\Gradu\Gradu\Gradu.tex
@@ -877,35 +877,35 @@ Chapter 3.
 [21
 
 ] [22] [23]
-Overfull \hbox (15.87648pt too wide) in paragraph at lines 1038--1039
+Overfull \hbox (15.87648pt too wide) in paragraph at lines 1046--1047
 $[]\U/matha/m/n/12 p\OML/cmm/m/it/12 \U/matha/m/n/12 q$ \T1/cmr/m/it/12 be the
  cov-er-ing de-fined in pre-vi-ous def-i-ni-tion. Then sin-gu-lar ho-mol-ogy $\
 OML/cmm/m/it/12 H[]\U/matha/m/n/12 p\OMS/cmsy/m/n/12 S\U/matha/m/n/12 p\OML/cmm
 /m/it/12 X\U/matha/m/n/12 q[]q$
  []
 
-[24]
+[24] [25] [26]
 Chapter 4.
-[25
+[27
 
-] [26] [27
+] [28] [29
 
 
 ]
 Appendix A.
-[28
+[30
 
-] [29
+] [31
 
 ] (C:\Users\Serafim\Documents\BabasChess\Gradu\Gradu\Gradu\Gradu.aux) ) 
 Here is how much of TeX's memory you used:
- 13709 strings out of 493921
- 260209 string characters out of 3144870
- 291378 words of memory out of 3000000
- 16727 multiletter control sequences out of 15000+200000
+ 13710 strings out of 493921
+ 260234 string characters out of 3144870
+ 291390 words of memory out of 3000000
+ 16728 multiletter control sequences out of 15000+200000
  27697 words of font info for 75 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,8n,54p,1153b,698s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,8n,54p,1356b,698s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Use
 rs\Serafim\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800
 .pk> <C:\Users\Serafim\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi
@@ -932,9 +932,9 @@ b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pf
 b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10
 .pfb>
-Output written on Gradu.pdf (30 pages, 324579 bytes).
+Output written on Gradu.pdf (32 pages, 333696 bytes).
 PDF statistics:
- 489 PDF objects out of 1000 (max. 8388607)
+ 497 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
