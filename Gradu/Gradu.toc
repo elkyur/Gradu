@@ -13,15 +13,15 @@
 \contentsline {subsection}{\numberline {2.3.2}Coverings}{16}
 \contentsline {subsubsection}{\numberline {2.3.2.1}Directness property of coverings}{17}
 \contentsline {subsection}{\numberline {2.3.3}The construction}{17}
-\contentsline {chapter}{\numberline {3}Cech homology}{21}
-\contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{22}
-\contentsline {section}{\numberline {3.2}Induced homomorphisms}{22}
-\contentsline {section}{\numberline {3.3}Dimension axiom}{23}
-\contentsline {section}{\numberline {3.4}Homotopy axiom}{24}
-\contentsline {chapter}{\numberline {4}Applications}{27}
-\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{27}
-\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{27}
-\contentsline {section}{\numberline {4.3}Continuous game theory}{27}
-\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{28}
-\contentsline {chapter}{Appendices}{29}
-\contentsline {chapter}{\numberline {A}Homology axioms}{30}
+\contentsline {chapter}{\numberline {3}Cech homology}{22}
+\contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{23}
+\contentsline {section}{\numberline {3.2}Induced homomorphisms}{23}
+\contentsline {section}{\numberline {3.3}Dimension axiom}{24}
+\contentsline {section}{\numberline {3.4}Homotopy axiom}{25}
+\contentsline {chapter}{\numberline {4}Applications}{28}
+\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{28}
+\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{28}
+\contentsline {section}{\numberline {4.3}Continuous game theory}{28}
+\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{29}
+\contentsline {chapter}{Appendices}{30}
+\contentsline {chapter}{\numberline {A}Homology axioms}{31}
