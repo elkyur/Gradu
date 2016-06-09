@@ -770,19 +770,20 @@ Let $X$ be a topological space and let $\{A_i\}_{i \in J}$ be the collection of 
 \end{maar}
 We will denote the set of all open coverings of the space $X$ by $\text{COV}(X)$. Because in homology we are interested in a pair of spaces we give definition of covering for the pair. 
 \begin{maar}
-Let $(X,A)$ be a topological pair. Then we say that $\{(U_i, V_i )\}_{i \in J}$ is an open covering of $(X,A)$ if the following condition hold:
+Let $(X,A)$ be a topological pair. Then we say that $(\{U_i\}_{i \in J},\{U_i\}_{i \in J'})$ is an open covering of $(X,A)$ if the following conditions hold:
 
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 \item $\{U_i\}_{i \in J}$ is an open covering of $X$
-\item $\{V_i\}_{i \in J}$ is an open covering of $A$
-\item $V_i \subset U_i$ for every $i \in J$.
+\item $J' \subset J$.
+\item $\{U_i\}_{i \in J'}$ covers $A$
+
 
 \end{enumerate}
-
+From now on we will denote the coverings of a topological pair simply as triple $\mathcal{C}(U_i, J, J')$
 \end{maar}
 Respectively we will define the set of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. In coverings of topological pair $(X,A)$ we can define quasi order in a natural way. First we will recall definition of the refinement.
 \begin{maar}\label{coveringquasidefinition}
-	Let $\alpha = \{(U_i,V_i)\}_{i \in I}$ and $\beta = \{(U'_i,V'_i)\}_{i \in J}$ be coverings of some pair $(X,A)$. Then the covering $\beta$ is called refinement of the covering $\alpha$, if for every $(U'_i,V'_i) \in \beta$ there exists some $(U_i,V_i) \in \alpha$ for which $U'_i \subset U_i$   and $V'_i \subset V_i$.
+	Let $\alpha = \mathcal{C}(U_i, I, I')$ and $\beta = \mathcal{C}(V_j, J, J')$ be coverings of some pair $(X,A)$. Then the covering $\beta$ is called refinement of the covering $\alpha$, if for every $V_j \in \beta$ there exists some $U_i \in \alpha$ for which $V_j \subset U_i$ holds.
 \end{maar}
 Now we are ready to define the quasi order in the collection of coverings of an arbitrary topological space.
 \begin{lem}
@@ -795,12 +796,12 @@ Now we are ready to define the quasi order in the collection of coverings of an 
 \subsubsection{Directness property of coverings}
 For the order relation in the category of coverings we have following theorem
 \begin{lem}
-The category $\text{COV}(X)$ with the quasi-order defined in the definition \ref{coveringquasidefinition} is directed.
+Let $(X,A)$ be a topological pair. The category $\text{COV}(X,A)$ with the quasi-order defined in the definition \ref{coveringquasidefinition} is directed.
 \end{lem}
 \begin{proof}
-Let $\alpha$ and $\beta$ be objects of $\text{COV}(X)$. We will construct a covering $\gamma$ in the following way: 
-$$\gamma = \{U \cap V \mid U \in \alpha \text{ and } V \in \beta \}. $$
-If $W \in \gamma$, then $W = U \cap V$ for some $U \in \alpha$ and $V \in \beta$. Thus $W \subset U$ and $W \subset V$. Because we chose $W$ to be an arbitrary element of the collection , relations $\alpha \leq \gamma$ and $\beta \leq \gamma$ hold.
+Let $\alpha = \mathcal{C}(U_i,I,I')$ and $\beta = \mathcal{C}(V_j,J,J')$ be objects of $\text{COV}(X,A)$. We will define a covering $\gamma = \mathcal{C}(W_i,I \times J,I' \times J')$ to be covering which consists of the following elements:
+$$\gamma = \{U_i \cap V_j \mid U_i \in \alpha \text{ and } V_j \in \beta \}. $$
+We will prove now that the covering constructed above is satisfies the condition of this lemma. Let $W \in \gamma$, then $W = U \cap V$ for some $U \in \alpha$ and $V \in \beta$. Thus $W \subset U$ and $W \subset V$. Because we chose $W$ to be an arbitrary element of the collection , relations $\alpha \leq \gamma$ and $\beta \leq \gamma$ hold.
 \end{proof}
 
 \subsection{The construction}
@@ -813,7 +814,7 @@ Let $X$ be a topological space with an open covering $\mathcal{U}(X) = \{U_i\}_{
 \item Let $\text{CNI}(\mathcal{U}(X))$ be collection of all finite non-empty intersections of sets in the collection $\mathcal{U}(X)$. The simplex set of the abstract simplicial complex is defined to be $\text{CNI}(\mathcal{U}(X))$.
 \end{enumerate}
 \end{maar}
-The structure described above can be denoted as $\mathcal{{S}}(\mathcal{U}(X))_{\text{Con}(\mathcal{U}(X))}$. However, to simplify notation we will from now on denote nerve of the covering as $\mathcal{S}(X)_{\mathcal{U}(X)}$. It is clear from the context which of the definitions is being used.
+The structure described above can be denoted as $\mathcal{{S}}(\mathcal{U}(X))_{\text{CNI}(\mathcal{U}(X))}$. However, to simplify notation we will from now on denote nerve of the covering as $\mathcal{S}(X)_{\mathcal{U}(X)}$. It is clear from the context which of the definitions is being used.
 \begin{lem}\label{Welldefinessofnerve}
 The abstract simplicial complex $\mathcal{S}(X)_{\mathcal{U}(X)}$ described above is well-defined
 \end{lem}
@@ -822,7 +823,7 @@ We have to show that any subset of element in the collection $\text{CNI}(\mathca
 \end{proof}
 We will give now definition of the nerve of the covering for topological pairs.
 \begin{maar}
-Let $\mathcal{L} = (U_i,V_i)_{i \in J}$ be a covering of some topological pair $(X,A)$. Then the nerve of this covering $\mathcal{S}(X,A)_{\mathcal{L}}$ is simplicial pair $(\mathcal{{S}}(\mathcal{L}_X)_{\text{Con}(\mathcal{L}_X)}, \mathcal{S}(\mathcal{L}_A)_{\text{Con}(\mathcal{L}_A )})$. 
+Let $\mathcal{L} = \mathcal{S}(U_i, J, J')$ be a covering of some topological pair $(X,A)$. Then the nerve of this covering $\mathcal{S}(X,A)_{\mathcal{L}}$ is simplicial pair $(\mathcal{{S}}(\mathcal{L}_X)_{\text{CNI}(\mathcal{L}_X)}, \mathcal{S}(\mathcal{L}_A)_{\text{CNI}(\mathcal{L}_A )})$. 
 
 \end{maar}
 \begin{lem}
@@ -1084,7 +1085,7 @@ Let $\alpha = \{U_i\}_{i \in [n]}$ be a connected open covering of unit interval
 Then we say that covering $\alpha$ is regular.
 \end{maar}
 \begin{lem}
-The inverse system induced by the regular coverings of $[0,1]$ is cofinal in the Cech inverse system.
+The category of the regular coverings of $[0,1]$ is cofinal in the $COV([0,1])$.
 \end{lem}
 \begin{proof}
 Let $\alpha$ be arbitrary covering of $[0,1]$. We modify the covering in the following ways:
@@ -1097,9 +1098,16 @@ Let $\alpha$ be arbitrary covering of $[0,1]$. We modify the covering in the fol
 The condition (1) and (2) are satisfied , because $\gamma$ is trivially indexed covering. Condition (3) is satisfied, because if two open intervals with are not neighbors have non-empty intersection then all the coverings between can be removed and that collection will still cover the set. Because covering $\gamma$ is obtained by removing and cutting elements, the relation $\beta \leq \gamma$ holds.
 \end{proof}
 \begin{maar}
-Let $(X,A)$ be topological pair and $\alpha = \{(V_i,U_i)\}_{i \in J}$ its covering. Fix $V_i$ and suppose that for every $x \in V_i$ there is a regular covering $\beta$ of an unit interval $[0,1]$ indexed by set $[n]$ for some $n \in \N$.
+Let $(X,A)$ be topological pair and $\alpha = \{(V_i,U_i)\}_{i \in J}$ its covering. Suppose that for every $V_x$ there is a regular covering $\beta(x)$ of an unit interval $[0,1]$ indexed by the set $[n]$ for some $n \in \N$. Covering $\gamma$ of the pair $(X \times [0,1], A \times [0,1]) $ defined in the following way:
+$$\gamma = \{(V_x \times \beta(x), V_x \times \beta(x))\}_{x \in J} $$
+is called a stacked covering over $\alpha$.
 \end{maar}
-
+\begin{lem}
+The category of stacked coverings is cofinal in $COV((X \times [0,1], A \times [0,1]))$
+\end{lem}
+\begin{proof}
+Let $\gamma = {(V_i, U_i)}_{i \in J}$
+\end{proof}
 
 \chapter{Applications}
 
