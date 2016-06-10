@@ -111,7 +111,7 @@ A category C consist of the following ingredients: A class of objects $\ob(C)$, 
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	
-	\item Composition is associative. Let $f:A \rightarrow B$, $g: B \rightarrow D$ and $h: D \rightarrow E$ be morphisms between objects then $(f \circ g) \circ h = f \circ (g \circ h)$
+	\item Composition is associative. Let $f:A \rightarrow B$, $g: B \rightarrow D$ and $h: D \rightarrow E$ be morphisms between objects then $(f \circ g) \circ h = f \circ (g \circ h)$.
 	
 	\item For every object $A \in \ob(C)$ there exists identity morphism $1_A \in \hom(A,A)$ for which the following condition holds: Let $f:A \rightarrow B$ and $g: B \rightarrow A$ be arbitrary morphisms then $f \circ 1_A = f$ and $1_A \circ g = g$.
 	
@@ -121,7 +121,7 @@ A category C consist of the following ingredients: A class of objects $\ob(C)$, 
 We say that a category $D$ is a subcategory of category $C$, if the following conditions are satisfied:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
-	\item The collection of objects $\ob(D)$ is a subcollection of $\ob(C)$
+	\item The collection of objects $\ob(D)$ is a subcollection of $\ob(C)$.
 	\item The collection of morphisms $\hom(D)$ is a subcollection of $\hom(D)$.
 	
 \end{enumerate}
@@ -200,7 +200,7 @@ Next we will define the concepts of limit and colimit for arbitrary categories, 
 \begin{maar}
 	Let $C$ and $J$ be categories. We say that the category $C$ is indexed by the category $J$ if there exists a functor $F:J \rightarrow C$.	
 \end{maar}	
-We call the functor $F$ described above an indexing functor. It is easy to see that the functor induces a subcategory $F(J)$ of $C$. In the case where the functor $F$ is bijective, we can equate $F(J)$ with $C$.
+We call the functor $F$ described above an indexing functor. It is easy to see that the functor induces a subcategory $F(J)$ of $C$. In the case where $F$ is indexing functor it is relatively easy to see that it is injective and thus we can equate $F(J)$ with $J$.
 \begin{maar}
 Let $C$ be a category indexed by $J$ and let $F:J \rightarrow C$ be the indexing functor. Let $N$ be a fixed object of the category $C$. We define the cone from $N$ to $F$ to be an indexed family of morphisms $$\Omega_N = \{\omega_X: N \rightarrow F(X)\}_{X \in J}$$ which satisfies the following property: If $f:X \rightarrow Y$ is a morphism in $C$ then the following diagram commutes
 
@@ -280,7 +280,7 @@ Because $N$ and $D$ are both limits there exist morphisms $u: N \rightarrow D$ a
 \subsection{Dual category}
 To simplify definitions we will define the concept of a dual category. 
 \begin{maar}
-The dual of any concept in the category theory can be obtained in the following way:
+The dual of any concept in category theory can be obtained in the following way:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	\item Interchange every occurrence of source with target
@@ -289,11 +289,11 @@ The dual of any concept in the category theory can be obtained in the following 
 \end{enumerate}
 %% Tarkistus suoritettu tähän asti
 \end{maar}
-Next we will give a few important examples of a dual statement. 
+Next we will give a few important examples of duality.
 \begin{maar}
 	Let $F:J \rightarrow C$ be the indexing functor. We define cocone to be the dual structure of the cone. 
 \end{maar}
-We will denote the cocone over object $N$ as $\bigtriangledown(F,N,\Omega_N)$
+We will denote the cocone over an object $N$ as $\bigtriangledown(F,N,\Omega_N)$
 
 \begin{maar}
 	Let $C$ be a category which is indexed by a category $J$ and let $F$ be the indexing functor. We say that the object $D \in \ob(C)$ is a colimit of the functor $F$ if the following conditions are satisfied:
@@ -338,7 +338,7 @@ $$
 Like in the case of limits, colimits are unique. 
 
 \begin{lause}
-Let $F$ be an indexing functor and let $(N, \phi)$ and $(D, \omega)$ be colimits of $F$. Then there exists an isomorphism between objects $N$ and $D$.
+Let $F$ be an indexing functor and let $(N, \phi)$ and $(D, \omega)$ be colimits of $F$. Then there exists an isomorphism between the objects $N$ and $D$.
 \end{lause}
 \begin{proof}
 Because $N$ and $D$ are both colimits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $ as above. Because of the symmetry it is enough to show that $u \circ v = id_D$ holds. This follows from the equation $u \circ v \circ \omega_X = u \circ \phi_X = \omega_X$. The diagram commutes for $id_D$ and thus by the uniqueness condition we see that $u \circ v = id_D$. 
@@ -358,28 +358,43 @@ Let $\lambda$ be a category and let $a \leq b$ be a relation in the object class
 
 \end{maar}
 \begin{maar}
-Let $\lambda$ and $C$ be categories and let $D:\lambda \rightarrow C$ be an indexing functor. We say that the functor $D$ is a direct system indexed by $\lambda$ if the following conditions hold:
-\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-	
-	\item For every pair $a \leq b$ in $\ob(\lambda)$ there exists only one morphism from $a$ to $b$. We denote it by $D^b_a: D(a) \rightarrow D(b)$.
-	\item For every triple $a \leq b \leq c$, the morphisms commute in the following way: $D^c_b \circ D^b_a = D^c_a$.
-	\item For every $a \in \lambda$: $D^a_a $ is the identity morphism $id_a$.
-	
-\end{enumerate}
+Let $\lambda$ be a category with a quasi-order relation. We say that the collection of morphisms correspond to the relation co-variantly, if the classes $\text{hom}(a,b) $ are of the following form:
+$$\hom(a,b) = \left\{
+\begin{array}{ll}
+\{\lambda^a_b\}  & \mbox{if } b \leq a \\
+\emptyset & \mbox{else.} 
+\end{array}
+\right.  $$ 
+and the composition of two morphisms is defined to be $\lambda^b_a \circ \lambda^c_b = \lambda^c_a$ and the identity morphism to be $\lambda^a_a$.
 \end{maar}
-
-The dual of a direct system is an inverse system. 
-
 \begin{maar}
-Let $\lambda$ and $C$ be categories and let $I:\lambda \rightarrow C$ be an indexing functor. We say that the functor $I$ is an inverse system indexed by $\lambda$ if the following conditions hold:
-\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-	
-	\item For every pair $a \leq b$ in $\ob(\lambda)$ there exists only one morphism from $b$ to $a$. We denote it by $I^b_a: I(b) \rightarrow I(a)$.
-	\item For every triple $a \leq b \leq c$, the morphisms commute in the following way: $I^b_a \circ I^c_b = I^c_a$.
-	\item For every $a \in \lambda$: $I^a_a $ is the identity morphism $id_a$.
-	
-\end{enumerate}
+Respectively we say that the relation corresponds contra-variantly, if  
+
+$$\hom(a,b) = \left\{
+\begin{array}{ll}
+\{\lambda^b_a\}  & \mbox{if } a \leq b \\
+\emptyset & \mbox{else.} 
+\end{array}
+\right.  $$ 
+
+the composition in which is defined to be $\lambda^c_b \circ \lambda^b_a = \lambda^c_a$ and the identity morphism to be $\lambda^a_a$.
 \end{maar}
+\begin{lem}
+A quasi-ordered class of objects together with covariant or contra-variant class of morphisms forms a category.  
+\end{lem}
+\begin{proof}
+We denote the object and morphism classes as defined above and prove that those collections satisfies the needed requirements to be called a category. For the covariant class, we have the following proof:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	\item The associativity property: $(\lambda_c^d \circ \lambda^c_b) \circ \lambda^b_a = \lambda^d_a = \lambda_c^d \circ (\lambda^c_b \circ \lambda^b_a)$
+	\item $\lambda^{a}_a \circ \lambda^b_a = \lambda^b_a $ and  $\lambda^{b}_a \circ \lambda^b_b = \lambda^b_a $ clearly holds
+
+\end{enumerate}
+The proof for the contra-variant is similar and we leave it to the reader to fill in the details.
+\end{proof}
+\begin{maar}
+Let $\lambda$ be a quasi-ordered category. Let $C$ be a category and let $D:\lambda \rightarrow C$ be an indexing functor. If the morphism relation corresponds co-variantly to the relation we say that the functor $D$ is a direct system indexed by $\lambda$. In the case if the morphisms are contra-variant we denote the functor as $I$ and say that the functor is an inverse system indexed by $\lambda$.
+\end{maar}
+
 
 \begin{esim}
 Let SET be the category of sets with order relation defined by $U \leq V \Leftrightarrow U \subset V$. Now for every $U,V$ we define $D_U^V: U \rightarrow V $ to be the inclusion from $U$ to $V$. Clearly this forms a direct system. 
@@ -400,7 +415,7 @@ Thus $u(x)$ is determined by the sum of the homomorphisms $\phi_a$. It follows t
 Let $I: \lambda \rightarrow AB$ be an inverse system of groups. Then the limit of this functor is the group $L = \{x \in \prod_{i \in \ob(\lambda)} I_i \mid x_a = I^b_ax_b $ for all $a \leq b\}$
 \end{lause}
 \begin{proof}
-Let  $v$ be a family of homomorphisms $\{v_a = pr_a: L \rightarrow I(a)\}_{a \in \lambda}$ which together with the group $L$ induce the cone $\bigtriangleup(I,L,v)$. Let $K$ be any other group and let $\phi $be family of homomorphisms $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$ which induces the cone $\bigtriangleup(I,K,\phi)$ . \newline 
+Let  $v$ be a family of homomorphisms $\{v_a = pr_a: L \rightarrow I(a)\}_{a \in \lambda}$ which together with the group $L$ induce the cone $\bigtriangleup(I,L,v)$. Let $K$ be any other group and let $\phi$ be a family of homomorphisms $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$ which induces the cone $\bigtriangleup(I,K,\phi)$ . \newline 
 We construct a function $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$ holds. Using lemma \ref{Universalpropertyproduct} we find a unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$ is satisfied. Let $u''$ be the homomorphism, where the image is restricted to subgroup $L$. We will show that the homomorphism is well-defined, specifically $u'$ maps every element inside the subgroup $L$. Assume that $b$ and $a$ are elements which satisfy the condition $a \leq b$. Then the following equation holds
  $$I^{b}_a \circ pr_b \circ u'= I^{b}_a \circ \phi_b = \phi_a = pr_a \circ u'.$$
   We can define $u$ to be $u''$. The uniqueness property of the homomorphism follows directly from the fact that $u'$ is unique. 
@@ -412,7 +427,7 @@ We construct a function $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$ ho
 To be able to define morphisms between Cech homology groups we need the concept of a limit homomorphism. In this section we will define the limit morphism between systems and investigate properties of it. Concepts used in this chapter can be presented in a more general way. However, for our use it is enough to restrict ourselves to the direct and inverse system.
 
 \begin{maar}
-Let $C$ be a category with order relation. A functor $\phi:X \rightarrow Y$ is order preserving if for every pair $a \leq b$ in the category $C$, the condition $\phi(a) \leq \phi(b)$ is satisfied.
+Let $C$ and $D$ be categories with order relation. A functor $\phi:C \rightarrow D$ is order preserving if for every pair $a \leq b$ in the category $C$, the condition $\phi(a) \leq \phi(b)$ is satisfied.
 \end{maar}
  Let $I$ be an inverse system and $\phi: \lambda' \rightarrow \lambda$ an order preserving functor. Then the inverse system $(I \phi, \lambda' )$ consist of objects $\{I(\phi(a)) \mid a \in \ob(\lambda')\}$ and morphisms $\{I^{\phi(b)}_{\phi(a)}\mid a \leq b \}$.
 
@@ -424,7 +439,7 @@ Let $(I,\lambda)$ and $(I',\lambda')$ be inverse systems and $\phi:\lambda' \rig
 In the next theorem we will prove that it is possible to define the limit of morphisms between systems in a unique way. We recall that exists of limit implies that for every objects of category $I$ there exists unique functor $u_{I,a}:\lim I \rightarrow I(a)$.
 
 \begin{lem}
-Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems for which limit exists. Let $\{f_a\}$ be inverse system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the condition $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds and for every $a \in \lambda'$ .
+Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems for which limit exists. Let $\{f_a\}$ be inverse system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the condition $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for every $a \in \lambda'$ .
 \end{lem}
 \begin{proof}
 Consider the following diagram
@@ -523,7 +538,7 @@ $$
 
 \end{tikzpicture}
 $$
-Then by definition of limit there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the diagram commutes. We will prove now that the universal property $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for this morphism. By diagram \ref{morphismbetweenlimits} and fact that the family of function $\{f_a\}$ is a natural transformation, in other words the condition $\omega'_a \circ f_n = f_a \circ \omega_{\phi(a)}$ holds, the following diagram commutes:
+Then by definition of limit there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the diagram commutes. We will prove now that the universal property $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for this morphism. By diagram \ref{morphismbetweenlimits} and the fact that the family of functions $\{f_a\}$ is a natural transformation, in other words the condition $\omega'_a \circ f_n = f_a \circ \omega_{\phi(a)}$ holds, the following diagram commutes:
 $$
 \begin{tikzpicture}
 
@@ -607,7 +622,7 @@ To prove this we will use previous lemma and following commutative diagram:
 	
 	\end{tikzpicture}
 	$$
-	By definition of limit morphism the condition $\lim (f \circ g) \circ u_{I, \phi(\phi'(a))} = u_{I'',a} \circ (g_a \circ f_{\phi(a)})$ holds for limit of the composition. By uniqueness of the limit homomorphism it is enough to show that the composition of two limit functors satisfies the condition. This follows from the following equations:
+	By definition of limit morphism the condition $\lim (f \circ g) \circ u_{I, \phi(\phi'(a))} = u_{I'',a} \circ (g_a \circ f_{\phi(a)})$ holds for the limit of the composition. By uniqueness of the limit homomorphism it is enough to show that the composition of two limit functors satisfies the condition. This follows from the following equations:
 	$$\lim g \circ \lim f \circ u_{I, \phi(\phi'(a))} = \lim g  \circ u_{I', \phi'(a)} \circ f_{\phi'(a)} = u_{I'',a} \circ g_a \circ f_{\phi'(a)} $$
 	
 
@@ -647,14 +662,14 @@ Let $\alpha$ and $\beta$ be objects of $\lambda$. Then there exists $t \in \lamb
 Now for the inverse system we have the following theorem:
 
 \begin{lause}
-Let $(I,\lambda)$ be an inverse system and let $(I',\lambda')$ be its subsystem generated by cofinal subcategory $\lambda$. Assume that there exists a limit object for $I'$. Then the limit of the system $(I,\lambda)$ is $\lim I'$.
+Let $(I,\lambda)$ be an inverse system and let $(I',\lambda')$ be its subsystem generated by a cofinal subcategory $\lambda$. Assume that there exists a limit object for $I'$. Then the limit of the system $(I,\lambda)$ is $\lim I'$.
 
 \end{lause}
 \begin{proof}
 Let $\lim I'$ be the limit of the inverse system $I'$. It is enough to show that $\lim I'$ is also the limit of $I$. We will first show that $\lim I'$ forms a cone in $I$ and then prove that for any other cone induced by an object $N$ in $I$ there exists a unique morphism $u:N \rightarrow \lim I'$. \newline
- Let $a$ be an arbitrary object of the indexing category $\lambda$. Then by the definition of cofinal subcategory there exists element $a' \in \lambda'$ for which $a \leq a'$ holds. Thus there exists a morphism $I^{a'}_a$. Because $\lim I'$ is the limit of the inverse system $I'$ it forms cone $\bigtriangleup(I',\lim I',\rho)$, where $\rho$ is some collection of morphisms $\{\rho_{a}: \lim I' \rightarrow I'(a)\}_{a \in \ob(\lambda')}$. Using $\rho$ we form a new collection of morphisms $\rho'$ defined by $\{I^{a'}_a \circ \rho_{a'}\}_{a \in \ob(\lambda)} $. Because $I^{a'}_a \circ \rho_{a'}$ can vary on the choice of $a$, the composition may be not uniquely determined. However, if $a''$ is another object of $\lambda'$ for which the relation $a \leq a''$ holds, by lemma \ref{subcategorydirectness} there exists an object $t \in \lambda'$ for which the conditions $a \leq t$ and $a'' \leq t$ are satisfied. Because the following equations hold $$I^{a'}_a \circ \rho_{a'} = I^{a'}_a \circ I^{t}_{a'} \circ \rho_t = I^t_a \circ \rho_t = I_a^{a''} \circ I^{t}_{a''} \circ \rho_{t} = I^{a''}_a \circ \rho_{a''}$$ 
+ Let $a$ be an arbitrary object of the indexing category $\lambda$. Then by the definition of cofinal subcategory there exists element $a' \in \lambda'$ for which $a \leq a'$ holds. Thus there exists a morphism $I^{a'}_a$. Because $\lim I'$ is the limit of the inverse system $I'$ it forms a cone $\bigtriangleup(I',\lim I',\rho)$, where $\rho$ is some collection of morphisms $\{\rho_{a}: \lim I' \rightarrow I'(a)\}_{a \in \ob(\lambda')}$. Using $\rho$ we form a new collection of morphisms $\rho'$ defined by $\{I^{a'}_a \circ \rho_{a'}\}_{a \in \ob(\lambda)} $. Because $I^{a'}_a \circ \rho_{a'}$ can vary on the choice of $a$, the composition may be not uniquely determined. However, if $a''$ is another object of $\lambda'$ for which the relation $a \leq a''$ holds, by lemma \ref{subcategorydirectness} there exists an object $t \in \lambda'$ for which the conditions $a \leq t$ and $a'' \leq t$ are satisfied. Because the following equations hold $$I^{a'}_a \circ \rho_{a'} = I^{a'}_a \circ I^{t}_{a'} \circ \rho_t = I^t_a \circ \rho_t = I_a^{a''} \circ I^{t}_{a''} \circ \rho_{t} = I^{a''}_a \circ \rho_{a''}$$ 
  we can conclude that $I^{a'}_a \circ \rho_{a'} = I^{a''}_a \circ \rho_{a''}$ and thus the family of homomorphisms is well-defined and $\lim(I')$ forms a cone $\bigtriangleup(I,\lim I', \rho' )$\newline
- Now if there exists another cone $\bigtriangleup(I,N,\omega)$ , we have to construct map $u:N \rightarrow \lim I'$ and prove that it is unique. Let $a$ and $b$ be objects of $\lambda$, then there exists objects $a'$ and $b'$ in $\lambda'$ for which relations $a \leq a'$ and $b \leq b'$ hold. Restricting the collection $\omega$ to the morphisms indexed by $\lambda'$ we get the cone $\bigtriangleup(I',N,\omega')$ of $I'$. Because $\lim I'$ is the limit of the functor $I'$, there exists a unique homomorphism $u:N \rightarrow \lim I'$. It is left to prove that the following diagram commutes:
+ Now if there exists another cone $\bigtriangleup(I,N,\omega)$ , we have to construct a morphism $u:N \rightarrow \lim I'$ and prove that it is unique. Let $a$ and $b$ be objects of $\lambda$, then there exists objects $a'$ and $b'$ in $\lambda'$ for which relations $a \leq a'$ and $b \leq b'$ hold. Restricting the collection $\omega$ to the morphisms indexed by $\lambda'$ we get the cone $\bigtriangleup(I',N,\omega')$ of $I'$. Because $\lim I'$ is the limit of the functor $I'$, there exists a unique homomorphism $u:N \rightarrow \lim I'$. It is left to prove that the following diagram commutes:
   $$
  \begin{tikzpicture}
  
@@ -670,7 +685,7 @@ Let $\lim I'$ be the limit of the inverse system $I'$. It is enough to show that
  
  \node (y2) at (3.5,-0.7) {\(\omega_{b'}\)};
  
-   \node (y3) at (5.6,-0.7) {\(\omega_{a'}\)};
+   \node (y3) at (5.6,-0.7) {\(\omega_{b}\)};
  
   \node (b2) at (5.3,-2.7) {\(I^{b'}_{b} \)};
  
@@ -720,15 +735,15 @@ We assume that the reader knows already basic facts about simplicial complexex. 
 \end{maar}
 
 \begin{maar}
-Let $X$ be a set and let $\mathcal{A} = \{S_i\}_{i \in J}$ be some finite collection of subsets of the set $X$. We say that $S$ forms an abstract simplicial complex over $X$, if a subset of any set $S_i$ is in the collection $\mathcal{A}$.
+Let $X$ be a set and let $\mathcal{A} = \{S_i\}_{i \in J}$ be some collection of finite subsets of the set $X$. We say that $\mathcal{A}$ forms an abstract simplicial complex over $X$, if a subset of any set $S_i$ in the collection $\mathcal{A}$ is in the collection.
 \end{maar}
 For an abstract simplicial complex we define the following geometric structure which will give us the interface of original simplicial complex. 
 \begin{maar}
-The geometric $\mathcal{S}(X)_\mathcal{A}$ realization of the abstract simplicial complex is a subset of the set $[0,1]^X$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(X)_{\mathcal{A}}$ and let $\text{pr}_i:[0,1]^X \rightarrow [0,1]$ be the projection $p_i(x) = x_i$ then:
+Let $X$ be a topological space and $\mathcal{S}(X)_\mathcal{A}$ abstract simplicial complex induced by $X$ and some covering $\mathcal{A}$ and let $J$ be its vertex set. Then the geometric realization of the abstract simplicial complex $\mathcal{S}(X)_\mathcal{A}$ is a subset of the set $[0,1]^J$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(X)_{\mathcal{A}}$ and let $\text{pr}_j:[0,1]^J \rightarrow [0,1]$ be the projection $p_j(x) = x_j$ then:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-	\item Relation $\text{pr}_i(x) > 0$ holds only for finitely many $i \in X$.
-	\item $\sum_{i \in X}\text{pr}_i(x) = 1$.
-	\item The set $\{i \in X \mid \text{pr}_i(x) > 0\}$ belongs to collection $\mathcal{A}$.
+	\item Relation $\text{pr}_j(x) > 0$ holds only for finitely many $j \in J$.
+	\item $\sum_{j \in J}\text{pr}_j(x) = 1$.
+	\item The set $\{j \in J \mid \text{pr}_j(x) > 0\}$ belongs to collection $\mathcal{A}$.
 \end{enumerate}
 
 \end{maar}
@@ -753,6 +768,12 @@ If $\mathcal{S}(X)_{\mathcal{A}}$ is a simplicial complex and $\mathcal{S}(A)_{\
 \begin{maar}
 Let $(X,A)$ and $(Y,B)$ be pairs of simplicial complexes and let $f$ be a continuous function between pairs. Then we say that the map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and the images of vertexes of a simplex in $A$ span some simplex in $B$.
 \end{maar}
+\begin{lem}
+Let $(X,A)$ and $(Y,B)$ be pairs of abstract simplicial complex and let \mbox{$f:(X,A) \rightarrow (Y,B)$} be a simplicial map between the complexes. Let $(X',A')$ and $(Y',B')$ be geometric realization of the abstract simplicial complexes $(X,A)$ and $(Y,B)$. Then the map $f_*$ induced by images of the edges mapped by function $f$ and defined to be piecewise linear map on all the other elements is well-defined and simplicial map. 
+\end{lem}
+\begin{proof}
+Let $x$ be an arbitrary element of $(X,A)$, by definition $x$ has a unique representation $x = \sum_{i \in J}r_ia_i$, where $r_i$ are coefficients and $a_i$ belong to the set of edges. 
+\end{proof}
 \begin{maar}
 Let $f:(X,A) \rightarrow Y$ and $g:(X,A) \rightarrow (Y,B)$ be simplicial maps. Then we say that the maps are contiguous if for every simplex $s = \{a_1, ..., a_n\}$ in $(X,A)$ there exists a simplex $k$ in $(Y,B)$ for which relations span $(f(a_1), ..., f(a_n)) \subset k$ and span \mbox{$(g(a_1), ..., g(a_n))  \subset k$} hold.
 \end{maar}
@@ -777,11 +798,10 @@ Let $(X,A)$ be a topological pair. Then we say that $(\{U_i\}_{i \in J},\{U_i\}_
 \item $J' \subset J$.
 \item $\{U_i\}_{i \in J'}$ covers $A$
 
-
 \end{enumerate}
-From now on we will denote the coverings of a topological pair simply as triple $\mathcal{C}(U_i, J, J')$
+A covering defined above will be from now on denoted as $\mathcal{C}(U_i, J, J')$
 \end{maar}
-Respectively we will define the set of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. In coverings of topological pair $(X,A)$ we can define quasi order in a natural way. First we will recall the definition of a refinement.
+We define the category of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. Next we will see that we can define quasi order for coverings of topological pair $(X,A)$ in a natural way. However, first we have to recall the definition of a refinement.
 \begin{maar}\label{coveringquasidefinition}
 	Let $\alpha = \mathcal{C}(U_i, I, I')$ and $\beta = \mathcal{C}(V_j, J, J')$ be coverings of some pair $(X,A)$. Then the covering $\beta$ is called a refinement of the covering $\alpha$, if for every $V_j \in \beta$ there exists some $U_i \in \alpha$ for which $V_j \subset U_i$ holds.
 \end{maar}
@@ -799,8 +819,8 @@ For the order relation in the category of coverings we have following theorem
 Let $(X,A)$ be a topological pair. The category $\text{COV}(X,A)$ with the quasi-order defined in the definition \ref{coveringquasidefinition} is directed.
 \end{lem}
 \begin{proof}
-Let $\alpha = \mathcal{C}(U_i,I,I')$ and $\beta = \mathcal{C}(V_j,J,J')$ be objects of $\text{COV}(X,A)$. We will define a covering $\gamma = \mathcal{C}(W_i,I \times J,I' \times J')$ to be covering which consists of the following elements:
-$$\gamma = \{U_i \cap V_j \mid U_i \in \alpha \text{ and } V_j \in \beta \}. $$
+Let $\alpha = \mathcal{C}(U_i,I,I')$ and $\beta = \mathcal{C}(V_j,J,J')$ be objects of $\text{COV}(X,A)$. We will define a covering $\gamma = \mathcal{C}(W_a,I \times J,I' \times J')$ to be covering which consists of the following elements:
+$$W_{(i,j)} = U_i \cap V_j  $$
 We will prove now that the covering constructed above is satisfies the condition of this lemma. Let $W \in \gamma$, then $W = U \cap V$ for some $U \in \alpha$ and $V \in \beta$. Thus $W \subset U$ and $W \subset V$. Because we chose $W$ to be an arbitrary element of the collection , relations $\alpha \leq \gamma$ and $\beta \leq \gamma$ hold.
 \end{proof}
 
@@ -816,12 +836,12 @@ Let $X$ be a topological space with an open covering $\mathcal{U}(X) = \{U_i\}_{
 \end{maar}
 The structure described above can be denoted as $\mathcal{{S}}(\mathcal{U}(X))_{\text{CNI}(\mathcal{U}(X))}$. However, to simplify notation we will from now on denote the nerve of the covering as $\mathcal{S}(X)_{\mathcal{U}(X)}$. 
 \begin{lem}\label{Welldefinessofnerve}
-The abstract simplicial complex $\mathcal{S}(X)_{\mathcal{U}(X)}$ described above is well-defined
+The abstract simplicial complex $\mathcal{S}(X)_{\mathcal{U}(X)}$ described above is well-defined.
 \end{lem}
 \begin{proof}
 We have to show that any subset of an element in the collection $\text{CNI}(\mathcal{U}(X))$ is in the collection. This follows from the fact that if $\bigcap_{i \in J} U_i \neq \emptyset$ , then also $\bigcap_{i \in J'} U_i \neq \emptyset$ for any subcollection $J' \subset J$.  
 \end{proof}
-We will give now definition of the nerve of the covering for topological pairs.
+We will now give the definition of the nerve of the covering for topological pairs.
 \begin{maar}
 Let $\mathcal{L} = \mathcal{C}(U_i, J, J')$ be a covering of some topological pair $(X,A)$. We denote $\mathcal{L}_X$ to be the covering taking elements from $\mathcal{L}$ indexed by $J$ and $\mathcal{L}_A$ to be the covering, where we use elements from $\mathcal{L}$ indexed by $J'$ . Then the nerve of this covering $\mathcal{S}(X,A)_{\mathcal{L}}$ is the simplicial pair $(\mathcal{{S}}(\mathcal{L}_X)_{\text{CNI}(\mathcal{L}_X)}, \mathcal{S}(\mathcal{L}_A)_{\text{CNI}(\mathcal{L}_A )})$. 
 \end{maar}
@@ -829,7 +849,7 @@ Let $\mathcal{L} = \mathcal{C}(U_i, J, J')$ be a covering of some topological pa
 The simplicial pair described above is well-defined.
 \end{lem}
 \begin{proof}
-By lemma \ref{Welldefinessofnerve}, the simplicial complexes are well-defined. We only have to show that $\mathcal{S}(\mathcal{L}_A)_{\text{Con}(\mathcal{L}_A )}$ is subsimplex of $\mathcal{{S}}(\mathcal{L}_X)_{\text{Con}(\mathcal{L}_X)}$. This follows directly from the definition of the pair of coverings, as we defined the covering $\mathcal{L}_A$ to be a sub covering of $\mathcal{L}_X$ . 
+By Lemma \ref{Welldefinessofnerve}, the simplicial complexes are well-defined. We only have to show that $\mathcal{S}(\mathcal{L}_A)_{\text{Con}(\mathcal{L}_A )}$ is a subsimplex of $\mathcal{{S}}(\mathcal{L}_X)_{\text{Con}(\mathcal{L}_X)}$. This follows directly from the definition of the pair of coverings, as we defined the covering $\mathcal{L}_A$ to be a sub covering of $\mathcal{L}_X$ . 
 \end{proof}
  
 \begin{maar}
@@ -837,10 +857,10 @@ Let $(X,A)$ be a topological pair and let $\alpha$ and $\beta$ be its coverings 
 \end{maar}
 We will now show that the family of projection maps is closed under composition.
 \begin{lem}\label{compofprojmaps}
-	Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps . Then $p^\beta_\alpha \circ p^\gamma_\beta$ is also projection map.
+	Let $\alpha$, $\beta$ and $\gamma$ be coverings of some topological pair, for which relation $\alpha \leq \beta \leq \gamma $  holds.  Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps. Then $p^\beta_\alpha \circ p^\gamma_\beta$ is also a projection map.
 \end{lem}
 \begin{proof}
-	Let $U \in \gamma$, then there exists $U' \in \beta$ and $U'' \in \alpha $ for which condition $U \subset U' \subset U''$ is satisfied. By properties of inclusion $U \subset U''$ and thus $p^\beta_\alpha \circ p^\gamma_\beta$ is a projection map.
+	Let $U \in \gamma$, then if $U' = p^{\gamma}_{\beta}(U) \in \beta$ and $U'' = p^{\beta}_{\alpha} \circ p^{\gamma}_{\beta}(U) $ , by the definition condition $U \subset U' \subset U''$ holds . By properties of inclusion we can conclude taht $U \subset U''$ and thus $p^\beta_\alpha \circ p^\gamma_\beta$ is a projection map.
 \end{proof}
 \begin{lem}
 The collection of coverings $\text{COV}(X,A)$ is a category defined in the following way:
@@ -852,14 +872,14 @@ The collection of coverings $\text{COV}(X,A)$ is a category defined in the follo
 \end{enumerate}
 \end{lem}
 \begin{proof}
-By Lemma \ref{compofprojmaps} the composition of two projection maps is a projection map and thus is well-defined. For every $\alpha$ there exists a well-defiend projection map $p^{\alpha}_{\alpha}$ which acts like identity map on $\text{COV}(X,A)$. The associativity condition holds, because every morphism is a function.
+By Lemma \ref{compofprojmaps} the composition of two projection maps is a projection map and thus it is well-defined. For every $\alpha$ there exists a well-defiend projection map $p^{\alpha}_{\alpha}$ which acts like the identity map on $\text{COV}(X,A)$. The associativity condition holds, because every morphism is a function.
 \end{proof}
 \begin{maar}
-Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(f^{-1}U_i, J_{\beta}, J'_{\beta})$
+Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(V_i, J_{\beta}, J'_{\beta})$, where $V_i = f^{-1}U_i$ for every $i \in J_{\beta}$.
 \end{maar}
-Note that the collection defined above is defined to be the collection where we take preimage of every element in the covering $\beta$. 
+Note that the collection above is defined to be the collection obtained by taking the element in the covering $\beta$. 
 \begin{lem}
-Let $F:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha$ and $\beta$ be coverings of $(X,A)$ and $(Y,B)$ with property $\alpha = f^{-1}\beta$. Then the induced map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $(f^{-1}U_i, f^{-1}V_i) \rightarrow (U_i, V_i)$ is well defined.
+Let $F:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\beta$ be the covering $f^{-1}\alpha$ of $(X,A)$. Then the induced map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined.
 \end{lem}
 \begin{proof}
 Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$, so the lemma holds.
@@ -877,7 +897,7 @@ We denote the map $p'^\beta_\alpha$ described above just as $p^\beta_\alpha$. It
 Projection maps $p^\beta_\alpha$ are simplicial.
 \end{lem}
 \begin{proof}
-Let $s$ be a simplex in $\mathcal{S}(X,A)_\beta$ spanned by some sets $\{U_i\}_{i \in J}$ such that $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $U_i'$ in $\mathcal{S}(X,A)_\alpha$ for which $U_i \subset U_i'$. Intersection $\bigcap_{i \in J}U'_i$ is clearly non empty, so every simplex is mapped inside some simplex. \newline	
+Let $s$ be a simplex in $\mathcal{S}(X,A)_\beta$ spanned by some sets $\{U_i\}_{i \in J}$ such that $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $U_i'$ in $\mathcal{S}(X,A)_\alpha$ for which $U_i \subset U_i'$. Intersection $\bigcap_{i \in J}U'_i$ is clearly non empty, so every simplex is mapped inside some simplex.
 \end{proof}
 Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define the same homomorphisms between corresponding homology groups of spaces $\mathcal{S}(X,A)_\alpha$ and $\mathcal{S}(X,A)_\beta$.
 \begin{lem}
