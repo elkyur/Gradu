@@ -111,7 +111,7 @@ A category C consist of the following ingredients: A class of objects $\ob(C)$, 
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	
-	\item Composition is associative. Let $f:A \rightarrow B$, $g: B \rightarrow D$ and $h: D \rightarrow E$ be morphisms between objects then $(f \circ g) \circ h = f \circ (g \circ h)$.
+	\item Composition is associative. Let $f:A \rightarrow B$, $g: B \rightarrow D$ and $h: D \rightarrow E$ be morphisms between objects then $(f \circ g) \circ h = f \circ (g \circ h)$
 	
 	\item For every object $A \in \ob(C)$ there exists identity morphism $1_A \in \hom(A,A)$ for which the following condition holds: Let $f:A \rightarrow B$ and $g: B \rightarrow A$ be arbitrary morphisms then $f \circ 1_A = f$ and $1_A \circ g = g$.
 	
@@ -121,7 +121,7 @@ A category C consist of the following ingredients: A class of objects $\ob(C)$, 
 We say that a category $D$ is a subcategory of category $C$, if the following conditions are satisfied:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
-	\item The collection of objects $\ob(D)$ is a subcollection of $\ob(C)$.
+	\item The collection of objects $\ob(D)$ is a subcollection of $\ob(C)$
 	\item The collection of morphisms $\hom(D)$ is a subcollection of $\hom(D)$.
 	
 \end{enumerate}
@@ -200,7 +200,7 @@ Next we will define the concepts of limit and colimit for arbitrary categories, 
 \begin{maar}
 	Let $C$ and $J$ be categories. We say that the category $C$ is indexed by the category $J$ if there exists a functor $F:J \rightarrow C$.	
 \end{maar}	
-We call the functor $F$ described above an indexing functor. It is easy to see that the functor induces a subcategory $F(J)$ of $C$. In the case where functor $F$ is bijective e.g every object and morphism is mapped to a distinct element in the image , we can equate those concepts.
+We call the functor $F$ described above an indexing functor. It is easy to see that the functor induces a subcategory $F(J)$ of $C$. In the case where the functor $F$ is bijective, we can equate $F(J)$ with $C$.
 \begin{maar}
 Let $C$ be a category indexed by $J$ and let $F:J \rightarrow C$ be the indexing functor. Let $N$ be a fixed object of the category $C$. We define the cone from $N$ to $F$ to be an indexed family of morphisms $$\Omega_N = \{\omega_X: N \rightarrow F(X)\}_{X \in J}$$ which satisfies the following property: If $f:X \rightarrow Y$ is a morphism in $C$ then the following diagram commutes
 
@@ -280,7 +280,7 @@ Because $N$ and $D$ are both limits there exist morphisms $u: N \rightarrow D$ a
 \subsection{Dual category}
 To simplify definitions we will define the concept of a dual category. 
 \begin{maar}
-The dual of any concept in the category theory can be obtained in a following way:
+The dual of any concept in the category theory can be obtained in the following way:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	\item Interchange every occurrence of source with target
@@ -351,8 +351,8 @@ Let $\lambda$ be a category and let $a \leq b$ be a relation in the object class
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
 	
-	\item $a \leq a$ for all $a \in \ob(\lambda)$
-	\item if $a \leq b$ and $b \leq c$ then $a \leq c$ for all $a,b,c \in \ob(\lambda)$
+	\item $a \leq a$ for all $a \in \ob(\lambda)$.
+	\item If $a \leq b$ and $b \leq c$ then $a \leq c$ for all $a,b,c \in \ob(\lambda)$.
 	
 \end{enumerate}
 
@@ -368,7 +368,7 @@ Let $\lambda$ and $C$ be categories and let $D:\lambda \rightarrow C$ be an inde
 \end{enumerate}
 \end{maar}
 
-The dual of direct system is inverse system. 
+The dual of a direct system is an inverse system. 
 
 \begin{maar}
 Let $\lambda$ and $C$ be categories and let $I:\lambda \rightarrow C$ be an indexing functor. We say that the functor $I$ is an inverse system indexed by $\lambda$ if the following conditions hold:
@@ -716,18 +716,18 @@ In this chapter we will give a definition of an abstract simplicial complex.
 \subsection{Abstract simplicial complex}
 We assume that the reader knows already basic facts about simplicial complexex. If not we suggest to take a look at [\ref{rotman}]. 
 \begin{maar}
-	Let $S$ be some simplex and let $X$ be a collection of its faces. We define operator $\rhd:2^{X} \rightarrow X$ to denote simplex which is obtained by the intersection of all simplexes which contain every element in the domain. 
+	Let $S$ be some simplex and let $X$ be a collection of its faces. We define operator $\rhd:2^{X} \rightarrow X$ to denote a simplex which is obtained by the intersection of all simplexes for which the union of all the faces in the domain are contained. 
 \end{maar}
 
 \begin{maar}
-Let $X$ be a set and let $\mathcal{A} = \{S_i\}_{i \in J}$ be some finite collection of subsets of the set $X$. We say that $S$ forms an abstract simplicial complex over $X$, if a subset of any set $S_i$ in the collection $\mathcal{A}$.
+Let $X$ be a set and let $\mathcal{A} = \{S_i\}_{i \in J}$ be some finite collection of subsets of the set $X$. We say that $S$ forms an abstract simplicial complex over $X$, if a subset of any set $S_i$ is in the collection $\mathcal{A}$.
 \end{maar}
-For abstract simplicial complex we define the following geometric structure which will give us the interface of original simplicial complex. 
+For an abstract simplicial complex we define the following geometric structure which will give us the interface of original simplicial complex. 
 \begin{maar}
-The geometric $\mathcal{S}(X)_\mathcal{A}$ realization of the abstract simplicial complex is a subset of the set $[0,1]^X$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(X)_{\mathcal{A}}$ and let $\text{pr}_i:[0,1]^X \rightarrow [0,1]$ be the projection then:
+The geometric $\mathcal{S}(X)_\mathcal{A}$ realization of the abstract simplicial complex is a subset of the set $[0,1]^X$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(X)_{\mathcal{A}}$ and let $\text{pr}_i:[0,1]^X \rightarrow [0,1]$ be the projection $p_i(x) = x_i$ then:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	\item Relation $\text{pr}_i(x) > 0$ holds only for finitely many $i \in X$.
-	\item $\sum_{i \in J}\text{pr}_i(x) = 1$.
+	\item $\sum_{i \in X}\text{pr}_i(x) = 1$.
 	\item The set $\{i \in X \mid \text{pr}_i(x) > 0\}$ belongs to collection $\mathcal{A}$.
 \end{enumerate}
 
@@ -746,29 +746,29 @@ The geometric realization $\mathcal{S}(X)_{\mathcal{A}} $ of an abstract simplic
  Thus $\mathcal{S}(X)_\mathcal{A}$ is simplicial complex.
 \end{proof}
 \begin{maar}
-Assume that the set $X$ together with the collection $\mathcal{A} = \{S_i\}_{i \in I}$ is an abstract simplicial. Let $A$ be some subset of $X$ and $\mathcal{A}' = \{S'_j\}_{j \in I'}$ a collection of subsets of the space $A$ for which the condition $$S'_j \in \mathcal{A}' \Leftrightarrow S'_j \subset S_i \text{ for some } i \in I $$ 
-holds. Then we say that $\mathcal{S}(A)_{\mathcal{A}'}$ is a subsimplex of $\mathcal{S}(X)_\mathcal{A}$.
+Assume that the set $X$ together with the collection $\mathcal{A} = \{S_i\}_{i \in I}$ is an abstract simplicial complex. Let $A$ be some subset of $X$ and $\mathcal{A}' = \{S'_j\}_{j \in I'}$ a collection of subsets of the space $A$ for which the condition $$S'_j \in \mathcal{A}' \Leftrightarrow S'_j \subset S_i \text{ for some } i \in I $$ 
+holds. Then we say that $\mathcal{S}(A)_{\mathcal{A}'}$ is a subcomplex of $\mathcal{S}(X)_\mathcal{A}$.
 \end{maar}
 If $\mathcal{S}(X)_{\mathcal{A}}$ is a simplicial complex and $\mathcal{S}(A)_{\mathcal{A'}}$ is its subcomplex, then they form a topological pair which we will denote by $(\mathcal{S}(X)_{\mathcal{A}}, \mathcal{S}(A)_{\mathcal{A}'})$  Next we will recall the definition of a simplicial map.
 \begin{maar}
-Let $(X,A)$ and $(Y,B)$ be pairs of simplicial complexes and let $f$ be a continuous function between pairs. Then we say that map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and the images of vertexes of a simplex in $A$ span some simplex in $B$.
+Let $(X,A)$ and $(Y,B)$ be pairs of simplicial complexes and let $f$ be a continuous function between pairs. Then we say that the map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and the images of vertexes of a simplex in $A$ span some simplex in $B$.
 \end{maar}
 \begin{maar}
-Let $f:(X,A) \rightarrow Y$ and $g:(X,A) \rightarrow (Y,B)$ be simplicial maps. Then we say that maps are contiguous if for every simplex $s = \{a_1, ..., a_n\}$ in $(X,A)$ there exists a simplex $k$ in $(Y,B)$ for which span $(f(a_1), ..., f(a_n)) \subset k$ and span$(g(a_1), ..., g(a_n)) \subset k $ 
+Let $f:(X,A) \rightarrow Y$ and $g:(X,A) \rightarrow (Y,B)$ be simplicial maps. Then we say that the maps are contiguous if for every simplex $s = \{a_1, ..., a_n\}$ in $(X,A)$ there exists a simplex $k$ in $(Y,B)$ for which relations span $(f(a_1), ..., f(a_n)) \subset k$ and span \mbox{$(g(a_1), ..., g(a_n))  \subset k$} hold.
 \end{maar}
 \begin{lem}
 If $f:(X,A) \rightarrow (Y,B)$ and $g:(X,A) \rightarrow (Y,B)$ are contiguous maps then they are homotopic.
 \end{lem}
 \begin{proof}
-We define $H:X \times [0,1] \rightarrow Y$ in the following way:  $$H(x,t) = tf(x)+(1-t)g(x)$$
-It is easy to see that $H(x,0) = f(x)$ and $H(x,1) = g(x)$. Because $f(x)$ and $g(x)$ both belong to the same simplex, it follows that $H(x,t)$ is well defined at every point. 
+We define $H:X \times [0,1] \rightarrow Y$ in the following way:  $$H(x,t) = tf(x)+(1-t)g(x).$$
+It is easy to see that $H(x,1) = f(x)$ and $H(x,0) = g(x)$. Because $f(x)$ and $g(x)$ both belong to the same simplex, it follows that $H(x,t)$ is well defined at every point. 
 \end{proof}
 \subsection{Coverings}
 We begin by recalling the definition of a covering
 \begin{maar}
-Let $X$ be a topological space and let $\{A_i\}_{i \in J}$ be the collection of its open subsets. Then we say that  $\{A_i\}_{i \in J}$ is covering of $X$ if $\bigcup_{i \in J}A_i = X$.
+Let $X$ be a topological space and let $\{A_i\}_{i \in J}$ be the collection of its open subsets. Then we say that  $\{A_i\}_{i \in J}$ is a covering of $X$ if $\bigcup_{i \in J}A_i = X$.
 \end{maar}
-We will denote the set of all open coverings of the space $X$ by $\text{COV}(X)$. Because in homology we are interested in a pair of spaces we give definition of covering for the pair. 
+We will denote the set of all open coverings of the space $X$ by $\text{COV}(X)$. Because in homology we are interested in a pair of spaces we give the definition of covering for the pair. 
 \begin{maar}
 Let $(X,A)$ be a topological pair. Then we say that $(\{U_i\}_{i \in J},\{U_i\}_{i \in J'})$ is an open covering of $(X,A)$ if the following conditions hold:
 
@@ -781,9 +781,9 @@ Let $(X,A)$ be a topological pair. Then we say that $(\{U_i\}_{i \in J},\{U_i\}_
 \end{enumerate}
 From now on we will denote the coverings of a topological pair simply as triple $\mathcal{C}(U_i, J, J')$
 \end{maar}
-Respectively we will define the set of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. In coverings of topological pair $(X,A)$ we can define quasi order in a natural way. First we will recall definition of the refinement.
+Respectively we will define the set of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. In coverings of topological pair $(X,A)$ we can define quasi order in a natural way. First we will recall the definition of a refinement.
 \begin{maar}\label{coveringquasidefinition}
-	Let $\alpha = \mathcal{C}(U_i, I, I')$ and $\beta = \mathcal{C}(V_j, J, J')$ be coverings of some pair $(X,A)$. Then the covering $\beta$ is called refinement of the covering $\alpha$, if for every $V_j \in \beta$ there exists some $U_i \in \alpha$ for which $V_j \subset U_i$ holds.
+	Let $\alpha = \mathcal{C}(U_i, I, I')$ and $\beta = \mathcal{C}(V_j, J, J')$ be coverings of some pair $(X,A)$. Then the covering $\beta$ is called a refinement of the covering $\alpha$, if for every $V_j \in \beta$ there exists some $U_i \in \alpha$ for which $V_j \subset U_i$ holds.
 \end{maar}
 Now we are ready to define the quasi order in the collection of coverings of an arbitrary topological space.
 \begin{lem}
@@ -805,36 +805,35 @@ We will prove now that the covering constructed above is satisfies the condition
 \end{proof}
 
 \subsection{The construction}
- Now we are ready to give definition for the nerve of the covering.
+ Now we are ready to give the definition for the nerve of the covering.
 
 \begin{maar}
-Let $X$ be a topological space with an open covering $\mathcal{U}(X) = \{U_i\}_{i \in J}$, then the nerve of this covering is a following abstract simplicial complex:
+Let $X$ be a topological space with an open covering $\mathcal{U}(X) = \{U_i\}_{i \in J}$. Then the nerve of this covering is the following abstract simplicial complex:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-\item The vertex set is defined to be the collection $\mathcal{U}(X)$
-\item Let $\text{CNI}(\mathcal{U}(X))$ be collection of all finite non-empty intersections of sets in the collection $\mathcal{U}(X)$. The simplex set of the abstract simplicial complex is defined to be $\text{CNI}(\mathcal{U}(X))$.
+\item The vertex set is defined to be the collection $\mathcal{U}(X)$.
+\item Let $\text{CNI}(\mathcal{U}(X))$ be the collection of all finite non-empty intersections of sets in the collection $\mathcal{U}(X)$. The simplex set of the abstract simplicial complex is defined to be $\text{CNI}(\mathcal{U}(X))$.
 \end{enumerate}
 \end{maar}
-The structure described above can be denoted as $\mathcal{{S}}(\mathcal{U}(X))_{\text{CNI}(\mathcal{U}(X))}$. However, to simplify notation we will from now on denote nerve of the covering as $\mathcal{S}(X)_{\mathcal{U}(X)}$. It is clear from the context which of the definitions is being used.
+The structure described above can be denoted as $\mathcal{{S}}(\mathcal{U}(X))_{\text{CNI}(\mathcal{U}(X))}$. However, to simplify notation we will from now on denote the nerve of the covering as $\mathcal{S}(X)_{\mathcal{U}(X)}$. 
 \begin{lem}\label{Welldefinessofnerve}
 The abstract simplicial complex $\mathcal{S}(X)_{\mathcal{U}(X)}$ described above is well-defined
 \end{lem}
 \begin{proof}
-We have to show that any subset of element in the collection $\text{CNI}(\mathcal{U}(X))$ is in the collection. This follows from the fact that if $\bigcap_{i \in J} U_i \neq \emptyset$ , then also $\bigcap_{i \in J'} U_i \neq \emptyset$ for any subcollection $J' \subset J$.  
+We have to show that any subset of an element in the collection $\text{CNI}(\mathcal{U}(X))$ is in the collection. This follows from the fact that if $\bigcap_{i \in J} U_i \neq \emptyset$ , then also $\bigcap_{i \in J'} U_i \neq \emptyset$ for any subcollection $J' \subset J$.  
 \end{proof}
 We will give now definition of the nerve of the covering for topological pairs.
 \begin{maar}
-Let $\mathcal{L} = \mathcal{S}(U_i, J, J')$ be a covering of some topological pair $(X,A)$. Then the nerve of this covering $\mathcal{S}(X,A)_{\mathcal{L}}$ is simplicial pair $(\mathcal{{S}}(\mathcal{L}_X)_{\text{CNI}(\mathcal{L}_X)}, \mathcal{S}(\mathcal{L}_A)_{\text{CNI}(\mathcal{L}_A )})$. 
-
+Let $\mathcal{L} = \mathcal{C}(U_i, J, J')$ be a covering of some topological pair $(X,A)$. We denote $\mathcal{L}_X$ to be the covering taking elements from $\mathcal{L}$ indexed by $J$ and $\mathcal{L}_A$ to be the covering, where we use elements from $\mathcal{L}$ indexed by $J'$ . Then the nerve of this covering $\mathcal{S}(X,A)_{\mathcal{L}}$ is the simplicial pair $(\mathcal{{S}}(\mathcal{L}_X)_{\text{CNI}(\mathcal{L}_X)}, \mathcal{S}(\mathcal{L}_A)_{\text{CNI}(\mathcal{L}_A )})$. 
 \end{maar}
 \begin{lem}
 The simplicial pair described above is well-defined.
 \end{lem}
 \begin{proof}
-By lemma \ref{Welldefinessofnerve}, the simplicial complexes are well-defined. We only have to show that $\mathcal{S}(\mathcal{L}_A)_{\text{Con}(\mathcal{L}_A )}$ is subsimplex of $\mathcal{{S}}(\mathcal{L}_X)_{\text{Con}(\mathcal{L}_X)}$. This follows directly from the definition of the pair of coverings, where we assumed that $V_i \subset U_i$ for every $i \in J$. 
+By lemma \ref{Welldefinessofnerve}, the simplicial complexes are well-defined. We only have to show that $\mathcal{S}(\mathcal{L}_A)_{\text{Con}(\mathcal{L}_A )}$ is subsimplex of $\mathcal{{S}}(\mathcal{L}_X)_{\text{Con}(\mathcal{L}_X)}$. This follows directly from the definition of the pair of coverings, as we defined the covering $\mathcal{L}_A$ to be a sub covering of $\mathcal{L}_X$ . 
 \end{proof}
  
 \begin{maar}
-Let $\alpha$ and $\beta$ be coverings with $\alpha \leq \beta$. Then we define $\mathcal{P}(\alpha, \beta)$ to be the collection of all the following projection maps $p^\beta_\alpha:\beta \rightarrow \alpha$: Every $U_i \in \beta$ is mapped to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$ holds.
+Let $(X,A)$ be a topological pair and let $\alpha$ and $\beta$ be its coverings for which the relation $\alpha \leq \beta$ holds. Then we define $\mathcal{P}(\alpha, \beta)$ to be the collection of all the following projection maps $p^\beta_\alpha:\beta \rightarrow \alpha$: Every $U_i \in \beta$ is mapped to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$ holds.
 \end{maar}
 We will now show that the family of projection maps is closed under composition.
 \begin{lem}\label{compofprojmaps}
@@ -856,9 +855,9 @@ The collection of coverings $\text{COV}(X,A)$ is a category defined in the follo
 By Lemma \ref{compofprojmaps} the composition of two projection maps is a projection map and thus is well-defined. For every $\alpha$ there exists a well-defiend projection map $p^{\alpha}_{\alpha}$ which acts like identity map on $\text{COV}(X,A)$. The associativity condition holds, because every morphism is a function.
 \end{proof}
 \begin{maar}
-Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta$ be a covering of $(Y,A)$. The covering $f^{-1}\beta$ is covering of $(X,A)$ which is induced by elements $(f^{-1}U_i, f^{-1}V_i)_{i \in J_{\beta}}$.
+Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(f^{-1}U_i, J_{\beta}, J'_{\beta})$
 \end{maar}
-Note that the collection defined above to be collection where we take preimage of every element in the covering $\beta$. 
+Note that the collection defined above is defined to be the collection where we take preimage of every element in the covering $\beta$. 
 \begin{lem}
 Let $F:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha$ and $\beta$ be coverings of $(X,A)$ and $(Y,B)$ with property $\alpha = f^{-1}\beta$. Then the induced map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $(f^{-1}U_i, f^{-1}V_i) \rightarrow (U_i, V_i)$ is well defined.
 \end{lem}
