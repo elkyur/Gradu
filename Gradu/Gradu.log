@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  9 JUN 2016 10:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  10 JUN 2016 07:45
 entering extended mode
 **Gradu.tex
 (C:\Users\Serafim\Documents\BabasChess\Gradu\Gradu\Gradu\Gradu.tex
@@ -901,7 +901,7 @@ Appendix A.
 Here is how much of TeX's memory you used:
  13710 strings out of 493921
  260234 string characters out of 3144870
- 291390 words of memory out of 3000000
+ 291389 words of memory out of 3000000
  16728 multiletter control sequences out of 15000+200000
  27697 words of font info for 75 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -932,7 +932,7 @@ b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pf
 b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10
 .pfb>
-Output written on Gradu.pdf (32 pages, 335724 bytes).
+Output written on Gradu.pdf (32 pages, 335726 bytes).
 PDF statistics:
  499 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
