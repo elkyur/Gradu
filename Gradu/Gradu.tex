@@ -379,7 +379,7 @@ $$\hom(a,b) = \left\{
 
 the composition in which is defined to be $\lambda^c_b \circ \lambda^b_a = \lambda^c_a$ and the identity morphism to be $\lambda^a_a$.
 \end{maar}
-\begin{lem}
+\begin{lem}\label{formingsystem}
 A quasi-ordered class of objects together with covariant or contra-variant class of morphisms forms a category.  
 \end{lem}
 \begin{proof}
@@ -769,7 +769,7 @@ Next we will recall the definition of a simplicial map.
 \begin{maar}
 Let $(X,A)$ and $(Y,B)$ be pairs of simplicial complexes and let $f$ be a continuous function between pairs. Then we say that the map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and the images of vertexes of a simplex in $A$ span some simplex in $B$.
 \end{maar}
-\begin{lem}
+\begin{lem}\label{geometricrealizationsimplicial}
 Let $(X,A)$ and $(Y,B)$ be pairs of abstract simplicial complex and let \mbox{$f:(X,A) \rightarrow (Y,B)$} be a simplicial map between the complexes. Let $(X',A')$ and $(Y',B')$ be geometric realization of the abstract simplicial complexes $(X,A)$ and $(Y,B)$. Then the map $f_*:(X',A') \rightarrow (Y',B')$ induced by images of the edges mapped by function $f$ and defined to be piecewise linear map on all the other elements is well-defined and simplicial map. 
 \end{lem}
 \begin{proof}
@@ -777,7 +777,7 @@ Let $x$ be an arbitrary element of $(X,A)$, by definition $x$ has a unique repre
 Because we assumed that the map $f$ simplicial, we see that the sum is in the corresponding subset of $[0,1]^J$. Thus $f_*(x)$ is uniquely determined. It is easy to see that the map is simplicial. Let $\{a_{t(1)}, ... , a_{t(n)}\}$ be some simplex in the collection, then it is mapped to simplex $\{f(a_{t(1)}), ... , f(a_{t(n)})\}$ by definition of the map $f$.
 \end{proof}
 \begin{maar}
-Let $f:(X,A) \rightarrow Y$ and $g:(X,A) \rightarrow (Y,B)$ be simplicial maps. Then we say that the maps are contiguous if for every simplex $s = \{a_1, ..., a_n\}$ in $(X,A)$ there exists a simplex $k$ in $(Y,B)$ for which relations span $(f(a_1), ..., f(a_n)) \subset k$ and span \mbox{$(g(a_1), ..., g(a_n))  \subset k$} hold.
+Let $f:(X,A) \rightarrow (Y,B)$ and $g:(X,A) \rightarrow (Y,B)$ be simplicial maps. Then we say that the maps are contiguous if for every simplex $s = \{a_1, ..., a_n\}$ in $(X,A)$ there exists a simplex $k$ in $(Y,B)$ for which relations span $(f(a_1), ..., f(a_n)) \subset k$ and span \mbox{$(g(a_1), ..., g(a_n))  \subset k$} hold.
 \end{maar}
 \begin{lem}
 If $f:(X,A) \rightarrow (Y,B)$ and $g:(X,A) \rightarrow (Y,B)$ are contiguous maps then they are homotopic.
@@ -836,9 +836,9 @@ Let $X$ be a topological space with an open covering $\mathcal{U}(X) = \{U_i\}_{
 \item Let $\text{CNI}(\mathcal{U}(X))$ be the collection of all finite non-empty intersections of sets in the collection $\mathcal{U}(X)$. The simplex set of the abstract simplicial complex is defined to be $\text{CNI}(\mathcal{U}(X))$.
 \end{enumerate}
 \end{maar}
-The structure described above can be denoted as $\mathcal{{S}}(\mathcal{U}(X))_{\text{CNI}(\mathcal{U}(X))}$. However, to simplify notation we will from now on denote the nerve of the covering as $\mathcal{S}(X)_{\mathcal{U}(X)}$. 
+The structure described above can be denoted as $\Gamma(\mathcal{U}(X))_{\text{CNI}(\mathcal{U}(X))}$. However, to simplify notation we will from now on denote the nerve of the covering as $\Gamma(X)_{\mathcal{U}(X)}$. 
 \begin{lem}\label{Welldefinessofnerve}
-The abstract simplicial complex $\mathcal{S}(X)_{\mathcal{U}(X)}$ described above is well-defined.
+The abstract simplicial complex $\Gamma(X)_{\mathcal{U}(X)}$ described above is well-defined.
 \end{lem}
 \begin{proof}
 We have to show that any subset of an element in the collection $\text{CNI}(\mathcal{U}(X))$ is in the collection. This follows from the fact that if $\bigcap_{i \in J} U_i \neq \emptyset$ , then also $\bigcap_{i \in J'} U_i \neq \emptyset$ for any subcollection $J' \subset J$.  
@@ -876,18 +876,16 @@ The collection of coverings $\text{COV}(X,A)$ is a category defined in the follo
 \begin{proof}
 By Lemma \ref{compofprojmaps} the composition of two projection maps is a projection map and thus it is well-defined. For every $\alpha$ there exists a well-defiend projection map $p^{\alpha}_{\alpha}$ which acts like the identity map on $\text{COV}(X,A)$. The associativity condition holds, because every morphism is a function.
 \end{proof}
-\begin{maar}
-Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(V_i, J_{\beta}, J'_{\beta})$, where $V_i = f^{-1}U_i$ for every $i \in J_{\beta}$.
-\end{maar}
-Note that the collection above is defined to be the collection obtained by taking the element in the covering $\beta$. 
+
 \begin{lem}
-Let $F:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\beta$ be the covering $f^{-1}\alpha$ of $(X,A)$. Then the induced map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined.
+	Let $\beta = \mathcal{C}(V_i, I, I')$ and $\alpha = \mathcal{C}(U_i, I, I')$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and let $p$ be a projection map belonging to $\mathcal{P}(\alpha,\beta)$. Let the map $p'^\beta_\alpha:\Gamma(X,A)_\beta \rightarrow \Gamma(X,A)_\alpha$ be a map between abstract simplicial complexes induced by the edges $V_i \in \beta$ and map $p$. The map $p'^\beta_\alpha:\Gamma(X,A)_\beta$ is well-defined simplicial map.
 \end{lem}
 \begin{proof}
-Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$. Thus the lemma holds.
+	Well-definiteness follows directly from the fact that the inducing map $p$ is well-defined. Let $s$ be a simplex in $\Gamma(X,A)_\beta$ spanned by some sets $\{U_i\}_{i \in J}$ such that $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $V_i$ in $\Gamma(X,A)_\alpha$ for which $U_i \subset V_i$. Intersection $\bigcap_{i \in J}V_i$ is clearly non-empty, so edges of every simplex span some simplex in the image.
 \end{proof}
 
-We denote the map $p'^\beta_\alpha$ described above just as $p^\beta_\alpha$. It is clear from the context which of the maps is being used. \newline
+All the lemmas and proves have been presented only for the abstract simplicial complexes. The geometric realization of the nerve of the covering will be denoted simply as $\mathcal{S}(X,A)_\alpha$. The concept of projection map is being used in many different contexts. However, because it is clear from the context which definition is used in all the contexts we will denote the projection map to be simply $p'^\beta_\alpha$. It is also worth noticing that from lemma \ref{geometricrealizationsimplicial} it follows that the induced map $p^{\beta}_{\alpha}$ between the geometric realizations $\mathcal{S}(X,A)_\beta$ and $\mathcal{S}(X,A)_\alpha$ is also well-defined and simplicial. 
+ \newline
 Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define the same homomorphisms between corresponding homology groups of spaces $\mathcal{S}(X,A)_\alpha$ and $\mathcal{S}(X,A)_\beta$.
 \begin{lem}
 Let $\alpha$ and $\beta$ be any coverings of $(X,A)$ for which condition  $\alpha \leq \beta$ is satisfied. Then projection maps $p^\beta_\alpha$ and $p'^\beta_\alpha$ are contiguous.
@@ -897,6 +895,17 @@ Let $\alpha$ and $\beta$ be any coverings of $(X,A)$ for which condition  $\alph
 To prove that the maps are contiguous we form simplex in $\mathcal{S}(Y,B) $ and prove that images of both maps belong to it. Every vertex $U_i$ in $\mathcal{S}(X,A)$ is mapped to $U'_i$ and $U''_i$ by $p^\beta_\alpha$ and $p'^\beta_\alpha$ respectively. Now if $\bigcap_{i \in J}U_i \neq \emptyset$ then also $\bigcap_{i \in J}U'_i \cap \bigcap_{i \in J}U''_i \neq \emptyset$. In the case if the vertexes belong to $\mathcal{S}(A)$ it is easy to see that projection map maps them to some simplex in $\mathcal{S}(B)$.  
 \end{proof}
 By using this lemma and the fact that contiguous simplicial maps induce same homology groups we can define unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}(X,A)_{\beta}) \rightarrow H_q(\mathcal{S}(X,A)_{\alpha})$ for every $q \in \N$.
+
+\begin{maar}
+	Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(V_i, J_{\beta}, J'_{\beta})$, where $V_i = f^{-1}U_i$ for every $i \in J_{\beta}$.
+\end{maar}
+Note that the collection above is defined to be the collection obtained by taking the element in the covering $\beta$. 
+\begin{lem}
+	Let $F:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\beta$ be the covering $f^{-1}\alpha$ of $(X,A)$. Then the induced map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined.
+\end{lem}
+\begin{proof}
+	Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$. Thus the lemma holds.
+\end{proof}
 
 For projection maps and induced homomorphisms we have following useful lemma.
 
@@ -961,6 +970,7 @@ maps $I_{\beta}^{\alpha}$ are induced by some maps $p^\beta_\alpha$ which are un
 Let $q \in \N$ be s fixed number. Let $(X,A)$ be a topological pair and let $G$ be abelian group. Then the groups $H_{q,a}(X,A;G)$ together with maps $I_{\beta}^{\alpha}$ form an inverse system of groups.
 \end{lem}
 \begin{proof}
+%%Using \ref{} goothe category $COV(X,A)$ with the quasi-order relation forms a covariant index categ
 First we have to show that $I_{\alpha}^{\alpha}$ is identity function for every $\alpha \in$ COV$(X,A)$. We already know that identity map between simplicial complexes is projection map and because identity map induces identity map between the complexes by uniqueness of $I_{\alpha}^{\alpha}$ we see that the map has to be identity map between corresponding homology groups.\newline Now for every coverings $\alpha, \beta, \gamma$ of pair $(X,A)$ for which relation $\alpha \leq \beta \leq \gamma$ holds we have to show that $I_{\beta}^{\gamma} \circ I_{\alpha}^{\beta} = I^{\gamma}_{\alpha}$. By lemma \ref{compofprojmaps} the composition of corresponding projection maps $p_{\beta}^{\gamma} \circ p_{\alpha}^{\beta}$ is projection map. Thus it defines map $I^{\gamma}_{\alpha}$.
 \end{proof}
 Now we are ready to define the cech homology groups $ \check{\mathrm{H}}_n$.

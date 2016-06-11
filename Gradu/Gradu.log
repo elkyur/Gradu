@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  11 JUN 2016 12:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  11 JUN 2016 16:35
 entering extended mode
 **Gradu.tex
 (C:\Users\Serafim\Documents\BabasChess\Gradu\Gradu\Gradu\Gradu.tex
@@ -877,7 +877,7 @@ Chapter 3.
 [22
 
 ] [23] [24]
-Overfull \hbox (15.87648pt too wide) in paragraph at lines 1055--1056
+Overfull \hbox (15.87648pt too wide) in paragraph at lines 1064--1065
 $[]\U/matha/m/n/12 p\OML/cmm/m/it/12 \U/matha/m/n/12 q$ \T1/cmr/m/it/12 be the
  cov-er-ing de-fined in pre-vi-ous def-i-ni-tion. Then sin-gu-lar ho-mol-ogy $\
 OML/cmm/m/it/12 H[]\U/matha/m/n/12 p\OMS/cmsy/m/n/12 S\U/matha/m/n/12 p\OML/cmm
@@ -899,10 +899,10 @@ Appendix A.
 
 ] (C:\Users\Serafim\Documents\BabasChess\Gradu\Gradu\Gradu\Gradu.aux) ) 
 Here is how much of TeX's memory you used:
- 13710 strings out of 493921
- 260234 string characters out of 3144870
- 291668 words of memory out of 3000000
- 16728 multiletter control sequences out of 15000+200000
+ 13712 strings out of 493921
+ 260281 string characters out of 3144870
+ 291691 words of memory out of 3000000
+ 16730 multiletter control sequences out of 15000+200000
  27697 words of font info for 75 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  55i,8n,54p,1356b,698s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -932,7 +932,7 @@ b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pf
 b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10
 .pfb>
-Output written on Gradu.pdf (33 pages, 338997 bytes).
+Output written on Gradu.pdf (33 pages, 340520 bytes).
 PDF statistics:
  503 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

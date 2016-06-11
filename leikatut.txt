@@ -91,3 +91,6 @@ We will now prove that the map $p$ is simplicial.
 \end{proof}
 
 \Gamma
+\label{formingsystem}
+
+Let $x$ be an arbitrary element of $\mathcal{S}(X,A)_\beta$, then it belongs to some simplex. Let $S$ be the simplex which is intersection of all simplices in $\mathcal{S}(X,A)_\beta$ which have property that intersection with $\{x\}$ is non-empty. In the simplex $S$ point $x$ has a unique representation $x = \sum_{i \in J}r_ia_i$ where the elements $a_i$ are edges and $r_i$ non-negative real numbers such that $\sum_{i \in J}r_i = 1$ holds. By definition of map $p'$ this point is mapped to $p'(x) = \sum_{i \in J}r_ip^\beta_\alpha(a_i) $ which is uniquely determined. Thus the map $p'$ is well-defined.
