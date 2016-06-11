@@ -73,3 +73,21 @@ Let $(I,\lambda)$ be inverse system and $\phi: \lambda' \rightarrow \lambda$ som
 [label=(\arabic*),ref=(\arabic*)]
 
 Operaattori: \rhd
+
+\begin{lem}
+Let $\beta$ and $\alpha$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and let $p$ be a projection map belonging to $\mathcal{P}(\alpha,\beta)$. Let the map $p'^\beta_\alpha:\mathcal{S}(X,A)_\beta \rightarrow \mathcal{S}(X,A)_\alpha$ be a map between simplices defined by edges $U \in \mathcal{S}(X,A)_\beta$ with the requirement of being piecewise linear on the other elements. Then the map $p'^{\beta}_{\alpha}$ is well-defined.
+\end{lem}
+\begin{proof}
+Let $x$ be an arbitrary element of $\mathcal{S}(X,A)_\beta$, then it belongs to some simplex. Let $S$ be the simplex which is intersection of all simplices in $\mathcal{S}(X,A)_\beta$ which have property that intersection with $\{x\}$ is non-empty. In the simplex $S$ point $x$ has a unique representation $x = \sum_{i \in J}r_ia_i$ where the elements $a_i$ are edges and $r_i$ non-negative real numbers such that $\sum_{i \in J}r_i = 1$ holds. By definition of map $p'$ this point is mapped to $p'(x) = \sum_{i \in J}r_ip^\beta_\alpha(a_i) $ which is uniquely determined. Thus the map $p'$ is well-defined.
+\end{proof}
+
+We will now prove that the map $p$ is simplicial.
+
+\begin{lem}
+	Projection maps $p^\beta_\alpha$ are simplicial.
+\end{lem}
+\begin{proof}
+	Let $s$ be a simplex in $\mathcal{S}(X,A)_\beta$ spanned by some sets $\{U_i\}_{i \in J}$ such that $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $U_i'$ in $\mathcal{S}(X,A)_\alpha$ for which $U_i \subset U_i'$. Intersection $\bigcap_{i \in J}U'_i$ is clearly non empty, so every simplex is mapped inside some simplex.
+\end{proof}
+
+\Gamma

@@ -10,8 +10,8 @@
 \contentsline {subsection}{\numberline {2.2.4}Finality properties of subsystems}{13}
 \contentsline {section}{\numberline {2.3}Nerve of covering}{14}
 \contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{14}
-\contentsline {subsection}{\numberline {2.3.2}Coverings}{16}
-\contentsline {subsubsection}{\numberline {2.3.2.1}Directness property of coverings}{17}
+\contentsline {subsection}{\numberline {2.3.2}Coverings}{17}
+\contentsline {subsubsection}{\numberline {2.3.2.1}Directness property of coverings}{18}
 \contentsline {subsection}{\numberline {2.3.3}The construction}{18}
 \contentsline {chapter}{\numberline {3}Cech homology}{22}
 \contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{23}

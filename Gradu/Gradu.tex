@@ -737,42 +737,44 @@ We assume that the reader knows already basic facts about simplicial complexex. 
 \begin{maar}
 Let $X$ be a set and let $\mathcal{A} = \{S_i\}_{i \in J}$ be some collection of finite subsets of the set $X$. We say that $\mathcal{A}$ forms an abstract simplicial complex over $X$, if a subset of any set $S_i$ in the collection $\mathcal{A}$ is in the collection.
 \end{maar}
-For an abstract simplicial complex we define the following geometric structure which will give us the interface of original simplicial complex. 
+
 \begin{maar}
-Let $X$ be a topological space and $\mathcal{S}(X)_\mathcal{A}$ abstract simplicial complex induced by $X$ and some covering $\mathcal{A}$ and let $J$ be its vertex set. Then the geometric realization of the abstract simplicial complex $\mathcal{S}(X)_\mathcal{A}$ is a subset of the set $[0,1]^J$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(X)_{\mathcal{A}}$ and let $\text{pr}_j:[0,1]^J \rightarrow [0,1]$ be the projection $p_j(x) = x_j$ then:
+	Assume that the set $X$ together with the collection $\mathcal{A} = \{S_i\}_{i \in I}$ is an abstract simplicial complex. Let $A$ be some subset of $X$ and $\mathcal{A}' = \{S'_j\}_{j \in I'}$ a collection of subsets of the space $A$ for which the condition $$S'_j \in \mathcal{A}' \Leftrightarrow S'_j \subset S_i \text{ for some } i \in I $$ 
+	holds. Then we say that $\Gamma(A)_{\mathcal{A}'}$ is a subcomplex of $\Gamma(X)_\mathcal{A}$.
+\end{maar}
+
+ From now on we will denote the abstract simplicial pair $(\Gamma(X)_\mathcal{A},\Gamma(A)_\mathcal{A'})$ simply as $\Gamma(X,A)_{\alpha}$, where $\alpha$ is the pair of collections $(\mathcal{A}, \mathcal{A'})$. We will now define corresponding geometric structure for an abstract simplicial complex. This will give us the interface of original simplicial complex and will allow us to use the theory behind it.
+\begin{maar}
+Let $J$ be a set and $\Gamma(J)_\mathcal{A}$ abstract simplicial complex induced by vertex set $J$ and some collection of abstract simplices $\mathcal{A}$. Then the geometric realization of the abstract simplicial complex $\mathcal{S}(J)_\mathcal{A}$ is a subset of the set $[0,1]^J$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(J)_{\mathcal{A}}$ and let $\text{pr}_j:[0,1]^J \rightarrow [0,1]$ be the projection $p_j(x) = x_j$ then:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	\item Relation $\text{pr}_j(x) > 0$ holds only for finitely many $j \in J$.
 	\item $\sum_{j \in J}\text{pr}_j(x) = 1$.
 	\item The set $\{j \in J \mid \text{pr}_j(x) > 0\}$ belongs to collection $\mathcal{A}$.
 \end{enumerate}
-
 \end{maar}
-
+For the abstract simplicial pair $\Gamma(X,A)_{\alpha}$, we use the definition of geometric realization $\mathcal{S}(X,A)_{\alpha}$ separately for $\Gamma(X)_{\mathcal{A}}$ and $\Gamma(A)_{\mathcal{A}}$ and treat set $[0,1]^A$ as subset of $[0,1]^X$, where for every element $a \in [0,1]^A$ the projection $\text{pr}_i(a) = 0$ for every index $i \in X \setminus A$.
 \begin{lem}
-The geometric realization $\mathcal{S}(X)_{\mathcal{A}} $ of an abstract simplicial complex is a simplicial complex.
+The geometric realization $\mathcal{S}(X,A)_{\alpha} $ of an abstract simplicial complex is a simplicial complex.
 \end{lem}
 \begin{proof}
 	The following conditions are satisfied:
 	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-	\item The collection of simplexes of the simplicial complex is the geometric realizations of sets $S_i$ in the collection
+	\item The collection of simplexes of the simplicial complex is the geometric realizations of sets $S_i$ of the collection $\mathcal{A}$. Respectively the subsimplex consists of the geometric realizations $S'_i$ of collection $\mathcal{A'}$.
 	\item Any face is in the collection by definition of abstract simplicial complex
 	\item Intersection of any two simpleces in the collection is clearly a face or the empty set.
 	\end{enumerate}
- Thus $\mathcal{S}(X)_\mathcal{A}$ is simplicial complex.
+ Thus $\mathcal{S}(X,A)_\mathcal{A}$ is simplicial complex.
 \end{proof}
-\begin{maar}
-Assume that the set $X$ together with the collection $\mathcal{A} = \{S_i\}_{i \in I}$ is an abstract simplicial complex. Let $A$ be some subset of $X$ and $\mathcal{A}' = \{S'_j\}_{j \in I'}$ a collection of subsets of the space $A$ for which the condition $$S'_j \in \mathcal{A}' \Leftrightarrow S'_j \subset S_i \text{ for some } i \in I $$ 
-holds. Then we say that $\mathcal{S}(A)_{\mathcal{A}'}$ is a subcomplex of $\mathcal{S}(X)_\mathcal{A}$.
-\end{maar}
-If $\mathcal{S}(X)_{\mathcal{A}}$ is a simplicial complex and $\mathcal{S}(A)_{\mathcal{A'}}$ is its subcomplex, then they form a topological pair which we will denote by $(\mathcal{S}(X)_{\mathcal{A}}, \mathcal{S}(A)_{\mathcal{A}'})$  Next we will recall the definition of a simplicial map.
+Next we will recall the definition of a simplicial map.
 \begin{maar}
 Let $(X,A)$ and $(Y,B)$ be pairs of simplicial complexes and let $f$ be a continuous function between pairs. Then we say that the map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and the images of vertexes of a simplex in $A$ span some simplex in $B$.
 \end{maar}
 \begin{lem}
-Let $(X,A)$ and $(Y,B)$ be pairs of abstract simplicial complex and let \mbox{$f:(X,A) \rightarrow (Y,B)$} be a simplicial map between the complexes. Let $(X',A')$ and $(Y',B')$ be geometric realization of the abstract simplicial complexes $(X,A)$ and $(Y,B)$. Then the map $f_*$ induced by images of the edges mapped by function $f$ and defined to be piecewise linear map on all the other elements is well-defined and simplicial map. 
+Let $(X,A)$ and $(Y,B)$ be pairs of abstract simplicial complex and let \mbox{$f:(X,A) \rightarrow (Y,B)$} be a simplicial map between the complexes. Let $(X',A')$ and $(Y',B')$ be geometric realization of the abstract simplicial complexes $(X,A)$ and $(Y,B)$. Then the map $f_*:(X',A') \rightarrow (Y',B')$ induced by images of the edges mapped by function $f$ and defined to be piecewise linear map on all the other elements is well-defined and simplicial map. 
 \end{lem}
 \begin{proof}
-Let $x$ be an arbitrary element of $(X,A)$, by definition $x$ has a unique representation $x = \sum_{i \in J}r_ia_i$, where $r_i$ are coefficients and $a_i$ belong to the set of edges. 
+Let $x$ be an arbitrary element of $(X,A)$, by definition $x$ has a unique representation $x = \sum_{i \in J}r_ia_i$, where $r_i$ are coefficients and $a_i$ belong to the set of edges. By piecewise linearity $$f_*(x) = f_*(\sum_{i \in J}r_ia_i) = \sum_{i \in J}r_if_*(a_i) $$ \newline
+Because we assumed that the map $f$ simplicial, we see that the sum is in the corresponding subset of $[0,1]^J$. Thus $f_*(x)$ is uniquely determined. It is easy to see that the map is simplicial. Let $\{a_{t(1)}, ... , a_{t(n)}\}$ be some simplex in the collection, then it is mapped to simplex $\{f(a_{t(1)}), ... , f(a_{t(n)})\}$ by definition of the map $f$.
 \end{proof}
 \begin{maar}
 Let $f:(X,A) \rightarrow Y$ and $g:(X,A) \rightarrow (Y,B)$ be simplicial maps. Then we say that the maps are contiguous if for every simplex $s = \{a_1, ..., a_n\}$ in $(X,A)$ there exists a simplex $k$ in $(Y,B)$ for which relations span $(f(a_1), ..., f(a_n)) \subset k$ and span \mbox{$(g(a_1), ..., g(a_n))  \subset k$} hold.
@@ -882,23 +884,10 @@ Note that the collection above is defined to be the collection obtained by takin
 Let $F:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\beta$ be the covering $f^{-1}\alpha$ of $(X,A)$. Then the induced map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined.
 \end{lem}
 \begin{proof}
-Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$, so the lemma holds.
-\end{proof}
-\begin{lem}
-Let $\beta$ and $\alpha$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and let $p$ be a projection map belonging to $\mathcal{P}(\alpha,\beta)$. Let the map $p'^\beta_\alpha:\mathcal{S}(X,A)_\beta \rightarrow \mathcal{S}(X,A)_\alpha$ be a map between simplices defined by edges $U \in \mathcal{S}(X,A)_\beta$ with the requirement of being piecewise linear on the other elements. Then the map $p'^{\beta}_{\alpha}$ is well-defined.
-\end{lem}
-\begin{proof}
-Let $x$ be an arbitrary element of $\mathcal{S}(X,A)_\beta$, then it belongs to some simplex. Let $S$ be the simplex which is intersection of all simplices in $\mathcal{S}(X,A)_\beta$ which have property that intersection with $\{x\}$ is non-empty. In the simplex $S$ point $x$ has a unique representation $x = \sum_{i \in J}r_ia_i$ where the elements $a_i$ are edges and $r_i$ non-negative real numbers such that $\sum_{i \in J}r_i = 1$ holds. By definition of map $p'$ this point is mapped to $p'(x) = \sum_{i \in J}r_ip^\beta_\alpha(a_i) $ which is uniquely determined. Thus the map $p'$ is well-defined.
+Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$. Thus the lemma holds.
 \end{proof}
 
-We denote the map $p'^\beta_\alpha$ described above just as $p^\beta_\alpha$. It is clear from the context which of the maps is being used. We will now prove that the map $p$ is simplicial.
-
-\begin{lem}
-Projection maps $p^\beta_\alpha$ are simplicial.
-\end{lem}
-\begin{proof}
-Let $s$ be a simplex in $\mathcal{S}(X,A)_\beta$ spanned by some sets $\{U_i\}_{i \in J}$ such that $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $U_i'$ in $\mathcal{S}(X,A)_\alpha$ for which $U_i \subset U_i'$. Intersection $\bigcap_{i \in J}U'_i$ is clearly non empty, so every simplex is mapped inside some simplex.
-\end{proof}
+We denote the map $p'^\beta_\alpha$ described above just as $p^\beta_\alpha$. It is clear from the context which of the maps is being used. \newline
 Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define the same homomorphisms between corresponding homology groups of spaces $\mathcal{S}(X,A)_\alpha$ and $\mathcal{S}(X,A)_\beta$.
 \begin{lem}
 Let $\alpha$ and $\beta$ be any coverings of $(X,A)$ for which condition  $\alpha \leq \beta$ is satisfied. Then projection maps $p^\beta_\alpha$ and $p'^\beta_\alpha$ are contiguous.
