@@ -94,3 +94,39 @@ We will now prove that the map $p$ is simplicial.
 \label{formingsystem}
 
 Let $x$ be an arbitrary element of $\mathcal{S}(X,A)_\beta$, then it belongs to some simplex. Let $S$ be the simplex which is intersection of all simplices in $\mathcal{S}(X,A)_\beta$ which have property that intersection with $\{x\}$ is non-empty. In the simplex $S$ point $x$ has a unique representation $x = \sum_{i \in J}r_ia_i$ where the elements $a_i$ are edges and $r_i$ non-negative real numbers such that $\sum_{i \in J}r_i = 1$ holds. By definition of map $p'$ this point is mapped to $p'(x) = \sum_{i \in J}r_ip^\beta_\alpha(a_i) $ which is uniquely determined. Thus the map $p'$ is well-defined.
+
+
+\begin{maar}
+Respectively we say that the relation corresponds contra-variantly, if  
+
+$$\hom(a,b) = \left\{
+\begin{array}{ll}
+\{\lambda^b_a(j)\}_{j \in J(a,b)}  & \mbox{if } a \leq b \\
+\emptyset & \mbox{else.} 
+\end{array}
+\right.  $$ 
+
+The composition rule is defined for all morphisms $\lambda^c_b(i) \circ \lambda^b_a(j) = \lambda^c_a(k)$ and the identity morphism $\lambda^a_a$ is found for every $a$.
+\end{maar}
+
+\begin{lem}\label{formingsystem}
+	A quasi-ordered class of objects together with corresponding class of morphisms forms a category.  
+\end{lem}
+\begin{proof}
+	We denote the object and morphism classes as defined above and prove that those collections satisfies the needed requirements to be called a category
+	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+		\item The associativity property: $(\lambda_c^d \circ \lambda^c_b) \circ \lambda^b_a = \lambda^d_a = \lambda_c^d \circ (\lambda^c_b \circ \lambda^b_a)$
+		\item $\lambda^{a}_a \circ \lambda^b_a = \lambda^b_a $ and  $\lambda^{b}_a \circ \lambda^b_b = \lambda^b_a $ clearly holds
+		
+	\end{enumerate}
+	The proof for the contra-variant is similar and we leave it to the reader to fill in the details.
+\end{proof}
+
+and following two properties are satisfied. For any two morphisms $\lambda^b_a(i)$, $\lambda^c_b(j)$ there exists some morphism $ \lambda^c_a(k)$ for which $ \lambda^b_a(i) \circ \lambda^c_b(j) = \lambda^c_a(k)$ holds and there exists identity morphism $\lambda^a_a$ for every $a$.
+
+\begin{proof}
+%%Using \ref{} goothe category $COV(X,A)$ with the quasi-order relation forms a covariant index categ
+First we have to show that $I_{\alpha}^{\alpha}$ is identity function for every $\alpha \in$ COV$(X,A)$. We already know that identity map between simplicial complexes is projection map and because identity map induces identity map between the complexes by uniqueness of $I_{\alpha}^{\alpha}$ we see that the map has to be identity map between corresponding homology groups.\newline Now for every coverings $\alpha, \beta, \gamma$ of pair $(X,A)$ for which relation $\alpha \leq \beta \leq \gamma$ holds we have to show that $I_{\beta}^{\gamma} \circ I_{\alpha}^{\beta} = I^{\gamma}_{\alpha}$. By lemma \ref{compofprojmaps} the composition of corresponding projection maps $p_{\beta}^{\gamma} \circ p_{\alpha}^{\beta}$ is projection map. Thus it defines map $I^{\gamma}_{\alpha}$.
+\end{proof}
+
+\ref{projektiokuvauksetindusoivatsamathomomorfismit}

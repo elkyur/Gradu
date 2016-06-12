@@ -358,43 +358,44 @@ Let $\lambda$ be a category and let $a \leq b$ be a relation in the object class
 
 \end{maar}
 \begin{maar}
-Let $\lambda$ be a category with a quasi-order relation. We say that the collection of morphisms correspond to the relation co-variantly, if the classes $\text{hom}(a,b) $ are of the following form:
+Let $\lambda$ be a category with a quasi-order relation. We say that the collection of morphisms correspond to the relation, if the classes $\text{hom}(a,b) $ are of the following form:
 $$\hom(a,b) = \left\{
 \begin{array}{ll}
-\{\lambda^a_b\}  & \mbox{if } b \leq a \\
+\{\lambda^a_b(i)\}_{i \in I(a,b)}  & \mbox{if } b \leq a \\
 \emptyset & \mbox{else.} 
 \end{array}
 \right.  $$ 
-and the composition of two morphisms is defined to be $\lambda^b_a \circ \lambda^c_b = \lambda^c_a$ and the identity morphism to be $\lambda^a_a$.
+We assumed that $\lambda$ is a category then every $\lambda^a_b(i) \circ \lambda^b_c(j)$ is well-defined. We define the composition to be $\lambda^a_c(i * j)$.
 \end{maar}
+
+\begin{maar}\label{inversesystem}
+Let $\lambda$ be a quasi-ordered category with the corresponding class of morphisms. Let $C$ be a category and let $I:\lambda \rightarrow C$ be a covariant functor for which the following conditions are satisfied:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+\item For every non-empty class of morphisms $\hom(a,b)$ there corresponds a morphism $I^a_b$ in category $C$ for which $I(\hom(a,b)) = \{I^a_b\}$ holds.
+\item Every element in the class of morphisms of the form $\hom(a,a)$ is mapped to the morphism $id_{I(a)} $ 
+\end{enumerate}
+Then we say that $I$ is inverse system indexed by the category $\lambda$. 
+\end{maar}
+The dual of the concept inverse system is direct system.
 \begin{maar}
-Respectively we say that the relation corresponds contra-variantly, if  
-
-$$\hom(a,b) = \left\{
-\begin{array}{ll}
-\{\lambda^b_a\}  & \mbox{if } a \leq b \\
-\emptyset & \mbox{else.} 
-\end{array}
-\right.  $$ 
-
-the composition in which is defined to be $\lambda^c_b \circ \lambda^b_a = \lambda^c_a$ and the identity morphism to be $\lambda^a_a$.
+Let $\lambda$ be a quasi-ordered category with the corresponding class of morphisms. Let $C$ be a category and let $I:\lambda \rightarrow C$ be a contra-variant functor for which the following conditions are satisfied:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	\item For every non-empty class of morphisms $\hom(a,b)$ there corresponds a morphism $D^b_a$ in category $C$ for which $D(\hom(a,b)) = \{D^b_a\}$ holds.
+	\item Every element in the class of morphisms of the form $\hom(a,a)$ is mapped to the morphism $id_{I(a)} $ 
+\end{enumerate}
+Then we say that $D$ is directed system indexed by the category $\lambda$. 
 \end{maar}
-\begin{lem}\label{formingsystem}
-A quasi-ordered class of objects together with covariant or contra-variant class of morphisms forms a category.  
+
+\begin{lem}\label{welldefinessofsystems}
+The direct and inverse system functors are well-defined
 \end{lem}
 \begin{proof}
-We denote the object and morphism classes as defined above and prove that those collections satisfies the needed requirements to be called a category. For the covariant class, we have the following proof:
+We write this proof only for inverse systems, the case of direct systems is similar. Let $(I, \lambda)$ be arbitrary inverse system, then following conditions hold:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-	\item The associativity property: $(\lambda_c^d \circ \lambda^c_b) \circ \lambda^b_a = \lambda^d_a = \lambda_c^d \circ (\lambda^c_b \circ \lambda^b_a)$
-	\item $\lambda^{a}_a \circ \lambda^b_a = \lambda^b_a $ and  $\lambda^{b}_a \circ \lambda^b_b = \lambda^b_a $ clearly holds
-
+	\item Combining conditions (1) and (2) of the definition $\ref{inversesystem}$ and using the fact that every identity morphism can be found in collection $\hom_\lambda(a,a)$ we see that the condition $I(id_a) = id_{I(a)}$ is satisfied.
+	\item The condition $I(\lambda^a_b(i)) \circ I(\lambda^b_c(j)) = I^a_b \circ I^b_c = I^a_c = I(\lambda^a_c(i * j)) = I(\lambda^a_b(i) \circ \lambda^b_c(j){\tiny })$
 \end{enumerate}
-The proof for the contra-variant is similar and we leave it to the reader to fill in the details.
 \end{proof}
-\begin{maar}
-Let $\lambda$ be a quasi-ordered category. Let $C$ be a category and let $D:\lambda \rightarrow C$ be an indexing functor. If the morphism relation corresponds co-variantly to the relation we say that the functor $D$ is a direct system indexed by $\lambda$. In the case if the morphisms are contra-variant we denote the functor as $I$ and say that the functor is an inverse system indexed by $\lambda$.
-\end{maar}
-
 
 \begin{esim}
 Let SET be the category of sets with order relation defined by $U \leq V \Leftrightarrow U \subset V$. Now for every $U,V$ we define $D_U^V: U \rightarrow V $ to be the inclusion from $U$ to $V$. Clearly this forms a direct system. 
@@ -803,7 +804,7 @@ Let $(X,A)$ be a topological pair. Then we say that $(\{U_i\}_{i \in J},\{U_i\}_
 \end{enumerate}
 A covering defined above will be from now on denoted as $\mathcal{C}(U_i, J, J')$
 \end{maar}
-We define the category of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. Next we will see that we can define quasi order for coverings of topological pair $(X,A)$ in a natural way. However, first we have to recall the definition of a refinement.
+We define the collection of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. Next we will see that we can define quasi order for coverings of topological pair $(X,A)$ in a natural way. However, first we have to recall the definition of a refinement.
 \begin{maar}\label{coveringquasidefinition}
 	Let $\alpha = \mathcal{C}(U_i, I, I')$ and $\beta = \mathcal{C}(V_j, J, J')$ be coverings of some pair $(X,A)$. Then the covering $\beta$ is called a refinement of the covering $\alpha$, if for every $V_j \in \beta$ there exists some $U_i \in \alpha$ for which $V_j \subset U_i$ holds.
 \end{maar}
@@ -864,11 +865,11 @@ We will now show that the family of projection maps is closed under composition.
 \begin{proof}
 	Let $U \in \gamma$, then if $U' = p^{\gamma}_{\beta}(U) \in \beta$ and $U'' = p^{\beta}_{\alpha} \circ p^{\gamma}_{\beta}(U) $ , by the definition condition $U \subset U' \subset U''$ holds . By properties of inclusion we can conclude taht $U \subset U''$ and thus $p^\beta_\alpha \circ p^\gamma_\beta$ is a projection map.
 \end{proof}
-\begin{lem}
+\begin{lem}\label{coviscategory}
 The collection of coverings $\text{COV}(X,A)$ is a category defined in the following way:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	\item The objects of $\text{COV}(X,A)$ are all open coverings of the pair $(X,A)$.
-	\item We define $\text{Hom}(\beta,\alpha)$ to be $\mathcal{P}(\alpha, \beta)$, if $\alpha \leq \beta$. Else we define $\text{Hom}(\beta,\alpha)$ to be empty set.  
+	\item We define $\text{Hom}(\beta,\alpha)$ to be $\mathcal{P}(\alpha, \beta)$, if $\alpha \leq \beta$. Else we define $\text{Hom}(\beta,\alpha)$ to be the empty set.  
 	\item The composition of maps is defined to be the usual composition of functions.
 
 \end{enumerate}
@@ -887,19 +888,25 @@ By Lemma \ref{compofprojmaps} the composition of two projection maps is a projec
 All the lemmas and proves have been presented only for the abstract simplicial complexes. The geometric realization of the nerve of the covering will be denoted simply as $\mathcal{S}(X,A)_\alpha$. The concept of projection map is being used in many different contexts. However, because it is clear from the context which definition is used in all the contexts we will denote the projection map to be simply $p'^\beta_\alpha$. It is also worth noticing that from lemma \ref{geometricrealizationsimplicial} it follows that the induced map $p^{\beta}_{\alpha}$ between the geometric realizations $\mathcal{S}(X,A)_\beta$ and $\mathcal{S}(X,A)_\alpha$ is also well-defined and simplicial. 
  \newline
 Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define the same homomorphisms between corresponding homology groups of spaces $\mathcal{S}(X,A)_\alpha$ and $\mathcal{S}(X,A)_\beta$.
-\begin{lem}
+\begin{lem}\label{contiguouspropertyforprojectionmaps}
 Let $\alpha$ and $\beta$ be any coverings of $(X,A)$ for which condition  $\alpha \leq \beta$ is satisfied. Then projection maps $p^\beta_\alpha$ and $p'^\beta_\alpha$ are contiguous.
 \end{lem}
 \begin{proof}
 
-To prove that the maps are contiguous we form simplex in $\mathcal{S}(Y,B) $ and prove that images of both maps belong to it. Every vertex $U_i$ in $\mathcal{S}(X,A)$ is mapped to $U'_i$ and $U''_i$ by $p^\beta_\alpha$ and $p'^\beta_\alpha$ respectively. Now if $\bigcap_{i \in J}U_i \neq \emptyset$ then also $\bigcap_{i \in J}U'_i \cap \bigcap_{i \in J}U''_i \neq \emptyset$. In the case if the vertexes belong to $\mathcal{S}(A)$ it is easy to see that projection map maps them to some simplex in $\mathcal{S}(B)$.  
+To prove that the maps are contiguous we form simplex in $\mathcal{S}(Y,B) $ and prove that images of both maps belong to it. Every vertex $x_i$ in $\mathcal{S}(X,A)$ is mapped to $x'_{s(i)}$ and $x''_{d(i)}$ by $p^\beta_\alpha$ and $p'^\beta_\alpha$ respectively. Let $U_i$ be the open sets corresponding to vertexes $x_i$. Now for every simplex $\{x_{r(0)}, ... x_{r(n)}\}$ the corresponding intersection $\bigcap_{i \in J}U_i$ is non-empty. Let $U'_i$ correspond to  $x'_{s(i)}$ and $U''_i$ to $x''_{d(i)}$. We see that $\bigcap_{i \in J}U'_i \cap \bigcap_{i \in J}U''_i \neq \emptyset$ and thus the corresponding simplex $\{x'_{s \circ r(1)}, ... , x'_{s \circ r(n)}, x''_{d \circ r(1)}, ... x''_{d \circ r(n)}\}$ where the duplicates are removed is in the collection. In the case if the simplex belongs to $\mathcal{S}(A)$ it is easy to see that projection map maps them to some simplex which lies inside $\mathcal{S}(B)$.  
 \end{proof}
-By using this lemma and the fact that contiguous simplicial maps induce same homology groups we can define unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}(X,A)_{\beta}) \rightarrow H_q(\mathcal{S}(X,A)_{\alpha})$ for every $q \in \N$.
+\begin{kor}\label{projektiokuvauksetindusoivatsamathomomorfismit}
+Let $(X,A)$ be a topological pair. The projection maps in collection $\mathcal{P}_{(X,A)}(a,b)$ define same homomorphisms between singular homology groups.
+\end{kor}
+\begin{proof}
+Follows directly using lemma \ref{contiguouspropertyforprojectionmaps} and the fact that contiguous simplicial maps induce same homology groups 
+\end{proof}
+Thus we  can define the unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}(X,A)_{\beta}) \rightarrow H_q(\mathcal{S}(X,A)_{\alpha})$ for every $q \in \N$.
 
 \begin{maar}
 	Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(V_i, J_{\beta}, J'_{\beta})$, where $V_i = f^{-1}U_i$ for every $i \in J_{\beta}$.
 \end{maar}
-Note that the collection above is defined to be the collection obtained by taking the element in the covering $\beta$. 
+Note that the collection $\alpha$ above is defined in a such way, that for every element $U_i \in \beta$ we make copy, take preimage of it and add it to the collection $\alpha$.
 \begin{lem}
 	Let $F:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\beta$ be the covering $f^{-1}\alpha$ of $(X,A)$. Then the induced map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined.
 \end{lem}
@@ -970,9 +977,9 @@ maps $I_{\beta}^{\alpha}$ are induced by some maps $p^\beta_\alpha$ which are un
 Let $q \in \N$ be s fixed number. Let $(X,A)$ be a topological pair and let $G$ be abelian group. Then the groups $H_{q,a}(X,A;G)$ together with maps $I_{\beta}^{\alpha}$ form an inverse system of groups.
 \end{lem}
 \begin{proof}
-%%Using \ref{} goothe category $COV(X,A)$ with the quasi-order relation forms a covariant index categ
-First we have to show that $I_{\alpha}^{\alpha}$ is identity function for every $\alpha \in$ COV$(X,A)$. We already know that identity map between simplicial complexes is projection map and because identity map induces identity map between the complexes by uniqueness of $I_{\alpha}^{\alpha}$ we see that the map has to be identity map between corresponding homology groups.\newline Now for every coverings $\alpha, \beta, \gamma$ of pair $(X,A)$ for which relation $\alpha \leq \beta \leq \gamma$ holds we have to show that $I_{\beta}^{\gamma} \circ I_{\alpha}^{\beta} = I^{\gamma}_{\alpha}$. By lemma \ref{compofprojmaps} the composition of corresponding projection maps $p_{\beta}^{\gamma} \circ p_{\alpha}^{\beta}$ is projection map. Thus it defines map $I^{\gamma}_{\alpha}$.
+Lemma \ref{coviscategory} says that $COV(X,A)$ with the morphisms induced by the quasi-order relation forms a category. Let $I$ be a functor with maps every covering to a corresponding geometric realization of the nerve and every morphism between the coverings to the induced homomorphism. Using lemmas \ref{projektiokuvauksetindusoivatsamathomomorfismit} and \ref{welldefinessofsystems} we see that the functor defined in this way is a well-defined functor and forms an inverse system. 
 \end{proof}
+
 Now we are ready to define the cech homology groups $ \check{\mathrm{H}}_n$.
 \begin{maar}
 Let $(X,A)$ be topological pair and $G$ abelian group. Then cech homology groups with coefficients $G$ are defined to be inverse limits of $H_{q,\alpha}(X,A;G)$ where $\alpha$ belongs to COV$(X,A)$. Simply denoted  $\check{\mathrm{H}}_q(X,A;G) = \lim_{\rightarrow}\{H_{q,\alpha}(X,A;G)\}$
