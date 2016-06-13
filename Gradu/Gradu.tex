@@ -916,11 +916,11 @@ Thus we  can define the unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}
 	Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(V_i, J_{\beta}, J'_{\beta})$, where $V_i = f^{-1}U_i$ for every $i \in J_{\beta}$.
 \end{maar}
 Note that the collection $\alpha$ above is defined in a such way, that for every element $U_i \in \beta$ we make copy, take preimage of it and add it to the collection $\alpha$.
-\begin{lem}
-	Let $f:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\beta$ be the covering $f^{-1}\alpha$ of $(X,A)$. Then the induced map $f_*: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined.
+\begin{lem}\label{inducedmapf}
+	Let $f:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\beta$ be the covering $f^{-1}\alpha$ of $(X,A)$. Then the induced map $f_*: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined inclusion.
 \end{lem}
 \begin{proof}
-	Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$. Thus the lemma holds.
+	Let $\{V_{j_1},.., V_{j_n}\}$ be arbitrary simplex in the nerve $\mathcal{S}(X,A)_{\alpha}$, for which $V_{i} = f^{-1}U_{i}$ holds. Then for the edges of corresponding abstract simplex the intersection  $\bigcap_{i \in J}f^{-1}U_{i} $, where $J_{\beta}$ is finite index set over elements of covering $\beta$, is empty. It implies that $\bigcap_{i \in J}U_i \neq \emptyset$, thus because edges were defined in one to one correspondence the function defined this way is well-defined inclusion.
 \end{proof}
 
 For projection maps and induced homomorphisms we have following useful lemma.
@@ -968,48 +968,43 @@ This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \s
 \end{lem}
 
 \begin{proof}
-Lemma \ref{preimageorder} says that there exists are project map $p'^{b'}_{a'}$,
+Lemma \ref{preimageorder} states that $f^{-1}\beta$ is refinement of $f^{-1}\alpha$. We define map $p'^{\beta'}_{\alpha'}$ to be the map which maps every $U_i$ to element $ f^{-1}_a(p^{\beta}_{\alpha} \circ f_{\beta}(U_i))$. We have to show that the map is well-defined. We recall that $p^{\beta}_{\alpha }$ maps every set to some larger set. Thus $ f^{-1}p^{\beta}_{\alpha}f(U_i)$ is non-empty. The second part of the claim follows directly from the lemma \ref{inducedmapf}, which states that maps $f_\alpha$ and $f_\beta$ are inclusions between corresponding simplices.
 \end{proof}
 
-\chapter{Cech homology}
+\chapter{\v{C}ech homology}
 
-In this chapter we will construct Cech homology and prove the main results related to it.  We will first define an inverse system of homology groups of the nerves.
+In this chapter we will construct \v{C}ech homology and prove the main results related to it.  We will first define an inverse system of homology groups of the nerves.
 
 \begin{maar}
 Let $\alpha$ be an element of $\text{COV}(X,A)$ and let $G$ be an abelian group. Then we can define the group $H_{q,a}(X,A;G)$ using the singular homology groups in the following way: 
 $$H_{q,a}(X,A;G) = H_q(\mathcal{S}(X,A)_{\alpha};G).$$ 
-For all coverings of $\alpha, \beta$ in $(X,A)$ with $\alpha \leq \beta$ we define the maps to be
+Let $\alpha, \beta$ be coverings of $(X,A)$ for which relation $\alpha \leq \beta$ holds. Let $p^{\beta}_{\alpha}$ be some projection map between the coverings. Let
 $$I^{\beta}_{\alpha}: H_{q,\beta} \rightarrow  H_{q,\alpha}$$ 
-maps $I_{\beta}^{\alpha}$ are induced by some maps $p^\beta_\alpha$ which are unique up to homotopy.
+be the homomorphisms induced by $p^{\beta}_{\alpha}$. Since all projection maps $p^{\beta}_{\alpha}$ are contingous, it follows that $I^{\beta}_{\alpha}$ is independent of the choice of $p^{\beta}_{\alpha}$.
 \end{maar}
 \begin{lem}
-Let $q \in \N$ be s fixed number. Let $(X,A)$ be a topological pair and let $G$ be abelian group. Then the groups $H_{q,a}(X,A;G)$ together with maps $I_{\beta}^{\alpha}$ form an inverse system of groups.
+Let $q \in \N$ be a fixed number. Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the groups $H_{q,a}(X,A;G)$ together with maps $I_{\beta}^{\alpha}$ form an inverse system of groups.
 \end{lem}
 \begin{proof}
-Lemma \ref{coviscategory} says that $COV(X,A)$ with the morphisms induced by the quasi-order relation forms a category. Let $I$ be a functor with maps every covering to a corresponding geometric realization of the nerve and every morphism between the coverings to the induced homomorphism. Using lemmas \ref{projektiokuvauksetindusoivatsamathomomorfismit} and \ref{welldefinessofsystems} we see that the functor defined in this way is a well-defined functor and forms an inverse system. 
+Lemma \ref{coviscategory} says that $COV(X,A)$ with the morphisms induced by the quasi-order relation forms a category. Let $I$ be a functor which maps every covering to a corresponding geometric realization of the nerve and every morphism between the coverings to the induced homomorphism. Using lemmas \ref{projektiokuvauksetindusoivatsamathomomorfismit} and \ref{welldefinessofsystems} we see that the functor defined in this way is a well-defined functor and forms an inverse system. 
 \end{proof}
 
-Now we are ready to define the cech homology groups $ \check{\mathrm{H}}_n$.
+Now we are ready to define the \v{C}ech homology groups $ \check{\mathrm{H}}_n$.
 \begin{maar}
-Let $(X,A)$ be topological pair and $G$ abelian group. Then cech homology groups with coefficients $G$ are defined to be inverse limits of $H_{q,\alpha}(X,A;G)$ where $\alpha$ belongs to COV$(X,A)$. Simply denoted  $\check{\mathrm{H}}_q(X,A;G) = \lim_{\rightarrow}\{H_{q,\alpha}(X,A;G)\}$
+Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the \v{C}ech homology groups with coefficients $G$ are defined to be inverse limits of $H_{q,\alpha}(X,A;G)$ where $\alpha$ belongs to COV$(X,A)$. Simply denoted  $$\check{\mathrm{H}}_q(X,A;G) = \lim_{\rightarrow}\{H_{q,\alpha}(X,A;G)\}$$
 
 \end{maar}
 Because coverings can be infinite the limits are not necessary defined. However there is a way to evade this problem. 
 
-\section{Well-definedness of the Cech homology groups}
-In this section we will provide condition for the spaces which will guarantee that the Cech groups are well-defined. 
-...
-From now on in this chapter we assume that the topological spaces are such for which the Cech groups  are well-defined. 
-
 \section{Induced homomorphisms}
-In this section we will investigate properties of induced homomorphism. Earlier we defined Cech homology groups to be limit of the groups induced by coverings of the pair. In section \ref{limitmorphism} we defined concept of limit homomorphism. In next theorem we will show that such homomorphism exists.
+In this section we will investigate properties of induced homomorphisms. Earlier we defined \v{C}ech homology groups to be the limits of the groups induced by coverings of pairs. In section \ref{limitmorphism} we defined the concept of limit homomorphism. In the next theorem we will show that such homomorphism exists.
 
 \begin{lause}
-Let $f:(X,A) \rightarrow (Y,B)$ be continuous function between pairs of spaces. Let $\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of pair }(Y,B)\}$ be family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces maps between corresponding cech homology groups. $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
-We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collections is natural transformation of the Cech homology groups and the limit function is well defined. 
+Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Let $$\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of pair }(Y,B)\}$$ be a family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces homomorphisms between corresponding \v{C}ech homology groups: $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
+We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collection is a natural transformation of the \v{C}ech homology groups and the limit function is well defined. 
 \end{lause}
 \begin{proof}
-We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(A,B)$ to map every object $\alpha$ to $f^{-1}\alpha$. By lemma \ref{preimageorder} this functor preserves order. Let $\beta$ and $\alpha$ be some coverings of pair $(Y,B)$. We denote $\alpha'$ and $\beta'$ to be the preimage categories of $\alpha$ and $\beta$ under map $f$. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have a following commutable diagram:
+We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(A,B)$ to map every object $\alpha$ to $f^{-1}\alpha$. By lemma \ref{preimageorder} this functor preserves order. Let $\beta$ and $\alpha$ be some coverings of pair $(Y,B)$. We denote by $\alpha'$ and $\beta'$ the preimage categories of $\alpha$ and $\beta$ under the map $f$ respectively. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have a following commutable diagram:
 	$$
 	\begin{tikzpicture}
 	
@@ -1040,25 +1035,25 @@ We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(A,B)$ to ma
 	\end{tikzpicture}
 	$$
 	
-The fact that collection $\mathcal{A}_q$ is natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists limit homomorphism $$f_q:\check{\mathrm{H}}_q(X,A;G) \rightarrow \check{\mathrm{H}}_q(Y,B;G) $$
+The fact that the collection $\mathcal{A}_q$ is a natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists a limit homomorphism $$f_q:\check{\mathrm{H}}_q(X,A;G) \rightarrow \check{\mathrm{H}}_q(Y,B;G) $$
 \end{proof}
-We will show now that the Cech homology group is a functor. 
+We will show now that the \v{C}ech homology group is a functor. 
 \begin{lause}
-Cech homology groups are functors from the category of the topological pairs to the category of abelian groups 
+\v{C}ech homology groups are functors from the category of topological pairs to the category of abelian groups 
 \end{lause}
 \begin{proof}
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 \item Every pair of spaces is mapped uniquely to some abelian group.
 \item The limit of identity map is an identity homomorphism.
-\item Let $f:(X,A) \rightarrow (Y,B)$ and $g:(Y,B) \rightarrow (Z,C)$ be continuous maps between pairs. We know that $(g \circ f)_{*} = g_* \circ f_*$ holds for the singular homology groups. Then by using theorem \ref{compositionlimitmorphism} we see that the limit homomorphism $\lim ((g \circ f)_*)$ equals $\lim g_* \circ \lim f_*$.
+\item Let $f:(X,A) \rightarrow (Y,B)$ and $g:(Y,B) \rightarrow (Z,C)$ be continuous maps between pairs. We know that $f$, $g$ induces homomorphisms $$f_{*}:H_*(X,A) \rightarrow H_*(Y,B) \text{ and } g_{*}:H_*(X,A) \rightarrow H_*(Y,B).$$ Thus using axioms of singular homology theory we see that $(g \circ f)_{*} = g_* \circ f_*$ holds for the singular homology groups. Then by using theorem \ref{compositionlimitmorphism} we see that the limit homomorphism $\lim ((g \circ f)_*)$ equals $\lim g_* \circ \lim f_*$.
 \end{enumerate}
 \end{proof}
 
 
 \section{Dimension axiom}
-In this section we will prove that the cech homology theory satisfies the dimension axiom.
+In this section we will prove that the \v{C}ech homology theory satisfies the dimension axiom.
 \begin{lause}
-Let $X = \{x\}$ be a space which consist of one point. Then the cech homology groups $\check{\mathrm{H}}_n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
+Let $X = \{x\}$ be a space consisting of one point. Then the \v{C}ech homology groups $\check{\mathrm{H}}_n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
 \end{lause}
 \begin{proof}
 For the space $X$ there exists only one open covering $\alpha = \{x\}$ and thus the inverse system of the corresponding singular homology groups is trivial. It is easy to see that the limit of this system is the group $H_q(\mathcal{S}(X)_a; G)$ together with the identity homomorphisms. The simplex $\mathcal{S}(X)_{\alpha}$ consists only of one edge and thus is homeomorphic to a one point space. From the dimension axiom of singular homology it is easy to see that
@@ -1071,7 +1066,7 @@ $$\check{\mathrm{H}}_n(X; G) = \left\{
 \end{proof}
 
 \section{Homotopy axiom}
-The main result of this section is the homotopy axiom of Cech homology which states that if two spaces are homotopic then their all Cech homology groups are isomorphic. In the beginning we will prove an important result regarding the singular homology groups of the nerve of the unit interval $[0,1]$. 
+The main result of this section is the homotopy axiom of \v{C}ech homology which states that if two spaces are homotopic then their all \v{C}ech homology groups are isomorphic. In the beginning we will prove an important result regarding the singular homology groups of the nerve of the unit interval $[0,1]$. 
 
 \begin{maar}
 Let $X$ be a topological space and $\alpha$ its finite open covering. Then $\text{CLEAN}(\alpha)$ is a covering of space $X$, which is formed by removing every such element $A \in \alpha$ for which $A \subset B$ holds for some $B \in \alpha$ from the collection.

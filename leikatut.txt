@@ -136,3 +136,9 @@ and maps $f_{\beta}$ and $p^\beta_\alpha$, every edge $a_{J(i)}$ is mapped to so
 \begin{proof}
 Let $\{a_{J(1)}, ... , a_{J(n)}\}$ be some simplex in $\mathcal{S}(X,A)_{\beta'}$. For every edge $U$ the set $f^{-1} \circ p \circ f(U) $ is non-empty because $p$ maps $f(U)$ to a larger set. Thus for every edge $U_i$ there is a corresponding edge in $\mathcal{S}(X,A)_{\alpha'}$. We can now define a map $p^{\beta'}_{\alpha'}: \mathcal{S}(X,A)_{\beta'} \rightarrow \mathcal{S}(X,A)_{\alpha}$ in such way that the edge $U$ is mapped to the edge $f^{-1}pfU $ and we extend this map by linearity. Now, by defining the map $p^{\beta'}_{\alpha'}$ in such way for every simplex, we get a well-defined map that makes the diagram commute.
 \end{proof}
+
+
+\section{Well-definedness of the \v{C}ech homology groups}
+In this section we will provide a condition which will guarantee that the \v{C}ech homology groups are well-defined. 
+...
+From now on in this chapter we assume that the topological spaces are such for which the \v{C}ech groups  are well-defined. 

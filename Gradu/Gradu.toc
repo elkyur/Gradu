@@ -14,11 +14,10 @@
 \contentsline {subsubsection}{\numberline {2.3.2.1}Category of coverings}{18}
 \contentsline {subsubsection}{\numberline {2.3.2.2}Directness property of coverings}{19}
 \contentsline {subsection}{\numberline {2.3.3}The construction}{20}
-\contentsline {chapter}{\numberline {3}Cech homology}{23}
-\contentsline {section}{\numberline {3.1}Well-definedness of the Cech homology groups}{24}
-\contentsline {section}{\numberline {3.2}Induced homomorphisms}{24}
-\contentsline {section}{\numberline {3.3}Dimension axiom}{25}
-\contentsline {section}{\numberline {3.4}Homotopy axiom}{25}
+\contentsline {chapter}{\numberline {3}\v {C}ech homology}{23}
+\contentsline {section}{\numberline {3.1}Induced homomorphisms}{24}
+\contentsline {section}{\numberline {3.2}Dimension axiom}{25}
+\contentsline {section}{\numberline {3.3}Homotopy axiom}{26}
 \contentsline {chapter}{\numberline {4}Applications}{29}
 \contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{29}
 \contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{29}
