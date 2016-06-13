@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  12 JUN 2016 13:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  13 JUN 2016 11:18
 entering extended mode
 **Gradu.tex
 (C:\Users\Serafim\Documents\BabasChess\Gradu\Gradu\Gradu\Gradu.tex
@@ -881,7 +881,7 @@ Chapter 3.
 [23
 
 ] [24]
-Overfull \hbox (15.87648pt too wide) in paragraph at lines 1072--1073
+Overfull \hbox (15.87648pt too wide) in paragraph at lines 1081--1082
 $[]\U/matha/m/n/12 p\OML/cmm/m/it/12 \U/matha/m/n/12 q$ \T1/cmr/m/it/12 be the
  cov-er-ing de-fined in pre-vi-ous def-i-ni-tion. Then sin-gu-lar ho-mol-ogy $\
 OML/cmm/m/it/12 H[]\U/matha/m/n/12 p\OMS/cmsy/m/n/12 S\U/matha/m/n/12 p\OML/cmm
@@ -936,7 +936,7 @@ b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pf
 b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10
 .pfb>
-Output written on Gradu.pdf (34 pages, 343233 bytes).
+Output written on Gradu.pdf (34 pages, 343012 bytes).
 PDF statistics:
  506 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

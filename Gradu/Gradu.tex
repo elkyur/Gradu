@@ -744,7 +744,13 @@ Let $X$ be a set and let $\mathcal{A} = \{S_i\}_{i \in J}$ be some collection of
 	holds. Then we say that $\Gamma(A)_{\mathcal{A}'}$ is a subcomplex of $\Gamma(X)_\mathcal{A}$.
 \end{maar}
 
- From now on we will denote the abstract simplicial pair $(\Gamma(X)_\mathcal{A},\Gamma(A)_\mathcal{A'})$ simply as $\Gamma(X,A)_{\alpha}$, where $\alpha$ is the pair of collections $(\mathcal{A}, \mathcal{A'})$. We will now define corresponding geometric structure for an abstract simplicial complex. This will give us the interface of original simplicial complex and will allow us to use the theory behind it.
+ From now on we will denote the abstract simplicial pair $(\Gamma(X)_\mathcal{A},\Gamma(A)_\mathcal{A'})$ simply as $\Gamma(X,A)_{\alpha}$, where $\alpha$ is the pair of collections $(\mathcal{A}, \mathcal{A'})$. In the following example we will see that a simplicial complex defined in the geometric way is an abstract simplicial complex.
+ 
+\begin{esim}
+Let $s$ be a simplicial structure, with edge set $\text{edge}(s)$ and $\text{simplices}(s)$ a collection of simplices. Then the abstract simplicial complex is obtained by forgetting the geometric structure.
+\end{esim}
+ 
+ We will now define corresponding geometric structure for an abstract simplicial complex. This will give us the interface of original simplicial complex and will allow us to use the theory behind it.
 \begin{maar}
 Let $J$ be a set and $\Gamma(J)_\mathcal{A}$ abstract simplicial complex induced by vertex set $J$ and some collection of abstract simplices $\mathcal{A}$. Then the geometric realization of the abstract simplicial complex $\mathcal{S}(J)_\mathcal{A}$ is a subset of the set $[0,1]^J$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(J)_{\mathcal{A}}$ and let $\text{pr}_j:[0,1]^J \rightarrow [0,1]$ be the projection $p_j(x) = x_j$ then:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
@@ -816,6 +822,32 @@ Now we are ready to define the quasi order in the collection of coverings of an 
 	Any covering is a refinement of itself and if we have coverings for which $a \leq b$ and $b \leq c$ holds, then for every set $U_c$ we can find $U_b$ for which $U_c \subset U_b$ and $U_b \subset U_a$ for some $U_a$. Then we see that $U_c \subset U_a$  so actually $c$ is refinement of $a$. 
 \end{proof}
 
+\subsubsection{Category of coverings}
+
+\begin{maar}
+	Let $(X,A)$ be a topological pair and let $\alpha$ and $\beta$ be its coverings for which the relation $\alpha \leq \beta$ holds. Then we define $\mathcal{P}(\alpha, \beta)$ to be the collection of all the following projection maps $p^\beta_\alpha:\beta \rightarrow \alpha$: Every $U_i \in \beta$ is mapped to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$ holds.
+\end{maar}
+We will now show that the family of projection maps is closed under composition.
+\begin{lem}\label{compofprojmaps}
+	Let $\alpha$, $\beta$ and $\gamma$ be coverings of some topological pair, for which relation $\alpha \leq \beta \leq \gamma $  holds.  Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps. Then $p^\beta_\alpha \circ p^\gamma_\beta$ is also a projection map.
+\end{lem}
+\begin{proof}
+	Let $U \in \gamma$, then if $U' = p^{\gamma}_{\beta}(U) \in \beta$ and $U'' = p^{\beta}_{\alpha} \circ p^{\gamma}_{\beta}(U) $ , by the definition condition $U \subset U' \subset U''$ holds . By properties of inclusion we can conclude taht $U \subset U''$ and thus $p^\beta_\alpha \circ p^\gamma_\beta$ is a projection map.
+\end{proof}
+\begin{lem}\label{coviscategory}
+	The collection of coverings $\text{COV}(X,A)$ is a category defined in the following way:
+	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+		\item The objects of $\text{COV}(X,A)$ are all open coverings of the pair $(X,A)$.
+		\item We define $\text{Hom}(\beta,\alpha)$ to be $\mathcal{P}(\alpha, \beta)$, if $\alpha \leq \beta$. Else we define $\text{Hom}(\beta,\alpha)$ to be the empty set.  
+		\item The composition of maps is defined to be the usual composition of functions.
+		
+	\end{enumerate}
+\end{lem}
+\begin{proof}
+	By Lemma \ref{compofprojmaps} the composition of two projection maps is a projection map and thus it is well-defined. For every $\alpha$ there exists a well-defiend projection map $p^{\alpha}_{\alpha}$ which acts like the identity map on $\text{COV}(X,A)$. The associativity condition holds, because every morphism is a function.
+\end{proof}
+
+
 \subsubsection{Directness property of coverings}
 For the order relation in the category of coverings we have following theorem
 \begin{lem}
@@ -855,29 +887,6 @@ The simplicial pair described above is well-defined.
 By Lemma \ref{Welldefinessofnerve}, the simplicial complexes are well-defined. We only have to show that $\mathcal{S}(\mathcal{L}_A)_{\text{Con}(\mathcal{L}_A )}$ is a subsimplex of $\mathcal{{S}}(\mathcal{L}_X)_{\text{Con}(\mathcal{L}_X)}$. This follows directly from the definition of the pair of coverings, as we defined the covering $\mathcal{L}_A$ to be a sub covering of $\mathcal{L}_X$ . 
 \end{proof}
  
-\begin{maar}
-Let $(X,A)$ be a topological pair and let $\alpha$ and $\beta$ be its coverings for which the relation $\alpha \leq \beta$ holds. Then we define $\mathcal{P}(\alpha, \beta)$ to be the collection of all the following projection maps $p^\beta_\alpha:\beta \rightarrow \alpha$: Every $U_i \in \beta$ is mapped to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$ holds.
-\end{maar}
-We will now show that the family of projection maps is closed under composition.
-\begin{lem}\label{compofprojmaps}
-	Let $\alpha$, $\beta$ and $\gamma$ be coverings of some topological pair, for which relation $\alpha \leq \beta \leq \gamma $  holds.  Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps. Then $p^\beta_\alpha \circ p^\gamma_\beta$ is also a projection map.
-\end{lem}
-\begin{proof}
-	Let $U \in \gamma$, then if $U' = p^{\gamma}_{\beta}(U) \in \beta$ and $U'' = p^{\beta}_{\alpha} \circ p^{\gamma}_{\beta}(U) $ , by the definition condition $U \subset U' \subset U''$ holds . By properties of inclusion we can conclude taht $U \subset U''$ and thus $p^\beta_\alpha \circ p^\gamma_\beta$ is a projection map.
-\end{proof}
-\begin{lem}\label{coviscategory}
-The collection of coverings $\text{COV}(X,A)$ is a category defined in the following way:
-\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-	\item The objects of $\text{COV}(X,A)$ are all open coverings of the pair $(X,A)$.
-	\item We define $\text{Hom}(\beta,\alpha)$ to be $\mathcal{P}(\alpha, \beta)$, if $\alpha \leq \beta$. Else we define $\text{Hom}(\beta,\alpha)$ to be the empty set.  
-	\item The composition of maps is defined to be the usual composition of functions.
-
-\end{enumerate}
-\end{lem}
-\begin{proof}
-By Lemma \ref{compofprojmaps} the composition of two projection maps is a projection map and thus it is well-defined. For every $\alpha$ there exists a well-defiend projection map $p^{\alpha}_{\alpha}$ which acts like the identity map on $\text{COV}(X,A)$. The associativity condition holds, because every morphism is a function.
-\end{proof}
-
 \begin{lem}
 	Let $\beta = \mathcal{C}(V_i, I, I')$ and $\alpha = \mathcal{C}(U_i, I, I')$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and let $p$ be a projection map belonging to $\mathcal{P}(\alpha,\beta)$. Let the map $p'^\beta_\alpha:\Gamma(X,A)_\beta \rightarrow \Gamma(X,A)_\alpha$ be a map between abstract simplicial complexes induced by the edges $V_i \in \beta$ and map $p$. The map $p'^\beta_\alpha:\Gamma(X,A)_\beta$ is well-defined simplicial map.
 \end{lem}
@@ -889,17 +898,17 @@ All the lemmas and proves have been presented only for the abstract simplicial c
  \newline
 Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define the same homomorphisms between corresponding homology groups of spaces $\mathcal{S}(X,A)_\alpha$ and $\mathcal{S}(X,A)_\beta$.
 \begin{lem}\label{contiguouspropertyforprojectionmaps}
-Let $\alpha$ and $\beta$ be any coverings of $(X,A)$ for which condition  $\alpha \leq \beta$ is satisfied. Then projection maps $p^\beta_\alpha$ and $p'^\beta_\alpha$ are contiguous.
+Let $\alpha$ and $\beta$ be any coverings of $(X,A)$ for which condition  $\alpha \leq \beta$ is satisfied. Then any two projection maps $p^\beta_\alpha$ and $p'^\beta_\alpha$ are contiguous.
 \end{lem}
 \begin{proof}
 
-To prove that the maps are contiguous we form simplex in $\mathcal{S}(Y,B) $ and prove that images of both maps belong to it. Every vertex $x_i$ in $\mathcal{S}(X,A)$ is mapped to $x'_{s(i)}$ and $x''_{d(i)}$ by $p^\beta_\alpha$ and $p'^\beta_\alpha$ respectively. Let $U_i$ be the open sets corresponding to vertexes $x_i$. Now for every simplex $\{x_{r(0)}, ... x_{r(n)}\}$ the corresponding intersection $\bigcap_{i \in J}U_i$ is non-empty. Let $U'_i$ correspond to  $x'_{s(i)}$ and $U''_i$ to $x''_{d(i)}$. We see that $\bigcap_{i \in J}U'_i \cap \bigcap_{i \in J}U''_i \neq \emptyset$ and thus the corresponding simplex $\{x'_{s \circ r(1)}, ... , x'_{s \circ r(n)}, x''_{d \circ r(1)}, ... x''_{d \circ r(n)}\}$ where the duplicates are removed is in the collection. In the case if the simplex belongs to $\mathcal{S}(A)$ it is easy to see that projection map maps them to some simplex which lies inside $\mathcal{S}(B)$.  
+To prove that the maps are contiguous we form a simplex in $\mathcal{S}(Y,B) $ and prove that the images of both maps belong to it. Every vertex $x_i$ in $\mathcal{S}(X,A)$ is mapped to $x'_{s(i)}$ and $x''_{d(i)}$ by $p^\beta_\alpha$ and $p'^\beta_\alpha$ respectively. Let $U_i$ be the open sets corresponding to vertexes $x_i$. Now for every simplex $\{x_{r(0)}, ... x_{r(n)}\}$ the corresponding intersection $\bigcap_{i \in J}U_i$ is non-empty. Let $U'_i$ correspond to  $x'_{s(i)}$ and $U''_i$ to $x''_{d(i)}$. We see that $\bigcap_{i \in J}U'_i \cap \bigcap_{i \in J}U''_i \neq \emptyset$ and thus the corresponding simplex $\{x'_{s \circ r(1)}, ... , x'_{s \circ r(n)}, x''_{d \circ r(1)}, ... x''_{d \circ r(n)}\}$ where the duplicates are removed is in the collection. In the case where the simplex belongs to $\mathcal{S}(A)$ it is easy to see that any projection map maps them to some simplex which lies inside $\mathcal{S}(B)$.  
 \end{proof}
 \begin{kor}\label{projektiokuvauksetindusoivatsamathomomorfismit}
 Let $(X,A)$ be a topological pair. The projection maps in collection $\mathcal{P}_{(X,A)}(a,b)$ define same homomorphisms between singular homology groups.
 \end{kor}
 \begin{proof}
-Follows directly using lemma \ref{contiguouspropertyforprojectionmaps} and the fact that contiguous simplicial maps induce same homology groups 
+Follows directly using lemma \ref{contiguouspropertyforprojectionmaps} and the fact that contiguous simplicial maps induce the same homomorphisms between homology groups 
 \end{proof}
 Thus we  can define the unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}(X,A)_{\beta}) \rightarrow H_q(\mathcal{S}(X,A)_{\alpha})$ for every $q \in \N$.
 
@@ -908,7 +917,7 @@ Thus we  can define the unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}
 \end{maar}
 Note that the collection $\alpha$ above is defined in a such way, that for every element $U_i \in \beta$ we make copy, take preimage of it and add it to the collection $\alpha$.
 \begin{lem}
-	Let $F:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\beta$ be the covering $f^{-1}\alpha$ of $(X,A)$. Then the induced map $p: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined.
+	Let $f:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\beta$ be the covering $f^{-1}\alpha$ of $(X,A)$. Then the induced map $f_*: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined.
 \end{lem}
 \begin{proof}
 	Let $\bigcap_{i \in I}f^{-1}U_i \neq \emptyset$ for some index set $I \subset J$ . We see that $\bigcap_{i \in I}U_i \neq \emptyset$. Thus the lemma holds.
@@ -917,7 +926,7 @@ Note that the collection $\alpha$ above is defined in a such way, that for every
 For projection maps and induced homomorphisms we have following useful lemma.
 
 \begin{lem}\label{preimageorder}
-Let $\alpha$ be a covering of the pair $(X,A)$ and let $\beta$ be a covering of the pair $(Y,B)$ for which $\alpha \leq \beta$ holds and let $f:(X,A) \rightarrow (Y,B)$ be a function between pairs. Then the pre-image $f^{-1}\beta$ of covering $\beta$ is refinement of $f^{-1}\alpha$.
+Let $\alpha$ be a covering of the pair $(X,A)$ and let $\beta$ be a covering of the pair $(Y,B)$ for which $\alpha \leq \beta$ holds and let $f:(X,A) \rightarrow (Y,B)$ be a function between pairs. Then the pre-image $f^{-1}\beta$ of the covering $\beta$ is a refinement of $f^{-1}\alpha$.
 \end{lem}
 \begin{proof}
 This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \subset f^{-1}V$.
@@ -925,7 +934,7 @@ This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \s
 \end{proof}
 
 \begin{lem}\label{squarelemmaforcoverings}
-	Let $f:(X,A) \rightarrow (Y,B) $ and let $\alpha$ and $\beta$ be coverings of $(Y,B)$ such that $\alpha \leq \beta$. Let $p^\beta_\alpha$ be projection map for the coverings. Then there exists a projection map $p^{\beta'}_{\alpha'} $ for which the following diagram commutes.
+	Let $f:(X,A) \rightarrow (Y,B) $ and let $\alpha$ and $\beta$ be coverings of $(Y,B)$ such that $\alpha \leq \beta$. Let $\alpha' = f^{-1}\alpha$ and let $\beta' = f^{-1}\beta $ and let $p^\beta_\alpha$ be a projection map for the coverings. Then there exists a projection map $p'^{\beta'}_{\alpha'} $ for which the following diagram commutes.
 		$$
 	\begin{tikzpicture}
 	
@@ -941,7 +950,7 @@ This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \s
 	
 	\node (f) at (2,-2.4){\(p^\beta_\alpha\)};
 	
-	\node (g) at (2,-0.4){\(p^{\beta'}_{\alpha'}\)};
+	\node (g) at (2,-0.4){\(p'^{\beta'}_{\alpha'}\)};
 	
 	\node (s) at (0.3,-1) {\(f_{\beta}\)};
 	
@@ -959,7 +968,7 @@ This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \s
 \end{lem}
 
 \begin{proof}
-Let $\{U_i\}_{i \in J}$ be some simplex in $\mathcal{S}(X,A)_{\beta'}$. For every edge $U$ the set $f^{-1} \circ p \circ f(U) $ is non-empty because $p$ maps $f(U)$ to a larger set. Thus for every edge $U_i$ there is a corresponding edge in $\mathcal{S}(X,A)_{\alpha'}$. We can now define a map $p^{\beta'}_{\alpha'}: \mathcal{S}(X,A)_{\beta'} \rightarrow \mathcal{S}(X,A)_{\alpha}$ in such way that the edge $U$ is mapped to the edge $f^{-1}pfU $ and we extend this map by linearity. Now, by defining the map $p^{\beta'}_{\alpha'}$ in such way for every simplex, we get a well-defined map that makes the diagram commute.
+Lemma \ref{preimageorder} says that there exists are project map $p'^{b'}_{a'}$,
 \end{proof}
 
 \chapter{Cech homology}
