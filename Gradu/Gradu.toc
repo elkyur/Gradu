@@ -13,15 +13,16 @@
 \contentsline {subsection}{\numberline {2.3.2}Coverings}{17}
 \contentsline {subsubsection}{\numberline {2.3.2.1}Category of coverings}{18}
 \contentsline {subsubsection}{\numberline {2.3.2.2}Directness property of coverings}{19}
+\contentsline {subsubsection}{\numberline {2.3.2.3}Operations on coverings}{20}
 \contentsline {subsection}{\numberline {2.3.3}The construction}{20}
 \contentsline {chapter}{\numberline {3}\v {C}ech homology}{23}
 \contentsline {section}{\numberline {3.1}Induced homomorphisms}{24}
 \contentsline {section}{\numberline {3.2}Dimension axiom}{25}
 \contentsline {section}{\numberline {3.3}Homotopy axiom}{26}
-\contentsline {chapter}{\numberline {4}Applications}{29}
-\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{29}
-\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{29}
-\contentsline {section}{\numberline {4.3}Continuous game theory}{29}
-\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{30}
-\contentsline {chapter}{Appendices}{31}
-\contentsline {chapter}{\numberline {A}Homology axioms}{32}
+\contentsline {chapter}{\numberline {4}Applications}{30}
+\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{30}
+\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{30}
+\contentsline {section}{\numberline {4.3}Continuous game theory}{30}
+\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{31}
+\contentsline {chapter}{Appendices}{32}
+\contentsline {chapter}{\numberline {A}Homology axioms}{33}
