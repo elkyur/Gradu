@@ -861,9 +861,14 @@ We will prove now that the covering constructed above is satisfies the condition
 
 \subsubsection{Operations on coverings}
 We define the following fusioning operator for coverings
-\begin{lem}
+\begin{maar}
 Let $(X,A)$ be a topological pair and let $\beta^{n} = \mathcal{C}(U^n_i, J_n, J_n')$ be some collection of coverings of the pair indexed by set $H$. Then we say that $\alpha$ is fusioned by collection $\beta$ if it is spanned by the elements $U^n_i$ and indexed by $L = \bigcup_{i \in H} J_i$.  
-\end{lem}
+\end{maar}
+\begin{maar}
+Let $(X,A)$ and $(Y,B)$ be topological pairs. Let $\alpha = \mathcal{C}(\alpha_i, J, J')$ be a covering of pair $(X,A)$ and let $\{\beta(x) \mid x \in J\}$ be a collection of coverings $\mathcal{C}(\beta_i, H_n, H'_n)$ of the pair $(Y,B)$ indexed by $J$. The stacked covering $\gamma = \alpha \times \{\beta(x) \mid x \in J\}$ of space $(X \times Y, A \times B)$ consists of elements of the form $a_i \times b_j$, where $j$ belongs to collection of the covering $\beta(i)$. The covering is formally spanned by the index sets  $$H = \bigcup_{x \in J} H_x \text{ and }H'= \bigcup_{x \in J'} H'_x.$$ Let $f:H \rightarrow J$ be a function which tells in which set of the union does some specific element $H_x$ belong to. The covering $\gamma $ is of the form $ \mathcal{C}(V_{f(i)} \times U^{f(i)}_i, H, H')  $.
+\end{maar}
+We call the collection $\{\beta(x)\}_{x \in J}$ stacks of the covering. It is also notable that the fusioned covering over the collection $\{\beta(x) \mid x \in J\}$ is same as the collection which we get from $\gamma$ by composing it with projection function $\text{pr}_Y:(X \times Y, A, \times B) \rightarrow (Y,B)$.
+
 
 \subsection{The construction}
  Now we are ready to give the definition for the nerve of the covering.
@@ -1095,7 +1100,7 @@ Let $\alpha$ be a open covering of $[0,1]$m which is cleaned, finite and connect
 If $b_n > b_{n+1}$ for some $n \in [m-1]$, then $(a_{n+1},b_{n+1}) \subset (a_{n}, b_n)$ which is a contradiction by the definition of the covering $\alpha$.
 \end{proof}
 
-\begin{lem}
+\begin{lem}\label{Unitintervaltrivial}
 Let $\alpha$ be an open covering which is finite and every element in the collection is connected. Then every singular homology group of the nerve $\mathcal{S}([0,1])_{\alpha}$ is trivial. 
 \end{lem}
 \begin{proof}
@@ -1132,26 +1137,31 @@ Let $\alpha$ be arbitrary covering of $[0,1]$. We modify the covering in the fol
 \end{enumerate}
 The condition (1) and (2) are satisfied , because $\gamma$ is trivially indexed covering. Condition (3) is satisfied, because if two open intervals with are not neighbors have non-empty intersection then all the coverings between can be removed and that collection will still cover the set. Because covering $\gamma$ is obtained by removing and cutting elements, the relation $\beta \leq \gamma$ holds.
 \end{proof}
+Earlier we defined the concept of stacked covering in more general way. For covering of the pair, where the second element is unit interval there is a natural way to define a stacked covering using regular coverings. 
 \begin{maar}
-Let $(X,A)$ be topological pair and $\alpha = \mathcal{C}(V_x, J, J')$ be its covering. Suppose that for every $V_x$ there exists a regular covering $\beta(x) = \mathcal{C}(U^x_i, H_x, H_x')$ of an unit interval $[0,1]$. Let $$H = \bigcup_{x \in J} H_x \text{ and }H'= \bigcup_{x \in J} H'_x.$$ Let $f:H \rightarrow J$ be a function which tells in which set of the union $H_x$ does some specific element belong to. Covering $\gamma$ of the pair $(X \times [0,1], A \times [0,1]) $ defined in the following way:
-$$\gamma = \mathcal{C}(V_{f(i)} \times U^{f(i)}_i, H, H')  $$
-is called a stacked covering over $\alpha$.
+Let $(X,A)$ be topological pair and $\alpha = \mathcal{C}(U_x, J, J')$ be its covering. Suppose that for every element $U_x$ there exists a regular covering $\beta(x) = \mathcal{C}(V^x_i, K, K')$ of $[0,1]$. If $\gamma$ is the stacked covering over $\alpha$ of the pair $(X \times [0,1],A \times [0,1])$, we say that it is naturally stacked covering.
 \end{maar}
+
 \begin{lem}
-The category of stacked coverings is cofinal in $COV((X \times [0,1], A \times [0,1]))$
+The category of naturally stacked coverings is cofinal in $COV((X \times [0,1], A \times [0,1]))$
 \end{lem}
 \begin{proof}
-We denote $I$ to be unit interval $[0,1]$. Let $\gamma$ be some covering $\mathcal{C}(Y_i, J, J')$ of pair $(X \times I, A \times I)$. We construct a stacked covering in the following way. Let $(x,t)$ be a point of the space $X \times I$. Then by definition of the topology on Cartesian product there exists a neighborhood $W = U(x,t) \times V(x,t) $ for which  $(x,t) \in W \subset Y_i $ holds for some $Y_i$ in the collection $\gamma$. We fix $x$ now, we denote covering induced by sets $V(x,t)$ over all $t \in I$ by $\mathcal{K}^x$. Using Lemma \ref{regularcoveringscofinal} we find a regular covering of the unit interval  $$\mathcal{R}^x = \mathcal{C}(\mathcal{R}^x_i ,P, P')$$ for which $\mathcal{K}^x \leq \mathcal{R}^x$ holds. For every $j \in J$ we can find subindexation $P_j \subset P$ for which the following condition holds: For every $i \in P_j$ there exists $t(i,j) \in I$ for which $U(x,t(i,j)) \times \mathcal{R}^x_i \subset Y_j$ holds. We define $H_j$ to be the following open set $H^x_j = \bigcap_{i \in P_j} U(x,t(i,j) $ and define covering $\mathcal{A}^x$ to be $$\mathcal{A}^x = \mathcal{C}(H^x_j, J, J'). $$
+We denote $I$ to be unit interval $[0,1]$. Let $\gamma$ be some covering $\mathcal{C}(Y_i, J, J')$ of pair $(X \times I, A \times I)$. We construct a stacked covering in the following way. Let $(x,t)$ be a point of the space $X \times I$. Then by definition of the topology on Cartesian product there exists a neighborhood $W = U(x,t) \times V(x,t) $ for which  $(x,t) \in W \subset Y_i $ holds for some $Y_i$ in the collection $\gamma$. We fix $x$ now, we denote covering induced by sets $V(x,t)$ over all $t \in I$ by $\mathcal{K}^x$. Using Lemma \ref{regularcoveringscofinal} we find a regular covering of the unit interval  $$\mathcal{R}^x = \mathcal{C}(\mathcal{R}^x_i ,P, P')$$ for which $\mathcal{K}^x \leq \mathcal{R}^x$ holds. For every $j \in J$ we can find subindexation $P_j \subset P$ for which the following condition holds: For every $i \in P_j$ there exists $t(i,j) \in I$ for which $U(x,t(i,j)) \times \mathcal{R}^x_i \subset Y_j$ holds. We define $H_j$ to be the following open set $H^x_j = \bigcap_{i \in P_j} U(x,t(i,j)) $ and define covering $\mathcal{A}^x$ to be $$\mathcal{A}^x = \mathcal{C}(H^x_j, J, J'). $$
 The covering $\gamma'$ spanned by elements $H^x_j \times \mathcal{R}^x_i$ is stacked covering over $\mathcal{A}^x$ which refines covering $\gamma$.
 
 \end{proof}
 
 \begin{lem}
-Let $\gamma$ be a stacked covering over of pair $(X \times [0,1])$ over $\alpha$. Assume that the nerve $\mathcal{S}(X)_{\alpha}$ is simplex. Then the singular homology groups of the nerve $H_{q}(\mathcal{S}(X \times I)_{\gamma})$ are trivial for all $q \in \N$.
+Let $\gamma$ be a naturally stacked covering over of pair $(X \times [0,1])$ over $\alpha$. Assume that the nerve $\mathcal{S}(X)_{\alpha}$ is simplex. Then the singular homology groups of the nerve $H_{q}(\mathcal{S}(X \times I)_{\gamma})$ are trivial for all $q \in \N$.
 \end{lem}
 \begin{proof}
-Assume that the decomposition of $\gamma$ is $\mathcal{C}(V_i, J)$ and the decomposition of $\alpha$ is $\mathcal{C}(W_i, R)$. We denote by $\beta(x)$ the stacks of covering $\gamma$. Let $\delta$ be the covering obtained by fusioning all the coverings $\beta(x)$.
+Assume that the decomposition of $\gamma$ is $\mathcal{C}(\gamma_i, J)$ and the decomposition of $\alpha$ is $\mathcal{C}(W_i, R)$. We denote by $\beta(x)$ the stacks of covering $\gamma$. Let $\delta$ be the covering $\mathcal{C}(\delta_i, K)$ obtained by fusioning all the coverings $\beta(x)$. \newline
+Let $s = \{\gamma_{j_0}, ... , \gamma_{j_n}\}$ be some simplex in the nerve $\mathcal{S}(X)_{\gamma}$. We denote $J'$ to be indexation over elements $\{j_0, ... j_n\}$. By the definition we know that each $\gamma_{j} = \alpha_{f(j)} \times \beta_{g(j)}$ for some $\alpha_{f(j)}$ and $\beta_{g(j)} $. Let $t:g(J) \rightarrow K$ be the indexation function which tells the index of element in $\beta_j$ in covering $\gamma$. The following equations hold: $$\bigcap_{i \in J'}\gamma_i = \bigcap_{i \in J'}\alpha_{i} \times \bigcap_{i \in J'}\beta_{g(i)} = \bigcap_{i \in J'}\alpha_{f(i)} \times \bigcap_{i \in J'}\beta_{t(g(i))} = \bigcap_{i \in J'}\delta_{t(g(i))}$$
+Note that the last equation holds because we assumed that $\alpha$ is simplex and thus intersection of all its elements is non-empty. By definition of stacked coverings wee see that the covering obtained by projecting elements of $\gamma$ to the unit interval has exactly the same structure as the fusioned covering $\delta$. Using the equation above we see that the simplices $\mathcal{S}([0,1])_{\gamma}$ and $\mathcal{S}([0,1])_{\beta} $ are isomorphic. By \ref{Unitintervaltrivial} the homology groups of $[0,1]_{\delta} $ are trivial, thus $H_q(\mathcal{S}([0,1])_{\delta})$ is trivial for all $q \in \N$.
 \end{proof}
+\begin{lem}
+Let $\gamma$ be  
+\end{lem}
 
 \chapter{Applications}
 

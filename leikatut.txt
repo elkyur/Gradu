@@ -142,3 +142,7 @@ Let $\{a_{J(1)}, ... , a_{J(n)}\}$ be some simplex in $\mathcal{S}(X,A)_{\beta'}
 In this section we will provide a condition which will guarantee that the \v{C}ech homology groups are well-defined. 
 ...
 From now on in this chapter we assume that the topological spaces are such for which the \v{C}ech groups  are well-defined. 
+
+Let $(X,A)$ be topological pair and $\alpha = \mathcal{C}(V_x, J, J')$ be its covering. Suppose that for every $V_x$ there exists a regular covering $\beta(x) = \mathcal{C}(U^x_i, H_x, H_x')$ of an unit interval $[0,1]$. Let $$H = \bigcup_{x \in J} H_x \text{ and }H'= \bigcup_{x \in J} H'_x.$$ Let $f:H \rightarrow J$ be a function which tells in which set of the union does some specific element $H_x$ belong to. Covering $\gamma$ of the pair $(X \times [0,1], A \times [0,1]) $ defined in the following way:
+$$\gamma = \mathcal{C}(V_{f(i)} \times U^{f(i)}_i, H, H')  $$
+is called a stacked covering over $\alpha$.
