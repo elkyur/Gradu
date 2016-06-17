@@ -73,7 +73,7 @@
 
 \tableofcontents
 
-\chapter{Inroduction}\label{johd}
+\chapter{Introduction}\label{johd}
 
 
 
@@ -200,7 +200,7 @@ Next we will define the concepts of limit and colimit for arbitrary categories, 
 \begin{maar}
 	Let $C$ and $J$ be categories. We say that the category $C$ is indexed by the category $J$ if there exists a functor $F:J \rightarrow C$.	
 \end{maar}	
-We call the functor $F$ described above an indexing functor. It is easy to see that the functor induces a subcategory $F(J)$ of $C$. In the case where $F$ is indexing functor it is relatively easy to see that it is injective and thus we can equate $F(J)$ with $J$.
+We call the functor $F$ described above an indexing functor. It is easy to see that the functor induces a subcategory $F(J)$ of $C$. In the case where the indexing functor $F$ is injective and we can equate $F(J)$ with $J$.
 \begin{maar}
 Let $C$ be a category indexed by $J$ and let $F:J \rightarrow C$ be the indexing functor. Let $N$ be a fixed object of the category $C$. We define the cone from $N$ to $F$ to be an indexed family of morphisms $$\Omega_N = \{\omega_X: N \rightarrow F(X)\}_{X \in J}$$ which satisfies the following property: If $f:X \rightarrow Y$ is a morphism in $C$ then the following diagram commutes
 
@@ -344,7 +344,7 @@ Let $F$ be an indexing functor and let $(N, \phi)$ and $(D, \omega)$ be colimits
 Because $N$ and $D$ are both colimits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $ as above. Because of the symmetry it is enough to show that $u \circ v = id_D$ holds. This follows from the equation $u \circ v \circ \omega_X = u \circ \phi_X = \omega_X$. The diagram commutes for $id_D$ and thus by the uniqueness condition we see that $u \circ v = id_D$. 
 \end{proof}
 \subsection{Direct and inverse systems}
-In this section we will give a categorical definition of direct and inverse systems. It appears that those concepts are dual of each other. We will begin by defining a quasi-ordering relation:
+In this section we will give a categorical definition of direct and inverse systems. It appears that those concepts are dual to each other. We will begin by defining a quasi-ordering relation:
 
 \begin{maar}
 Let $\lambda$ be a category and let $a \leq b$ be a relation in the object class $\ob(\lambda)$. We say that this relation is a quasi-ordering if the following conditions hold:
@@ -365,29 +365,29 @@ $$\hom(a,b) = \left\{
 \emptyset & \mbox{else.} 
 \end{array}
 \right.  $$ 
-We assumed that $\lambda$ is a category then every $\lambda^a_b(i) \circ \lambda^b_c(j)$ is well-defined. We define the composition to be $\lambda^a_c(i * j)$.
+We assumed that $\lambda$ is a category, so every $\lambda^a_b(i) \circ \lambda^b_c(j)$ is well-defined. We denote the composition as $\lambda^a_c(i * j)$, where $*$ is operator of the indexation. 
 \end{maar}
 
 \begin{maar}\label{inversesystem}
 Let $\lambda$ be a quasi-ordered category with the corresponding class of morphisms. Let $C$ be a category and let $I:\lambda \rightarrow C$ be a covariant functor for which the following conditions are satisfied:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-\item For every non-empty class of morphisms $\hom(a,b)$ there corresponds a morphism $I^a_b$ in category $C$ for which $I(\hom(a,b)) = \{I^a_b\}$ holds.
+\item For every non-empty class of morphisms $\hom(a,b)$ there corresponds a morphism $I^a_b$ in the category $C$ for which $I(\hom(a,b)) = \{I^a_b\}$ holds.
 \item Every element in the class of morphisms of the form $\hom(a,a)$ is mapped to the morphism $id_{I(a)} $ 
 \end{enumerate}
-Then we say that $I$ is inverse system indexed by the category $\lambda$. 
+Then we say that $I$ is an inverse system indexed by the category $\lambda$. 
 \end{maar}
 The dual of the concept inverse system is direct system.
 \begin{maar}
 Let $\lambda$ be a quasi-ordered category with the corresponding class of morphisms. Let $C$ be a category and let $I:\lambda \rightarrow C$ be a contra-variant functor for which the following conditions are satisfied:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-	\item For every non-empty class of morphisms $\hom(a,b)$ there corresponds a morphism $D^b_a$ in category $C$ for which $D(\hom(a,b)) = \{D^b_a\}$ holds.
+	\item For every non-empty class of morphisms $\hom(a,b)$ there corresponds a morphism $D^b_a$ in the category $C$ for which $D(\hom(a,b)) = \{D^b_a\}$ holds.
 	\item Every element in the class of morphisms of the form $\hom(a,a)$ is mapped to the morphism $id_{I(a)} $ 
 \end{enumerate}
-Then we say that $D$ is directed system indexed by the category $\lambda$. 
+Then we say that $D$ is a directed system indexed by the category $\lambda$. 
 \end{maar}
 
 \begin{lem}\label{welldefinessofsystems}
-The direct and inverse system functors are well-defined
+The direct and inverse system functors are well-defined.
 \end{lem}
 \begin{proof}
 We write this proof only for inverse systems, the case of direct systems is similar. Let $(I, \lambda)$ be arbitrary inverse system, then following conditions hold:
@@ -643,7 +643,7 @@ We have to show that the image is in the subgroup $$L = \{x \in \prod_{i \in \la
 Final and cofinal functors can be defined in a more general way [\ref{categorytheory}]. However, because we are mainly interested in properties of systems, in this section we will investigate the properties of those specific functors only in that special case. In the case of general categories, cofinality includes a concept of connectedness defined in [\ref{categorytheory}] page 217. In our definition we will use a stronger version of that concept.
 
 \begin{maar}
-	Let $\lambda$ be a category with a quasi-order relation on its objects. We say that $\lambda$ is directed category, if for every two objects $a \in \lambda$ and $b \in \lambda$ we find object $c \in \lambda$ for which relations $a \leq b$ and $ a \leq c$ hold. 
+	Let $\lambda$ be a category with a quasi-order relation on its objects. We say that $\lambda$ is directed category, if for every two objects $a \in \lambda$ and $b \in \lambda$ we find an object $c \in \lambda$ for which the relations $a \leq c$ and $ b \leq c$ hold. 
 \end{maar}
 \begin{maar}
 	Let $\lambda$ be a category with a quasi-order relation on its objects and $\lambda'$ its directed subcategory for which following condition holds: $$\text{For every }a \in \lambda \text{ there exists } b \in \lambda' \text{ for which } a \leq b.$$
@@ -654,7 +654,7 @@ Final and cofinal functors can be defined in a more general way [\ref{categoryth
 Let $\lambda$ be a directed category with a quasi-order relation on its objects and let $\lambda'$ be its subcategory. Then we say that $\lambda'$ is a cofinal subcategory of $\lambda$, if $\lambda'$ is dense in $\lambda$.
 \end{maar}
 \begin{lem}\label{subcategorydirectness}
-Let $\lambda$ be a directed category and $\lambda'$ its dense subcategory. Then $\lambda'$ is directed category. 
+Let $\lambda$ be a directed category and $\lambda'$ its dense subcategory. Then $\lambda'$ is a directed category. 
 \end{lem}
 \begin{proof}
 Let $\alpha$ and $\beta$ be objects of $\lambda$. Then there exists $t \in \lambda$ for which $\alpha \leq \gamma$ and $\beta \leq \gamma$ hold. By density property there exists $\gamma' \in \lambda'$ for which condition $\gamma \leq \gamma'$ holds. Now claim follows directly from the equations $\alpha \leq \gamma \leq \gamma' $ and $\beta \leq \gamma \leq \gamma'$. 
@@ -731,17 +731,15 @@ In this chapter we will give a definition of an abstract simplicial complex.
 
 \subsection{Abstract simplicial complex}
 We assume that the reader knows already basic facts about simplicial complexex. If not we suggest to take a look at [\ref{rotman}]. 
-\begin{maar}
-	Let $S$ be some simplex and let $X$ be a collection of its faces. We define operator $\rhd:2^{X} \rightarrow X$ to denote a simplex which is obtained by the intersection of all simplexes for which the union of all the faces in the domain are contained. 
-\end{maar}
 
 \begin{maar}
-Let $X$ be a set and let $\mathcal{A} = \{S_i\}_{i \in J}$ be some collection of finite subsets of the set $X$. We say that $\mathcal{A}$ forms an abstract simplicial complex over $X$, if a subset of any set $S_i$ in the collection $\mathcal{A}$ is in the collection.
+Let $X$ be a set and let $\mathcal{A} = \{S_i\}_{i \in J}$ be some collection of finite subsets of the set $X$. We say that $\mathcal{A}$ forms an abstract simplicial complex over $X$, if a subset of any set $S_i$ in the collection $\mathcal{A}$ is in $\mathcal{A}$. 
 \end{maar}
+The abstract simplicial complex defined above is denoted as $\Gamma(X)_{\mathcal{A}}$.
 
 \begin{maar}
-	Assume that the set $X$ together with the collection $\mathcal{A} = \{S_i\}_{i \in I}$ is an abstract simplicial complex. Let $A$ be some subset of $X$ and $\mathcal{A}' = \{S'_j\}_{j \in I'}$ a collection of subsets of the space $A$ for which the condition $$S'_j \in \mathcal{A}' \Leftrightarrow S'_j \subset S_i \text{ for some } i \in I $$ 
-	holds. Then we say that $\Gamma(A)_{\mathcal{A}'}$ is a subcomplex of $\Gamma(X)_\mathcal{A}$.
+	Assume that the set $X$ together with the collection $\mathcal{A} = \{S_i\}_{i \in I}$ is an abstract simplicial complex. Let $A$ be some subset of $X$ and let $\mathcal{A}' = \{S'_j\}_{j \in I'}$ be some collection of finite subsets of the space $A$ for which the condition $$S'_j \in \mathcal{A}' \Leftrightarrow S'_j \subset S_i \text{ for some } i \in I $$ 
+	is satisfied. Then we say that $\Gamma(A)_{\mathcal{A}'}$ is a subcomplex of $\Gamma(X)_\mathcal{A}$.
 \end{maar}
 
  From now on we will denote the abstract simplicial pair $(\Gamma(X)_\mathcal{A},\Gamma(A)_\mathcal{A'})$ simply as $\Gamma(X,A)_{\alpha}$, where $\alpha$ is the pair of collections $(\mathcal{A}, \mathcal{A'})$. In the following example we will see that a simplicial complex defined in the geometric way is an abstract simplicial complex.
@@ -752,14 +750,15 @@ Let $s$ be a simplicial structure, with edge set $\text{edge}(s)$ and $\text{sim
  
  We will now define corresponding geometric structure for an abstract simplicial complex. This will give us the interface of original simplicial complex and will allow us to use the theory behind it.
 \begin{maar}
-Let $J$ be a set and $\Gamma(J)_\mathcal{A}$ abstract simplicial complex induced by vertex set $J$ and some collection of abstract simplices $\mathcal{A}$. Then the geometric realization of the abstract simplicial complex $\mathcal{S}(J)_\mathcal{A}$ is a subset of the set $[0,1]^J$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(J)_{\mathcal{A}}$ and let $\text{pr}_j:[0,1]^J \rightarrow [0,1]$ be the projection $p_j(x) = x_j$ then:
+Let $J$ be a set and let $\Gamma(J)_\mathcal{A}$ be an abstract simplicial complex induced by the vertex set $J$ and some collection of abstract simplices $\mathcal{A}$. Then the geometric realization of the abstract simplicial complex $\mathcal{S}(J)_\mathcal{A}$ is a subset of the set $[0,1]^J$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(J)_{\mathcal{A}}$ and let $\text{pr}_j:[0,1]^J \rightarrow [0,1]$ be the projection $\text{pr}_j(x) = x_j$ then:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	\item Relation $\text{pr}_j(x) > 0$ holds only for finitely many $j \in J$.
 	\item $\sum_{j \in J}\text{pr}_j(x) = 1$.
 	\item The set $\{j \in J \mid \text{pr}_j(x) > 0\}$ belongs to collection $\mathcal{A}$.
 \end{enumerate}
+The topology of the geometric realization is defined as the subset topology of the space $[0,1]^J$ together with its natural topology.
 \end{maar}
-For the abstract simplicial pair $\Gamma(X,A)_{\alpha}$, we use the definition of geometric realization $\mathcal{S}(X,A)_{\alpha}$ separately for $\Gamma(X)_{\mathcal{A}}$ and $\Gamma(A)_{\mathcal{A}}$ and treat set $[0,1]^A$ as subset of $[0,1]^X$, where for every element $a \in [0,1]^A$ the projection $\text{pr}_i(a) = 0$ for every index $i \in X \setminus A$.
+For the abstract simplicial pair $\Gamma(X,A)_{\alpha}$, we use the definition of geometric realization $\mathcal{S}(X,A)_{\alpha}$ separately for $\Gamma(X)_{\mathcal{A}}$ and $\Gamma(A)_{\mathcal{A}}$ and treat the set $[0,1]^A$ as a subset of $[0,1]^X$, where for every element $a \in [0,1]^A$ the projection $\text{pr}_i(a) = 0$ for every index $i \in X \setminus A$.
 \begin{lem}
 The geometric realization $\mathcal{S}(X,A)_{\alpha} $ of an abstract simplicial complex is a simplicial complex.
 \end{lem}
@@ -767,14 +766,21 @@ The geometric realization $\mathcal{S}(X,A)_{\alpha} $ of an abstract simplicial
 	The following conditions are satisfied:
 	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	\item The collection of simplexes of the simplicial complex is the geometric realizations of sets $S_i$ of the collection $\mathcal{A}$. Respectively the subsimplex consists of the geometric realizations $S'_i$ of collection $\mathcal{A'}$.
-	\item Any face is in the collection by definition of abstract simplicial complex
-	\item Intersection of any two simpleces in the collection is clearly a face or the empty set.
+	\item Any face is in the collection by the definition of an abstract simplicial complex
+	\item Intersection of any two simplices in the collection is clearly a face or the empty set.
 	\end{enumerate}
- Thus $\mathcal{S}(X,A)_\mathcal{A}$ is simplicial complex.
+ Thus $\mathcal{S}(X,A)_\alpha$ is a simplicial complex.
 \end{proof}
-Next we will recall the definition of a simplicial map.
+The simplicial map for the geometric constructions is defined in the Rotman. We will give definition of simplicial map to abstract simplicial complex.
 \begin{maar}
-Let $(X,A)$ and $(Y,B)$ be pairs of simplicial complexes and let $f$ be a continuous function between pairs. Then we say that the map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and the images of vertexes of a simplex in $A$ span some simplex in $B$.
+Let $(X,A)$ and $(Y,B)$ be pairs of geometric complexes and let $f$ be a continuous function between pairs. Then we say that the map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and the images of vertexes of a simplex in $A$ span some simplex in $B$.
+\end{maar}
+\begin{maar}
+Let $(X,A)$ and $(Y,B)$ be pairs of abstract simplicial complexes. We say that $f:(X,A) \rightarrow (Y,B)$ is simplicial if it is satisfies following two conditions:
+\begin{enumerate}
+\item $f$ is a map between edges sets of simplicial complexes $X$ and $Y$.
+\item $f$ maps every element in $\text{edges}(A)$ to set $\text{edges}(B)$.
+\end{enumerate}
 \end{maar}
 \begin{lem}\label{geometricrealizationsimplicial}
 Let $(X,A)$ and $(Y,B)$ be pairs of abstract simplicial complex and let \mbox{$f:(X,A) \rightarrow (Y,B)$} be a simplicial map between the complexes. Let $(X',A')$ and $(Y',B')$ be geometric realization of the abstract simplicial complexes $(X,A)$ and $(Y,B)$. Then the map $f_*:(X',A') \rightarrow (Y',B')$ induced by images of the edges mapped by function $f$ and defined to be piecewise linear map on all the other elements is well-defined and simplicial map. 
@@ -793,6 +799,12 @@ If $f:(X,A) \rightarrow (Y,B)$ and $g:(X,A) \rightarrow (Y,B)$ are contiguous ma
 We define $H:X \times [0,1] \rightarrow Y$ in the following way:  $$H(x,t) = tf(x)+(1-t)g(x).$$
 It is easy to see that $H(x,1) = f(x)$ and $H(x,0) = g(x)$. Because $f(x)$ and $g(x)$ both belong to the same simplex, it follows that $H(x,t)$ is well defined at every point. 
 \end{proof}
+\subsubsection{Simplicial operators}
+\begin{maar}
+	Let $S$ be some simplex and let $X$ be the collection of its faces. We define operator $\rhd:2^{X} \rightarrow X$ to denote a simplex which is obtained by the intersection of all simplexes for which the union of all the faces in the domain are contained. 
+\end{maar}
+
+
 \subsection{Coverings}
 We begin by recalling the definition of a covering
 \begin{maar}

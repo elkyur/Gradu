@@ -1,5 +1,5 @@
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Inroduction}{2}
+\contentsline {chapter}{\numberline {1}Introduction}{2}
 \contentsline {chapter}{\numberline {2}Background}{3}
 \contentsline {section}{\numberline {2.1}Direct sum and direct product}{3}
 \contentsline {section}{\numberline {2.2}Category theory}{4}
@@ -10,11 +10,12 @@
 \contentsline {subsection}{\numberline {2.2.4}Finality properties of subsystems}{13}
 \contentsline {section}{\numberline {2.3}Nerve of covering}{15}
 \contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{15}
-\contentsline {subsection}{\numberline {2.3.2}Coverings}{17}
-\contentsline {subsubsection}{\numberline {2.3.2.1}Category of coverings}{18}
-\contentsline {subsubsection}{\numberline {2.3.2.2}Directness property of coverings}{19}
+\contentsline {subsubsection}{\numberline {2.3.1.1}Simplicial operators}{18}
+\contentsline {subsection}{\numberline {2.3.2}Coverings}{18}
+\contentsline {subsubsection}{\numberline {2.3.2.1}Category of coverings}{19}
+\contentsline {subsubsection}{\numberline {2.3.2.2}Directness property of coverings}{20}
 \contentsline {subsubsection}{\numberline {2.3.2.3}Operations on coverings}{20}
-\contentsline {subsection}{\numberline {2.3.3}The construction}{20}
+\contentsline {subsection}{\numberline {2.3.3}The construction}{21}
 \contentsline {chapter}{\numberline {3}\v {C}ech homology}{24}
 \contentsline {section}{\numberline {3.1}Induced homomorphisms}{25}
 \contentsline {section}{\numberline {3.2}Dimension axiom}{26}
