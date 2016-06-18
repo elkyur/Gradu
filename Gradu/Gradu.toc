@@ -13,9 +13,9 @@
 \contentsline {subsubsection}{\numberline {2.3.1.1}Simplicial operators}{18}
 \contentsline {subsection}{\numberline {2.3.2}Coverings}{18}
 \contentsline {subsubsection}{\numberline {2.3.2.1}Category of coverings}{19}
-\contentsline {subsubsection}{\numberline {2.3.2.2}Directness property of coverings}{20}
+\contentsline {subsubsection}{\numberline {2.3.2.2}Directness property of coverings}{19}
 \contentsline {subsubsection}{\numberline {2.3.2.3}Operations on coverings}{20}
-\contentsline {subsection}{\numberline {2.3.3}The construction}{21}
+\contentsline {subsection}{\numberline {2.3.3}The construction}{20}
 \contentsline {chapter}{\numberline {3}\v {C}ech homology}{24}
 \contentsline {section}{\numberline {3.1}Induced homomorphisms}{25}
 \contentsline {section}{\numberline {3.2}Dimension axiom}{26}

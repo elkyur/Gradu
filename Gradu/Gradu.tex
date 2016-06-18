@@ -735,14 +735,14 @@ We assume that the reader knows already basic facts about simplicial complexex. 
 \begin{maar}
 Let $X$ be a set and let $\mathcal{A} = \{S_i\}_{i \in J}$ be some collection of finite subsets of the set $X$. We say that $\mathcal{A}$ forms an abstract simplicial complex over $X$, if a subset of any set $S_i$ in the collection $\mathcal{A}$ is in $\mathcal{A}$. 
 \end{maar}
-The abstract simplicial complex defined above is denoted as $\Gamma(X)_{\mathcal{A}}$.
+The abstract simplicial complex defined above is denoted as $\Gamma(X, \mathcal{A})$.
 
 \begin{maar}
 	Assume that the set $X$ together with the collection $\mathcal{A} = \{S_i\}_{i \in I}$ is an abstract simplicial complex. Let $A$ be some subset of $X$ and let $\mathcal{A}' = \{S'_j\}_{j \in I'}$ be some collection of finite subsets of the space $A$ for which the condition $$S'_j \in \mathcal{A}' \Leftrightarrow S'_j \subset S_i \text{ for some } i \in I $$ 
-	is satisfied. Then we say that $\Gamma(A)_{\mathcal{A}'}$ is a subcomplex of $\Gamma(X)_\mathcal{A}$.
+	is satisfied. Then we say that $\Gamma(A,\mathcal{A}')$ is a subcomplex of $\Gamma(X,\mathcal{A})$.
 \end{maar}
 
- From now on we will denote the abstract simplicial pair $(\Gamma(X)_\mathcal{A},\Gamma(A)_\mathcal{A'})$ simply as $\Gamma(X,A)_{\alpha}$, where $\alpha$ is the pair of collections $(\mathcal{A}, \mathcal{A'})$. In the following example we will see that a simplicial complex defined in the geometric way is an abstract simplicial complex.
+ From now on we will denote the abstract simplicial pair $(\Gamma(X\mathcal{A}),\Gamma(A,\mathcal{A'}))$ simply as $\Gamma((X,A),\alpha)$, where $\alpha$ is the pair of collections $(\mathcal{A}, \mathcal{A'})$. In the following example we will see that a simplicial complex defined in the geometric way is an abstract simplicial complex.
  
 \begin{esim}
 Let $s$ be a simplicial structure, with edge set $\text{edge}(s)$ and $\text{simplices}(s)$ a collection of simplices. Then the abstract simplicial complex is obtained by forgetting the geometric structure.
@@ -750,7 +750,7 @@ Let $s$ be a simplicial structure, with edge set $\text{edge}(s)$ and $\text{sim
  
  We will now define corresponding geometric structure for an abstract simplicial complex. This will give us the interface of original simplicial complex and will allow us to use the theory behind it.
 \begin{maar}
-Let $J$ be a set and let $\Gamma(J)_\mathcal{A}$ be an abstract simplicial complex induced by the vertex set $J$ and some collection of abstract simplices $\mathcal{A}$. Then the geometric realization of the abstract simplicial complex $\mathcal{S}(J)_\mathcal{A}$ is a subset of the set $[0,1]^J$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(J)_{\mathcal{A}}$ and let $\text{pr}_j:[0,1]^J \rightarrow [0,1]$ be the projection $\text{pr}_j(x) = x_j$ then:
+Let $J$ be a set and let $\Gamma(J,\mathcal{A})$ be an abstract simplicial complex induced by the vertex set $J$ and some collection of abstract simplices $\mathcal{A}$. Then the geometric realization of the abstract simplicial complex $\mathcal{S}(J,\mathcal{A})$ is a subset of the set $[0,1]^J$ for which the following conditions are satisfied: Let $x \in \mathcal{S}(J,\mathcal{A})$ and let $\text{pr}_j:[0,1]^J \rightarrow [0,1]$ be the projection $\text{pr}_j(x) = x_j$ then:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	\item Relation $\text{pr}_j(x) > 0$ holds only for finitely many $j \in J$.
 	\item $\sum_{j \in J}\text{pr}_j(x) = 1$.
@@ -758,9 +758,9 @@ Let $J$ be a set and let $\Gamma(J)_\mathcal{A}$ be an abstract simplicial compl
 \end{enumerate}
 The topology of the geometric realization is defined as the subset topology of the space $[0,1]^J$ together with its natural topology.
 \end{maar}
-For the abstract simplicial pair $\Gamma(X,A)_{\alpha}$, we use the definition of geometric realization $\mathcal{S}(X,A)_{\alpha}$ separately for $\Gamma(X)_{\mathcal{A}}$ and $\Gamma(A)_{\mathcal{A}}$ and treat the set $[0,1]^A$ as a subset of $[0,1]^X$, where for every element $a \in [0,1]^A$ the projection $\text{pr}_i(a) = 0$ for every index $i \in X \setminus A$.
+For the abstract simplicial pair $\Gamma((X,A),\alpha)$, we use the definition of geometric realization $\mathcal{S}((X,A),\alpha)$ separately for $\Gamma(X,\mathcal{A})$ and $\Gamma(A,\mathcal{A})$ and treat the set $[0,1]^A$ as a subset of $[0,1]^X$, where for every element $a \in [0,1]^A$ the projection $\text{pr}_i(a) = 0$ for every index $i \in X \setminus A$.
 \begin{lem}
-The geometric realization $\mathcal{S}(X,A)_{\alpha} $ of an abstract simplicial complex is a simplicial complex.
+The geometric realization $\mathcal{S}((X,A),\alpha) $ of an abstract simplicial complex is a simplicial complex.
 \end{lem}
 \begin{proof}
 	The following conditions are satisfied:
@@ -769,28 +769,26 @@ The geometric realization $\mathcal{S}(X,A)_{\alpha} $ of an abstract simplicial
 	\item Any face is in the collection by the definition of an abstract simplicial complex
 	\item Intersection of any two simplices in the collection is clearly a face or the empty set.
 	\end{enumerate}
- Thus $\mathcal{S}(X,A)_\alpha$ is a simplicial complex.
+ Thus $\mathcal{S}((X,A), \alpha)$ is a simplicial complex.
 \end{proof}
 The simplicial map for the geometric constructions is defined in the Rotman. We will give definition of simplicial map to abstract simplicial complex.
-\begin{maar}
-Let $(X,A)$ and $(Y,B)$ be pairs of geometric complexes and let $f$ be a continuous function between pairs. Then we say that the map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and the images of vertexes of a simplex in $A$ span some simplex in $B$.
-\end{maar}
+
 \begin{maar}
 Let $(X,A)$ and $(Y,B)$ be pairs of abstract simplicial complexes. We say that $f:(X,A) \rightarrow (Y,B)$ is simplicial if it is satisfies following two conditions:
-\begin{enumerate}
-\item $f$ is a map between edges sets of simplicial complexes $X$ and $Y$.
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+\item $f$ is a map between $\text{edges}(X)$ and $\text{edges}(Y)$
 \item $f$ maps every element in $\text{edges}(A)$ to set $\text{edges}(B)$.
 \end{enumerate}
 \end{maar}
 \begin{lem}\label{geometricrealizationsimplicial}
-Let $(X,A)$ and $(Y,B)$ be pairs of abstract simplicial complex and let \mbox{$f:(X,A) \rightarrow (Y,B)$} be a simplicial map between the complexes. Let $(X',A')$ and $(Y',B')$ be geometric realization of the abstract simplicial complexes $(X,A)$ and $(Y,B)$. Then the map $f_*:(X',A') \rightarrow (Y',B')$ induced by images of the edges mapped by function $f$ and defined to be piecewise linear map on all the other elements is well-defined and simplicial map. 
+Let $(X,A)$ and $(Y,B)$ be pairs of abstract simplicial complexes and let \mbox{$f:(X,A) \rightarrow (Y,B)$} be a simplicial map between the complexes. Let $(X',A')$ and $(Y',B')$ be geometric realizations of the abstract simplicial complexes $(X,A)$ and $(Y,B)$. Then the map $f_*:(X',A') \rightarrow (Y',B')$ induced by the images of the edges mapped by the function $f$ and defined to be piecewise linear on all the other elements is a well-defined simplicial map. 
 \end{lem}
 \begin{proof}
 Let $x$ be an arbitrary element of $(X,A)$, by definition $x$ has a unique representation $x = \sum_{i \in J}r_ia_i$, where $r_i$ are coefficients and $a_i$ belong to the set of edges. By piecewise linearity $$f_*(x) = f_*(\sum_{i \in J}r_ia_i) = \sum_{i \in J}r_if_*(a_i) $$ \newline
 Because we assumed that the map $f$ simplicial, we see that the sum is in the corresponding subset of $[0,1]^J$. Thus $f_*(x)$ is uniquely determined. It is easy to see that the map is simplicial. Let $\{a_{t(1)}, ... , a_{t(n)}\}$ be some simplex in the collection, then it is mapped to simplex $\{f(a_{t(1)}), ... , f(a_{t(n)})\}$ by definition of the map $f$.
 \end{proof}
 \begin{maar}
-Let $f:(X,A) \rightarrow (Y,B)$ and $g:(X,A) \rightarrow (Y,B)$ be simplicial maps. Then we say that the maps are contiguous if for every simplex $s = \{a_1, ..., a_n\}$ in $(X,A)$ there exists a simplex $k$ in $(Y,B)$ for which relations span $(f(a_1), ..., f(a_n)) \subset k$ and span \mbox{$(g(a_1), ..., g(a_n))  \subset k$} hold.
+Let $f:(X,A) \rightarrow (Y,B)$ and $g:(X,A) \rightarrow (Y,B)$ be simplicial maps. Then we say that the maps are contiguous if for every simplex $s = \{a_1, ..., a_n\}$ in $(X,A)$ there exists a simplex $k$ in $(Y,B)$ for which the relations span $(f(a_1), ..., f(a_n)) \subset k$ and span \mbox{$(g(a_1), ..., g(a_n))  \subset k$} hold.
 \end{maar}
 \begin{lem}
 If $f:(X,A) \rightarrow (Y,B)$ and $g:(X,A) \rightarrow (Y,B)$ are contiguous maps then they are homotopic.
@@ -808,7 +806,7 @@ It is easy to see that $H(x,1) = f(x)$ and $H(x,0) = g(x)$. Because $f(x)$ and $
 \subsection{Coverings}
 We begin by recalling the definition of a covering
 \begin{maar}
-Let $X$ be a topological space and let $\{A_i\}_{i \in J}$ be the collection of its open subsets. Then we say that  $\{A_i\}_{i \in J}$ is a covering of $X$ if $\bigcup_{i \in J}A_i = X$.
+Let $X$ be a topological space and let $\{A_i\}_{i \in J}$ be a collection of open subsets of the space $X$. Then we say that  $\{A_i\}_{i \in J}$ is a covering of $X$ if $\bigcup_{i \in J}A_i = X$.
 \end{maar}
 We will denote the set of all open coverings of the space $X$ by $\text{COV}(X)$. Because in homology we are interested in a pair of spaces we give the definition of covering for the pair. 
 \begin{maar}
@@ -822,13 +820,13 @@ Let $(X,A)$ be a topological pair. Then we say that $(\{U_i\}_{i \in J},\{U_i\}_
 \end{enumerate}
 A covering defined above will be from now on denoted as $\mathcal{C}(U_i, J, J')$
 \end{maar}
-We define the collection of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. Next we will see that we can define quasi order for coverings of topological pair $(X,A)$ in a natural way. However, first we have to recall the definition of a refinement.
+We define the collection of all coverings of the pair $(X,A)$ to be $\text{COV}(X,A)$. Next we will see that we can define quasi-order for coverings of a topological pair $(X,A)$ in a natural way. However, first we have to recall the definition of a refinement.
 \begin{maar}\label{coveringquasidefinition}
 	Let $\alpha = \mathcal{C}(U_i, I, I')$ and $\beta = \mathcal{C}(V_j, J, J')$ be coverings of some pair $(X,A)$. Then the covering $\beta$ is called a refinement of the covering $\alpha$, if for every $V_j \in \beta$ there exists some $U_i \in \alpha$ for which $V_j \subset U_i$ holds.
 \end{maar}
-Now we are ready to define the quasi order in the collection of coverings of an arbitrary topological space.
+Now we are ready to define a quasi-order in the collection of coverings of an arbitrary topological space.
 \begin{lem}
-	Let $\text{COV}(X,A)$ be the collection of all coverings of the pair $(X,A)$. Then the order $\leq$ defined by $\alpha \leq \beta$ if and only if $\beta$ is a refinement of $\alpha$, is quasi-order.
+	Let $\text{COV}(X,A)$ be the collection of all coverings of the pair $(X,A)$. Then the order $\leq$ defined by $\alpha \leq \beta$ if and only if $\beta$ is a refinement of $\alpha$, is a quasi-order.
 \end{lem}
 \begin{proof}
 	Any covering is a refinement of itself and if we have coverings for which $a \leq b$ and $b \leq c$ holds, then for every set $U_c$ we can find $U_b$ for which $U_c \subset U_b$ and $U_b \subset U_a$ for some $U_a$. Then we see that $U_c \subset U_a$  so actually $c$ is refinement of $a$. 
@@ -837,14 +835,14 @@ Now we are ready to define the quasi order in the collection of coverings of an 
 \subsubsection{Category of coverings}
 
 \begin{maar}
-	Let $(X,A)$ be a topological pair and let $\alpha$ and $\beta$ be its coverings for which the relation $\alpha \leq \beta$ holds. Then we define $\mathcal{P}(\alpha, \beta)$ to be the collection of all the following projection maps $p^\beta_\alpha:\beta \rightarrow \alpha$: Every $U_i \in \beta$ is mapped to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$ holds.
+	Let $(X,A)$ be a topological pair and let $\alpha$ and $\beta$ be its coverings such that $\alpha \leq \beta$. We define $\mathcal{P}(\alpha, \beta)$ to be the collection of all the following projection maps $p^\beta_\alpha:\beta \rightarrow \alpha$: Every $U_i \in \beta$ is mapped to some set $U'_i \in \alpha$ for which $U_i \subset U_i'$ holds.
 \end{maar}
 We will now show that the family of projection maps is closed under composition.
 \begin{lem}\label{compofprojmaps}
 	Let $\alpha$, $\beta$ and $\gamma$ be coverings of some topological pair, for which relation $\alpha \leq \beta \leq \gamma $  holds.  Let $p^\beta_\alpha$ and $p^\gamma_\beta$ be some projection maps. Then $p^\beta_\alpha \circ p^\gamma_\beta$ is also a projection map.
 \end{lem}
 \begin{proof}
-	Let $U \in \gamma$, then if $U' = p^{\gamma}_{\beta}(U) \in \beta$ and $U'' = p^{\beta}_{\alpha} \circ p^{\gamma}_{\beta}(U) $ , by the definition condition $U \subset U' \subset U''$ holds . By properties of inclusion we can conclude taht $U \subset U''$ and thus $p^\beta_\alpha \circ p^\gamma_\beta$ is a projection map.
+	Let $U \in \gamma$, then if $U' = p^{\gamma}_{\beta}(U) \in \beta$ and $U'' = p^{\beta}_{\alpha} \circ p^{\gamma}_{\beta}(U) $ , by the definition condition $U \subset U' \subset U''$ holds . By properties of inclusion we can conclude that $U \subset U''$ and thus $p^\beta_\alpha \circ p^\gamma_\beta$ is a projection map.
 \end{proof}
 \begin{lem}\label{coviscategory}
 	The collection of coverings $\text{COV}(X,A)$ is a category defined in the following way:
@@ -863,18 +861,18 @@ We will now show that the family of projection maps is closed under composition.
 \subsubsection{Directness property of coverings}
 For the order relation in the category of coverings we have following theorem
 \begin{lem}
-Let $(X,A)$ be a topological pair. The category $\text{COV}(X,A)$ with the quasi-order defined in the definition \ref{coveringquasidefinition} is directed.
+Let $(X,A)$ be a topological pair. The category $\text{COV}(X,A)$ with the quasi-order defined in definition \ref{coveringquasidefinition} is directed.
 \end{lem}
 \begin{proof}
 Let $\alpha = \mathcal{C}(U_i,I,I')$ and $\beta = \mathcal{C}(V_j,J,J')$ be objects of $\text{COV}(X,A)$. We will define a covering $\gamma = \mathcal{C}(W_a,I \times J,I' \times J')$ to be covering which consists of the following elements:
 $$W_{(i,j)} = U_i \cap V_j  $$
-We will prove now that the covering constructed above is satisfies the condition of this lemma. Let $W \in \gamma$, then $W = U \cap V$ for some $U \in \alpha$ and $V \in \beta$. Thus $W \subset U$ and $W \subset V$. Because we chose $W$ to be an arbitrary element of the collection , relations $\alpha \leq \gamma$ and $\beta \leq \gamma$ hold.
+We will prove now that the covering constructed above is satisfies the condition of this lemma. Let $W \in \gamma$, then $W = U \cap V$ for some $U \in \alpha$ and $V \in \beta$. Thus $W \subset U$ and $W \subset V$. Because we chose $W$ to be an arbitrary element of the collection $\gamma$, relations $\alpha \leq \gamma$ and $\beta \leq \gamma$ hold.
 \end{proof}
 
 \subsubsection{Operations on coverings}
 We define the following fusioning operator for coverings
 \begin{maar}
-Let $(X,A)$ be a topological pair and let $\beta^{n} = \mathcal{C}(U^n_i, J_n, J_n')$ be some collection of coverings of the pair indexed by set $H$. Then we say that $\alpha$ is fusioned by collection $\beta$ if it is spanned by the elements $U^n_i$ and indexed by $L = \bigcup_{i \in H} J_i$.  
+Let $(X,A)$ be a topological pair and let $\beta$ be some collection of coverings $\{\mathcal{C}(U^n_i, J_n, J_n') \mid n \in H\}$. Then we say that $\alpha$ is fusioned by the collection $\beta$, if it is spanned by the elements $U^n_i$ and indexed by $L = \bigcup_{i \in H} J_i$.  
 \end{maar}
 \begin{maar}
 Let $(X,A)$ and $(Y,B)$ be topological pairs. Let $\alpha = \mathcal{C}(\alpha_i, J, J')$ be a covering of pair $(X,A)$ and let $\{\beta(x) \mid x \in J\}$ be a collection of coverings $\mathcal{C}(\beta_i, H_n, H'_n)$ of the pair $(Y,B)$ indexed by $J$. The stacked covering $\gamma = \alpha \times \{\beta(x) \mid x \in J\}$ of space $(X \times Y, A \times B)$ consists of elements of the form $a_i \times b_j$, where $j$ belongs to collection of the covering $\beta(i)$. The covering is formally spanned by the index sets  $$H = \bigcup_{x \in J} H_x \text{ and }H'= \bigcup_{x \in J'} H'_x.$$ Let $f:H \rightarrow J$ be a function which tells in which set of the union does some specific element $H_x$ belong to. The covering $\gamma $ is of the form $ \mathcal{C}(V_{f(i)} \times U^{f(i)}_i, H, H')  $.
@@ -884,15 +882,18 @@ We call the collection $\{\beta(x)\}_{x \in J}$ stacks of the covering. It is al
 
 \subsection{The construction}
  Now we are ready to give the definition for the nerve of the covering.
+\begin{maar}
+Let $X$ be some set, then the operator $\text{CNI}(X)$ is the following subset of the set $2^{X}$: $$V \in \text{CNI}(X) \Leftrightarrow V \text{ is finite and intersection over all its elements is non-empty } $$ 
+\end{maar}
 
 \begin{maar}
 Let $X$ be a topological space with an open covering $\mathcal{U}(X) = \{U_i\}_{i \in J}$. Then the nerve of this covering is the following abstract simplicial complex:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 \item The vertex set is defined to be the collection $\mathcal{U}(X)$.
-\item Let $\text{CNI}(\mathcal{U}(X))$ be the collection of all finite non-empty intersections of sets in the collection $\mathcal{U}(X)$. The simplex set of the abstract simplicial complex is defined to be $\text{CNI}(\mathcal{U}(X))$.
+\item The simplex set of the abstract simplicial complex is defined to be $\text{CNI}(\mathcal{U}(X))$.
 \end{enumerate}
 \end{maar}
-The structure described above can be denoted as $\Gamma(\mathcal{U}(X))_{\text{CNI}(\mathcal{U}(X))}$. However, to simplify notation we will from now on denote the nerve of the covering as $\Gamma(X)_{\mathcal{U}(X)}$. 
+The structure described above can be denoted as $\Gamma(\mathcal{U}(X),\text{CNI}(\mathcal{U}(X)))$. However, to simplify notation we will from now on denote the nerve of the covering as $\Gamma(X)_{\mathcal{U}(X)}$. 
 \begin{lem}\label{Welldefinessofnerve}
 The abstract simplicial complex $\Gamma(X)_{\mathcal{U}(X)}$ described above is well-defined.
 \end{lem}
@@ -901,55 +902,54 @@ We have to show that any subset of an element in the collection $\text{CNI}(\mat
 \end{proof}
 We will now give the definition of the nerve of the covering for topological pairs.
 \begin{maar}
-Let $\mathcal{L} = \mathcal{C}(U_i, J, J')$ be a covering of some topological pair $(X,A)$. We denote $\mathcal{L}_X$ to be the covering taking elements from $\mathcal{L}$ indexed by $J$ and $\mathcal{L}_A$ to be the covering, where we use elements from $\mathcal{L}$ indexed by $J'$ . Then the nerve of this covering $\mathcal{S}(X,A)_{\mathcal{L}}$ is the simplicial pair $(\mathcal{{S}}(\mathcal{L}_X)_{\text{CNI}(\mathcal{L}_X)}, \mathcal{S}(\mathcal{L}_A)_{\text{CNI}(\mathcal{L}_A )})$. 
+Let $\mathcal{L} = \mathcal{C}(U_i, J, J')$ be a covering of some topological pair $(X,A)$. We denote $\mathcal{L}_X$ to be the covering taking elements from $\mathcal{L}$ indexed by $J$ and $\mathcal{L}_A$ to be the covering, where we use elements from $\mathcal{L}$ indexed by $J'$ . Then the nerve of this covering $\mathcal{S}(X,A)_{\mathcal{L}}$ is the simplicial pair $(\mathcal{{S}}(\mathcal{L}_X, \text{CNI}(\mathcal{L}_X)), \mathcal{S}(\mathcal{L}_A,\text{CNI}(\mathcal{L}_A ))$. 
 \end{maar}
 \begin{lem}
 The simplicial pair described above is well-defined.
 \end{lem}
 \begin{proof}
-By Lemma \ref{Welldefinessofnerve}, the simplicial complexes are well-defined. We only have to show that $\mathcal{S}(\mathcal{L}_A)_{\text{Con}(\mathcal{L}_A )}$ is a subsimplex of $\mathcal{{S}}(\mathcal{L}_X)_{\text{Con}(\mathcal{L}_X)}$. This follows directly from the definition of the pair of coverings, as we defined the covering $\mathcal{L}_A$ to be a sub covering of $\mathcal{L}_X$ . 
+By Lemma \ref{Welldefinessofnerve}, the simplicial complexes are well-defined. We only have to show that $\mathcal{S}(\mathcal{L}_A,\text{CNI}(\mathcal{L}_A ))$ is a subsimplex of $\mathcal{{S}}(\mathcal{L}_X,\text{CNI}(\mathcal{L}_X))$. This follows directly from the definition of the pair of coverings, as we defined the covering $\mathcal{L}_A$ to be a sub covering of the covering $\mathcal{L}_X$. 
 \end{proof}
  
 \begin{lem}
-	Let $\beta = \mathcal{C}(V_i, I, I')$ and $\alpha = \mathcal{C}(U_i, I, I')$ be coverings of $(X,A)$ in such way that $\alpha \leq \beta$ and let $p$ be a projection map belonging to $\mathcal{P}(\alpha,\beta)$. Let the map $p'^\beta_\alpha:\Gamma(X,A)_\beta \rightarrow \Gamma(X,A)_\alpha$ be a map between abstract simplicial complexes induced by the edges $V_i \in \beta$ and map $p$. The map $p'^\beta_\alpha:\Gamma(X,A)_\beta$ is well-defined simplicial map.
+	Let $\beta = \mathcal{C}(V_i, I, I')$ and $\alpha = \mathcal{C}(U_i, I, I')$ be coverings of $(X,A)$ with $\alpha \leq \beta$ and let $p$ be a projection map belonging to $\mathcal{P}(\alpha,\beta)$. Let the map $p'^\beta_\alpha:\Gamma(X,A)_\beta \rightarrow \Gamma(X,A)_\alpha$ be a map between abstract simplicial complexes induced by the edges $V_i \in \beta$ and the map $p$. The map $p'^\beta_\alpha$ is a well-defined simplicial map.
 \end{lem}
 \begin{proof}
 	Well-definiteness follows directly from the fact that the inducing map $p$ is well-defined. Let $s$ be a simplex in $\Gamma(X,A)_\beta$ spanned by some sets $\{U_i\}_{i \in J}$ such that $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $V_i$ in $\Gamma(X,A)_\alpha$ for which $U_i \subset V_i$. Intersection $\bigcap_{i \in J}V_i$ is clearly non-empty, so edges of every simplex span some simplex in the image.
 \end{proof}
 
-All the lemmas and proves have been presented only for the abstract simplicial complexes. The geometric realization of the nerve of the covering will be denoted simply as $\mathcal{S}(X,A)_\alpha$. The concept of projection map is being used in many different contexts. However, because it is clear from the context which definition is used in all the contexts we will denote the projection map to be simply $p'^\beta_\alpha$. It is also worth noticing that from lemma \ref{geometricrealizationsimplicial} it follows that the induced map $p^{\beta}_{\alpha}$ between the geometric realizations $\mathcal{S}(X,A)_\beta$ and $\mathcal{S}(X,A)_\alpha$ is also well-defined and simplicial. 
+All the lemmas and proofs have been presented only for the abstract simplicial complexes. The geometric realization of the nerve of the covering will be denoted simply as $\mathcal{S}(X,A)_\alpha$. The concept of projection map is being used in many different contexts. However, because it is clear from the context which definition is used in all the contexts we will denote the projection map to be simply $p'^\beta_\alpha$. It is also worth noticing that from lemma \ref{geometricrealizationsimplicial} it follows that the induced map $p^{\beta}_{\alpha}$ between the geometric realizations $\mathcal{S}(X,A)_\beta$ and $\mathcal{S}(X,A)_\alpha$ is also well-defined and simplicial. 
  \newline
 Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define the same homomorphisms between corresponding homology groups of spaces $\mathcal{S}(X,A)_\alpha$ and $\mathcal{S}(X,A)_\beta$.
 \begin{lem}\label{contiguouspropertyforprojectionmaps}
-Let $\alpha$ and $\beta$ be any coverings of $(X,A)$ for which condition  $\alpha \leq \beta$ is satisfied. Then any two projection maps $p^\beta_\alpha$ and $p'^\beta_\alpha$ are contiguous.
+Let $\alpha$ and $\beta$ be any coverings of $(X,A)$ for which the condition  $\alpha \leq \beta$ is satisfied. Then any two projection maps $p^\beta_\alpha$ and $p'^\beta_\alpha$ are contiguous.
 \end{lem}
 \begin{proof}
-
 To prove that the maps are contiguous we form a simplex in $\mathcal{S}(Y,B) $ and prove that the images of both maps belong to it. Every vertex $x_i$ in $\mathcal{S}(X,A)$ is mapped to $x'_{s(i)}$ and $x''_{d(i)}$ by $p^\beta_\alpha$ and $p'^\beta_\alpha$ respectively. Let $U_i$ be the open sets corresponding to vertexes $x_i$. Now for every simplex $\{x_{r(0)}, ... x_{r(n)}\}$ the corresponding intersection $\bigcap_{i \in J}U_i$ is non-empty. Let $U'_i$ correspond to  $x'_{s(i)}$ and $U''_i$ to $x''_{d(i)}$. We see that $\bigcap_{i \in J}U'_i \cap \bigcap_{i \in J}U''_i \neq \emptyset$ and thus the corresponding simplex $\{x'_{s \circ r(1)}, ... , x'_{s \circ r(n)}, x''_{d \circ r(1)}, ... x''_{d \circ r(n)}\}$ where the duplicates are removed is in the collection. In the case where the simplex belongs to $\mathcal{S}(A)$ it is easy to see that any projection map maps them to some simplex which lies inside $\mathcal{S}(B)$.  
 \end{proof}
 \begin{kor}\label{projektiokuvauksetindusoivatsamathomomorfismit}
 Let $(X,A)$ be a topological pair. The projection maps in collection $\mathcal{P}_{(X,A)}(a,b)$ define same homomorphisms between singular homology groups.
 \end{kor}
 \begin{proof}
-Follows directly using lemma \ref{contiguouspropertyforprojectionmaps} and the fact that contiguous simplicial maps induce the same homomorphisms between homology groups 
+The claim follows directly by using lemma \ref{contiguouspropertyforprojectionmaps} and the fact that contiguous simplicial maps induce the same homomorphisms between homology groups 
 \end{proof}
 Thus we  can define the unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}(X,A)_{\beta}) \rightarrow H_q(\mathcal{S}(X,A)_{\alpha})$ for every $q \in \N$.
 
 \begin{maar}
-	Let $F:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(V_i, J_{\beta}, J'_{\beta})$, where $V_i = f^{-1}U_i$ for every $i \in J_{\beta}$.
+%	Let $f:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. Let  $K_{\beta}$ be indexation of the elements $U_i$ for which the preimage under map $f$ is non-empty. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(V_i, K_{\beta}, K'_{\beta})$, where $V_i = f^{-1}U_i$ for all $i \in K_{\beta}$.
 \end{maar}
-Note that the collection $\alpha$ above is defined in a such way, that for every element $U_i \in \beta$ we make copy, take preimage of it and add it to the collection $\alpha$.
+Note that the collection $\alpha = f^{-1}\beta$ above is defined in a such way, that for every element $U_i \in \beta$ we make copy, take preimage of it and add it to the collection $\alpha$.
 \begin{lem}\label{inducedmapf}
-	Let $f:(X,A) \rightarrow (Y,B)$ be s function between pairs and let $\alpha = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\beta$ be the covering $f^{-1}\alpha$ of $(X,A)$. Then the induced map $f_*: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined inclusion.
+	Let $f:(X,A) \rightarrow (Y,B)$ be a function between pairs and let $\beta = \mathcal{C}(U_i,I,I')$ be a covering of $(Y,B)$. Let $\alpha$ be the covering $f^{-1}\beta$ of $(X,A)$. Then the induced map $f_*: \mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(Y,B)_{\beta}$, defined by $f^{-1}U_i \rightarrow U_i$ is well-defined inclusion.
 \end{lem}
 \begin{proof}
-	Let $\{V_{j_1},.., V_{j_n}\}$ be arbitrary simplex in the nerve $\mathcal{S}(X,A)_{\alpha}$, for which $V_{i} = f^{-1}U_{i}$ holds. Then for the edges of corresponding abstract simplex the intersection  $\bigcap_{i \in J}f^{-1}U_{i} $, where $J_{\beta}$ is finite index set over elements of covering $\beta$, is empty. It implies that $\bigcap_{i \in J}U_i \neq \emptyset$, thus because edges were defined in one to one correspondence the function defined this way is well-defined inclusion.
+	Let $\{V_{j_1},.., V_{j_n}\}$ be arbitrary simplex in the nerve $\mathcal{S}(X,A)_{\alpha}$, for which $V_{i} = f^{-1}U_{i}$ holds. Then for the edges of the corresponding abstract simplex the intersection  $\bigcap_{i \in J_{\beta}}f^{-1}U_{i} $, where $J_{\beta}$ is finite index set over elements of covering $\beta$, is non-empty. It implies that $\bigcap_{i \in J_{\beta}}U_i \neq \emptyset$, thus because edges were defined in one to one correspondence the function defined this way is well-defined inclusion.
 \end{proof}
 
-For projection maps and induced homomorphisms we have following useful lemma.
+For projection maps and induced homomorphisms we have the following useful lemma.
 
 \begin{lem}\label{preimageorder}
-Let $\alpha$ be a covering of the pair $(X,A)$ and let $\beta$ be a covering of the pair $(Y,B)$ for which $\alpha \leq \beta$ holds and let $f:(X,A) \rightarrow (Y,B)$ be a function between pairs. Then the pre-image $f^{-1}\beta$ of the covering $\beta$ is a refinement of $f^{-1}\alpha$.
+Let $\alpha$ be a covering of the pair $(Y,B)$ and let $\beta$ be a covering of the pair $(Y,B)$ for which $\alpha \leq \beta$ holds and let $f:(X,A) \rightarrow (Y,B)$ be a function between pairs. Then the pre-image $f^{-1}\beta$ of the covering $\beta$ is a refinement of $f^{-1}\alpha$.
 \end{lem}
 \begin{proof}
 This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \subset f^{-1}V$.
@@ -957,7 +957,7 @@ This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \s
 \end{proof}
 
 \begin{lem}\label{squarelemmaforcoverings}
-	Let $f:(X,A) \rightarrow (Y,B) $ and let $\alpha$ and $\beta$ be coverings of $(Y,B)$ such that $\alpha \leq \beta$. Let $\alpha' = f^{-1}\alpha$ and let $\beta' = f^{-1}\beta $ and let $p^\beta_\alpha$ be a projection map for the coverings. Then there exists a projection map $p'^{\beta'}_{\alpha'} $ for which the following diagram commutes.
+	 Let $f:(X,A) \rightarrow (Y,B) $ and let $\alpha$ and $\beta$ be coverings of $(Y,B)$ such that $\alpha \leq \beta$. Let $\alpha' = f^{-1}\alpha$ and let $\beta' = f^{-1}\beta $ and let $p^\beta_\alpha$ be a projection map for the coverings. We denote the inclusion maps induced by function $f$ by $f_\alpha:\mathcal{S}(X,A)_{\alpha'} \rightarrow \mathcal{S}(Y,B)_{\alpha}$. Then there exists a projection map $p'^{\beta'}_{\alpha'} $ for which the following diagram commutes.
 		$$
 	\begin{tikzpicture}
 	
@@ -991,7 +991,7 @@ This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \s
 \end{lem}
 
 \begin{proof}
-Lemma \ref{preimageorder} states that $f^{-1}\beta$ is refinement of $f^{-1}\alpha$. We define map $p'^{\beta'}_{\alpha'}$ to be the map which maps every $U_i$ to element $ f^{-1}_a(p^{\beta}_{\alpha} \circ f_{\beta}(U_i))$. We have to show that the map is well-defined. We recall that $p^{\beta}_{\alpha }$ maps every set to some larger set. Thus $ f^{-1}p^{\beta}_{\alpha}f(U_i)$ is non-empty. The second part of the claim follows directly from the lemma \ref{inducedmapf}, which states that maps $f_\alpha$ and $f_\beta$ are inclusions between corresponding simplices.
+Lemma \ref{preimageorder} states that $f^{-1}\beta$ is refinement of $f^{-1}\alpha$. We define map $p'^{\beta'}_{\alpha'}$ to be the map which takes every $U_i$ to element $ f^{-1}_a(p^{\beta}_{\alpha} \circ f_{\beta}(U_i))$. We have to show that the map is well-defined. We recall that $p^{\beta}_{\alpha }$ maps every set to some larger set. Thus from the equations $$U_i \subset f^{-1}f(U_i) \subset f^{-1}p^{\beta}_{\alpha}f(U_i) $$ we can conclude that every element in the collection $\beta'$ is mapped to non-empty element of $\alpha'$ and the map is well-defined. The second part of the claim follows directly from Lemma \ref{inducedmapf}, which states that the maps $f_\alpha$ and $f_\beta$ are inclusions between the corresponding simplices.
 \end{proof}
 
 \chapter{\v{C}ech homology}
@@ -999,35 +999,35 @@ Lemma \ref{preimageorder} states that $f^{-1}\beta$ is refinement of $f^{-1}\alp
 In this chapter we will construct \v{C}ech homology and prove the main results related to it.  We will first define an inverse system of homology groups of the nerves.
 
 \begin{maar}
-Let $\alpha$ be an element of $\text{COV}(X,A)$ and let $G$ be an abelian group. Then we can define the group $H_{q,a}(X,A;G)$ using the singular homology groups in the following way: 
-$$H_{q,a}(X,A;G) = H_q(\mathcal{S}(X,A)_{\alpha};G).$$ 
+Let $\alpha$ be an element of $\text{COV}(X,A)$ and let $G$ be an abelian group. Then we can define the group $H_{q,\alpha}(X,A;G)$ using the singular homology groups in the following way: 
+$$H_{q,\alpha}(X,A;G) = H_q(\mathcal{S}(X,A)_{\alpha};G).$$ 
 Let $\alpha, \beta$ be coverings of $(X,A)$ for which relation $\alpha \leq \beta$ holds. Let $p^{\beta}_{\alpha}$ be some projection map between the coverings. Let
 $$I^{\beta}_{\alpha}: H_{q,\beta} \rightarrow  H_{q,\alpha}$$ 
 be the homomorphisms induced by $p^{\beta}_{\alpha}$. Since all projection maps $p^{\beta}_{\alpha}$ are contingous, it follows that $I^{\beta}_{\alpha}$ is independent of the choice of $p^{\beta}_{\alpha}$.
 \end{maar}
 \begin{lem}
-Let $q \in \N$ be a fixed number. Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the groups $H_{q,a}(X,A;G)$ together with maps $I_{\beta}^{\alpha}$ form an inverse system of groups.
+Let $q \in \N$ be a fixed number. Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the groups $H_{q,\alpha}(X,A;G)$ together with maps $I_{\beta}^{\alpha}$ form an inverse system of groups.
 \end{lem}
 \begin{proof}
-Lemma \ref{coviscategory} says that $COV(X,A)$ with the morphisms induced by the quasi-order relation forms a category. Let $I$ be a functor which maps every covering to a corresponding geometric realization of the nerve and every morphism between the coverings to the induced homomorphism. Using lemmas \ref{projektiokuvauksetindusoivatsamathomomorfismit} and \ref{welldefinessofsystems} we see that the functor defined in this way is a well-defined functor and forms an inverse system. 
+Lemma \ref{coviscategory} says that $\text{COV}(X,A)$ with the morphisms induced by the quasi-order relation forms a category. Let $I:\text{COV}(X,A) \rightarrow \text{Ab}$ be a functor which maps every covering to a corresponding abelian group $H_{q,\alpha}(X,A;G)$ and every morphism between the coverings to the induced homomorphism. Using lemmas \ref{projektiokuvauksetindusoivatsamathomomorfismit} and \ref{welldefinessofsystems} we see that the functor defined in this way is a well-defined functor and forms an inverse system. 
 \end{proof}
 
-Now we are ready to define the \v{C}ech homology groups $ \check{\mathrm{H}}_n$.
+Now we are ready to define the \v{C}ech homology groups $ \check{\mathrm{H}}_n$. We denote the spanning functor of the inverse system defined above as $I(X,A; G)$.
 \begin{maar}
-Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the \v{C}ech homology groups with coefficients $G$ are defined to be inverse limits of $H_{q,\alpha}(X,A;G)$ where $\alpha$ belongs to COV$(X,A)$. Simply denoted  $$\check{\mathrm{H}}_q(X,A;G) = \lim_{\rightarrow}\{H_{q,\alpha}(X,A;G)\}$$
+Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the \v{C}ech homology groups with coefficients $G$ are defined to be inverse limits of the corresponding functors $I$. Simply denoted  $$\check{\mathrm{H}}_q(X,A;G,q) = \lim_{\rightarrow}I(X,A;G)$$
 
 \end{maar}
 Because coverings can be infinite the limits are not necessary defined. However there is a way to evade this problem. 
 
 \section{Induced homomorphisms}
-In this section we will investigate properties of induced homomorphisms. Earlier we defined \v{C}ech homology groups to be the limits of the groups induced by coverings of pairs. In section \ref{limitmorphism} we defined the concept of limit homomorphism. In the next theorem we will show that such homomorphism exists.
+In this section we will investigate properties of induced homomorphisms. Earlier we defined \v{C}ech homology groups to be the limits of the groups induced by coverings of pairs. In section \ref{limitmorphism} we defined the concept of a limit homomorphism. In the next theorem we will show that such homomorphism exists.
 
 \begin{lause}
-Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Let $$\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of pair }(Y,B)\}$$ be a family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces homomorphisms between corresponding \v{C}ech homology groups: $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
+Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Let $$\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of the pair }(Y,B)\}$$ be a family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces homomorphisms between corresponding \v{C}ech homology groups: $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
 We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collection is a natural transformation of the \v{C}ech homology groups and the limit function is well defined. 
 \end{lause}
 \begin{proof}
-We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(A,B)$ to map every object $\alpha$ to $f^{-1}\alpha$. By lemma \ref{preimageorder} this functor preserves order. Let $\beta$ and $\alpha$ be some coverings of pair $(Y,B)$. We denote by $\alpha'$ and $\beta'$ the preimage categories of $\alpha$ and $\beta$ under the map $f$ respectively. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have a following commutable diagram:
+We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(X,A)$ to map every object $\alpha$ to $f^{-1}\alpha$. By lemma \ref{preimageorder} this functor preserves order. Let $\beta$ and $\alpha$ be some coverings of the pair $(Y,B)$. We denote by $\alpha'$ and $\beta'$ the preimage categories of $\alpha$ and $\beta$ under the map $f$ respectively. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have the following commutable diagram:
 	$$
 	\begin{tikzpicture}
 	
@@ -1060,21 +1060,21 @@ We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(A,B)$ to ma
 	
 The fact that the collection $\mathcal{A}_q$ is a natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists a limit homomorphism $$f_q:\check{\mathrm{H}}_q(X,A;G) \rightarrow \check{\mathrm{H}}_q(Y,B;G) $$
 \end{proof}
-We will show now that the \v{C}ech homology group is a functor. 
+We will now show that \v{C}ech homology groups are functors. 
 \begin{lause}
 \v{C}ech homology groups are functors from the category of topological pairs to the category of abelian groups 
 \end{lause}
 \begin{proof}
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 \item Every pair of spaces is mapped uniquely to some abelian group.
-\item The limit of identity map is an identity homomorphism.
-\item Let $f:(X,A) \rightarrow (Y,B)$ and $g:(Y,B) \rightarrow (Z,C)$ be continuous maps between pairs. We know that $f$, $g$ induces homomorphisms $$f_{*}:H_*(X,A) \rightarrow H_*(Y,B) \text{ and } g_{*}:H_*(X,A) \rightarrow H_*(Y,B).$$ Thus using axioms of singular homology theory we see that $(g \circ f)_{*} = g_* \circ f_*$ holds for the singular homology groups. Then by using theorem \ref{compositionlimitmorphism} we see that the limit homomorphism $\lim ((g \circ f)_*)$ equals $\lim g_* \circ \lim f_*$.
+\item The limit of an identity map is an identity homomorphism.
+\item Let $f:(X,A) \rightarrow (Y,B)$ and $g:(Y,B) \rightarrow (Z,C)$ be continuous maps between pairs. We know that $f$ and $g$ induce homomorphisms $$f_{*}:H_*(X,A) \rightarrow H_*(Y,B) \text{ and } g_{*}:H_*(X,A) \rightarrow H_*(Z,C).$$ Thus using axioms of singular homology theory we see that $(g \circ f)_{*} = g_* \circ f_*$ holds for the singular homology groups. Then by using theorem \ref{compositionlimitmorphism} we see that the limit homomorphism $\lim ((g \circ f)_*)$ equals $\lim g_* \circ \lim f_*$.
 \end{enumerate}
 \end{proof}
 
 
 \section{Dimension axiom}
-In this section we will prove that the \v{C}ech homology theory satisfies the dimension axiom.
+In this section we will prove that \v{C}ech homology theory satisfies the dimension axiom.
 \begin{lause}
 Let $X = \{x\}$ be a space consisting of one point. Then the \v{C}ech homology groups $\check{\mathrm{H}}_n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
 \end{lause}
@@ -1089,34 +1089,34 @@ $$\check{\mathrm{H}}_n(X; G) = \left\{
 \end{proof}
 
 \section{Homotopy axiom}
-The main result of this section is the homotopy axiom of \v{C}ech homology which states that if two spaces are homotopic then their all \v{C}ech homology groups are isomorphic. In the beginning we will prove an important result regarding the singular homology groups of the nerve of the unit interval $[0,1]$. 
+The main result of this section is the homotopy axiom of \v{C}ech homology which states that if two spaces are homotopic then they have isomorphic \v{C}ech homology groups for all $q \in \N$. In the beginning we will prove an important result regarding the singular homology groups of the nerve of the unit interval $[0,1]$. 
 
 \begin{maar}
-Let $X$ be a topological space and $\alpha$ its finite open covering. Then $\text{CLEAN}(\alpha)$ is a covering of space $X$, which is formed by removing every such element $A \in \alpha$ for which $A \subset B$ holds for some $B \in \alpha$ from the collection.
+Let $X$ be a topological space and let $\alpha$ be a finite open covering of $X$. Then $\text{CLEAN}(\alpha)$ is a covering of the space $X$, which is formed by removing every such element $A \in \alpha$ for which $A \subset B$ holds for some $B \in \alpha$.
 \end{maar}
 
 \begin{lem}\label{cleanlemma}
-Let $X$ be a topological space and $\alpha$ its finite open covering. Let $\beta = \text{CLEAN}(\alpha)$ be the covering defined in previous definition. Then singular homology $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $ are isomorphic for every $q \in \N$.
+Let $X$ be a topological space and let $\alpha$ be its finite open covering. Let $\beta$ be covering $\text{CLEAN}(\alpha)$ . Then the singular homology groups $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $ are isomorphic for every $q \in \N$.
 \end{lem}
 \begin{proof}
-Because $\beta$ is subcollection of $\alpha$, the relation $\alpha \leq \beta$ holds. Relation $\beta \leq \alpha$ holds, because if we take any element from $a \in \alpha$ which is not in $\beta$ by definition we will find an element $b \in \beta$ for which the relation $a \subset b$ holds. \newline
-Thus there exists morphisms $I^{\beta}_{\alpha}$ and $I^{\alpha}_{\beta}$ in the inverse system of abelian groups induced by coverings. By definition equations $I^{\beta}_{\alpha} \circ I^{\alpha}_{\beta} = I^{\beta}_{\beta} = id_{\beta}$ and $I^{\alpha}_{\beta} \circ I^{\beta}_{\alpha} = I^{\alpha}_{\beta} = id_{\alpha}$ hold. Thus $I^{\beta}_{\alpha}$ is an isomorphism between $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $. 
+Because $\beta$ is a subcollection of $\alpha$, the relation $\alpha \leq \beta$ holds. Relation $\beta \leq \alpha$ holds, because if we take any element from $a \in \alpha$ which is not in $\beta$ by definition we will find an element $b \in \beta$ for which the relation $a \subset b$ holds. \newline
+Thus there exist morphisms $I^{\beta}_{\alpha}$ and $I^{\alpha}_{\beta}$ in the inverse system of abelian groups induced by coverings. By definition the equations $$I^{\beta}_{\alpha} \circ I^{\alpha}_{\beta} = I^{\beta}_{\beta} = id_{\beta} \text{ and } I^{\alpha}_{\beta} \circ I^{\beta}_{\alpha} = I^{\alpha}_{\beta} = id_{\alpha}$$  hold. Thus $I^{\beta}_{\alpha}$ is an isomorphism between $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $. 
 \end{proof}
 \begin{maar}
-	Let $\alpha$ be a cleaned finite open covering of $[0,1]$, for which every element in the collection is connected. Trivial indexation of $\alpha$ is the following indexation: We order open intervals in the collection $(a,b) \in \alpha$ by the cordinate $a$ and number coverings.
+	Let $\alpha$ be a cleaned finite open covering of $[0,1]$, for which every element in the collection is connected. The trivial indexation of $\alpha$ is the following indexation: We order open intervals in the collection $(a,b) \in \alpha$ by the coordinate $a$ and number coverings.
 \end{maar}
 \begin{lem}
-Let $\alpha$ be a open covering of $[0,1]$m which is cleaned, finite and connected. Then the trivial indexation $[m]$ preserves order of the coordinate $b$ of open intervals.
+Let $\alpha$ be an open covering of $[0,1]$ which is cleaned, finite and connected. Then the trivial indexation $[m]$ preserves the order of the coordinate $b$ of open intervals.
 \end{lem}
 \begin{proof}
 If $b_n > b_{n+1}$ for some $n \in [m-1]$, then $(a_{n+1},b_{n+1}) \subset (a_{n}, b_n)$ which is a contradiction by the definition of the covering $\alpha$.
 \end{proof}
 
 \begin{lem}\label{Unitintervaltrivial}
-Let $\alpha$ be an open covering which is finite and every element in the collection is connected. Then every singular homology group of the nerve $\mathcal{S}([0,1])_{\alpha}$ is trivial. 
+Let $\alpha$ be an open covering which is finite. Assume that every element in $\alpha$ is connected. Then every singular homology group of the nerve $\mathcal{S}([0,1])_{\alpha}$ is trivial. 
 \end{lem}
 \begin{proof}
-Using \ref{cleanlemma} we can reduce our problem to coverings which have property that no inclusion holds for any two element of the collection $\alpha$. We define indexation to be trivial indexation for covering $\alpha$. Let $\{f_n(x):\mathcal{S}([0,1])_{\alpha} \rightarrow  \mathcal{S}([0,1])_{\alpha} \}_{n \in [m]}$ be a collection of simplicial maps which are induced by the edges in the following way:
+Using Lemma \ref{cleanlemma} we can reduce our problem to coverings which have property that no inclusion holds for any two elements of $\alpha$. We define indexation to be trivial indexation for covering $\alpha$. Let $\{f_n(x):\mathcal{S}([0,1])_{\alpha} \rightarrow  \mathcal{S}([0,1])_{\alpha} \}_{n \in [m]}$ be a collection of simplicial maps which are induced by the edges in the following way:
 $$f_n(v_i) = \left\{
 \begin{array}{ll}
 v_i  & \mbox{if } i \leq n \\

@@ -146,3 +146,7 @@ From now on in this chapter we assume that the topological spaces are such for w
 Let $(X,A)$ be topological pair and $\alpha = \mathcal{C}(V_x, J, J')$ be its covering. Suppose that for every $V_x$ there exists a regular covering $\beta(x) = \mathcal{C}(U^x_i, H_x, H_x')$ of an unit interval $[0,1]$. Let $$H = \bigcup_{x \in J} H_x \text{ and }H'= \bigcup_{x \in J} H'_x.$$ Let $f:H \rightarrow J$ be a function which tells in which set of the union does some specific element $H_x$ belong to. Covering $\gamma$ of the pair $(X \times [0,1], A \times [0,1]) $ defined in the following way:
 $$\gamma = \mathcal{C}(V_{f(i)} \times U^{f(i)}_i, H, H')  $$
 is called a stacked covering over $\alpha$.
+
+\begin{maar}
+Let $(X,A)$ and $(Y,B)$ be pairs of geometric complexes and let $f$ be a continuous function between pairs. Then we say that the map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and the images of vertexes of a simplex in $A$ span some simplex in $B$.
+\end{maar}
