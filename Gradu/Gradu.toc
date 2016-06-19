@@ -1,29 +1,32 @@
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Introduction}{2}
-\contentsline {chapter}{\numberline {2}Background}{3}
-\contentsline {section}{\numberline {2.1}Direct sum and direct product}{3}
-\contentsline {section}{\numberline {2.2}Category theory}{4}
-\contentsline {subsection}{\numberline {2.2.1}Dual category}{7}
-\contentsline {subsection}{\numberline {2.2.2}Direct and inverse systems}{8}
-\contentsline {subsection}{\numberline {2.2.3}Morphisms between systems}{10}
-\contentsline {subsubsection}{\numberline {2.2.3.1}Morphisms between inverse systems}{10}
-\contentsline {subsection}{\numberline {2.2.4}Finality properties of subsystems}{13}
-\contentsline {section}{\numberline {2.3}Nerve of covering}{15}
-\contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{15}
-\contentsline {subsubsection}{\numberline {2.3.1.1}Simplicial operators}{18}
-\contentsline {subsection}{\numberline {2.3.2}Coverings}{18}
-\contentsline {subsubsection}{\numberline {2.3.2.1}Category of coverings}{19}
-\contentsline {subsubsection}{\numberline {2.3.2.2}Directness property of coverings}{19}
-\contentsline {subsubsection}{\numberline {2.3.2.3}Operations on coverings}{20}
-\contentsline {subsection}{\numberline {2.3.3}The construction}{20}
-\contentsline {chapter}{\numberline {3}\v {C}ech homology}{24}
-\contentsline {section}{\numberline {3.1}Induced homomorphisms}{25}
-\contentsline {section}{\numberline {3.2}Dimension axiom}{26}
-\contentsline {section}{\numberline {3.3}Homotopy axiom}{27}
-\contentsline {chapter}{\numberline {4}Applications}{31}
-\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{31}
-\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{31}
-\contentsline {section}{\numberline {4.3}Continuous game theory}{31}
-\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{32}
-\contentsline {chapter}{Appendices}{33}
-\contentsline {chapter}{\numberline {A}Homology axioms}{34}
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {chapter}{\numberline {2}Background}{4}
+\contentsline {section}{\numberline {2.1}Direct sum and direct product}{4}
+\contentsline {section}{\numberline {2.2}Category theory}{5}
+\contentsline {subsection}{\numberline {2.2.1}Dual category}{8}
+\contentsline {subsection}{\numberline {2.2.2}Direct and inverse systems}{9}
+\contentsline {subsection}{\numberline {2.2.3}Morphisms between systems}{11}
+\contentsline {subsubsection}{\numberline {2.2.3.1}Morphisms between inverse systems}{11}
+\contentsline {subsection}{\numberline {2.2.4}Finality properties of subsystems}{14}
+\contentsline {section}{\numberline {2.3}Nerve of covering}{16}
+\contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{16}
+\contentsline {subsubsection}{\numberline {2.3.1.1}Simplicial operators}{19}
+\contentsline {subsection}{\numberline {2.3.2}Coverings}{19}
+\contentsline {subsubsection}{\numberline {2.3.2.1}Category of coverings}{20}
+\contentsline {subsubsection}{\numberline {2.3.2.2}Directness property of coverings}{20}
+\contentsline {subsubsection}{\numberline {2.3.2.3}Operations on coverings}{21}
+\contentsline {subsection}{\numberline {2.3.3}The construction}{21}
+\contentsline {section}{\numberline {2.4}Toolbox of singular homology theory}{24}
+\contentsline {subsection}{\numberline {2.4.1}Chain homotopy}{24}
+\contentsline {subsection}{\numberline {2.4.2}Algebraic mappings}{25}
+\contentsline {chapter}{\numberline {3}\v {C}ech homology}{27}
+\contentsline {section}{\numberline {3.1}Induced homomorphisms}{28}
+\contentsline {section}{\numberline {3.2}Dimension axiom}{29}
+\contentsline {section}{\numberline {3.3}Homotopy axiom}{30}
+\contentsline {chapter}{\numberline {4}Applications}{34}
+\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{34}
+\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{34}
+\contentsline {section}{\numberline {4.3}Continuous game theory}{34}
+\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{35}
+\contentsline {chapter}{Appendices}{36}
+\contentsline {chapter}{\numberline {A}Homology axioms}{37}

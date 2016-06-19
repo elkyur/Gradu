@@ -994,6 +994,152 @@ This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \s
 Lemma \ref{preimageorder} states that $f^{-1}\beta$ is refinement of $f^{-1}\alpha$. We define map $p'^{\beta'}_{\alpha'}$ to be the map which takes every $U_i$ to element $ f^{-1}_a(p^{\beta}_{\alpha} \circ f_{\beta}(U_i))$. We have to show that the map is well-defined. We recall that $p^{\beta}_{\alpha }$ maps every set to some larger set. Thus from the equations $$U_i \subset f^{-1}f(U_i) \subset f^{-1}p^{\beta}_{\alpha}f(U_i) $$ we can conclude that every element in the collection $\beta'$ is mapped to non-empty element of $\alpha'$ and the map is well-defined. The second part of the claim follows directly from Lemma \ref{inducedmapf}, which states that the maps $f_\alpha$ and $f_\beta$ are inclusions between the corresponding simplices.
 \end{proof}
 
+\section{Toolbox of singular homology theory}
+This section contains the toolbox of concepts which are essential to prove the homotopy theorem of \v{C}ech homology.
+
+\subsection{Chain homotopy}
+In this section we recall definition of chain homotopy and an important theorem related to it. 
+
+\begin{maar}
+Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian groups. Then we say that collection $f$ of homomorphisms $\{f_n:C_n \rightarrow D_n \}$ is chain map, if the following diagram induced by the maps commutes:
+	$$
+	\begin{tikzpicture}
+	
+	\node (e1) at (-4,0) {\(...\)};
+	
+	\node (e2) at (-4,-2) {\(...\)};
+	
+	\node (q1) at (4,0) {\(...\)};
+	
+	\node (q2) at (4,-2) {\(...\)};
+	
+	\node (a1) at (-2,0) {\(C_{n+1}\)};
+	
+	\node (a2) at (-2,-2) {\(D_{n+1}\)};
+	
+	\node (w) at (0,0) {\(C_n\)};
+	
+	\node (x) at (0,-2) {\(D_n\)};
+	
+	\node (y) at (2,-2) {\(D_{n-1}\)};
+	
+	\node (z) at (2,0) {\(C_{n-1}\)};
+	
+	\node (f) at (1,-2.4){\(\zeta_n\)};
+	
+	\node (g) at (1,-0.4){\(\partial_n\)};
+	
+	\node (f2) at (-1,-2.4){\(\zeta_{n-1}\)};
+	
+	\node (g2) at (-1,-0.4){\(\partial_{n-1}\)};
+	
+	\node (s3) at (-1.5,-1) {\(f_{n+1}\)};
+	
+	\node (s) at (0.3,-1) {\(f_{n}\)};
+	
+	\node (s2) at (2.5,-1) {\(f_{n-1}\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	\draw[->] (e1) -- (a1);
+	\draw[->] (a1) -- (w);
+	\draw[->] (z) -- (q1);
+	\draw[->] (e2) -- (a2);
+	\draw[->] (a1) -- (a2);
+	\draw[->] (a2) -- (x);
+	\draw[->] (y) -- (q2);
+	
+	
+	\end{tikzpicture}
+	$$
+\end{maar}
+
+\begin{maar}
+Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian groups and let $f$ and $g$ be chain maps between them. We say that $f$ is chain homotopic to $g$ if there exists a collection of homomorphisms $\{ P_n: C_n \rightarrow D_{n+1} \}$ for which the following diagram commutes:
+	$$
+	\begin{tikzpicture}
+	
+	\node (e1) at (-8,0) {\(...\)};
+	
+	\node (e2) at (-8,-2) {\(...\)};
+	
+	\node (q1) at (8,0) {\(...\)};
+	
+	\node (q2) at (8,-2) {\(...\)};
+	
+	\node (a1) at (-4,0) {\(C_{n+1}\)};
+	
+	\node (a2) at (-4,-2) {\(D_{n+1}\)};
+	
+	\node (w) at (0,0) {\(C_n\)};
+	
+	\node (x) at (0,-2) {\(D_n\)};
+	
+	\node (y) at (4,-2) {\(D_{n-1}\)};
+	
+	\node (z) at (4,0) {\(C_{n-1}\)};
+	
+	\node (f) at (2,-2.4){\(\zeta_n\)};
+	
+	\node (g) at (2,-0.4){\(\partial_n\)};
+	
+	\node (f2) at (-2,-2.4){\(\zeta_{n-1}\)};
+	
+	\node (g2) at (-2,-0.4){\(\partial_{n-1}\)};
+	
+	\node (s3) at (-3.5,-1) {\(f_{n+1}\)};
+	
+	\node (s) at (0.4,-1) {\(f_{n}\)};
+	
+	\node (s2) at (4.5,-1) {\(f_{n-1}\)};	
+	
+	\node (m2) at (-2,-1) {\(P_n\)};
+	\node (m1) at (2,-1) {\(P_{n-1}\)};
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	\draw[->] (e1) -- (a1);
+	\draw[->] (a1) -- (w);
+	\draw[->] (z) -- (q1);
+	\draw[->] (e2) -- (a2);
+	\draw[->] (a1) -- (a2);
+	\draw[->] (a2) -- (x);
+	\draw[->] (y) -- (q2);
+	\draw[->] (m2) -- (a2);
+	\draw (w) -- (m2);
+	\draw (z) -- (m1);
+	\draw[->] (m1) -- (x);
+	
+	\end{tikzpicture}
+	$$
+\end{maar}
+Let $(C_{*}, \partial)$ arbitrary chain complex of abelian groups. We denote the groups $H_n(C_{*})$ to be $\text{ker} \partial_n / \text{Im} \partial_{n+1}$. If $f:C_{*} \rightarrow D_{*}$ is a chain map between chain complexes. Then we denote the induced map by $f$ between $H_{n}(C_{*})$ and $H_{n}(D_{*})$ as $H_n(f)$. This map have been proved to be well-defined in [\ref{rotman}]. For the chain homotopic maps we have the following important result.
+\begin{lause}
+Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian groups and let $f$ and $g$ be chain homotopic maps between them. Then $H_n(g) = H_n(f)$.
+\end{lause}
+\begin{proof}
+proved in Rotman [\ref{rotman}] theorem 5.3.
+\end{proof}
+
+\subsection{Algebraic mappings}
+\begin{maar}
+Let $M$ be free $G$-module. Then $\text{In}_M:M \rightarrow G$ is the following homomorphism: If $x$ is of the form $\sum_{i}g_ia_i $, where $g_i$ are in the group $G$ and $a_i$ belong to the core of the module, then: $$\text{In}_M(x) = \sum_{i}g_i $$
+\end{maar}
+Let $C_{*}$ be a chain complex of topological space $X$ with coefficients $G$. Then we define homomorphism $\text{Ind}_{(X,G)}$ to be special case of homomorphism $\text{In}_M$, where we choose $M$ to be the 0th element of the chain complex $C_0(X;G)$.
+\begin{maar}
+Let $X$ and $Y$ be simplicial complexes and let $G$ be some group. Let $f:X \rightarrow Y$ be some continuous function between the complexes. We say that $f$ is algebraic, if for the induced chain map $f^0_{*}$ the equation $\text{In}_{(X,G)}(x) = \text{In}_{(X,G)}(f^0_{*}(x))$ for every $x \in C_0(X;G)$.
+\end{maar}
+\begin{maar}
+Acyclic carrier. 
+\end{maar}
+\begin{lause}
+Let $(X,A)$ and $(Y,B)$ be simplicial pairs. Let $f$ and $g$ be algebraic maps 
+\end{lause}
+
 \chapter{\v{C}ech homology}
 
 In this chapter we will construct \v{C}ech homology and prove the main results related to it.  We will first define an inverse system of homology groups of the nerves.
