@@ -30,3 +30,4 @@
 \contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{35}
 \contentsline {chapter}{Appendices}{36}
 \contentsline {chapter}{\numberline {A}Homology axioms}{37}
+\contentsline {chapter}{\numberline {B}Set theory}{38}

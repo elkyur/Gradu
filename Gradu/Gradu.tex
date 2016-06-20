@@ -997,6 +997,11 @@ Lemma \ref{preimageorder} states that $f^{-1}\beta$ is refinement of $f^{-1}\alp
 \section{Toolbox of singular homology theory}
 This section contains the toolbox of concepts which are essential to prove the homotopy theorem of \v{C}ech homology.
 
+
+\begin{maar}
+Let $(C_{*}, \partial)$ be a chain complex. Then we define the reduced 
+\end{maar}
+
 \subsection{Chain homotopy}
 In this section we recall definition of chain homotopy and an important theorem related to it. 
 
@@ -1133,8 +1138,12 @@ Let $C_{*}$ be a chain complex of topological space $X$ with coefficients $G$. T
 \begin{maar}
 Let $X$ and $Y$ be simplicial complexes and let $G$ be some group. Let $f:X \rightarrow Y$ be some continuous function between the complexes. We say that $f$ is algebraic, if for the induced chain map $f^0_{*}$ the equation $\text{In}_{(X,G)}(x) = \text{In}_{(X,G)}(f^0_{*}(x))$ for every $x \in C_0(X;G)$.
 \end{maar}
+
 \begin{maar}
-Acyclic carrier. 
+Let $X$ and $Y$ be simplicial complexes. Let $\text{simplices}(X)$ be the collection of all simplices in $X$ and $\text{complexes}(Y)$ be collection of all sub simplicial complexes of space $Y$ . Then a function $$C: \text{simplices}(X) \rightarrow \text{complexes}(Y)$$ is carrier function, if every face $s'$ of simplex $s$ is mapped to subcomplex $C(s')$ of $C(s)$.  
+\end{maar}
+\begin{maar}
+We say that a carrier function $C$ is acyclic if, every simplex $s$ is in domain 
 \end{maar}
 \begin{lause}
 Let $(X,A)$ and $(Y,B)$ be simplicial pairs. Let $f$ and $g$ be algebraic maps 
@@ -1384,7 +1393,13 @@ A homology theory consists of a family of the functors from category of topologi
 \item text here
 \end{enumerate} 
 \end{maar}
-
+\chapter{Set theory}
+\begin{lem}
+Let $X$ and $Y$ be some sets and $f:X \rightarrow Y$ function between them. Let $\{V_i \mid i \in J\}$ be some collections of subsets of the set $Y$. Assume that $\bigcap_{i \in J}f^{-1}V_i \neq \emptyset$, then $\bigcap_{i \in J}V_i \neq \emptyset$.
+\end{lem}
+\begin{proof}
+There exists some $x \in \bigcap_{i \in J}f^{-1}V_i$. The conditions $x \in f^{-1}V_i$ and $f(x) \in V_i$ hold for all $i \in J$. Thus $f(x) \in \bigcap_{i \in J}V_i $ and $\bigcap_{i \in J}V_i \neq \emptyset$.
+\end{proof}
 \end{appendices}
 
 

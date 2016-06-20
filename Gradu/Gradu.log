@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  19 JUN 2016 15:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.10)  20 JUN 2016 14:27
 entering extended mode
 **Gradu.tex
 (C:\Users\Serafim\Documents\BabasChess\Gradu\Gradu\Gradu\Gradu.tex
@@ -884,7 +884,7 @@ plex the in-ter-sec-tion $[][] \OML/cmm/m/it/12 f[]U[]$\T1/cmr/m/n/12 ,
  []
 
 [23] [24]
-Overfull \hbox (17.4246pt too wide) detected at line 1118
+Overfull \hbox (17.4246pt too wide) detected at line 1123
 []
  []
 
@@ -903,7 +903,11 @@ Chapter 4.
 Appendix A.
 [37
 
-] [38
+]
+Appendix B.
+[38
+
+] [39
 
 ] (C:\Users\Serafim\Documents\BabasChess\Gradu\Gradu\Gradu\Gradu.aux) ) 
 Here is how much of TeX's memory you used:
@@ -938,9 +942,9 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/mathabx-type1/matha8.pfb><C:/Program Fi
 les (x86)/MiKTeX 2.9/fonts/type1/public/mathabx-type1/mathx10.pfb><C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Gradu.pdf (39 pages, 364948 bytes).
+Output written on Gradu.pdf (40 pages, 367769 bytes).
 PDF statistics:
- 522 PDF objects out of 1000 (max. 8388607)
+ 526 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
