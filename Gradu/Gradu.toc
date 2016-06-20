@@ -17,8 +17,8 @@
 \contentsline {subsubsection}{\numberline {2.3.2.3}Operations on coverings}{21}
 \contentsline {subsection}{\numberline {2.3.3}The construction}{21}
 \contentsline {section}{\numberline {2.4}Toolbox of singular homology theory}{24}
-\contentsline {subsection}{\numberline {2.4.1}Chain homotopy}{24}
-\contentsline {subsection}{\numberline {2.4.2}Algebraic mappings}{25}
+\contentsline {subsection}{\numberline {2.4.1}Chain homotopy}{25}
+\contentsline {subsection}{\numberline {2.4.2}Algebraic mappings}{26}
 \contentsline {chapter}{\numberline {3}\v {C}ech homology}{27}
 \contentsline {section}{\numberline {3.1}Induced homomorphisms}{28}
 \contentsline {section}{\numberline {3.2}Dimension axiom}{29}

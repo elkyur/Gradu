@@ -997,9 +997,20 @@ Lemma \ref{preimageorder} states that $f^{-1}\beta$ is refinement of $f^{-1}\alp
 \section{Toolbox of singular homology theory}
 This section contains the toolbox of concepts which are essential to prove the homotopy theorem of \v{C}ech homology.
 
-
 \begin{maar}
-Let $(C_{*}, \partial)$ be a chain complex. Then we define the reduced 
+	Let $M$ be free $G$-module. Then $\text{In}_M:M \rightarrow G$ is the following homomorphism: If $x$ is of the form $\sum_{i}g_ia_i $, where $g_i$ are in the group $G$ and $a_i$ belong to the core of the module, then: $$\text{In}_M(x) = \sum_{i}g_i $$
+\end{maar}
+Let $C_{*}$ be a chain complex of topological space $X$ with coefficients $G$. Then we define homomorphism $\text{Ind}_{(X,G)}$ to be special case of homomorphism $\text{In}_M$, where we choose $M$ to be the 0th element of the chain complex $C_0(X;G)$.
+\begin{maar}
+Let $(C_{*}, \partial)$ be a chain complex induced by topological pair $(X,A)$ and group $G$. Then augmented chain complex  $(\tilde C_{*}, \delta )$ of the pair $(X,A)$ is the following chain complex:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	\item Group $\tilde C_n = C_n$ for $n \neq 0$ and group $\tilde C_{-1}$ is defined to be group $G$.
+	\item We define $\delta_n = \partial_n$ for $n \neq 0,-1$ , $\delta_0 = \text{In}_{C_0}$ and $\delta_{-1} = 0$.
+\end{enumerate}
+\end{maar}
+We denote the homology groups over the augmented chain complex defined above as $\tilde H_n(X,A;G)$
+\begin{maar}
+We say that a topological pair $(X,A)$ is acyclic over group $G$ , if the reduced homology groups $\tilde H_n(X,A; G)$ are trivial for all $n \in \N$.
 \end{maar}
 
 \subsection{Chain homotopy}
@@ -1131,10 +1142,7 @@ proved in Rotman [\ref{rotman}] theorem 5.3.
 \end{proof}
 
 \subsection{Algebraic mappings}
-\begin{maar}
-Let $M$ be free $G$-module. Then $\text{In}_M:M \rightarrow G$ is the following homomorphism: If $x$ is of the form $\sum_{i}g_ia_i $, where $g_i$ are in the group $G$ and $a_i$ belong to the core of the module, then: $$\text{In}_M(x) = \sum_{i}g_i $$
-\end{maar}
-Let $C_{*}$ be a chain complex of topological space $X$ with coefficients $G$. Then we define homomorphism $\text{Ind}_{(X,G)}$ to be special case of homomorphism $\text{In}_M$, where we choose $M$ to be the 0th element of the chain complex $C_0(X;G)$.
+
 \begin{maar}
 Let $X$ and $Y$ be simplicial complexes and let $G$ be some group. Let $f:X \rightarrow Y$ be some continuous function between the complexes. We say that $f$ is algebraic, if for the induced chain map $f^0_{*}$ the equation $\text{In}_{(X,G)}(x) = \text{In}_{(X,G)}(f^0_{*}(x))$ for every $x \in C_0(X;G)$.
 \end{maar}
@@ -1143,10 +1151,10 @@ Let $X$ and $Y$ be simplicial complexes and let $G$ be some group. Let $f:X \rig
 Let $X$ and $Y$ be simplicial complexes. Let $\text{simplices}(X)$ be the collection of all simplices in $X$ and $\text{complexes}(Y)$ be collection of all sub simplicial complexes of space $Y$ . Then a function $$C: \text{simplices}(X) \rightarrow \text{complexes}(Y)$$ is carrier function, if every face $s'$ of simplex $s$ is mapped to subcomplex $C(s')$ of $C(s)$.  
 \end{maar}
 \begin{maar}
-We say that a carrier function $C$ is acyclic if, every simplex $s$ is in domain 
+We say that a carrier function $C$ is acyclic, if image of every element $C(s)$ is acyclic.
 \end{maar}
 \begin{lause}
-Let $(X,A)$ and $(Y,B)$ be simplicial pairs. Let $f$ and $g$ be algebraic maps 
+Let $(X,A)$ and $(Y,B)$ be simplicial pairs. Let $f:X \rightarrow Y$ and $g: X \rightarrow Y$ be algebraic maps and $C$ an acyclic carrier, for which the restriction $C$ to simplices which lie in $A$ maps every element inside subsimplex $B$. Then the induced maps $f':X/A \rightarrow Y/B$ and $g':X/A \rightarrow Y/B$ are chain homotopic.
 \end{lause}
 
 \chapter{\v{C}ech homology}
