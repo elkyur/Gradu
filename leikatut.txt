@@ -150,3 +150,5 @@ is called a stacked covering over $\alpha$.
 \begin{maar}
 Let $(X,A)$ and $(Y,B)$ be pairs of geometric complexes and let $f$ be a continuous function between pairs. Then we say that the map $f$ is simplicial if for any simplex in $X$ the images of vertexes of the simplex span some simplex in $Y$ and the images of vertexes of a simplex in $A$ span some simplex in $B$.
 \end{maar}
+
+Let $C_{*}$ be a chain complex of topological space $X$ with coefficients $G$. Then we define homomorphism $\text{Ind}_{(X,G)}$ to be special case of homomorphism $\text{In}_M$, where we choose $M$ to be the 0th element of the chain complex $C_0(X;G)$.

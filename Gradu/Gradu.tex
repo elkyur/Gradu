@@ -1000,7 +1000,7 @@ This section contains the toolbox of concepts which are essential to prove the h
 \begin{maar}
 	Let $M$ be free $G$-module. Then $\text{In}_M:M \rightarrow G$ is the following homomorphism: If $x$ is of the form $\sum_{i}g_ia_i $, where $g_i$ are in the group $G$ and $a_i$ belong to the core of the module, then: $$\text{In}_M(x) = \sum_{i}g_i $$
 \end{maar}
-Let $C_{*}$ be a chain complex of topological space $X$ with coefficients $G$. Then we define homomorphism $\text{Ind}_{(X,G)}$ to be special case of homomorphism $\text{In}_M$, where we choose $M$ to be the 0th element of the chain complex $C_0(X;G)$.
+
 \begin{maar}
 Let $(C_{*}, \partial)$ be a chain complex induced by topological pair $(X,A)$ and group $G$. Then augmented chain complex  $(\tilde C_{*}, \delta )$ of the pair $(X,A)$ is the following chain complex:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
@@ -1134,7 +1134,7 @@ Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian 
 	$$
 \end{maar}
 Let $(C_{*}, \partial)$ arbitrary chain complex of abelian groups. We denote the groups $H_n(C_{*})$ to be $\text{ker} \partial_n / \text{Im} \partial_{n+1}$. If $f:C_{*} \rightarrow D_{*}$ is a chain map between chain complexes. Then we denote the induced map by $f$ between $H_{n}(C_{*})$ and $H_{n}(D_{*})$ as $H_n(f)$. This map have been proved to be well-defined in [\ref{rotman}]. For the chain homotopic maps we have the following important result.
-\begin{lause}
+\begin{lause}\label{chainhomotopyinducesamemaps}
 Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian groups and let $f$ and $g$ be chain homotopic maps between them. Then $H_n(g) = H_n(f)$.
 \end{lause}
 \begin{proof}
@@ -1142,20 +1142,34 @@ proved in Rotman [\ref{rotman}] theorem 5.3.
 \end{proof}
 
 \subsection{Algebraic mappings}
-
+In this section we introduce concepts and main result of algebraic mappings. The proofs of the theorems in this section are technical and thus we skip them. 
 \begin{maar}
-Let $X$ and $Y$ be simplicial complexes and let $G$ be some group. Let $f:X \rightarrow Y$ be some continuous function between the complexes. We say that $f$ is algebraic, if for the induced chain map $f^0_{*}$ the equation $\text{In}_{(X,G)}(x) = \text{In}_{(X,G)}(f^0_{*}(x))$ for every $x \in C_0(X;G)$.
+Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be chain complexes for which the group of order -1 is free $G$-module and let $f:C_{*} \rightarrow D_{*}$ be a chain map . We say that $f$ is algebraic, if the equation $\text{In}_{C(-1)}(x) = \text{In}_{D(-1)}(f(x))$ holds for every $x \in C(-1)$.
 \end{maar}
-
+\begin{lem}\label{contmapisalgebraic}
+Let $X$ and $Y$ be simplicial complexes and let $f:X \rightarrow Y$ be a continuous maps between them. Let $C_{*}$ and $D_{*}$ be induced augmented chain complexes of space $X$ and $Y$ respectively. Then the induced map $f_{*}:C_{*} \rightarrow D_{*}$ is algebraic.
+\end{lem}
+\begin{proof}
+Let $c = \sum_{i \in J}g_iz_i$ be an element of $C_{-1}$. Then by definition of the induced map $f(c) = \sum_{i \in J}g_if(z_i)$. The image of both elements under map $\text{In}$ is the element $\sum_{i \in J}g_i$, thus the map is algebraic.
+\end{proof}
 \begin{maar}
-Let $X$ and $Y$ be simplicial complexes. Let $\text{simplices}(X)$ be the collection of all simplices in $X$ and $\text{complexes}(Y)$ be collection of all sub simplicial complexes of space $Y$ . Then a function $$C: \text{simplices}(X) \rightarrow \text{complexes}(Y)$$ is carrier function, if every face $s'$ of simplex $s$ is mapped to subcomplex $C(s')$ of $C(s)$.  
+Let $X$ and $Y$ be simplicial complexes. Let $\text{simplices}(X)$ be the collection of all simplices in $X$ and $\text{complexes}(Y)$ be collection of all sub simplicial complexes of $Y$. Then function $$C: \text{simplices}(X) \rightarrow \text{complexes}(Y)$$ is a carrier function, if every face $s'$ of simplex $s$ is mapped to subcomplex $C(s')$ of $C(s)$.  
 \end{maar}
 \begin{maar}
 We say that a carrier function $C$ is acyclic, if image of every element $C(s)$ is acyclic.
 \end{maar}
-\begin{lause}
-Let $(X,A)$ and $(Y,B)$ be simplicial pairs. Let $f:X \rightarrow Y$ and $g: X \rightarrow Y$ be algebraic maps and $C$ an acyclic carrier, for which the restriction $C$ to simplices which lie in $A$ maps every element inside subsimplex $B$. Then the induced maps $f':X/A \rightarrow Y/B$ and $g':X/A \rightarrow Y/B$ are chain homotopic.
+\begin{lause}\label{Algebraicmaplem}
+Let $(X,A)$ and $(Y,B)$ be simplicial pairs. Let $f:X \rightarrow Y$ and $g: X \rightarrow Y$ be algebraic maps and $C$ an acyclic carrier, for which the restriction $C$ to simplices which lie in $A$ maps every element inside subsimplex $B$. Then the induced maps $f',g':C_{*}(X)/C_{*}(A) \rightarrow C_{*}(Y)/C_{*}(B)$ are chain homotopic.
 \end{lause}
+\begin{proof}
+Proved in [\ref{Eilenberg}] theorem VI.5.8.
+\end{proof}
+\begin{kor}\label{Algebraicmaptheorem}
+Let $f,g: X \rightarrow Y $ be maps as in the theorem above, then $H_n(g) = H_n(f)$.
+\end{kor}
+\begin{proof}
+Follows directly from theorem \ref{chainhomotopyinducesamemaps} and \ref{Algebraicmaplem}.
+\end{proof}
 
 \chapter{\v{C}ech homology}
 
@@ -1276,7 +1290,7 @@ If $b_n > b_{n+1}$ for some $n \in [m-1]$, then $(a_{n+1},b_{n+1}) \subset (a_{n
 \end{proof}
 
 \begin{lem}\label{Unitintervaltrivial}
-Let $\alpha$ be an open covering which is finite. Assume that every element in $\alpha$ is connected. Then every singular homology group of the nerve $\mathcal{S}([0,1])_{\alpha}$ is trivial. 
+Let $\alpha$ be an open covering which is finite. Assume that every element in $\alpha$ is connected. Then the nerve $\mathcal{S}([0,1])_{\alpha}$ is acyclic in the singular homology. 
 \end{lem}
 \begin{proof}
 Using Lemma \ref{cleanlemma} we can reduce our problem to coverings which have property that no inclusion holds for any two elements of $\alpha$. We define indexation to be trivial indexation for covering $\alpha$. Let $\{f_n(x):\mathcal{S}([0,1])_{\alpha} \rightarrow  \mathcal{S}([0,1])_{\alpha} \}_{n \in [m]}$ be a collection of simplicial maps which are induced by the edges in the following way:
@@ -1327,7 +1341,7 @@ The covering $\gamma'$ spanned by elements $H^x_j \times \mathcal{R}^x_i$ is sta
 \end{proof}
 
 \begin{lem}
-Let $\gamma$ be a naturally stacked covering over of pair $(X \times [0,1])$ over $\alpha$. Assume that the nerve $\mathcal{S}(X)_{\alpha}$ is simplex. Then the singular homology groups of the nerve $H_{q}(\mathcal{S}(X \times I)_{\gamma})$ are trivial for all $q \in \N$.
+Let $\gamma$ be a naturally stacked covering of pair $(X \times [0,1])$ over $\alpha$. Assume that the nerve $\mathcal{S}(X)_{\alpha}$ is simplex. Then the nerve $\mathcal{S}(X \times I)_{\gamma})$ is acyclic in singular homology.
 \end{lem}
 \begin{proof}
 Assume that the decomposition of $\gamma$ is $\mathcal{C}(\gamma_i, J)$ and the decomposition of $\alpha$ is $\mathcal{C}(W_i, R)$. We denote by $\beta(x)$ the stacks of covering $\gamma$. Let $\delta$ be the covering $\mathcal{C}(\delta_i, K)$ obtained by fusioning all the coverings $\beta(x)$. \newline
@@ -1335,8 +1349,12 @@ Let $s = \{\gamma_{j_0}, ... , \gamma_{j_n}\}$ be some simplex in the nerve $\ma
 Note that the last equation holds because we assumed that $\alpha$ is simplex and thus intersection of all its elements is non-empty. By definition of stacked coverings wee see that the covering obtained by projecting elements of $\gamma$ to the unit interval has exactly the same structure as the fusioned covering $\delta$. Using the equation above we see that the simplices $\mathcal{S}([0,1])_{\gamma}$ and $\mathcal{S}([0,1])_{\beta} $ are isomorphic. By \ref{Unitintervaltrivial} the homology groups of $[0,1]_{\delta} $ are trivial, thus $H_q(\mathcal{S}([0,1])_{\delta})$ is trivial for all $q \in \N$.
 \end{proof}
 \begin{lem}
-Let $\gamma$ be  
+Let $(X,A)$ be a topological pair. Let $\gamma$ be naturally stacked covering $\mathcal{C}(\gamma_i,J,J')$ of the pair over covering $\alpha = \mathcal{C}(\alpha_i,I,I')$. Then maps $$\{u_n:\mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(X \times [0,1], A \times [0,1])_\gamma \mid n \in [0,1]\}$$ defined as $u_n(x) = (x,n)$ induce the same map $H_0(u_0)$ between the corresponding singular homology groups for all $n \in [0,1]$
 \end{lem}
+\begin{proof}
+We will show that the maps satisfy requirements of corollary \ref{Acyclicmapstheorem} and use the theorem to prove that the induced maps are same for the singular homology groups. We will define the Carrier function $C$ to map arbitrary simplex $s$ of complex $\mathcal{S}(X,A)_\alpha$ into the following simplicial complex. Assume that $s$ is of the form $ \{\gamma_i\}_{i \in T}$, then simplicial complex $C(s)$ consists of all elements in the simplicial complex $\mathcal{S}(X \times [0,1],A \times [0,1])_\alpha$, which are of the form $(U_i,Z)$ where $i \in T$. \newline
+
+\end{proof}
 
 \chapter{Applications}
 
@@ -1417,6 +1435,10 @@ There exists some $x \in \bigcap_{i \in J}f^{-1}V_i$. The conditions $x \in f^{-
 
 J. Rotman An Introduction to Algebraic Topology (Graduate Texts in Mathematics), Springer 
 
+\bibitem{Eilenberg}\label{Eilenberg}
+
+S. Eilenberg and N. Steenrod, Foundations of Algebraic Topology, Princeton Univ. Press 1952
+
 \bibitem{First}
 L. Górniewicz, Topological Fixed Point Theory of Multivalued Mappings, Kluwer Academic
 Publishers, 1999.
@@ -1427,7 +1449,7 @@ application to Nash equilibrium points, Proc. Amer. Math. Soc. 3 (1952), 170–174
 
 
 \bibitem{Vaisala}\label{vai}
-M. BAYE, G. TIAN, ANU J. ZHOU, “The Existence of Pure Nash Equilibrium in Games 
+M. BAYE, G. TIAN, J. ZHOU, “The Existence of Pure Nash Equilibrium in Games 
 with Nonquasiconcave Payoffs,” Texas A  M University, mimeo, 1990. 
 
 \bibitem{categorytheory}\label{categorytheory}
