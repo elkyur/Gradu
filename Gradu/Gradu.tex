@@ -79,25 +79,26 @@
 
 \chapter{Background}
 
-In this chapter we will recall a few details about algebra, category theory and abstract simplicial complexes. We assume that the reader is familiar with basic concepts of homology and cohomology theory and constructions related to them.
+In this chapter we will recall a few details about algebra, category theory and abstract simplicial complexes. We assume that the reader is familiar with basic concepts of singular homology and cohomology theory and constructions related to them. \newline
+We will implement structures like modules, vector spaces and groups from the algebra and we assume that the reader is familiar with this kind of structures. Modules play central role as we are interested in homology as the groups with coefficients $G$ can be interpreted as $G$-modules. In the applications we will use homology groups with coefficients in $\Q$ , which form a vector space structure. Thus some theory from linear algebra will be used. 
 
 \section{Direct sum and direct product}
-In this section we will recall a few details about direct sums and direct products.
+In this section we will recall a few details about direct sums and direct products. In this section we will present the theory only for modules. The constructions and theorems for the abelian groups can be obtained by forgetting the multiplicative operation.
 \begin{maar}
-Let $\{A_i\}_{i \in J}$ be a family of groups. The direct product of these groups is the Cartesian product $\prod_{i \in J} A_i$ where addition is defined component-wise $(a+b)_i = a_i+_ib_i$
+Let $\{A_i\}_{i \in J}$ be a family of $R$-modules. The direct product of these groups is the Cartesian product $\prod_{i \in J} A_i$ where addition and a multiplicative operation are defined component-wise: $$(a+b)_i = a_i+_ib_i \text{ and } (r \cdot a)_i = r \cdot a_i $$ 
 \end{maar}
 \begin{maar}
-Let $\{A_i\}_{i \in J}$ be a family of groups. The direct sum of these groups is the subgroup of direct product given by  $\bigoplus_{i \in J}A_i = \{x \in \prod_{i \in J} A_i \mid x_i \neq 0 \text{ for only finetely many } i \}. $
+Let $\{A_i\}_{i \in J}$ be a family of $R$-modules. The direct sum of these modules is the submodule of direct product given by  $$\bigoplus_{i \in J}A_i = \{x \in \prod_{i \in J} A_i \mid x_i \neq 0 \text{ for only finetely many } i \}. $$
 \end{maar}
 For direct sums and direct products we have following universal properties:
 \begin{lem}\label{Universalpropertyproduct}
-Let $A = \prod_{i \in J} A_i$ be the direct sum and $D$ an arbitrary group. Then for every set of homomorphisms $\{f_i:D \rightarrow A_i\}_{i \in J}$ there exists a unique homomorphism $f:D \rightarrow A$ for which condition $pr_i \circ f = f_i $ holds for every $i \in J$.
+Let $A = \prod_{i \in J} A_i$ be the direct sum of $R$-modules and let $D$ be an arbitrary $R$-module. Then for every set of module homomorphisms $\{f_i:D \rightarrow A_i\}_{i \in J}$ there exists a unique module homomorphism $f:D \rightarrow A$ for which the condition $pr_i \circ f = f_i $ holds for every $i \in J$.
 \end{lem}
 \begin{proof}
 Proved in [\ref{algebra2}] theorem 3.7.
 \end{proof}
 \begin{lem}\label{Universalpropertysum}
-	Let $A = \bigoplus_{i \in J}A_i$ be the direct sum and $D$ an arbitrary group. Then for every set of homomorphisms $\{f_i:A_i \rightarrow D\}_{i \in J}$ there exists a unique homomorphism $f:A \rightarrow D$ for which the condition $ f \circ j_i = f_i $ holds for every $i \in J$.
+	Let $A = \bigoplus_{i \in J}A_i$ be the direct sum of $R$-modules and $D$ an $R$-module. Then for every set of module homomorphisms $\{f_i:A_i \rightarrow D\}_{i \in J}$ there exists a unique module homomorphism $f:A \rightarrow D$ for which the condition $ f \circ j_i = f_i $ holds for every $i \in J$.
 \end{lem}
 \begin{proof}
 Proved in [\ref{algebra2}] theorem 3.6.
@@ -401,43 +402,43 @@ We write this proof only for inverse systems, the case of direct systems is simi
 Let SET be the category of sets with order relation defined by $U \leq V \Leftrightarrow U \subset V$. Now for every $U,V$ we define $D_U^V: U \rightarrow V $ to be the inclusion from $U$ to $V$. Clearly this forms a direct system. 
 \end{esim}
 
- Earlier we defined the concept of limit for general indexing functors. We can interpret direct and inverse system as indexing functors, taking $\lambda$ to be the indexing set. In general systems the limit may not exist. However, for our purpose it is enough to show that such limit can be found in the category of abelian groups.
+ Earlier we defined the concept of limit for general indexing functors. We can interpret direct and inverse system as indexing functors, taking $\lambda$ to be the indexing set. In general systems the limit may not exist. However, for our purpose it is enough to show that such limit can be found in the categories of modules.
 
 \begin{lause}
-Let $D:\lambda \rightarrow AB$ be a direct system of groups. For every $a \in \ob(\lambda)$ let $i_a: D(a) \rightarrow \bigoplus_{a \in \ob(\lambda)} D(a)$  be the inclusion and let $G$ be the subgroup of $D = \bigoplus_{a \in \lambda} D(a) $ which is generated by $\{i_ax_{a}-i_bD^b_ax_a\}$. Then the colimit of this system is the object $L = \bigoplus_{a \in \lambda} D(a) / G $.
+Let $D:\lambda \rightarrow AB$ be a direct system of $R$-modules. For every $a \in \ob(\lambda)$ let $i_a: D(a) \rightarrow \bigoplus_{a \in \ob(\lambda)} D(a)$  be the inclusion and let $G$ be the submodule of $D = \bigoplus_{a \in \lambda} D(a) $ which is generated by elements of the form $\{r \cdot (i_ax_{a}-i_bD^b_ax_a)\}$, where $x \in D$ and $r \in R$. Then the colimit of this system is the quotient $R$-module $L = \bigoplus_{a \in \lambda} D(a) / G $.
 \end{lause}
 \begin{proof}
-We denote $p$ to be the projection map: $p: \bigoplus_{a \in \ob(\lambda)} D(a) \rightarrow L$. Let $v$ be the family of morphisms $ \{v_a = p \circ i_a:D(a) \rightarrow L\}_{a \in \ob(\lambda)}$ which induces the cocone $\triangledown(D,L,v)$ and let $K$ be any other object with family of morphisms $\phi = \{\phi_a:D(a) \rightarrow K\}_{a \in \ob(\lambda)}$ which induces the cocone  $\triangledown(I,K, \phi)$. We have to prove that there exists a unique homomorphism $u:L \rightarrow K$ for which the condition $u \circ v_a = \phi_a $ holds for all $a \in \ob(\lambda)$. We will first show that such homomorphism exists \newline
-Using lemma \ref{Universalpropertysum} we can find a unique homomorphism $u':\bigoplus_{a \in \lambda} D(a) \rightarrow K$ for which $u' \circ i_a = \phi_a$ holds. Now we see that for every generator of the subgroup G the following equations hold: $$u'(i_ax_{a}-i_bD^b_ax_a) = \phi_a(x_a) - \phi_bD_a^bx_a = \phi_a(x_a)-\phi_a(x_a) = 0.$$ Now we can define $u$ in such way that it maps every element $x + D$ to element $\phi'(x)$. Now we see that $$u \circ v_a = u \circ p \circ i_a = u' \circ i_a = \phi_a.$$
+We denote $p$ to be the projection map: $p: \bigoplus_{a \in \ob(\lambda)} D(a) \rightarrow L$. Let $v$ be the family of module homomorphisms $$ \{v_a = p \circ i_a:D(a) \rightarrow L\}_{a \in \ob(\lambda)}$$ which induces the cocone $\triangledown(D,L,v)$ and let $K$ be any other module with family of module homomorphisms $\phi = \{\phi_a:D(a) \rightarrow K\}_{a \in \ob(\lambda)}$ which induces the cocone  $\triangledown(I,K, \phi)$. We have to prove that there exists a unique module homomorphism $u:L \rightarrow K$ for which the condition $u \circ v_a = \phi_a $ holds for all $a \in \ob(\lambda)$. We will first show that such module homomorphism exists \newline
+Using lemma \ref{Universalpropertysum} we can find a unique module homomorphism $u':\bigoplus_{a \in \lambda} D(a) \rightarrow K$ for which $u' \circ i_a = \phi_a$ holds. Now we see that for every generator of the subgroup G the following equations hold: $$u'(i_ax_{a}-i_bD^b_ax_a) = \phi_a(x_a) - \phi_bD_a^bx_a = \phi_a(x_a)-\phi_a(x_a) = 0.$$ 
+Thus by linearity we see that every element in the module $L$ vanishes on map $u'$.  Now we can define $u$ in such way that it maps every element $x + D$ to element $\phi'(x)$. Now we see that $$u \circ v_a = u \circ p \circ i_a = u' \circ i_a = \phi_a.$$
 To prove that the homomorphism $u$ is unique we notice that if $x \in L$ , then $x = \sum_{a \in A \subset D} v_a(x_a) + G$.  Then the following equations hold  $$u(x) = u(\sum_{a \in A \subset D}v_a(x_a)) = \sum_{a \in A \subset D} u \circ v_a (x_a) = \sum_{a \in A \subset D} \phi_a(x_a)$$
-Thus $u(x)$ is determined by the sum of the homomorphisms $\phi_a$. It follows that the map $u$ is unique.
+Thus $u(x)$ is determined by the sum of the module homomorphisms $\phi_a$. It follows that the map $u$ is unique.
 \end{proof}
 \begin{lause}
-Let $I: \lambda \rightarrow AB$ be an inverse system of groups. Then the limit of this functor is the group $L = \{x \in \prod_{i \in \ob(\lambda)} I_i \mid x_a = I^b_ax_b $ for all $a \leq b\}$
+Let $I: \lambda \rightarrow AB$ be an inverse system of $R$-modules. Then the limit of this functor is the submodule $L = \{x \in \prod_{i \in \ob(\lambda)} I_i \mid x_a = I^b_ax_b $ for all $a \leq b\}$
 \end{lause}
 \begin{proof}
-Let  $v$ be a family of homomorphisms $\{v_a = pr_a: L \rightarrow I(a)\}_{a \in \lambda}$ which together with the group $L$ induce the cone $\bigtriangleup(I,L,v)$. Let $K$ be any other group and let $\phi$ be a family of homomorphisms $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$ which induces the cone $\bigtriangleup(I,K,\phi)$ . \newline 
-We construct a function $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$ holds. Using lemma \ref{Universalpropertyproduct} we find a unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$ is satisfied. Let $u''$ be the homomorphism, where the image is restricted to subgroup $L$. We will show that the homomorphism is well-defined, specifically $u'$ maps every element inside the subgroup $L$. Assume that $b$ and $a$ are elements which satisfy the condition $a \leq b$. Then the following equation holds
+Let  $v$ be a family of module homomorphisms $\{v_a = pr_a: L \rightarrow I(a)\}_{a \in \lambda}$ which together with the group $L$ induce the cone $\bigtriangleup(I,L,v)$. Let $K$ be any other group and let $\phi$ be a family of module homomorphisms $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$ which induces the cone $\bigtriangleup(I,K,\phi)$ . \newline 
+We construct a module homomorphism $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$ holds. Using lemma \ref{Universalpropertyproduct} we find a unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$ is satisfied. Let $u''$ be the homomorphism, where the image is restricted to subgroup $L$. We will show that the homomorphism is well-defined, specifically $u'$ maps every element inside the subgroup $L$. Assume that $b$ and $a$ are elements which satisfy the condition $a \leq b$. Then the following equation holds
  $$I^{b}_a \circ pr_b \circ u'= I^{b}_a \circ \phi_b = \phi_a = pr_a \circ u'.$$
   We can define $u$ to be $u''$. The uniqueness property of the homomorphism follows directly from the fact that $u'$ is unique. 
 \end{proof}
+We proved that limit can be defined for the systems of $R$-modules. The corresponding theorem can be obtained for the systems of abelian groups, by interpreting them as $R$-module, where the ring $R$ is trivial.
 
 \subsection{Morphisms between systems}\label{limitmorphism}
+
+To be able to define morphisms between \v{C}ech homology and cohomology groups we need the concept of a limit homomorphism. In this section we will define the limit morphism between systems and investigate properties of it. Concepts used in this chapter can be presented in a more general way. However, for our use it is enough to restrict ourselves to the direct and inverse system.
+\begin{maar}
+	Let $C$ and $D$ be categories with order relation. A functor $\phi:C \rightarrow D$ is order preserving if for every pair $a \leq b$ in the category $C$, the condition $\phi(a) \leq \phi(b)$ is satisfied.
+\end{maar}
+Let $I$ be an inverse system and $\phi: \lambda' \rightarrow \lambda$ an order preserving functor. Then the inverse system $(I \phi, \lambda' )$ consist of objects $\{I(\phi(a)) \mid a \in \ob(\lambda')\}$ and morphisms $\{I^{\phi(b)}_{\phi(a)}\mid a \leq b \}$. For directed systems we define the system $(D \phi, \lambda' )$ respectively.
+
 \subsubsection{Morphisms between inverse systems}
-
-To be able to define morphisms between Cech homology groups we need the concept of a limit homomorphism. In this section we will define the limit morphism between systems and investigate properties of it. Concepts used in this chapter can be presented in a more general way. However, for our use it is enough to restrict ourselves to the direct and inverse system.
-
 \begin{maar}
-Let $C$ and $D$ be categories with order relation. A functor $\phi:C \rightarrow D$ is order preserving if for every pair $a \leq b$ in the category $C$, the condition $\phi(a) \leq \phi(b)$ is satisfied.
-\end{maar}
- Let $I$ be an inverse system and $\phi: \lambda' \rightarrow \lambda$ an order preserving functor. Then the inverse system $(I \phi, \lambda' )$ consist of objects $\{I(\phi(a)) \mid a \in \ob(\lambda')\}$ and morphisms $\{I^{\phi(b)}_{\phi(a)}\mid a \leq b \}$.
-
-
-\begin{maar}
-Let $(I,\lambda)$ and $(I',\lambda')$ be inverse systems and $\phi:\lambda' \rightarrow \lambda$ an order and limit preserving functor. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \lambda\}$ be a natural transformation between $I\phi$ and $I'$. Then we say that $\{f_a\}_{a \in \lambda}$ is an inverse system of morphisms corresponding to the functor $\phi$ from the system $I$ into the system $I'$.
+Let $(I,\lambda)$ and $(I',\lambda')$ be inverse systems and $\phi:\lambda' \rightarrow \lambda$ an order preserving functor. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \lambda\}$ be a natural transformation between $I\phi$ and $I'$. Then we say that $\{f_a\}_{a \in \lambda}$ is an inverse system of morphisms corresponding to the functor $\phi$ from the system $I$ into the system $I'$.
 \end{maar}
 
-In the next theorem we will prove that it is possible to define the limit of morphisms between systems in a unique way. We recall that exists of limit implies that for every objects of category $I$ there exists unique functor $u_{I,a}:\lim I \rightarrow I(a)$.
+In the next theorem we will prove that it is possible to define the limit of morphisms between systems in a unique way. We recall that existence of limit implies that for every objects of a category $I$ there exists unique functor $u_{I,a}:\lim I \rightarrow I(a)$.
 
 \begin{lem}
 Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems for which limit exists. Let $\{f_a\}$ be inverse system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the condition $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for every $a \in \lambda'$ .
@@ -447,53 +448,53 @@ Consider the following diagram
 \begin{diagram}\label{morphismbetweenlimits}
 \begin{tikzpicture}
 
-\node (w) at (2,0,0) {\(I(\phi(n))\)};
+\node (w) at (2,0,0) {\(I(n)\)};
 
-\node (x2) at (0.7,-0.7,0) {\(\omega_{\phi(a)}\)};
+\node (x2) at (0.7,-0.7,0) {\(\omega_{a}\)};
 
-\node (x) at (0,-2,0) {\(I(\phi(a))\)};
+\node (x) at (0,-2,0) {\(I(a)\)};
 
-\node (y2) at (3.3,-0.7,0) {\(\omega_{\phi(b)}\)};
+\node (y2) at (3.3,-0.7,0) {\(\omega_{b}\)};
 
-\node (y) at (4,-2,0) {\(I(\phi(b))\)};
+\node (y) at (4,-2,0) {\(I(b)\)};
 
-\node (f) at (2,-2.4,0){\(I^{\phi(a)}_{\phi(b)}\)};
+\node (f) at (2,-2.4,0){\(I^{a}_{b}\)};
 
 \node (d) at (2,-1,0){\(\lim I\)};
 
-\node (phid) at (1.4,-1.6,0){\(\rho_{\phi(a)}\)};
-\node (phid2) at (2.6,-1.6,0){\(\rho_{\phi(b)}\)};
+\node (phid) at (1.4,-1.6,0){\(\rho_{a}\)};
+\node (phid2) at (2.6,-1.6,0){\(\rho_{b}\)};
 
-\node (w2) at (2,0,-7) {\(I'(n)\)};
+\node (w2) at (2,0,-7) {\(I'(\phi(n))\)};
 
-\node (x22) at (0.7,-0.7,-7) {\(\omega'_a\)};
+\node (x22) at (0.7,-0.7,-7) {\(\omega'_{\phi(a)}\)};
 
-\node (x2) at (0,-2,-7) {\(I'(a)\)};
+\node (x2) at (0,-2,-7) {\(I'(\phi(a))\)};
 
-\node (y22) at (3.3,-0.7,-7) {\(\omega'_b\)};
+\node (y22) at (3.3,-0.7,-7) {\(\omega'_{\phi(b)}\)};
 
-\node (y2) at (4,-2,-7) {\(I'(b)\)};
+\node (y2) at (4,-2,-7) {\(I'(\phi(b))\)};
 
-\node (f2) at (2,-2.4,-7){\(I'^{a}_{b}\)};
+\node (f2) at (2,-2.4,-7){\(I'^{\phi(a)}_{\phi(b)}\)};
 
 \node (d2) at (2,-1,-7){\(\lim I'\)};
 
-\node (phid2) at (1.4,-1.6,-7){\(\rho'_a\)};
-\node (phid22) at (2.6,-1.6,-7){\(\rho'_b\)};
+\node (phid2) at (1.4,-1.6,-7){\(\rho'_{\phi(a)}\)};
+\node (phid22) at (2.6,-1.6,-7){\(\rho'_{\phi(b)}\)};
 
-\draw[->] (w) -- (y);
-\draw[->] (w) -- (x);
+\draw[->] (y) -- (w);
+\draw[->] (x) -- (w);
 \draw[->] (x) -- (y);
-\draw[->] (w) -- (d);
-\draw[->] (d) -- (x);
-\draw[->] (d) -- (y);
+\draw[->] (d) -- (w);
+\draw[->] (x) -- (d);
+\draw[->] (y) -- (d);
 
-\draw[->] (w2) -- (y2);
-\draw[->] (w2) -- (x2);
+\draw[->] (x2) -- (w2);
+\draw[->] (y2) -- (w2);
 \draw[->] (x2) -- (y2);
-\draw[->] (w2) -- (d2);
-\draw[->] (d2) -- (x2);
-\draw[->] (d2) -- (y2);
+\draw[->] (d2) -- (w2);
+\draw[->] (x2) -- (d2);
+\draw[->] (y2) -- (d2);
 
 \draw[->] (w) |- (w2);
 \draw[->] (x) |- (x2);
@@ -632,11 +633,82 @@ To prove this we will use previous lemma and following commutative diagram:
 Now we would like to define limit for the system of homomorphisms between inverse systems of groups.
 
 \begin{lem}\label{limitmorphismgroup}
-Let $(I, \lambda)$ and $(I',\lambda')$ be inverse systems of groups. Then $$f:\lim_{\rightarrow} I \rightarrow \lim_{\rightarrow}I' : f(x) = \prod_{a \in \lambda}f_a(proj_{\phi(a)}(x))$$
-is a well defined homomorphism between the limit groups.
+Let $(I, \lambda)$ and $(I',\lambda')$ be inverse systems of $R$-modules. Then $$f:\lim_{\rightarrow} I \rightarrow \lim_{\rightarrow}I' : f(x) = \prod_{a \in \lambda}f_a(proj_{\phi(a)}(x))$$
+is a well defined module homomorphism between the limit modules.
 \end{lem}
 \begin{proof}
 We have to show that the image is in the subgroup $$L = \{x \in \prod_{i \in \lambda'} I'(i) \mid x_a = I^b_ax_b \text{ for all } a \leq b \}.$$ Let $b$ be some index, then: $I'^{b}_{a}x'_b = I'^{b}_{a}f_b(x_{\phi(b)}) = f_bI'^{\phi(b)}_{\phi(a)}(x_{\phi(b)}) = f_ax_{\phi(a)} = x'_a$ . In this equation we used the property which says that the morphisms define a natural transformation.
+\end{proof}
+\subsubsection{Morphisms between directed systems}
+\begin{maar}
+	Let $(D,\lambda)$ and $(D',\lambda')$ be inverse systems and $\phi:\lambda \rightarrow \lambda'$ an order preserving functor. Let $ \{f_a:I(a) \rightarrow I'(\phi(a)) \mid a \in \lambda\}$ be a natural transformation between $I$ and $I'\phi$. Then we say that $\{f_a\}_{a \in \lambda}$ is a directed system of morphisms corresponding to the functor $\phi$ from the system $D$ into the system $D'$.
+\end{maar}
+\begin{lem}
+	Let  $(D,\lambda)$ and $(D',\lambda')$ be directed systems for which limit exists. Let $\{f_a\}$ be directed system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim D \rightarrow \lim D'$ for which the condition $u_{I, \phi(a)} \circ \lim f  =  f_a \circ u_{I',a}$ holds for every $a \in \lambda'$ .
+\end{lem}
+\begin{proof}
+	We have the following diagram:
+	\begin{diagram}\label{morphismbetweenlimits2}
+		\begin{tikzpicture}
+		
+		\node (w) at (2,0,0) {\(I(\phi(n))\)};
+		
+		\node (x2) at (0.7,-0.7,0) {\(\omega_{\phi(a)}\)};
+		
+		\node (x) at (0,-2,0) {\(I(\phi(a))\)};
+		
+		\node (y2) at (3.3,-0.7,0) {\(\omega_{\phi(b)}\)};
+		
+		\node (y) at (4,-2,0) {\(I(\phi(b))\)};
+		
+		\node (f) at (2,-2.4,0){\(I^{\phi(a)}_{\phi(b)}\)};
+		
+		\node (d) at (2,-1,0){\(\lim I\)};
+		
+		\node (phid) at (1.4,-1.6,0){\(\rho_{\phi(a)}\)};
+		\node (phid2) at (2.6,-1.6,0){\(\rho_{\phi(b)}\)};
+		
+		\node (w2) at (2,0,-7) {\(I'(n)\)};
+		
+		\node (x22) at (0.7,-0.7,-7) {\(\omega'_a\)};
+		
+		\node (x2) at (0,-2,-7) {\(I'(a)\)};
+		
+		\node (y22) at (3.3,-0.7,-7) {\(\omega'_b\)};
+		
+		\node (y2) at (4,-2,-7) {\(I'(b)\)};
+		
+		\node (f2) at (2,-2.4,-7){\(I'^{a}_{b}\)};
+		
+		\node (d2) at (2,-1,-7){\(\lim I'\)};
+		
+		\node (phid2) at (1.4,-1.6,-7){\(\rho'_a\)};
+		\node (phid22) at (2.6,-1.6,-7){\(\rho'_b\)};
+		
+		\draw[->] (w) -- (y);
+		\draw[->] (w) -- (x);
+		\draw[->] (x) -- (y);
+		\draw[->] (w) -- (d);
+		\draw[->] (d) -- (x);
+		\draw[->] (d) -- (y);
+		
+		\draw[->] (w2) -- (y2);
+		\draw[->] (w2) -- (x2);
+		\draw[->] (x2) -- (y2);
+		\draw[->] (w2) -- (d2);
+		\draw[->] (d2) -- (x2);
+		\draw[->] (d2) -- (y2);
+		
+		\draw[->] (w) |- (w2);
+		\draw[->] (x) |- (x2);
+		\draw[->] (y) -| (y2);
+		
+		
+		\draw[dashed][->](d) -- (d2);
+		
+		
+		\end{tikzpicture}
+	\end{diagram}
 \end{proof}
 
 \subsection{Finality properties of subsystems}
