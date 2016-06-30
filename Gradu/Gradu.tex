@@ -39,7 +39,8 @@
 \newtheorem{kor}[equation]{Corollary}
 \newtheorem{vaite}{Väite}
 
-\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
 \newcounter{diagram}
 \numberwithin{diagram}{subsection}
 \newenvironment{diagram}
@@ -51,7 +52,7 @@
 \newtheorem{esim}[equation]{Example}
 
 \theoremstyle{remark}
-\newtheorem{huom}[equation]{Huomautus}
+\newtheorem{huom}[equation]{Remark}
 
 \pagestyle{plain}
 \setcounter{page}{1}
@@ -61,7 +62,7 @@
 \addtolength{\textheight}{-0.9cm}
 
 
-\title{Cech (co)homology}
+\title{Constructions of \v{C}ech and their applications to fixed point theorems}
 \author{Yury Elkin}
 \date{}
 
@@ -79,7 +80,7 @@
 
 \chapter{Background}
 
-In this chapter we will recall a few details about algebra, category theory and abstract simplicial complexes. We assume that the reader is familiar with basic concepts of singular homology and cohomology theory and constructions related to them. \newline
+In this chapter we will recall a few details about algebra, category theory and abstract simplicial complexes. We assume that the reader knows the basics of singular homology and cohomology theory and constructions related to them. \newline
 We will implement structures like modules, vector spaces and groups from the algebra and we assume that the reader is familiar with this kind of structures. Modules play central role as we are interested in homology as the groups with coefficients $G$ can be interpreted as $G$-modules. In the applications we will use homology groups with coefficients in $\Q$ , which form a vector space structure. Thus some theory from linear algebra will be used. 
 
 \section{Direct sum and direct product}
@@ -280,7 +281,7 @@ Because $N$ and $D$ are both limits there exist morphisms $u: N \rightarrow D$ a
 \end{proof}
 \subsection{Dual category}
 To simplify definitions we will define the concept of a dual category. 
-\begin{maar}
+\begin{maar}\label{dualdefinition}
 The dual of any concept in category theory can be obtained in the following way:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	
@@ -423,7 +424,12 @@ We construct a module homomorphism $u: K \rightarrow L$ for which $v_a \circ u =
  $$I^{b}_a \circ pr_b \circ u'= I^{b}_a \circ \phi_b = \phi_a = pr_a \circ u'.$$
   We can define $u$ to be $u''$. The uniqueness property of the homomorphism follows directly from the fact that $u'$ is unique. 
 \end{proof}
-We proved that limit can be defined for the systems of $R$-modules. The corresponding theorem can be obtained for the systems of abelian groups, by interpreting them as $R$-module, where the ring $R$ is trivial.
+\begin{huom}
+In the theorems above we showed that, there exists a limit for the inverse system functor and colimit for the corresponding functor of directed system. Because it is clear from the context, which of the limits is being used from now on we will denote both concepts for systems simply as $\lim$ .
+\end{huom}
+We proved that limit can be defined for the systems of $R$-modules. The corresponding theorem can be obtained for the systems of abelian groups, by interpreting them as $R$-modules, where the ring $R$ is trivial.
+
+
 
 \subsection{Morphisms between systems}\label{limitmorphism}
 
@@ -440,71 +446,71 @@ Let $(I,\lambda)$ and $(I',\lambda')$ be inverse systems and $\phi:\lambda' \rig
 
 In the next theorem we will prove that it is possible to define the limit of morphisms between systems in a unique way. We recall that existence of limit implies that for every objects of a category $I$ there exists unique functor $u_{I,a}:\lim I \rightarrow I(a)$.
 
-\begin{lem}
+\begin{lem}\label{inversemorphismexistence}
 Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems for which limit exists. Let $\{f_a\}$ be inverse system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the condition $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for every $a \in \lambda'$ .
 \end{lem}
 \begin{proof}
 Consider the following diagram
 \begin{diagram}\label{morphismbetweenlimits}
-\begin{tikzpicture}
-
-\node (w) at (2,0,0) {\(I(n)\)};
-
-\node (x2) at (0.7,-0.7,0) {\(\omega_{a}\)};
-
-\node (x) at (0,-2,0) {\(I(a)\)};
-
-\node (y2) at (3.3,-0.7,0) {\(\omega_{b}\)};
-
-\node (y) at (4,-2,0) {\(I(b)\)};
-
-\node (f) at (2,-2.4,0){\(I^{a}_{b}\)};
-
-\node (d) at (2,-1,0){\(\lim I\)};
-
-\node (phid) at (1.4,-1.6,0){\(\rho_{a}\)};
-\node (phid2) at (2.6,-1.6,0){\(\rho_{b}\)};
-
-\node (w2) at (2,0,-7) {\(I'(\phi(n))\)};
-
-\node (x22) at (0.7,-0.7,-7) {\(\omega'_{\phi(a)}\)};
-
-\node (x2) at (0,-2,-7) {\(I'(\phi(a))\)};
-
-\node (y22) at (3.3,-0.7,-7) {\(\omega'_{\phi(b)}\)};
-
-\node (y2) at (4,-2,-7) {\(I'(\phi(b))\)};
-
-\node (f2) at (2,-2.4,-7){\(I'^{\phi(a)}_{\phi(b)}\)};
-
-\node (d2) at (2,-1,-7){\(\lim I'\)};
-
-\node (phid2) at (1.4,-1.6,-7){\(\rho'_{\phi(a)}\)};
-\node (phid22) at (2.6,-1.6,-7){\(\rho'_{\phi(b)}\)};
-
-\draw[->] (y) -- (w);
-\draw[->] (x) -- (w);
-\draw[->] (x) -- (y);
-\draw[->] (d) -- (w);
-\draw[->] (x) -- (d);
-\draw[->] (y) -- (d);
-
-\draw[->] (x2) -- (w2);
-\draw[->] (y2) -- (w2);
-\draw[->] (x2) -- (y2);
-\draw[->] (d2) -- (w2);
-\draw[->] (x2) -- (d2);
-\draw[->] (y2) -- (d2);
-
-\draw[->] (w) |- (w2);
-\draw[->] (x) |- (x2);
-\draw[->] (y) -| (y2);
-
-
-\draw[dashed][->](d) -- (d2);
-
-
-\end{tikzpicture}
+	\begin{tikzpicture}
+	
+	\node (w) at (2,0,0) {\(I(\phi(n))\)};
+	
+	\node (x2) at (0.7,-0.7,0) {\(\omega_{\phi(a)}\)};
+	
+	\node (x) at (0,-2,0) {\(I(\phi(a))\)};
+	
+	\node (y2) at (3.3,-0.7,0) {\(\omega_{\phi(b)}\)};
+	
+	\node (y) at (4,-2,0) {\(I(\phi(b))\)};
+	
+	\node (f) at (2,-2.4,0){\(I^{\phi(a)}_{\phi(b)}\)};
+	
+	\node (d) at (2,-1,0){\(\lim I\)};
+	
+	\node (phid) at (1.4,-1.6,0){\(\rho_{\phi(a)}\)};
+	\node (phid2) at (2.6,-1.6,0){\(\rho_{\phi(b)}\)};
+	
+	\node (w2) at (2,0,-7) {\(I'(n)\)};
+	
+	\node (x22) at (0.7,-0.7,-7) {\(\omega'_a\)};
+	
+	\node (x2) at (0,-2,-7) {\(I'(a)\)};
+	
+	\node (y22) at (3.3,-0.7,-7) {\(\omega'_b\)};
+	
+	\node (y2) at (4,-2,-7) {\(I'(b)\)};
+	
+	\node (f2) at (2,-2.4,-7){\(I'^{a}_{b}\)};
+	
+	\node (d2) at (2,-1,-7){\(\lim I'\)};
+	
+	\node (phid2) at (1.4,-1.6,-7){\(\rho'_a\)};
+	\node (phid22) at (2.6,-1.6,-7){\(\rho'_b\)};
+	
+	\draw[->] (w) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (d);
+	\draw[->] (d) -- (x);
+	\draw[->] (d) -- (y);
+	
+	\draw[->] (w2) -- (y2);
+	\draw[->] (w2) -- (x2);
+	\draw[->] (x2) -- (y2);
+	\draw[->] (w2) -- (d2);
+	\draw[->] (d2) -- (x2);
+	\draw[->] (d2) -- (y2);
+	
+	\draw[->] (w) |- (w2);
+	\draw[->] (x) |- (x2);
+	\draw[->] (y) -| (y2);
+	
+	
+	\draw[dashed][->](d) -- (d2);
+	
+	
+	\end{tikzpicture}
 \end{diagram}
 
 To prove that the limit morphism exists we form the following triangle out of the diagram described above:
@@ -578,7 +584,7 @@ Both maps $\lim f \circ u_{I, \phi(a)}$ and $u_{I',a} \circ f_a$ complete the di
 For composition of two limits we have following result:
 
 \begin{lem}\label{compositionlimitmorphism}
-Let $(I, \lambda)$, $(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems with limits and let $\phi:\lambda' \rightarrow \lambda$ and $\phi':\lambda'' \rightarrow \lambda'$ functors between systems. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \phi'(\lambda'')\}$ and $ \{g_a:I'(\phi(a)) \rightarrow I''(a) \mid a \in \lambda''\}$ be families of morphisms corresponding to $\phi$ and $\phi'$. Let $\lim(f \circ g):I \rightarrow I''$ be the limit of the family $\{g_af_{\phi(a)}:I(\phi \phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$.  Then $\lim(f \circ g) = \lim f \circ \lim g $ holds.
+Let $(I, \lambda)$, $(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems with limits and let $\phi:\lambda' \rightarrow \lambda$ and $\phi':\lambda'' \rightarrow \lambda'$ functors between systems. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \phi'(\lambda'')\}$ and $ \{g_a:I'(\phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$ be families of morphisms corresponding to $\phi$ and $\phi'$. Let $\lim(f \circ g):I \rightarrow I''$ be the limit of the family $\{g_af_{\phi(a)}:I(\phi \phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$.  Then $\lim(f \circ g) = \lim f \circ \lim g $ holds.
 \end{lem}
 \begin{proof}
 To prove this we will use previous lemma and following commutative diagram:
@@ -643,73 +649,116 @@ We have to show that the image is in the subgroup $$L = \{x \in \prod_{i \in \la
 \begin{maar}
 	Let $(D,\lambda)$ and $(D',\lambda')$ be inverse systems and $\phi:\lambda \rightarrow \lambda'$ an order preserving functor. Let $ \{f_a:I(a) \rightarrow I'(\phi(a)) \mid a \in \lambda\}$ be a natural transformation between $I$ and $I'\phi$. Then we say that $\{f_a\}_{a \in \lambda}$ is a directed system of morphisms corresponding to the functor $\phi$ from the system $D$ into the system $D'$.
 \end{maar}
+The proof of the following two theorems can be obtained by using the method of dualization described in the definition \ref{dualdefinition} on the proof of Lemma \ref{inversemorphismexistence} and Lemma \ref{compositionlimitmorphism} respectively.
 \begin{lem}
-	Let  $(D,\lambda)$ and $(D',\lambda')$ be directed systems for which limit exists. Let $\{f_a\}$ be directed system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim D \rightarrow \lim D'$ for which the condition $u_{I, \phi(a)} \circ \lim f  =  f_a \circ u_{I',a}$ holds for every $a \in \lambda'$ .
+	Let  $(D,\lambda)$ and $(D',\lambda')$ be directed systems for which the limit exists. Let $\{f_a\}$ be directed system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim D \rightarrow \lim D'$ for which the condition $u_{D', \phi(a)} \circ \lim f  =  f_a \circ u_{D,a}$ holds for every $a \in \lambda'$ .
+\begin{diagram}\label{morphismbetweenlimits2}
+	\begin{tikzpicture}
+	
+	\node (w) at (2,0,0) {\(D(n)\)};
+	
+	\node (x2) at (0.7,-0.7,0) {\(\omega_{a}\)};
+	
+	\node (x) at (0,-2,0) {\(D(a)\)};
+	
+	\node (y2) at (3.3,-0.7,0) {\(\omega_{b}\)};
+	
+	\node (y) at (4,-2,0) {\(D(b)\)};
+	
+	\node (f) at (2,-2.4,0){\(D^{a}_{b}\)};
+	
+	\node (d) at (2,-1,0){\(\lim D\)};
+	
+	\node (phid) at (1.4,-1.6,0){\(\rho_{a}\)};
+	\node (phid2) at (2.6,-1.6,0){\(\rho_{b}\)};
+	
+	\node (w2) at (2,0,-7) {\(D'(\phi(n))\)};
+	
+	\node (x22) at (0.7,-0.7,-7) {\(\omega'_{\phi(a)}\)};
+	
+	\node (x2) at (0,-2,-7) {\(D'(\phi(a))\)};
+	
+	\node (y22) at (3.3,-0.7,-7) {\(\omega'_{\phi(b)}\)};
+	
+	\node (y2) at (4,-2,-7) {\(D'(\phi(b))\)};
+	
+	\node (f2) at (2,-2.4,-7){\(D'^{\phi(a)}_{\phi(b)}\)};
+	
+	\node (d2) at (2,-1,-7){\(\lim D'\)};
+	
+	\node (phid2) at (1.5,-1.7,-7){\(\rho'_{\phi(a)}\)};
+	\node (phid22) at (2.6,-1.6,-7){\(\rho'_{\phi(b)}\)};
+	
+	\draw[->] (y) -- (w);
+	\draw[->] (x) -- (w);
+	\draw[->] (x) -- (y);
+	\draw[->] (d) -- (w);
+	\draw[->] (x) -- (d);
+	\draw[->] (y) -- (d);
+	
+	\draw[->] (x2) -- (w2);
+	\draw[->] (y2) -- (w2);
+	\draw[->] (x2) -- (y2);
+	\draw[->] (d2) -- (w2);
+	\draw[->] (x2) -- (d2);
+	\draw[->] (y2) -- (d2);
+	
+	\draw[->] (w) |- (w2);
+	\draw[->] (x) |- (x2);
+	\draw[->] (y) -| (y2);
+	
+	
+	\draw[dashed][->](d) -- (d2);
+	
+	
+	\end{tikzpicture}
+\end{diagram}
 \end{lem}
-\begin{proof}
-	We have the following diagram:
-	\begin{diagram}\label{morphismbetweenlimits2}
+\begin{lem}\label{compositionlimitmorphismdirected}
+	Let $(D, \lambda)$, $(D',\lambda')$ and $(D'',\lambda'')$ be directed systems with limits and let $\phi:\lambda \rightarrow \lambda'$ and $\phi':\lambda' \rightarrow \lambda''$ functors between systems. Let $ \{f_a:D(a) \rightarrow D'(\phi(a)) \mid a \in \lambda\}$ and $ \{g_a:D'(a) \rightarrow D''(\phi'(a)) \mid a \in \phi(lambda)\}$ be families of morphisms corresponding to $\phi$ and $\phi'$. Let $\lim(f \circ g):I \rightarrow I''$ be the limit of the family $\{g_{\phi(a)}f_{a}:D(a) \rightarrow D''(\phi' \phi(a)) \mid a \in \lambda\}$.  Then $\lim(f \circ g) = \lim f \circ \lim g $ holds.
+		$$
 		\begin{tikzpicture}
 		
-		\node (w) at (2,0,0) {\(I(\phi(n))\)};
 		
-		\node (x2) at (0.7,-0.7,0) {\(\omega_{\phi(a)}\)};
 		
-		\node (x) at (0,-2,0) {\(I(\phi(a))\)};
+		\node (w) at (0,0) {\(D(a)\)};
 		
-		\node (y2) at (3.3,-0.7,0) {\(\omega_{\phi(b)}\)};
+		\node (x) at (0,-2) {\(\lim D\)};
 		
-		\node (y) at (4,-2,0) {\(I(\phi(b))\)};
+		\node (y) at (4,-2) {\(\lim D'\)};
 		
-		\node (f) at (2,-2.4,0){\(I^{\phi(a)}_{\phi(b)}\)};
+		\node (z) at (4,0) {\(D'(\phi(a))\)};
 		
-		\node (d) at (2,-1,0){\(\lim I\)};
+		\node (p) at (8,0) {\(D''(\phi'(\phi(a)))\)};
 		
-		\node (phid) at (1.4,-1.6,0){\(\rho_{\phi(a)}\)};
-		\node (phid2) at (2.6,-1.6,0){\(\rho_{\phi(b)}\)};
+		\node (p2) at (8,-2) {\(\lim D''\)};
 		
-		\node (w2) at (2,0,-7) {\(I'(n)\)};
+		\node (f) at (2,-2.4){\(\lim f\)};\
 		
-		\node (x22) at (0.7,-0.7,-7) {\(\omega'_a\)};
+		\node (f2) at (6,-2.4){\(\lim g\)};
 		
-		\node (x2) at (0,-2,-7) {\(I'(a)\)};
+		\node (g) at (2,-0.4){\(f_{a}\)};
 		
-		\node (y22) at (3.3,-0.7,-7) {\(\omega'_b\)};
+		\node (g2) at (6,-0.4){\(g_{\phi(a)}\)};
 		
-		\node (y2) at (4,-2,-7) {\(I'(b)\)};
+		\node (s) at (0.6,-1) {\(u_{I,a}\)};
 		
-		\node (f2) at (2,-2.4,-7){\(I'^{a}_{b}\)};
+		\node (s2) at (4.6,-1) {\(u_{I', \phi a}\)};	
 		
-		\node (d2) at (2,-1,-7){\(\lim I'\)};
+		\node (s3) at (8.6,-1) {\(u_{I'', \phi' \phi a}\)};	
 		
-		\node (phid2) at (1.4,-1.6,-7){\(\rho'_a\)};
-		\node (phid22) at (2.6,-1.6,-7){\(\rho'_b\)};
-		
-		\draw[->] (w) -- (y);
+		\draw[->] (z) -- (y);
 		\draw[->] (w) -- (x);
-		\draw[->] (x) -- (y);
-		\draw[->] (w) -- (d);
-		\draw[->] (d) -- (x);
-		\draw[->] (d) -- (y);
-		
-		\draw[->] (w2) -- (y2);
-		\draw[->] (w2) -- (x2);
-		\draw[->] (x2) -- (y2);
-		\draw[->] (w2) -- (d2);
-		\draw[->] (d2) -- (x2);
-		\draw[->] (d2) -- (y2);
-		
-		\draw[->] (w) |- (w2);
-		\draw[->] (x) |- (x2);
-		\draw[->] (y) -| (y2);
-		
-		
-		\draw[dashed][->](d) -- (d2);
+		\draw[dashed][->] (x) -- (y);
+		\draw[->] (w) -- (z);
+		\draw[dashed][->] (y) -- (p2);
+		\draw[->] (p) -- (p2);
+		\draw[->] (z) -- (p);
 		
 		
 		\end{tikzpicture}
-	\end{diagram}
-\end{proof}
+		$$
+\end{lem}
 
 \subsection{Finality properties of subsystems}
 Final and cofinal functors can be defined in a more general way [\ref{categorytheory}]. However, because we are mainly interested in properties of systems, in this section we will investigate the properties of those specific functors only in that special case. In the case of general categories, cofinality includes a concept of connectedness defined in [\ref{categorytheory}] page 217. In our definition we will use a stronger version of that concept.
@@ -1066,30 +1115,209 @@ This follows directly from the fact that if $U \subset V$, then also $f^{-1}U \s
 Lemma \ref{preimageorder} states that $f^{-1}\beta$ is refinement of $f^{-1}\alpha$. We define map $p'^{\beta'}_{\alpha'}$ to be the map which takes every $U_i$ to element $ f^{-1}_a(p^{\beta}_{\alpha} \circ f_{\beta}(U_i))$. We have to show that the map is well-defined. We recall that $p^{\beta}_{\alpha }$ maps every set to some larger set. Thus from the equations $$U_i \subset f^{-1}f(U_i) \subset f^{-1}p^{\beta}_{\alpha}f(U_i) $$ we can conclude that every element in the collection $\beta'$ is mapped to non-empty element of $\alpha'$ and the map is well-defined. The second part of the claim follows directly from Lemma \ref{inducedmapf}, which states that the maps $f_\alpha$ and $f_\beta$ are inclusions between the corresponding simplices.
 \end{proof}
 
-\section{Toolbox of singular homology theory}
-This section contains the toolbox of concepts which are essential to prove the homotopy theorem of \v{C}ech homology.
 
+\chapter{\v{C}ech constructions}
+
+\section{\v{C}ech homology}
+In this section we will construct \v{C}ech homology and prove the main results related to it.  We will first define an inverse system of homology groups of the nerves.
+
+\subsection{Functorial properties}
+\subsubsection{The construction}
 \begin{maar}
-	Let $M$ be free $G$-module. Then $\text{In}_M:M \rightarrow G$ is the following homomorphism: If $x$ is of the form $\sum_{i}g_ia_i $, where $g_i$ are in the group $G$ and $a_i$ belong to the core of the module, then: $$\text{In}_M(x) = \sum_{i}g_i $$
+Let $\alpha$ be an element of $\text{COV}(X,A)$ and let $G$ be an abelian group. Then we can define the group $H_{q,\alpha}(X,A;G)$ using the singular homology groups in the following way: 
+$$H_{q,\alpha}(X,A;G) = H_q(\mathcal{S}(X,A)_{\alpha};G).$$ 
+Let $\alpha, \beta$ be coverings of $(X,A)$ for which relation $\alpha \leq \beta$ holds. Let $p^{\beta}_{\alpha}$ be some projection map between the coverings. Let
+$$I^{\beta}_{\alpha}: H_{q,\beta} \rightarrow  H_{q,\alpha}$$ 
+be the homomorphisms induced by $p^{\beta}_{\alpha}$. Since all projection maps $p^{\beta}_{\alpha}$ are contingous, it follows that $I^{\beta}_{\alpha}$ is independent of the choice of $p^{\beta}_{\alpha}$.
 \end{maar}
+\begin{lem}
+Let $q \in \N$ be a fixed number. Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the groups $H_{q,\alpha}(X,A;G)$ together with maps $I_{\beta}^{\alpha}$ form an inverse system of groups.
+\end{lem}
+\begin{proof}
+Lemma \ref{coviscategory} says that $\text{COV}(X,A)$ with the morphisms induced by the quasi-order relation forms a category. Let $I:\text{COV}(X,A) \rightarrow \text{Ab}$ be a functor which maps every covering to a corresponding abelian group $H_{q,\alpha}(X,A;G)$ and every morphism between the coverings to the induced homomorphism. Using lemmas \ref{projektiokuvauksetindusoivatsamathomomorfismit} and \ref{welldefinessofsystems} we see that the functor defined in this way is a well-defined functor and forms an inverse system. 
+\end{proof}
+
+Now we are ready to define the \v{C}ech homology groups $ \check{\mathrm{H}}_n$. We denote the spanning functor of the inverse system defined above as $I(X,A; G)$.
+\begin{maar}
+Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the \v{C}ech homology groups with coefficients $G$ are defined to be inverse limits of the corresponding functors $I$. Simply denoted  $$\check{\mathrm{H}}_q(X,A;G,q) = \lim_{\rightarrow}I(X,A;G)$$
+
+\end{maar}
+Because coverings can be infinite the limits are not necessary defined. However there is a way to evade this problem. 
+
+\subsubsection{Induced homomorphisms}
+In this section we will investigate properties of induced homomorphisms. Earlier we defined \v{C}ech homology groups to be the limits of the groups induced by coverings of pairs. In section \ref{limitmorphism} we defined the concept of a limit homomorphism. In the next theorem we will show that such homomorphism exists.
+
+\begin{lause}
+Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Let $$\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of the pair }(Y,B)\}$$ be a family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces homomorphisms between corresponding \v{C}ech homology groups: $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
+We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collection is a natural transformation of the \v{C}ech homology groups and the limit function is well defined. 
+\end{lause}
+\begin{proof}
+We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(X,A)$ to map every object $\alpha$ to $f^{-1}\alpha$. By lemma \ref{preimageorder} this functor preserves order. Let $\beta$ and $\alpha$ be some coverings of the pair $(Y,B)$. We denote by $\alpha'$ and $\beta'$ the preimage categories of $\alpha$ and $\beta$ under the map $f$ respectively. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have the following commutable diagram:
+	$$
+	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(H_q(\mathcal{S}(X,A)_{\beta'})\)};
+	
+	\node (x) at (0,-2) {\(H_q(\mathcal{S}(Y,B)_{\beta})\)};
+	
+	\node (y) at (4,-2) {\(H_q(\mathcal{S}(Y,B)_{\alpha})\)};
+	
+	\node (z) at (4,0) {\(H_q(\mathcal{S}(X,A)_{\alpha'})\)};
+	
+	\node (f) at (2,-2.4){\(I^\beta_\alpha\)};
+	
+	\node (g) at (2,-0.4){\(I^{\beta'}_{\alpha'}\)};
+	
+	\node (s) at (0.4,-1) {\(f'_{\beta,q}\)};
+	
+	\node (s2) at (4.4,-1) {\(f'_{\alpha,q}\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+	
+The fact that the collection $\mathcal{A}_q$ is a natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists a limit homomorphism $$f_q:\check{\mathrm{H}}_q(X,A;G) \rightarrow \check{\mathrm{H}}_q(Y,B;G) $$
+\end{proof}
+We will now show that \v{C}ech homology groups are functors. 
+\begin{lause}
+\v{C}ech homology groups are functors from the category of topological pairs to the category of abelian groups 
+\end{lause}
+\begin{proof}
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+\item Every pair of spaces is mapped uniquely to some abelian group.
+\item The limit of an identity map is an identity homomorphism.
+\item Let $f:(X,A) \rightarrow (Y,B)$ and $g:(Y,B) \rightarrow (Z,C)$ be continuous maps between pairs. We know that $f$ and $g$ induce homomorphisms $$f_{*}:H_*(X,A) \rightarrow H_*(Y,B) \text{ and } g_{*}:H_*(X,A) \rightarrow H_*(Z,C).$$ Thus using axioms of singular homology theory we see that $(g \circ f)_{*} = g_* \circ f_*$ holds for the singular homology groups. Then by using theorem \ref{compositionlimitmorphism} we see that the limit homomorphism $\lim ((g \circ f)_*)$ equals $\lim g_* \circ \lim f_*$.
+\end{enumerate}
+\end{proof}
+\subsubsection{Boundary map}
+In this section we give construction of the boundary map $\partial_n:\check{H}_n(X,A) \rightarrow \check H_{n-1}(A)$ and prove that it induces a natural transformation between the corresponding functors. 
+\subsection{Other properties}
+
+\section{\v{C}ech cohomology}
+\subsection{Functorial properties}
+\subsubsection{The construction}
+\subsubsection{Induced homomorphisms}
+\subsubsection{Boundary maps}
+\subsection{Other properties}
+
+\chapter{Applications}
+
+\section{Lefschetz fixed-point theorem}
+[Theory of this will be presented later]
+
+\section{Kakutani fixed point theorem}
+
+The fixed point theorem of Kakutani can be derived for Lefchetz fixed-point theorem.
 
 \begin{maar}
-Let $(C_{*}, \partial)$ be a chain complex induced by topological pair $(X,A)$ and group $G$. Then augmented chain complex  $(\tilde C_{*}, \delta )$ of the pair $(X,A)$ is the following chain complex:
-\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-	\item Group $\tilde C_n = C_n$ for $n \neq 0$ and group $\tilde C_{-1}$ is defined to be group $G$.
-	\item We define $\delta_n = \partial_n$ for $n \neq 0,-1$ , $\delta_0 = \text{In}_{C_0}$ and $\delta_{-1} = 0$.
+Let $X$ be vector space with topological structure and $K$ topological field. If vector addition $+:X \times X \rightarrow X$ and scalar multiplication $\cdot:K \times X \rightarrow X $ are continuous we say that $X$ is topological vector space over field $K$ or shortly $L(X,K)$ 
+\end{maar}
+Topological vector space has following property:
+\begin{lause}
+Kakutani fixed point theorem. Let $S$ be a non empty, compact and convex subset of a locally convex Hausdorff space. Let $f:S \rightarrow 2^s$ be a multivalued function on $S$ which has closed graph and the property that $f(x)$ is convex and non-empty for all $x \in S$. Then the set of fixed points of $f$ is non-empty and compact.
+\end{lause}
+
+
+
+\section{Continuous game theory}
+In this section we will apply theory developed in previous chapters to game theory. We define $n$ player continuous game structure $Cgs(J, \mathcal{A})$ in a following way:
+
+\begin{maar}
+Let $J$ be finite indexing set and $\mathcal{A}$ collection of continuous utility functions $\{u_i:X_i \rightarrow \R \}_{i \in J}$ with a compact domain. Then we say that $Cgs(J, \mathcal{A})$ is a continuous game.
+\end{maar}
+Now we give definition of Nash equilibrium for Cgs.
+
+\begin{maar}
+Let $Cgs(J, \mathcal{A})$ be continuous game we say that point $x^{*} \in \prod_{i \in J}X_i$ is Nash equilibrium if for every $k \in J$ and every $x'_k \in X_k$ following condition holds:
+$$u_k(x*) \geq u_k(x_1, ..., x'_k, ... , x_n) $$ 
+\end{maar}
+Next we will prove important lemma which says that game has equilibrium only and only if specific function has fixed point. 
+\begin{lem}
+$Cgs(n, \mathcal{A})$ has Nash equilibrium only and only if following set value function $$g:\prod_{i \in J}X_i \rightarrow \prod_{i \in J}2^{X_i}: g_k(x) = \argmax_{t \in X_k}u_k(x_1, ... x_{k}, t, x_{k+1},...,x_{n})$$
+has a fixed point $x \in g(x)$  
+\end{lem}
+\begin{proof}
+Trivial (Just check definitions)
+\end{proof}
+
+\subsection{General version of resource optimization problem}
+Consider a game where a set of players compete in a multiple competitions at the same. Every player has limited energy and they can allocate it freely. Every competition is won by a player who allocated most energy in it and the goal of the players is to maximize the amount of the competitions they win.
+
+\begin{maar}
+We define the continuous game structure of the game described above as follows:
+\begin{enumerate}
+\item The choice space for every player consists of continuous functions $f:[0,1]\rightarrow \R$ for which $\int_{0}^{1}f(x) dx = 1 $
+\item The evaluation function $u_n(x):\prod_{i \in J}X_i \rightarrow [0,1]$ is defined to be: $$u_n(f) = m^*(\{x \in [0,1] \mid f_n(x) \geq f_i(x)\})$$
 \end{enumerate}
 \end{maar}
-We denote the homology groups over the augmented chain complex defined above as $\tilde H_n(X,A;G)$
-\begin{maar}
-We say that a topological pair $(X,A)$ is acyclic over group $G$ , if the reduced homology groups $\tilde H_n(X,A; G)$ are trivial for all $n \in \N$.
-\end{maar}
+We will show that in some cases there exists an equalibrium.
 
-\subsection{Chain homotopy}
+
+\begin{appendices}
+
+\chapter{Eilenberg–Steenrod axioms}
+For homology theories we have the following interface:
+\begin{maar}
+A homology theory consists of a family of the functors from category of topological pairs to category of abelian groups $\{H_n\}_{n \in \N}$ and natural transformations $$\{\delta_n:H_n(X,A) \rightarrow H_{n-1}(A,\emptyset)\}_{n \in \N}. $$ We denote $H_n(X)$ to be $H_n(X, \emptyset)$. For the homological theory the following axioms are satisfied:
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+\item \textbf{Homotopy axiom:} If maps $f:(X,A) \rightarrow (Y,B)$ and $g:(X,A) \rightarrow (Y,B)$ are homotopic, then $H_n(f) = H_n(g)$ for all $n$.  
+\item \textbf{Excision axiom:} If $(X,A)$ is a topological pair and $U$ subset of the space $X$ for which $\bar{U} \subset \mathring{A}$ holds, then the inclusion $(X \setminus U, A \setminus U) \subset (X,A)$ induces the following isomorphism for all $n$: $$H_n(i):H_n(X \setminus U,A \setminus U) \rightarrow H_n(X,A)$$
+\item \textbf{Dimension axiom:} If $X$ is one point space, then $H_n(X)$ is trivial group for all $n \neq 0$.
+\item \textbf{Additivity axiom:} Let $X$ be a topological space, which is homeomorphic to a space formed by disjoint union of spaces in the collection $\{A_i\}_{i \in J}$, then group $H_n(X)$ is isomorphic to $\bigoplus_{i \in J}A_i$
+\item \textbf{Exactness axiom:} Let $i:A \rightarrow X$ and $j:(X,\emptyset) \rightarrow (X,A)$ be inclusion, then the following sequence is exact:
+$$
+\begin{tikzpicture}
+
+\node (e1) at (-4,0) {\(...\)};
+
+\node (q1) at (4.2,0) {\(H_{n-1}(A)\)};
+
+\node (a1) at (-2,0) {\(H_n(A)\)};
+
+\node (w) at (0,0) {\(H_n(X)\)};
+
+\node (z) at (2,0) {\(H_n(X,A)\)};
+
+\node (g) at (1,-0.4){\(j_{*}\)};
+
+\node (g3) at (3.1,-0.4){\(\partial_n\)};
+
+\node (g2) at (-1,-0.4){\(i_{*}\)};
+
+\node (q2) at (6,0) {\(...\)};
+
+\draw[->] (w) -- (z);
+\draw[->] (e1) -- (a1);
+\draw[->] (a1) -- (w);
+\draw[->] (z) -- (q1);
+\draw[->] (q1) -- (q2);
+
+\end{tikzpicture}
+$$
+\end{enumerate} 
+\end{maar}
+\begin{huom}
+In the definition above we didn't specify whether the functor is contra-variant or covariant. In the case where we call a theory the homology theory, we imply that the functor is covariant. In the case of cohomology, the functor is contra-variant. 
+\end{huom}
+\begin{huom}
+The functors defined above map every pair $(X,A)$ into some abelian group. However, in many cases the algebraic object has extra properties.
+\end{huom}
+
+\chapter{Technical details of \v{C}ech constructions}
+In this section we will present the theory of the \v{C}ech in a more detail and prove some of the technical theorems related to the homology and cohomology of \v{C}ech. 
+
+\section{Chain homotopy}
 In this section we recall definition of chain homotopy and an important theorem related to it. 
 
 \begin{maar}
-Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian groups. Then we say that collection $f$ of homomorphisms $\{f_n:C_n \rightarrow D_n \}$ is chain map, if the following diagram induced by the maps commutes:
+	Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian groups. Then we say that collection $f$ of homomorphisms $\{f_n:C_n \rightarrow D_n \}$ is chain map, if the following diagram induced by the maps commutes:
 	$$
 	\begin{tikzpicture}
 	
@@ -1145,7 +1373,7 @@ Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian 
 \end{maar}
 
 \begin{maar}
-Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian groups and let $f$ and $g$ be chain maps between them. We say that $f$ is chain homotopic to $g$ if there exists a collection of homomorphisms $\{ P_n: C_n \rightarrow D_{n+1} \}$ for which the following diagram commutes:
+	Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian groups and let $f$ and $g$ be chain maps between them. We say that $f$ is chain homotopic to $g$ if there exists a collection of homomorphisms $\{ P_n: C_n \rightarrow D_{n+1} \}$ for which the following diagram commutes:
 	$$
 	\begin{tikzpicture}
 	
@@ -1207,290 +1435,145 @@ Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian 
 \end{maar}
 Let $(C_{*}, \partial)$ arbitrary chain complex of abelian groups. We denote the groups $H_n(C_{*})$ to be $\text{ker} \partial_n / \text{Im} \partial_{n+1}$. If $f:C_{*} \rightarrow D_{*}$ is a chain map between chain complexes. Then we denote the induced map by $f$ between $H_{n}(C_{*})$ and $H_{n}(D_{*})$ as $H_n(f)$. This map have been proved to be well-defined in [\ref{rotman}]. For the chain homotopic maps we have the following important result.
 \begin{lause}\label{chainhomotopyinducesamemaps}
-Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian groups and let $f$ and $g$ be chain homotopic maps between them. Then $H_n(g) = H_n(f)$.
+	Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be some chain complexes of abelian groups and let $f$ and $g$ be chain homotopic maps between them. Then $H_n(g) = H_n(f)$.
 \end{lause}
 \begin{proof}
-proved in Rotman [\ref{rotman}] theorem 5.3.
+	proved in Rotman [\ref{rotman}] theorem 5.3.
 \end{proof}
-
-\subsection{Algebraic mappings}
+\section{Algebraic mappings}
 In this section we introduce concepts and main result of algebraic mappings. The proofs of the theorems in this section are technical and thus we skip them. 
 \begin{maar}
-Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be chain complexes for which the group of order -1 is free $G$-module and let $f:C_{*} \rightarrow D_{*}$ be a chain map . We say that $f$ is algebraic, if the equation $\text{In}_{C(-1)}(x) = \text{In}_{D(-1)}(f(x))$ holds for every $x \in C(-1)$.
+	Let $(C_{*}, \partial)$ and $(D_{*}, \zeta)$ be chain complexes for which the group of order -1 is free $G$-module and let $f:C_{*} \rightarrow D_{*}$ be a chain map . We say that $f$ is algebraic, if the equation $\text{In}_{C(-1)}(x) = \text{In}_{D(-1)}(f(x))$ holds for every $x \in C(-1)$.
 \end{maar}
 \begin{lem}\label{contmapisalgebraic}
-Let $X$ and $Y$ be simplicial complexes and let $f:X \rightarrow Y$ be a continuous maps between them. Let $C_{*}$ and $D_{*}$ be induced augmented chain complexes of space $X$ and $Y$ respectively. Then the induced map $f_{*}:C_{*} \rightarrow D_{*}$ is algebraic.
+	Let $X$ and $Y$ be simplicial complexes and let $f:X \rightarrow Y$ be a continuous maps between them. Let $C_{*}$ and $D_{*}$ be induced augmented chain complexes of space $X$ and $Y$ respectively. Then the induced map $f_{*}:C_{*} \rightarrow D_{*}$ is algebraic.
 \end{lem}
 \begin{proof}
-Let $c = \sum_{i \in J}g_iz_i$ be an element of $C_{-1}$. Then by definition of the induced map $f(c) = \sum_{i \in J}g_if(z_i)$. The image of both elements under map $\text{In}$ is the element $\sum_{i \in J}g_i$, thus the map is algebraic.
+	Let $c = \sum_{i \in J}g_iz_i$ be an element of $C_{-1}$. Then by definition of the induced map $f(c) = \sum_{i \in J}g_if(z_i)$. The image of both elements under map $\text{In}$ is the element $\sum_{i \in J}g_i$, thus the map is algebraic.
 \end{proof}
 \begin{maar}
-Let $X$ and $Y$ be simplicial complexes. Let $\text{simplices}(X)$ be the collection of all simplices in $X$ and $\text{complexes}(Y)$ be collection of all sub simplicial complexes of $Y$. Then function $$C: \text{simplices}(X) \rightarrow \text{complexes}(Y)$$ is a carrier function, if every face $s'$ of simplex $s$ is mapped to subcomplex $C(s')$ of $C(s)$.  
+	Let $X$ and $Y$ be simplicial complexes. Let $\text{simplices}(X)$ be the collection of all simplices in $X$ and $\text{complexes}(Y)$ be collection of all sub simplicial complexes of $Y$. Then function $$C: \text{simplices}(X) \rightarrow \text{complexes}(Y)$$ is a carrier function, if every face $s'$ of simplex $s$ is mapped to subcomplex $C(s')$ of $C(s)$.  
 \end{maar}
 \begin{maar}
-We say that a carrier function $C$ is acyclic, if image of every element $C(s)$ is acyclic.
+	We say that a carrier function $C$ is acyclic, if image of every element $C(s)$ is acyclic.
 \end{maar}
 \begin{lause}\label{Algebraicmaplem}
-Let $(X,A)$ and $(Y,B)$ be simplicial pairs. Let $f:X \rightarrow Y$ and $g: X \rightarrow Y$ be algebraic maps and $C$ an acyclic carrier, for which the restriction $C$ to simplices which lie in $A$ maps every element inside subsimplex $B$. Then the induced maps $f',g':C_{*}(X)/C_{*}(A) \rightarrow C_{*}(Y)/C_{*}(B)$ are chain homotopic.
+	Let $(X,A)$ and $(Y,B)$ be simplicial pairs. Let $f:X \rightarrow Y$ and $g: X \rightarrow Y$ be algebraic maps and $C$ an acyclic carrier, for which the restriction $C$ to simplices which lie in $A$ maps every element inside subsimplex $B$. Then the induced maps $f',g':C_{*}(X)/C_{*}(A) \rightarrow C_{*}(Y)/C_{*}(B)$ are chain homotopic.
 \end{lause}
 \begin{proof}
-Proved in [\ref{Eilenberg}] theorem VI.5.8.
+	Proved in [\ref{Eilenberg}] theorem VI.5.8.
 \end{proof}
 \begin{kor}\label{Algebraicmaptheorem}
-Let $f,g: X \rightarrow Y $ be maps as in the theorem above, then $H_n(g) = H_n(f)$.
+	Let $f,g: X \rightarrow Y $ be maps as in the theorem above, then $H_n(g) = H_n(f)$.
 \end{kor}
 \begin{proof}
-Follows directly from theorem \ref{chainhomotopyinducesamemaps} and \ref{Algebraicmaplem}.
+	Follows directly from theorem \ref{chainhomotopyinducesamemaps} and \ref{Algebraicmaplem}.
 \end{proof}
-
-\chapter{\v{C}ech homology}
-
-In this chapter we will construct \v{C}ech homology and prove the main results related to it.  We will first define an inverse system of homology groups of the nerves.
-
-\begin{maar}
-Let $\alpha$ be an element of $\text{COV}(X,A)$ and let $G$ be an abelian group. Then we can define the group $H_{q,\alpha}(X,A;G)$ using the singular homology groups in the following way: 
-$$H_{q,\alpha}(X,A;G) = H_q(\mathcal{S}(X,A)_{\alpha};G).$$ 
-Let $\alpha, \beta$ be coverings of $(X,A)$ for which relation $\alpha \leq \beta$ holds. Let $p^{\beta}_{\alpha}$ be some projection map between the coverings. Let
-$$I^{\beta}_{\alpha}: H_{q,\beta} \rightarrow  H_{q,\alpha}$$ 
-be the homomorphisms induced by $p^{\beta}_{\alpha}$. Since all projection maps $p^{\beta}_{\alpha}$ are contingous, it follows that $I^{\beta}_{\alpha}$ is independent of the choice of $p^{\beta}_{\alpha}$.
-\end{maar}
-\begin{lem}
-Let $q \in \N$ be a fixed number. Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the groups $H_{q,\alpha}(X,A;G)$ together with maps $I_{\beta}^{\alpha}$ form an inverse system of groups.
-\end{lem}
-\begin{proof}
-Lemma \ref{coviscategory} says that $\text{COV}(X,A)$ with the morphisms induced by the quasi-order relation forms a category. Let $I:\text{COV}(X,A) \rightarrow \text{Ab}$ be a functor which maps every covering to a corresponding abelian group $H_{q,\alpha}(X,A;G)$ and every morphism between the coverings to the induced homomorphism. Using lemmas \ref{projektiokuvauksetindusoivatsamathomomorfismit} and \ref{welldefinessofsystems} we see that the functor defined in this way is a well-defined functor and forms an inverse system. 
-\end{proof}
-
-Now we are ready to define the \v{C}ech homology groups $ \check{\mathrm{H}}_n$. We denote the spanning functor of the inverse system defined above as $I(X,A; G)$.
-\begin{maar}
-Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the \v{C}ech homology groups with coefficients $G$ are defined to be inverse limits of the corresponding functors $I$. Simply denoted  $$\check{\mathrm{H}}_q(X,A;G,q) = \lim_{\rightarrow}I(X,A;G)$$
-
-\end{maar}
-Because coverings can be infinite the limits are not necessary defined. However there is a way to evade this problem. 
-
-\section{Induced homomorphisms}
-In this section we will investigate properties of induced homomorphisms. Earlier we defined \v{C}ech homology groups to be the limits of the groups induced by coverings of pairs. In section \ref{limitmorphism} we defined the concept of a limit homomorphism. In the next theorem we will show that such homomorphism exists.
-
-\begin{lause}
-Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Let $$\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of the pair }(Y,B)\}$$ be a family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces homomorphisms between corresponding \v{C}ech homology groups: $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
-We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collection is a natural transformation of the \v{C}ech homology groups and the limit function is well defined. 
-\end{lause}
-\begin{proof}
-We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(X,A)$ to map every object $\alpha$ to $f^{-1}\alpha$. By lemma \ref{preimageorder} this functor preserves order. Let $\beta$ and $\alpha$ be some coverings of the pair $(Y,B)$. We denote by $\alpha'$ and $\beta'$ the preimage categories of $\alpha$ and $\beta$ under the map $f$ respectively. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have the following commutable diagram:
-	$$
-	\begin{tikzpicture}
-	
-	
-	
-	\node (w) at (0,0) {\(H_q(\mathcal{S}(X,A)_{\beta'})\)};
-	
-	\node (x) at (0,-2) {\(H_q(\mathcal{S}(Y,B)_{\beta})\)};
-	
-	\node (y) at (4,-2) {\(H_q(\mathcal{S}(Y,B)_{\alpha})\)};
-	
-	\node (z) at (4,0) {\(H_q(\mathcal{S}(X,A)_{\alpha'})\)};
-	
-	\node (f) at (2,-2.4){\(I^\beta_\alpha\)};
-	
-	\node (g) at (2,-0.4){\(I^{\beta'}_{\alpha'}\)};
-	
-	\node (s) at (0.4,-1) {\(f'_{\beta,q}\)};
-	
-	\node (s2) at (4.4,-1) {\(f'_{\alpha,q}\)};	
-	
-	\draw[->] (z) -- (y);
-	\draw[->] (w) -- (x);
-	\draw[->] (x) -- (y);
-	\draw[->] (w) -- (z);
-	
-	
-	\end{tikzpicture}
-	$$
-	
-The fact that the collection $\mathcal{A}_q$ is a natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists a limit homomorphism $$f_q:\check{\mathrm{H}}_q(X,A;G) \rightarrow \check{\mathrm{H}}_q(Y,B;G) $$
-\end{proof}
-We will now show that \v{C}ech homology groups are functors. 
-\begin{lause}
-\v{C}ech homology groups are functors from the category of topological pairs to the category of abelian groups 
-\end{lause}
-\begin{proof}
-\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-\item Every pair of spaces is mapped uniquely to some abelian group.
-\item The limit of an identity map is an identity homomorphism.
-\item Let $f:(X,A) \rightarrow (Y,B)$ and $g:(Y,B) \rightarrow (Z,C)$ be continuous maps between pairs. We know that $f$ and $g$ induce homomorphisms $$f_{*}:H_*(X,A) \rightarrow H_*(Y,B) \text{ and } g_{*}:H_*(X,A) \rightarrow H_*(Z,C).$$ Thus using axioms of singular homology theory we see that $(g \circ f)_{*} = g_* \circ f_*$ holds for the singular homology groups. Then by using theorem \ref{compositionlimitmorphism} we see that the limit homomorphism $\lim ((g \circ f)_*)$ equals $\lim g_* \circ \lim f_*$.
-\end{enumerate}
-\end{proof}
-
 
 \section{Dimension axiom}
 In this section we will prove that \v{C}ech homology theory satisfies the dimension axiom.
 \begin{lause}
-Let $X = \{x\}$ be a space consisting of one point. Then the \v{C}ech homology groups $\check{\mathrm{H}}_n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
+	Let $X = \{x\}$ be a space consisting of one point. Then the \v{C}ech homology groups $\check{\mathrm{H}}_n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
 \end{lause}
 \begin{proof}
-For the space $X$ there exists only one open covering $\alpha = \{x\}$ and thus the inverse system of the corresponding singular homology groups is trivial. It is easy to see that the limit of this system is the group $H_q(\mathcal{S}(X)_a; G)$ together with the identity homomorphisms. The simplex $\mathcal{S}(X)_{\alpha}$ consists only of one edge and thus is homeomorphic to a one point space. From the dimension axiom of singular homology it is easy to see that
-$$\check{\mathrm{H}}_n(X; G) = \left\{
+	For the space $X$ there exists only one open covering $\alpha = \{x\}$ and thus the inverse system of the corresponding singular homology groups is trivial. It is easy to see that the limit of this system is the group $H_q(\mathcal{S}(X)_a; G)$ together with the identity homomorphisms. The simplex $\mathcal{S}(X)_{\alpha}$ consists only of one edge and thus is homeomorphic to a one point space. From the dimension axiom of singular homology it is easy to see that
+	$$\check{\mathrm{H}}_n(X; G) = \left\{
 	\begin{array}{ll}
-		G  & \mbox{if } n = 0 \\
-		0 & \mbox{if } n \geq 1
+	G  & \mbox{if } n = 0 \\
+	0 & \mbox{if } n \geq 1
 	\end{array}
-\right. $$
+	\right. $$
 \end{proof}
-
 \section{Homotopy axiom}
 The main result of this section is the homotopy axiom of \v{C}ech homology which states that if two spaces are homotopic then they have isomorphic \v{C}ech homology groups for all $q \in \N$. In the beginning we will prove an important result regarding the singular homology groups of the nerve of the unit interval $[0,1]$. 
 
 \begin{maar}
-Let $X$ be a topological space and let $\alpha$ be a finite open covering of $X$. Then $\text{CLEAN}(\alpha)$ is a covering of the space $X$, which is formed by removing every such element $A \in \alpha$ for which $A \subset B$ holds for some $B \in \alpha$.
+	Let $X$ be a topological space and let $\alpha$ be a finite open covering of $X$. Then $\text{CLEAN}(\alpha)$ is a covering of the space $X$, which is formed by removing every such element $A \in \alpha$ for which $A \subset B$ holds for some $B \in \alpha$.
 \end{maar}
 
 \begin{lem}\label{cleanlemma}
-Let $X$ be a topological space and let $\alpha$ be its finite open covering. Let $\beta$ be covering $\text{CLEAN}(\alpha)$ . Then the singular homology groups $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $ are isomorphic for every $q \in \N$.
+	Let $X$ be a topological space and let $\alpha$ be its finite open covering. Let $\beta$ be covering $\text{CLEAN}(\alpha)$ . Then the singular homology groups $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $ are isomorphic for every $q \in \N$.
 \end{lem}
 \begin{proof}
-Because $\beta$ is a subcollection of $\alpha$, the relation $\alpha \leq \beta$ holds. Relation $\beta \leq \alpha$ holds, because if we take any element from $a \in \alpha$ which is not in $\beta$ by definition we will find an element $b \in \beta$ for which the relation $a \subset b$ holds. \newline
-Thus there exist morphisms $I^{\beta}_{\alpha}$ and $I^{\alpha}_{\beta}$ in the inverse system of abelian groups induced by coverings. By definition the equations $$I^{\beta}_{\alpha} \circ I^{\alpha}_{\beta} = I^{\beta}_{\beta} = id_{\beta} \text{ and } I^{\alpha}_{\beta} \circ I^{\beta}_{\alpha} = I^{\alpha}_{\beta} = id_{\alpha}$$  hold. Thus $I^{\beta}_{\alpha}$ is an isomorphism between $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $. 
+	Because $\beta$ is a subcollection of $\alpha$, the relation $\alpha \leq \beta$ holds. Relation $\beta \leq \alpha$ holds, because if we take any element from $a \in \alpha$ which is not in $\beta$ by definition we will find an element $b \in \beta$ for which the relation $a \subset b$ holds. \newline
+	Thus there exist morphisms $I^{\beta}_{\alpha}$ and $I^{\alpha}_{\beta}$ in the inverse system of abelian groups induced by coverings. By definition the equations $$I^{\beta}_{\alpha} \circ I^{\alpha}_{\beta} = I^{\beta}_{\beta} = id_{\beta} \text{ and } I^{\alpha}_{\beta} \circ I^{\beta}_{\alpha} = I^{\alpha}_{\beta} = id_{\alpha}$$  hold. Thus $I^{\beta}_{\alpha}$ is an isomorphism between $H_q(\mathcal{S}(X)_{\alpha})$ and $H_q(\mathcal{S}(X)_{\beta}) $. 
 \end{proof}
 \begin{maar}
 	Let $\alpha$ be a cleaned finite open covering of $[0,1]$, for which every element in the collection is connected. The trivial indexation of $\alpha$ is the following indexation: We order open intervals in the collection $(a,b) \in \alpha$ by the coordinate $a$ and number coverings.
 \end{maar}
 \begin{lem}
-Let $\alpha$ be an open covering of $[0,1]$ which is cleaned, finite and connected. Then the trivial indexation $[m]$ preserves the order of the coordinate $b$ of open intervals.
+	Let $\alpha$ be an open covering of $[0,1]$ which is cleaned, finite and connected. Then the trivial indexation $[m]$ preserves the order of the coordinate $b$ of open intervals.
 \end{lem}
 \begin{proof}
-If $b_n > b_{n+1}$ for some $n \in [m-1]$, then $(a_{n+1},b_{n+1}) \subset (a_{n}, b_n)$ which is a contradiction by the definition of the covering $\alpha$.
+	If $b_n > b_{n+1}$ for some $n \in [m-1]$, then $(a_{n+1},b_{n+1}) \subset (a_{n}, b_n)$ which is a contradiction by the definition of the covering $\alpha$.
 \end{proof}
 
 \begin{lem}\label{Unitintervaltrivial}
-Let $\alpha$ be an open covering which is finite. Assume that every element in $\alpha$ is connected. Then the nerve $\mathcal{S}([0,1])_{\alpha}$ is acyclic in the singular homology. 
+	Let $\alpha$ be an open covering which is finite. Assume that every element in $\alpha$ is connected. Then the nerve $\mathcal{S}([0,1])_{\alpha}$ is acyclic in the singular homology. 
 \end{lem}
 \begin{proof}
-Using Lemma \ref{cleanlemma} we can reduce our problem to coverings which have property that no inclusion holds for any two elements of $\alpha$. We define indexation to be trivial indexation for covering $\alpha$. Let $\{f_n(x):\mathcal{S}([0,1])_{\alpha} \rightarrow  \mathcal{S}([0,1])_{\alpha} \}_{n \in [m]}$ be a collection of simplicial maps which are induced by the edges in the following way:
-$$f_n(v_i) = \left\{
-\begin{array}{ll}
-v_i  & \mbox{if } i \leq n \\
-v_n & \mbox{if } i \geq n
-\end{array}
-\right.$$
-We will now show that the maps defined above induce same homomorphisms between the corresponding groups. Because the indexation set is finite, it is enough to show that $f_{n}$ and $f_{n+1}$ are contiguous for every $n$ in the collection. Let $s$ be some simplex in the nerve $\mathcal{S}([0,1])_{\alpha}$. If simplex $s$ is spanned only by elements whose index is less than $n$, maps $f_{n}$ and $f_{n+1}$ are both identity on it. Now assume that $s$ contains atleast one edge the index of which is larger than $n-1$. Then the image of the element $s$ under the map $f_{n}$ can be presented as $\rhd(s',v_n)$, where $s'$ is simplex for which index of every edge is smaller than $n$. There are two possible representations for the image $f_{n+1}(s)$ namely $\rhd(s',v_n,v_{n+1})$ and $\rhd(s\,v_{n+1})$. If the representation of $f_{n+1}(s)$ is $\rhd(s',v_n,v_{n+1})$, we can choose the simplex to be $\rhd(s',v_n,v_{n+1})$, as it clear from definition that $\rhd(s',v_{n+1})$ is its face. In the second case we notice that because intersection $\bigcap_{a \in s'}a \cap v_{n+1}$ is non-empty and connected. Thus it is an open interval $(a_{n+1},b_{1}) $. Because condition $(a_n,b_n) \cap (a_{n+1},b_{1}) \neq \emptyset$ holds, we can choose $\rhd(s',v_n,v_{n+1})$ to be the simplex where image of $s$ of the both functions are contained.
+	Using Lemma \ref{cleanlemma} we can reduce our problem to coverings which have property that no inclusion holds for any two elements of $\alpha$. We define indexation to be trivial indexation for covering $\alpha$. Let $\{f_n(x):\mathcal{S}([0,1])_{\alpha} \rightarrow  \mathcal{S}([0,1])_{\alpha} \}_{n \in [m]}$ be a collection of simplicial maps which are induced by the edges in the following way:
+	$$f_n(v_i) = \left\{
+	\begin{array}{ll}
+	v_i  & \mbox{if } i \leq n \\
+	v_n & \mbox{if } i \geq n
+	\end{array}
+	\right.$$
+	We will now show that the maps defined above induce same homomorphisms between the corresponding groups. Because the indexation set is finite, it is enough to show that $f_{n}$ and $f_{n+1}$ are contiguous for every $n$ in the collection. Let $s$ be some simplex in the nerve $\mathcal{S}([0,1])_{\alpha}$. If simplex $s$ is spanned only by elements whose index is less than $n$, maps $f_{n}$ and $f_{n+1}$ are both identity on it. Now assume that $s$ contains atleast one edge the index of which is larger than $n-1$. Then the image of the element $s$ under the map $f_{n}$ can be presented as $\rhd(s',v_n)$, where $s'$ is simplex for which index of every edge is smaller than $n$. There are two possible representations for the image $f_{n+1}(s)$ namely $\rhd(s',v_n,v_{n+1})$ and $\rhd(s\,v_{n+1})$. If the representation of $f_{n+1}(s)$ is $\rhd(s',v_n,v_{n+1})$, we can choose the simplex to be $\rhd(s',v_n,v_{n+1})$, as it clear from definition that $\rhd(s',v_{n+1})$ is its face. In the second case we notice that because intersection $\bigcap_{a \in s'}a \cap v_{n+1}$ is non-empty and connected. Thus it is an open interval $(a_{n+1},b_{1}) $. Because condition $(a_n,b_n) \cap (a_{n+1},b_{1}) \neq \emptyset$ holds, we can choose $\rhd(s',v_n,v_{n+1})$ to be the simplex where image of $s$ of the both functions are contained.
 \end{proof}
 Next we define a class of nice coverings for the unit interval $[0,1]$ and prove that the subcategory which consists of the coverings defined is a subcategory of the Cech inverse system. 
 
 \begin{maar}
-Let $\alpha = \{U_i\}_{i \in [n]}$ be a connected open covering of unit interval $[0,1]$ for which the following conditions are satisfied:
-\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-	\item $0 \in U_0$ and $1 \in U_n$
-	\item $U_i \cap U_{i+1} \neq \emptyset$ for every $i \in [n-1]$ 
-	\item $U_i \cap U_j = \emptyset$ for all $|i - j| \geq 1$
-\end{enumerate}
-Then we say that covering $\alpha$ is regular.
+	Let $\alpha = \{U_i\}_{i \in [n]}$ be a connected open covering of unit interval $[0,1]$ for which the following conditions are satisfied:
+	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+		\item $0 \in U_0$ and $1 \in U_n$
+		\item $U_i \cap U_{i+1} \neq \emptyset$ for every $i \in [n-1]$ 
+		\item $U_i \cap U_j = \emptyset$ for all $|i - j| \geq 1$
+	\end{enumerate}
+	Then we say that covering $\alpha$ is regular.
 \end{maar}
 \begin{lem}\label{regularcoveringscofinal}
-The category of the regular coverings of $[0,1]$ is cofinal in the $COV([0,1])$.
+	The category of the regular coverings of $[0,1]$ is cofinal in the $COV([0,1])$.
 \end{lem}
 \begin{proof}
-Let $\alpha$ be arbitrary covering of $[0,1]$. We modify the covering in the following ways:
-\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-\item  We form covering $\beta$ by selecting some finite subcovering of $\alpha$. 
-\item  We split every non-connected element in the collection $\beta$ into connected elements.
-\item  We search for the removable elements i.e the the collection after removing the element covers the space $[0,1]$. We remove every such element and stop this process after no removable elements are found.
-\item We define the indexation to be the trivial indexation.
-\end{enumerate}
-The condition (1) and (2) are satisfied , because $\gamma$ is trivially indexed covering. Condition (3) is satisfied, because if two open intervals with are not neighbors have non-empty intersection then all the coverings between can be removed and that collection will still cover the set. Because covering $\gamma$ is obtained by removing and cutting elements, the relation $\beta \leq \gamma$ holds.
+	Let $\alpha$ be arbitrary covering of $[0,1]$. We modify the covering in the following ways:
+	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+		\item  We form covering $\beta$ by selecting some finite subcovering of $\alpha$. 
+		\item  We split every non-connected element in the collection $\beta$ into connected elements.
+		\item  We search for the removable elements i.e the the collection after removing the element covers the space $[0,1]$. We remove every such element and stop this process after no removable elements are found.
+		\item We define the indexation to be the trivial indexation.
+	\end{enumerate}
+	The condition (1) and (2) are satisfied , because $\gamma$ is trivially indexed covering. Condition (3) is satisfied, because if two open intervals with are not neighbors have non-empty intersection then all the coverings between can be removed and that collection will still cover the set. Because covering $\gamma$ is obtained by removing and cutting elements, the relation $\beta \leq \gamma$ holds.
 \end{proof}
 Earlier we defined the concept of stacked covering in more general way. For covering of the pair, where the second element is unit interval there is a natural way to define a stacked covering using regular coverings. 
 \begin{maar}
-Let $(X,A)$ be topological pair and $\alpha = \mathcal{C}(U_x, J, J')$ be its covering. Suppose that for every element $U_x$ there exists a regular covering $\beta(x) = \mathcal{C}(V^x_i, K, K')$ of $[0,1]$. If $\gamma$ is the stacked covering over $\alpha$ of the pair $(X \times [0,1],A \times [0,1])$, we say that it is naturally stacked covering.
+	Let $(X,A)$ be topological pair and $\alpha = \mathcal{C}(U_x, J, J')$ be its covering. Suppose that for every element $U_x$ there exists a regular covering $\beta(x) = \mathcal{C}(V^x_i, K, K')$ of $[0,1]$. If $\gamma$ is the stacked covering over $\alpha$ of the pair $(X \times [0,1],A \times [0,1])$, we say that it is naturally stacked covering.
 \end{maar}
 
 \begin{lem}
-The category of naturally stacked coverings is cofinal in $COV((X \times [0,1], A \times [0,1]))$
+	The category of naturally stacked coverings is cofinal in $COV((X \times [0,1], A \times [0,1]))$
 \end{lem}
 \begin{proof}
-We denote $I$ to be unit interval $[0,1]$. Let $\gamma$ be some covering $\mathcal{C}(Y_i, J, J')$ of pair $(X \times I, A \times I)$. We construct a stacked covering in the following way. Let $(x,t)$ be a point of the space $X \times I$. Then by definition of the topology on Cartesian product there exists a neighborhood $W = U(x,t) \times V(x,t) $ for which  $(x,t) \in W \subset Y_i $ holds for some $Y_i$ in the collection $\gamma$. We fix $x$ now, we denote covering induced by sets $V(x,t)$ over all $t \in I$ by $\mathcal{K}^x$. Using Lemma \ref{regularcoveringscofinal} we find a regular covering of the unit interval  $$\mathcal{R}^x = \mathcal{C}(\mathcal{R}^x_i ,P, P')$$ for which $\mathcal{K}^x \leq \mathcal{R}^x$ holds. For every $j \in J$ we can find subindexation $P_j \subset P$ for which the following condition holds: For every $i \in P_j$ there exists $t(i,j) \in I$ for which $U(x,t(i,j)) \times \mathcal{R}^x_i \subset Y_j$ holds. We define $H_j$ to be the following open set $H^x_j = \bigcap_{i \in P_j} U(x,t(i,j)) $ and define covering $\mathcal{A}^x$ to be $$\mathcal{A}^x = \mathcal{C}(H^x_j, J, J'). $$
-The covering $\gamma'$ spanned by elements $H^x_j \times \mathcal{R}^x_i$ is stacked covering over $\mathcal{A}^x$ which refines covering $\gamma$.
-
+	We denote $I$ to be unit interval $[0,1]$. Let $\gamma$ be some covering $\mathcal{C}(Y_i, J, J')$ of pair $(X \times I, A \times I)$. We construct a stacked covering in the following way. Let $(x,t)$ be a point of the space $X \times I$. Then by definition of the topology on Cartesian product there exists a neighborhood $W = U(x,t) \times V(x,t) $ for which  $(x,t) \in W \subset Y_i $ holds for some $Y_i$ in the collection $\gamma$. We fix $x$ now, we denote covering induced by sets $V(x,t)$ over all $t \in I$ by $\mathcal{K}^x$. Using Lemma \ref{regularcoveringscofinal} we find a regular covering of the unit interval  $$\mathcal{R}^x = \mathcal{C}(\mathcal{R}^x_i ,P, P')$$ for which $\mathcal{K}^x \leq \mathcal{R}^x$ holds. For every $j \in J$ we can find subindexation $P_j \subset P$ for which the following condition holds: For every $i \in P_j$ there exists $t(i,j) \in I$ for which $U(x,t(i,j)) \times \mathcal{R}^x_i \subset Y_j$ holds. We define $H_j$ to be the following open set $H^x_j = \bigcap_{i \in P_j} U(x,t(i,j)) $ and define covering $\mathcal{A}^x$ to be $$\mathcal{A}^x = \mathcal{C}(H^x_j, J, J'). $$
+	The covering $\gamma'$ spanned by elements $H^x_j \times \mathcal{R}^x_i$ is stacked covering over $\mathcal{A}^x$ which refines covering $\gamma$.
+	
 \end{proof}
 
 \begin{lem}
-Let $\gamma$ be a naturally stacked covering of pair $(X \times [0,1])$ over $\alpha$. Assume that the nerve $\mathcal{S}(X)_{\alpha}$ is simplex. Then the nerve $\mathcal{S}(X \times I)_{\gamma})$ is acyclic in singular homology.
+	Let $\gamma$ be a naturally stacked covering of pair $(X \times [0,1])$ over $\alpha$. Assume that the nerve $\mathcal{S}(X)_{\alpha}$ is simplex. Then the nerve $\mathcal{S}(X \times I)_{\gamma})$ is acyclic in singular homology.
 \end{lem}
 \begin{proof}
-Assume that the decomposition of $\gamma$ is $\mathcal{C}(\gamma_i, J)$ and the decomposition of $\alpha$ is $\mathcal{C}(W_i, R)$. We denote by $\beta(x)$ the stacks of covering $\gamma$. Let $\delta$ be the covering $\mathcal{C}(\delta_i, K)$ obtained by fusioning all the coverings $\beta(x)$. \newline
-Let $s = \{\gamma_{j_0}, ... , \gamma_{j_n}\}$ be some simplex in the nerve $\mathcal{S}(X)_{\gamma}$. We denote $J'$ to be indexation over elements $\{j_0, ... j_n\}$. By the definition we know that each $\gamma_{j} = \alpha_{f(j)} \times \beta_{g(j)}$ for some $\alpha_{f(j)}$ and $\beta_{g(j)} $. Let $t:g(J) \rightarrow K$ be the indexation function which tells the index of element in $\beta_j$ in covering $\gamma$. The following equations hold: $$\bigcap_{i \in J'}\gamma_i = \bigcap_{i \in J'}\alpha_{i} \times \bigcap_{i \in J'}\beta_{g(i)} = \bigcap_{i \in J'}\alpha_{f(i)} \times \bigcap_{i \in J'}\beta_{t(g(i))} = \bigcap_{i \in J'}\delta_{t(g(i))}$$
-Note that the last equation holds because we assumed that $\alpha$ is simplex and thus intersection of all its elements is non-empty. By definition of stacked coverings wee see that the covering obtained by projecting elements of $\gamma$ to the unit interval has exactly the same structure as the fusioned covering $\delta$. Using the equation above we see that the simplices $\mathcal{S}([0,1])_{\gamma}$ and $\mathcal{S}([0,1])_{\beta} $ are isomorphic. By \ref{Unitintervaltrivial} the homology groups of $[0,1]_{\delta} $ are trivial, thus $H_q(\mathcal{S}([0,1])_{\delta})$ is trivial for all $q \in \N$.
+	Assume that the decomposition of $\gamma$ is $\mathcal{C}(\gamma_i, J)$ and the decomposition of $\alpha$ is $\mathcal{C}(W_i, R)$. We denote by $\beta(x)$ the stacks of covering $\gamma$. Let $\delta$ be the covering $\mathcal{C}(\delta_i, K)$ obtained by fusioning all the coverings $\beta(x)$. \newline
+	Let $s = \{\gamma_{j_0}, ... , \gamma_{j_n}\}$ be some simplex in the nerve $\mathcal{S}(X)_{\gamma}$. We denote $J'$ to be indexation over elements $\{j_0, ... j_n\}$. By the definition we know that each $\gamma_{j} = \alpha_{f(j)} \times \beta_{g(j)}$ for some $\alpha_{f(j)}$ and $\beta_{g(j)} $. Let $t:g(J) \rightarrow K$ be the indexation function which tells the index of element in $\beta_j$ in covering $\gamma$. The following equations hold: $$\bigcap_{i \in J'}\gamma_i = \bigcap_{i \in J'}\alpha_{i} \times \bigcap_{i \in J'}\beta_{g(i)} = \bigcap_{i \in J'}\alpha_{f(i)} \times \bigcap_{i \in J'}\beta_{t(g(i))} = \bigcap_{i \in J'}\delta_{t(g(i))}$$
+	Note that the last equation holds because we assumed that $\alpha$ is simplex and thus intersection of all its elements is non-empty. By definition of stacked coverings wee see that the covering obtained by projecting elements of $\gamma$ to the unit interval has exactly the same structure as the fusioned covering $\delta$. Using the equation above we see that the simplices $\mathcal{S}([0,1])_{\gamma}$ and $\mathcal{S}([0,1])_{\beta} $ are isomorphic. By \ref{Unitintervaltrivial} the homology groups of $[0,1]_{\delta} $ are trivial, thus $H_q(\mathcal{S}([0,1])_{\delta})$ is trivial for all $q \in \N$.
 \end{proof}
 \begin{lem}
-Let $(X,A)$ be a topological pair. Let $\gamma$ be naturally stacked covering $\mathcal{C}(\gamma_i,J,J')$ of the pair over covering $\alpha = \mathcal{C}(\alpha_i,I,I')$. Then maps $$\{u_n:\mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(X \times [0,1], A \times [0,1])_\gamma \mid n \in [0,1]\}$$ defined as $u_n(x) = (x,n)$ induce the same map $H_0(u_0)$ between the corresponding singular homology groups for all $n \in [0,1]$
+	Let $(X,A)$ be a topological pair. Let $\gamma$ be naturally stacked covering $\mathcal{C}(\gamma_i,J,J')$ of the pair over covering $\alpha = \mathcal{C}(\alpha_i,I,I')$. Then maps $$\{u_n:\mathcal{S}(X,A)_{\alpha} \rightarrow \mathcal{S}(X \times [0,1], A \times [0,1])_\gamma \mid n \in [0,1]\}$$ defined as $u_n(x) = (x,n)$ induce the same map $H_0(u_0)$ between the corresponding singular homology groups for all $n \in [0,1]$
 \end{lem}
 \begin{proof}
-We will show that the maps satisfy requirements of corollary \ref{Acyclicmapstheorem} and use the theorem to prove that the induced maps are same for the singular homology groups. We will define the Carrier function $C$ to map arbitrary simplex $s$ of complex $\mathcal{S}(X,A)_\alpha$ into the following simplicial complex. Assume that $s$ is of the form $ \{\gamma_i\}_{i \in T}$, then simplicial complex $C(s)$ consists of all elements in the simplicial complex $\mathcal{S}(X \times [0,1],A \times [0,1])_\alpha$, which are of the form $(U_i,Z)$ where $i \in T$. \newline
-
+	We will show that the maps satisfy requirements of corollary \ref{Acyclicmapstheorem} and use the theorem to prove that the induced maps are same for the singular homology groups. We will define the Carrier function $C$ to map arbitrary simplex $s$ of complex $\mathcal{S}(X,A)_\alpha$ into the following simplicial complex. Assume that $s$ is of the form $ \{\gamma_i\}_{i \in T}$, then simplicial complex $C(s)$ consists of all elements in the simplicial complex $\mathcal{S}(X \times [0,1],A \times [0,1])_\alpha$, which are of the form $(U_i,Z)$ where $i \in T$. \newline
+	
 \end{proof}
-
-\chapter{Applications}
-
-\section{Lefschetz fixed-point theorem}
-[Theory of this will be presented later]
-
-\section{Kakutani fixed point theorem}
-
-The fixed point theorem of Kakutani can be derived for Lefchetz fixed-point theorem.
-
-\begin{maar}
-Let $X$ be vector space with topological structure and $K$ topological field. If vector addition $+:X \times X \rightarrow X$ and scalar multiplication $\cdot:K \times X \rightarrow X $ are continuous we say that $X$ is topological vector space over field $K$ or shortly $L(X,K)$ 
-\end{maar}
-Topological vector space has following property:
-\begin{lause}
-Kakutani fixed point theorem. Let $S$ be a non empty, compact and convex subset of a locally convex Hausdorff space. Let $f:S \rightarrow 2^s$ be a multivalued function on $S$ which has closed graph and the property that $f(x)$ is convex and non-empty for all $x \in S$. Then the set of fixed points of $f$ is non-empty and compact.
-\end{lause}
-
-
-
-\section{Continuous game theory}
-In this section we will apply theory developed in previous chapters to game theory. We define $n$ player continuous game structure $Cgs(J, \mathcal{A})$ in a following way:
-
-\begin{maar}
-Let $J$ be finite indexing set and $\mathcal{A}$ collection of continuous utility functions $\{u_i:X_i \rightarrow \R \}_{i \in J}$ with a compact domain. Then we say that $Cgs(J, \mathcal{A})$ is a continuous game.
-\end{maar}
-Now we give definition of Nash equilibrium for Cgs.
-
-\begin{maar}
-Let $Cgs(J, \mathcal{A})$ be continuous game we say that point $x^{*} \in \prod_{i \in J}X_i$ is Nash equilibrium if for every $k \in J$ and every $x'_k \in X_k$ following condition holds:
-$$u_k(x*) \geq u_k(x_1, ..., x'_k, ... , x_n) $$ 
-\end{maar}
-Next we will prove important lemma which says that game has equilibrium only and only if specific function has fixed point. 
-\begin{lem}
-$Cgs(n, \mathcal{A})$ has Nash equilibrium only and only if following set value function $$g:\prod_{i \in J}X_i \rightarrow \prod_{i \in J}2^{X_i}: g_k(x) = \argmax_{t \in X_k}u_k(x_1, ... x_{k}, t, x_{k+1},...,x_{n})$$
-has a fixed point $x \in g(x)$  
-\end{lem}
-\begin{proof}
-Trivial (Just check definitions)
-\end{proof}
-
-\subsection{General version of resource optimization problem}
-Consider a game where a set of players compete in a multiple competitions at the same. Every player has limited energy and they can allocate it freely. Every competition is won by a player who allocated most energy in it and the goal of the players is to maximize the amount of the competitions they win.
-
-\begin{maar}
-We define the continuous game structure of the game described above as follows:
-\begin{enumerate}
-\item The choice space for every player consists of continuous functions $f:[0,1]\rightarrow \R$ for which $\int_{0}^{1}f(x) dx = 1 $
-\item The evaluation function $u_n(x):\prod_{i \in J}X_i \rightarrow [0,1]$ is defined to be: $$u_n(f) = m^*(\{x \in [0,1] \mid f_n(x) \geq f_i(x)\})$$
-\end{enumerate}
-\end{maar}
-We will show that in some cases there exists an equalibrium.
-
-
-\begin{appendices}
-
-\chapter{Homology axioms}
-For homology theories we have a following interface:
-\begin{maar}
-A homology theory consists of a family of the functors from category of topological pairs to category of abelian groups $\{H_n\}_{n \in \N}$ and natural transformations $\{\delta_n:H_n(X,A) \rightarrow H_{n-1}(A,\emptyset)\}_{n \in \N} $ . For the homological theory the following axioms are satisfied:
-\begin{enumerate}
-\item text here
-\end{enumerate} 
-\end{maar}
 \chapter{Set theory}
 \begin{lem}
 Let $X$ and $Y$ be some sets and $f:X \rightarrow Y$ function between them. Let $\{V_i \mid i \in J\}$ be some collections of subsets of the set $Y$. Assume that $\bigcap_{i \in J}f^{-1}V_i \neq \emptyset$, then $\bigcap_{i \in J}V_i \neq \emptyset$.
