@@ -150,7 +150,10 @@ Let $C$ and $C'$ be categories and let $F$ be a map between them. We say that $F
 \end{enumerate}
 
 \end{maar}
-Homology and cohomology groups form a functor from TOP to AB. For details see Rotman [\ref{rotman}]. Now we will introduce a new concept called natural transformation.
+\begin{maar}
+We say that a functor $F:C \rightarrow D$ is injective, if for every two distinct object $a$ and $b$ in category $C$ , the functor $F$ maps them to distinct objects in \mbox{category $D$.}
+\end{maar}
+Singular homology and cohomology groups form a functor from TOP to AB. For details see Rotman [\ref{rotman}]. Now we will introduce a new concept called natural transformation.
 
 \begin{maar}
 Let $C$ and $D$ be categories and let $F:C \rightarrow D$ and $G:C \rightarrow D$ be functors. Then the following family of functors is a natural transformation: $$\{\phi_X: F(X) \rightarrow G(X)\}_{X \in C}$$ 
@@ -273,7 +276,7 @@ $$
 $$
 Next we will prove that if we have two limits $N$ and $D$ of a functor $F$ then there exists an isomorphism between those two objects. In other words $N$ and $D$ can be identified and the limit of the functor $F$ can be denoted simply as $\displaystyle {\lim_\rightarrow C}$ .
 
-\begin{lause}
+\begin{lause}\label{limituniqueness}
 Let $F:J \rightarrow C$ be an indexing functor. Let $(N,\omega)$ and $(D, \phi)$ be limits of a functor $F$. Then there exists an isomorphism between them.
 \end{lause}
 \begin{proof}
@@ -289,7 +292,6 @@ The dual of any concept in category theory can be obtained in the following way:
 	\item Reorder every composition. That is, replace $a \circ b$ with $b \circ a$.
 	
 \end{enumerate}
-%% Tarkistus suoritettu tähän asti
 \end{maar}
 Next we will give a few important examples of duality.
 \begin{maar}
@@ -581,6 +583,13 @@ $$
 Both maps $\lim f \circ u_{I, \phi(a)}$ and $u_{I',a} \circ f_a$ complete the diagram. Thus by uniqueness of the map corresponding to limit, we can conclude that the functions are same.
 
 \end{proof}
+
+\begin{lem}\label{limitofidentityisidentity}
+Let $(I,\lambda)$ be an inverse system with property of having a limit and let $\phi: \lambda \rightarrow \lambda$ be a functor which maps every object to itself. Let $h = \{id_a\}$ be an inverse system of morphisms corresponding to the functor $\phi$. Then $\lim h$ is an identity morphism.
+\end{lem}
+\begin{proof}
+Let $a \in \lambda$ be an arbitrary element and $u_a:I(a) \rightarrow \lim I$ be the universal morphism corresponding to it. Then clearly $\text{id}_{\lim I} \circ u_a = u_a \circ \text{id}_a$ holds and thus by uniqueness property the limiting morphism is $\text{id}_{\lim I}$.
+\end{proof}
 For composition of two limits we have following result:
 
 \begin{lem}\label{compositionlimitmorphism}
@@ -634,6 +643,26 @@ To prove this we will use previous lemma and following commutative diagram:
 	$$\lim g \circ \lim f \circ u_{I, \phi(\phi'(a))} = \lim g  \circ u_{I', \phi'(a)} \circ f_{\phi'(a)} = u_{I'',a} \circ g_a \circ f_{\phi'(a)} $$
 	
 
+\end{proof}
+
+\begin{lem}\label{isomorphismlimitmorphisminversesystem}
+Let $(I,\lambda)$ and $(I, \lambda')$ be inverse systems with property of having a limit and let $\phi:\lambda' \rightarrow \lambda$ be an order preserving injective functor. Let $f = \{f_a\}_{a \in \lambda'}$ be a family of morphisms between the systems corresponding to the functor $\phi$. Assume that every $f_a$ in the collection is an isomorphism, then $\lim \{f_a\}$ is an isomorphism.
+\end{lem}
+\begin{proof}
+By assumption for every $f_a$ there exists a morphism $g_{\phi(a)}$, for which $f_a \circ g_{\phi(a)} = \text{id}_{\phi(a)}$ and $g_{\phi(a)} \circ f_a = \text{id}_{a}$. Because $\phi$ is injective, we can now define $\psi:\phi(\lambda) \rightarrow \lambda'$ in such way that it maps $\phi(a)$ to $a$. Now collection $g = \{g_{\phi(a)}\}_{a \in \lambda'}$ forms an inverse system of morphisms, which corresponds to $\psi$. Applying Lemma \ref{compositionlimitmorphism} and Lemma \ref{limitofidentityisidentity} we obtain the following equations: $$\lim f \circ \lim g = \lim (f \circ g) = \lim(\text{id}) = \text{id}  \text{ and similarly } \lim g \circ \lim f = \text{id}$$
+Thus $\lim f$ is an isomorphism with inverse $\lim g$.
+\end{proof}
+Content of this section can be compressed in the following theorem
+\begin{lause}
+Let $I(C)$ be a category inverse systems over category $C$. Assume that limit exists for every object in $I(C)$ and we have equated all the isomorphic objects in the category $C$. Then the operator $\lim$ is a functor from category of inverse systems to the image category of the corresponding systems. 
+\end{lause}
+\begin{proof}
+By theorem \ref{limituniqueness} and assumption every inverse system is being mapped to a unique object in $C$ and by theorem \ref{inversemorphismexistence} every natural transformation between systems is being mapped to unique limit morphism.
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+\item $\lim(id) = id$ holds by Lemma \ref{limitofidentityisidentity}
+\item $\lim(f) \circ \lim(g) = \lim(f \circ g)$ holds by Lemma \ref{compositionlimitmorphism}.
+
+\end{enumerate}
 \end{proof}
 
 Now we would like to define limit for the system of homomorphisms between inverse systems of groups.
@@ -781,9 +810,9 @@ Let $\lambda$ be a directed category and $\lambda'$ its dense subcategory. Then 
 Let $\alpha$ and $\beta$ be objects of $\lambda$. Then there exists $t \in \lambda$ for which $\alpha \leq \gamma$ and $\beta \leq \gamma$ hold. By density property there exists $\gamma' \in \lambda'$ for which condition $\gamma \leq \gamma'$ holds. Now claim follows directly from the equations $\alpha \leq \gamma \leq \gamma' $ and $\beta \leq \gamma \leq \gamma'$. 
 \end{proof}
 
-Now for inverse and directed systems we have the following theorems:
+\subsubsection{Cofinality in inverse systems}
 
-\begin{lause}
+\begin{lause}\label{Inversesystemcofinalitylimit}
 Let $(I,\lambda)$ be an inverse system and let $(I',\lambda')$ be its subsystem generated by a cofinal subcategory $\lambda$. Assume that there exists a limit object for $I'$. Then the limit of the system $(I,\lambda)$ is $\lim I'$.
 
 \end{lause}
@@ -844,75 +873,193 @@ Let $\lim I'$ be the limit of the inverse system $I'$. It is enough to show that
  Especially we have to prove that $I^{a'}_{a} \circ w_{a'} = w_a $ . This claim follows directly from the fact that $\bigtriangleup(I,N,\omega) $ is a cone. Thus the $u$ defined above is the map we were searching for.
 
 \end{proof}
-\begin{lause}
-	Let $(D,\lambda)$ be a directed and let $(D',\lambda')$ be its subsystem generated by a cofinal subcategory $\lambda$. Assume that there exists a limit object for $D'$. Then the limit of the system $(D,\lambda)$ is $\lim D'$.
+
+\begin{lem}\label{inversesystemscofinalitymorphismlemma}
+Let $(I, \lambda)$ and $(I',\lambda')$ be inverse systems with property of having a limit and let $\phi: \lambda' \rightarrow \lambda$ be a functor. Let $f = \{f_\alpha\}_{a \in \lambda'}$ be an inverse system of morphisms corresponding to $\phi$ and let $\varsigma$ be cofinal subcategory of $\lambda'$, for which $\phi(\varsigma)$ is cofinal in $\lambda$. Then limit morphism $\lim f'$ of $\{f_a\}_{a \in \varsigma}$ forms a following commutable diagram: 
+	$$ 	\begin{tikzpicture}
 	
-\end{lause}
+	
+	
+	\node (w) at (0,0) {\(\lim (I, \lambda)\)};
+	
+	\node (x) at (0,-2) {\(\lim (I, \phi(\varsigma)) \)};
+	
+	\node (y) at (4,-2) {\(\lim (I', \varsigma)\)};
+	
+	\node (z) at (4,0) {\(\lim (I', \lambda')\)};
+	
+	\node (f) at (2,-2.4){\(\lim f'\)};
+	
+	\node (g) at (2,-0.4){\(\lim f\)};
+	
+	\node (s) at (0.6,-1) {\(\empty\)};
+	
+	\node (s2) at (4.6,-1) {\(\empty\)};	
+	
+	\draw[<->] (z) -- (y);
+	\draw[<->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+where the vertical lines are isomorphisms.
+\end{lem}
 \begin{proof}
-	 $$
-	 \begin{tikzpicture}
-	 
-	 \node (w) at (2,0) {\(N\)};
-	 
-	 \node (x2) at (0.5,-0.7) {\(\omega_{a'}\)};
-	 
-	 \node (x3) at (-1.6,-0.7) {\(\omega_{a}\)};
-	 
-	 \node (a2) at (-1.4,-2.7) {\(D^{a'}_{a} \)};
-	 
-	 \node (x) at (0,-2) {\(I'(a')\)};
-	 
-	 \node (y2) at (3.5,-0.7) {\(\omega_{b'}\)};
-	 
-	 \node (y3) at (5.6,-0.7) {\(\omega_{b}\)};
-	 
-	 \node (b2) at (5.3,-2.7) {\(D^{b'}_{b} \)};
-	 
-	 \node (y) at (4,-2) {\(D'(b')\)};
-	 
-	 \node (f) at (2,-2.4){\(D'^{a'}_{b'}\)};
-	 
-	 \node (f2) at (2,-4.4){\(D^{a}_{b}\)};
-	 
-	 \node (d) at (2,-1){\(\lim D'\)};
-	 
-	 \node (phid) at (1.4,-1.6){\(\rho'_a\)};
-	 \node (phid2) at (2.6,-1.6){\(\rho'_b\)};
-	 
-	 \node(a) at (-2,-4) {\(D(a)\)};
-	 \node(b) at (6,-4) {\(D(b)\)};
-	 
-	 \draw[->] (y) -- (w);
-	 \draw[->] (x) -- (w);
-	 \draw[->] (x) -- (y);
-	 
-	 \draw[dashed][->] (d) -- (w);
-	 \draw[->] (x) -- (d);
-	 \draw[->] (y) -- (d);
-	 
-	 \draw[->] (a) -- (x);
-	 \draw[->] (b) -- (y);
-	 \draw[->] (a) -- (b);
-	 
-	 \draw[->] (a) |- (w);
-	 \draw[->] (b) |- (w);
-	 
-	
-	 
-	 \end{tikzpicture}
-	 $$
-Proof of the claim is almost identical to the proof above. Expect every source is replaced with target and cone structure with cocone. We leave it to the reader to fill in the details.
+By assumption there exists the limit for systems $(I',\lambda')$ and $(I',\varsigma)$. Using Lemma \ref{Inversesystemcofinalitylimit} we notice that the limit of system $(I',\varsigma)$ is also limit of the system $(I',\lambda')$ and by uniqueness Lemma \ref{limituniqueness} there exists an isomorphism $v:\lim (I',\varsigma) \rightarrow \lim (I',\lambda')$. Using same arguments we obtain an isomorphism $w:\lim (I,\phi(\varsigma)) \rightarrow \lim (I,\lambda)$. By using the property of limit functor $\lim f$ and taking the indexation over elements $a \in \psi$ we obtain the following commutable diagram:
+$$ 	\begin{tikzpicture}
+
+\node (w) at (0,0) {\(I(\phi(a))\)};
+
+\node (x) at (0,-2) {\(\lim (I, \lambda)\)};  
+
+\node (y) at (4,-2)  {\(\lim (I', \lambda')\)};
+
+\node (z) at (4,0){\(I'(a) \)}; 
+
+\node (f) at (2,-2.4){\(\lim f\)};
+
+\node (g) at (2,-0.4){\(f_a\)};
+
+\node (s) at (1,-1) {\(u_{(I(\lambda),\phi(a))}\)};
+
+\node (s2) at (4.8,-1) {\(u_{(I'(\lambda'), a)}\)};	
+
+\draw[->] (z) -- (y);
+\draw[->] (w) -- (x);
+\draw[->] (x) -- (y);
+\draw[->] (w) -- (z);
+
+
+\end{tikzpicture}
+$$
+We define $g:\lim(I', \phi(\psi)) \rightarrow \lim (I',\psi)$ as the composition $v^{-1} \circ \lim f \circ w$. Now from proof of Lemma \ref{limituniqueness} we obtain the following two diagrams:
+$$
+\begin{tikzpicture}
+
+\node (w) at (2,0) {\(I'(a)\)};
+
+\node (x2) at (0.5,-0.7) {\(u_{(I'(\varsigma), a)}\)};
+
+\node (x) at (0,-2) {\(\lim (I',\varsigma)\)};
+
+\node (y2) at (3.5,-0.7) {\(u_{(I'(\lambda'), a)}\)};
+
+\node (y) at (4,-2) {\(\lim (I',\lambda')\)};
+
+\node (f) at (2,-2.4){\(v\)};
+
+
+\draw[->] (w) -- (y);
+\draw[->] (w) -- (x);
+\draw[->] (x) -- (y);
+
+\end{tikzpicture}
+\begin{tikzpicture}
+
+\node (w) at (2,0) {\(I(\phi(a))\)};
+
+\node (x2) at (0.1,-0.7) {\(u_{(I(\phi(\varsigma)),\phi(a))}\)};
+
+\node (x) at (0,-2) {\(\lim(I,\phi(\varsigma))\)};
+
+\node (y2) at (3.6,-0.7) {\(u_{(I(\lambda),\phi(a))}\)};
+
+\node (y) at (4,-2) {\(\lim(I,\lambda)\)};
+
+\node (f) at (2,-2.4){\(w\)};
+
+
+\draw[->] (w) -- (y);
+\draw[->] (w) -- (x);
+\draw[->] (x) -- (y);
+
+\end{tikzpicture}
+$$
+We will now show that the morphism $g$ satisfies the condition of limit homomorphism between systems $(I,\phi(\varsigma))$ and $(I,\varsigma)$. Consider the following equation : 
+\begin{align*}
+ g \circ u_{(I(\lambda),\phi(a))} &= v^{-1} \circ \lim f \circ w \circ u_{(I(\lambda),\phi(a))} 
+ \\ &= v^{-1} \circ \lim f \circ u_{(I(\lambda),\phi(a))} 
+ \\ &= v^{-1} \circ u_{(I'(\lambda'), a)} \circ f_a
+ \\ &= u_{(I'(\varsigma), a)} \circ f_a 
+\end{align*}
+Because limit morphisms are by Lemma \ref{inversemorphismexistence} unique, we conclude $ g = \lim f'$ . By definition of morphism $g$, the equation $ \lim f \circ w = v \circ \lim f' $ holds. 
 \end{proof}
-\begin{lem}
-Let $(I, \lambda)$ and $(I',\lambda')$ be inverse systems and let $\phi: \lambda \rightarrow \lambda'$ be a functor. Let $\{f_\alpha\}$ be an inverse system of morphisms corresponding to $\phi$ and let $\varsigma$ be some subcategory of $\lambda$. Then if the following 3 conditions are satisfied, the limit homomorphism $\lim f = \{f_\alpha\}$ is bijective.
+
+
+\begin{kor}\label{cofinalitypreservebijectivelimitmorphisms}
+Let $(I, \lambda)$ and $(I',\lambda')$ be inverse systems and let $\phi: \lambda \rightarrow \lambda'$ be an injective functor. Let $\{f_\alpha\}_{a \in \lambda'}$ be an inverse system of morphisms corresponding to $\phi$ and let $\varsigma$ be some subcategory of $\lambda$. Then if the following 3 conditions are satisfied, the limit homomorphism $\lim f = \{f_\alpha\}_{a \in \lambda'}$ is isomorphism.
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	\item $\varsigma$ is cofinal subcategory of $\lambda$.
 	\item $\phi(\varsigma)$ is cofinal subcategory of $\lambda'$.
 	\item $f_\alpha$ is bijective for every $\alpha \in \varsigma$
 \end{enumerate}
-\end{lem}
+\end{kor}
 \begin{proof}
+From Lemma \ref{isomorphismlimitmorphisminversesystem} we know that the limit morphism of inverse system over morphisms $\{f_a\}_{a \in \varsigma}$ is isomorphism. Using Lemma
+\ref{inversesystemscofinalitymorphismlemma} $\lim f$ can be presented as composition of three isomorphisms. Using the fact that composition of two isomorphism is isomorphism we conclude that $\lim f$ is an isomorphism.
+
+\end{proof}
+\subsubsection{Cofinality in directed systems}
+\begin{lause}
+	Let $(D,\lambda)$ be a directed and let $(D',\lambda')$ be its subsystem generated by a cofinal subcategory $\lambda$. Assume that there exists a limit object for $D'$. Then the limit of the system $(D,\lambda)$ is $\lim D'$.
 	
+\end{lause}
+\begin{proof}
+	Proof of the claim is almost identical to the proof above. Expect every source is replaced with target and cone structure with cocone. We draw a picture and leave it to the reader to fill in the details.
+	$$
+	\begin{tikzpicture}
+	
+	\node (w) at (2,0) {\(N\)};
+	
+	\node (x2) at (0.5,-0.7) {\(\omega_{a'}\)};
+	
+	\node (x3) at (-1.6,-0.7) {\(\omega_{a}\)};
+	
+	\node (a2) at (-1.4,-2.7) {\(D^{a'}_{a} \)};
+	
+	\node (x) at (0,-2) {\(D'(a')\)};
+	
+	\node (y2) at (3.5,-0.7) {\(\omega_{b'}\)};
+	
+	\node (y3) at (5.6,-0.7) {\(\omega_{b}\)};
+	
+	\node (b2) at (5.3,-2.7) {\(D^{b'}_{b} \)};
+	
+	\node (y) at (4,-2) {\(D'(b')\)};
+	
+	\node (f) at (2,-2.4){\(D'^{a'}_{b'}\)};
+	
+	\node (f2) at (2,-4.4){\(D^{a}_{b}\)};
+	
+	\node (d) at (2,-1){\(\lim D'\)};
+	
+	\node (phid) at (1.4,-1.6){\(\rho'_a\)};
+	\node (phid2) at (2.6,-1.6){\(\rho'_b\)};
+	
+	\node(a) at (-2,-4) {\(D(a)\)};
+	\node(b) at (6,-4) {\(D(b)\)};
+	
+	\draw[->] (y) -- (w);
+	\draw[->] (x) -- (w);
+	\draw[->] (x) -- (y);
+	
+	\draw[dashed][->] (d) -- (w);
+	\draw[->] (x) -- (d);
+	\draw[->] (y) -- (d);
+	
+	\draw[->] (a) -- (x);
+	\draw[->] (b) -- (y);
+	\draw[->] (a) -- (b);
+	
+	\draw[->] (a) |- (w);
+	\draw[->] (b) |- (w);
+	
+	
+	
+	\end{tikzpicture}
+	$$
 \end{proof}
 \section{Nerve of covering}
 In this chapter we will give a definition of an abstract simplicial complex. 
@@ -1271,7 +1418,7 @@ Let $(X,A)$ be a topological pair. Then we denote the inverse system formed by $
 \end{maar}
 Because $I_q$ is inverse system of abelian groups, the limit $\lim sI_q(X,A)$ is well-defined for all $q$. 
 \begin{maar}
-Let $(X,A)$ be a topological pair and let $\partial_\alpha:H_q(\mathcal{S}(X,A)) \rightarrow H_{q-1}(\mathcal{S}(A)) $ be a boundary map as in the definition of singular homology for every $\alpha \in \text{COV}(X,A)$. By defining $\phi:\text{COV}(X,A) \rightarrow \text{COV}(X,A)$ to be just the identity map, we obtain an inverse system of morphisms between systems $I_q(X,A)$ and $sI_{q-1}(X,A)$. We denote the limit morphisms of the system as $\partial_q'$.
+Let $(X,A)$ be a topological pair and let $\partial_\alpha:H_q(\mathcal{S}(X,A)_\alpha) \rightarrow H_{q-1}(\mathcal{S}(A)_\alpha) $ be a boundary map as in the definition of singular homology for every $\alpha \in \text{COV}(X,A)$. By defining $\phi:\text{COV}(X,A) \rightarrow \text{COV}(X,A)$ to be just the identity map, we obtain an inverse system of morphisms between systems $I_q(X,A)$ and $sI_{q-1}(X,A)$. We denote the limit morphisms of the system as $\partial_q'$.
 \end{maar}
 \begin{maar}
 Let $\phi:\text{COV(X,A)} \rightarrow \text{COV}(A)$ be the following map: Let $\alpha$ be a covering of the pair $(X,A)$ and let  $\mathcal{C}(\alpha_i, J, J')$ be its decomposition. Then $\phi(\alpha)$ is defined to be the covering $\mathcal{C}(\alpha'_i, J', \emptyset)$, where the corresponding open sets satisfy $\alpha'_i = \alpha_i \cap A$. Then we say that the map $\phi$ is natural projection from ${\text{COV}(X,A)}$ to ${\text{COV}}(A)$.
@@ -1280,11 +1427,11 @@ In the next definition we interpret $\check{H}_q(A)$ as an inverse system spanne
 \begin{maar}
 Let $\phi:\text{COV(X,A)} \rightarrow \text{COV}(A)$ be a natural homomorphism. Let $$\Phi_{\alpha}: I_q(A)(\phi(\alpha)) \rightarrow sI_q(X,A)(\alpha) $$ be an identity map spanned by $\phi$ for every $\alpha$ and $q \in \N$. Then we define $\Phi = \lim \{\Phi_\alpha\}$.
 \end{maar}
-\begin{lem}
+\begin{lem}\label{isomorphismbetweenboundarythings}
 The homomorphism $\Phi$ defined above is isomorphism between $\lim I_q(X,A)$ and $\lim sI_q(X,A)$. 
 \end{lem}
 \begin{proof}
-
+By definition $\phi$ is injective and surjective. Every identity map is an isomorphism, thus to apply Corollary \ref{cofinalitypreservebijectivelimitmorphisms} it is enough to show that $\phi(\text{COV}(X,A))$ is cofinal in $\text{COV}(A)$. Let $\alpha \in \text{COV}(A)$ be arbitrary covering with decomposition $\mathcal{C}(\alpha_i, J, \emptyset)$. We construct covering $\beta \in \text{COV}(X,A)$ in the following way. For every $\alpha_i$ we find an open set $\beta_i$ of $X$, for which $\beta_i \cap A = \alpha_i$. Let $K$ be indexation of elements $\alpha_i$, which is formed by adding one element $0$ to index set $J$ for which $\alpha_0 = X$ holds. Then we define $\beta$ to be covering $\mathcal{C}(\beta_i,K,K')$, where $K'$ is the corresponding subindexation of $K$. Now clearly $\alpha \leq \phi(\beta)$ holds. Thus by the Corollary \ref{cofinalitypreservebijectivelimitmorphisms} homomorphism $\Phi$ is isomorphism.
 \end{proof}
 \begin{maar}
 Boundary homomorphism $\partial_q:\check{H}_q(X,A) \rightarrow \check{H}_{q-1}(A)$ is defined as $\partial_q = \Phi^{-1} \circ \partial'_q$.
@@ -1293,7 +1440,79 @@ Boundary homomorphism $\partial_q:\check{H}_q(X,A) \rightarrow \check{H}_{q-1}(A
 The boundary homomorphism $\partial_q$ is natural transformation between $\check{H}_q(X,A)$ and $\check{H}_{q-1}(A)$	
 \end{lause}
 \begin{proof}
+From singular homology theory we know that the following diagram commutes:	
+	$$ 	\begin{tikzpicture}
 	
+	
+	
+	\node (w) at (0,0) {\(H_q(\mathcal{S}(X,A)_{f^{-1}\alpha})\)};
+	
+	\node (x) at (0,-2) {\(H_q(\mathcal{S}(Y,B)_{\alpha})\)};
+	
+	\node (y) at (4,-2) {\(H_q(\mathcal{S}(B)_{\alpha})\)};
+	
+	\node (z) at (4,0) {\(H_q(\mathcal{S}(A)_{f^{-1}\alpha})\)};
+	
+	\node (f) at (2,-2.4) {\(\partial'_{\alpha}\)};
+	
+	\node (g) at (2,-0.4) {\(\partial'_{f^{-1}\alpha}\)};
+	
+	\node (s) at (0.4,-1) {\(f_\alpha\)};
+	
+	\node (s2) at (5.6,-1) {\(f_\alpha|H_q(\mathcal{S}(A)_{f^{-1}\alpha})\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+Because limit if functor, we can take limit over the diagram. Combining the diagram above composed with limit functor and Lemma \ref{isomorphismbetweenboundarythings} we obtain the following diagram:
+	$$
+	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(\check{H}_q(X,A)\)};
+	
+	\node (x) at (0,-2) {\(\check{H}_q(Y,B)\)};
+	
+	\node (y) at (4,-2) {\(\lim sI_{q-1}(Y,B)\)};
+	
+	\node (z) at (4,0) {\(\lim sI_{q-1}(X,A)\)};
+	
+	\node (p) at (8,0) {\(\check{H}_{q-1}(A)\)};
+	
+	\node (p2) at (8,-2) {\(\check{H}_{q-1}(B)\)};
+	
+	\node (f) at (2,-2.4){\(\partial'_q\)};
+	
+	\node (f2) at (6,-2.4){\(\lim g\)};
+	
+	\node (g) at (2,-0.4){\(\partial'_q\)};
+	
+	\node (g2) at (6,-0.4){\(g_{\phi(a)}\)};
+	
+	\node (s) at (0.6,-1) {\(\lim f\)};
+	
+	\node (s2) at (4.6,-1) {\(\lim f'\)};		
+	
+	\node (s3) at (8.6,-1) {\(u_{I'', \phi' \phi a}\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	\draw[->] (y) -- (p2);
+	\draw[->] (p) -- (p2);
+	\draw[->] (z) -- (p);
+	
+	
+	\end{tikzpicture}
+	$$	
+Where $\lim f' = \lim f|\lim sI_{q-1}(X,A)$. The claim follows directly from this.
 \end{proof}
 
 \subsection{Other properties}
