@@ -9,15 +9,15 @@
 \contentsline {subsubsection}{\numberline {2.2.3.1}Morphisms between inverse systems}{12}
 \contentsline {subsubsection}{\numberline {2.2.3.2}Morphisms between directed systems}{16}
 \contentsline {subsection}{\numberline {2.2.4}Finality properties of subsystems}{17}
-\contentsline {subsubsection}{\numberline {2.2.4.1}Cofinality in inverse systems}{17}
+\contentsline {subsubsection}{\numberline {2.2.4.1}Cofinality in inverse systems}{18}
 \contentsline {subsubsection}{\numberline {2.2.4.2}Cofinality in directed systems}{20}
 \contentsline {section}{\numberline {2.3}Nerve of covering}{21}
 \contentsline {subsection}{\numberline {2.3.1}Abstract simplicial complex}{21}
-\contentsline {subsubsection}{\numberline {2.3.1.1}Simplicial operators}{23}
-\contentsline {subsection}{\numberline {2.3.2}Coverings}{23}
-\contentsline {subsubsection}{\numberline {2.3.2.1}Category of coverings}{24}
+\contentsline {subsubsection}{\numberline {2.3.1.1}Simplicial operators}{24}
+\contentsline {subsection}{\numberline {2.3.2}Coverings}{24}
+\contentsline {subsubsection}{\numberline {2.3.2.1}Category of coverings}{25}
 \contentsline {subsubsection}{\numberline {2.3.2.2}Directness property of coverings}{25}
-\contentsline {subsubsection}{\numberline {2.3.2.3}Operations on coverings}{25}
+\contentsline {subsubsection}{\numberline {2.3.2.3}Operations on coverings}{26}
 \contentsline {subsection}{\numberline {2.3.3}The construction}{26}
 \contentsline {chapter}{\numberline {3}\v {C}ech constructions}{30}
 \contentsline {section}{\numberline {3.1}\v {C}ech homology}{30}
@@ -25,23 +25,22 @@
 \contentsline {subsubsection}{\numberline {3.1.1.1}The construction}{30}
 \contentsline {subsubsection}{\numberline {3.1.1.2}Induced homomorphisms}{31}
 \contentsline {subsubsection}{\numberline {3.1.1.3}Boundary map}{32}
-\contentsline {subsection}{\numberline {3.1.2}Other properties}{34}
-\contentsline {section}{\numberline {3.2}\v {C}ech cohomology}{34}
-\contentsline {subsection}{\numberline {3.2.1}Functorial properties}{34}
-\contentsline {subsubsection}{\numberline {3.2.1.1}The construction}{34}
-\contentsline {subsubsection}{\numberline {3.2.1.2}Induced homomorphisms}{34}
-\contentsline {subsubsection}{\numberline {3.2.1.3}Boundary maps}{34}
-\contentsline {subsection}{\numberline {3.2.2}Other properties}{34}
-\contentsline {chapter}{\numberline {4}Applications}{35}
-\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{35}
-\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{35}
-\contentsline {section}{\numberline {4.3}Continuous game theory}{35}
-\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{36}
-\contentsline {chapter}{Appendices}{37}
-\contentsline {chapter}{\numberline {A}Eilenberg\IeC {\textendash }Steenrod axioms}{38}
-\contentsline {chapter}{\numberline {B}Technical details of \v {C}ech constructions}{40}
-\contentsline {section}{\numberline {B.1}Chain homotopy}{40}
-\contentsline {section}{\numberline {B.2}Algebraic mappings}{41}
-\contentsline {section}{\numberline {B.3}Dimension axiom}{42}
-\contentsline {section}{\numberline {B.4}Homotopy axiom}{42}
-\contentsline {chapter}{\numberline {C}Set theory}{47}
+\contentsline {subsection}{\numberline {3.1.2}Other properties}{35}
+\contentsline {section}{\numberline {3.2}\v {C}ech cohomology}{36}
+\contentsline {subsection}{\numberline {3.2.1}Functorial properties}{36}
+\contentsline {subsubsection}{\numberline {3.2.1.1}The construction}{36}
+\contentsline {subsubsection}{\numberline {3.2.1.2}Induced homomorphisms}{37}
+\contentsline {subsubsection}{\numberline {3.2.1.3}Boundary maps}{38}
+\contentsline {subsection}{\numberline {3.2.2}Other properties}{38}
+\contentsline {chapter}{\numberline {4}Applications}{39}
+\contentsline {section}{\numberline {4.1}Lefschetz fixed-point theorem}{39}
+\contentsline {section}{\numberline {4.2}Kakutani fixed point theorem}{39}
+\contentsline {section}{\numberline {4.3}Continuous game theory}{39}
+\contentsline {subsection}{\numberline {4.3.1}General version of resource optimization problem}{40}
+\contentsline {chapter}{Appendices}{41}
+\contentsline {chapter}{\numberline {A}Eilenberg\IeC {\textendash }Steenrod axioms}{42}
+\contentsline {chapter}{\numberline {B}Technical details of \v {C}ech constructions}{44}
+\contentsline {section}{\numberline {B.1}Chain homotopy}{44}
+\contentsline {section}{\numberline {B.2}Algebraic mappings}{45}
+\contentsline {section}{\numberline {B.3}Homotopy axiom}{46}
+\contentsline {chapter}{\numberline {C}Set theory}{51}

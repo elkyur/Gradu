@@ -678,7 +678,7 @@ We have to show that the image is in the subgroup $$L = \{x \in \prod_{i \in \la
 \begin{maar}
 	Let $(D,\lambda)$ and $(D',\lambda')$ be inverse systems and $\phi:\lambda \rightarrow \lambda'$ an order preserving functor. Let $ \{f_a:I(a) \rightarrow I'(\phi(a)) \mid a \in \lambda\}$ be a natural transformation between $I$ and $I'\phi$. Then we say that $\{f_a\}_{a \in \lambda}$ is a directed system of morphisms corresponding to the functor $\phi$ from the system $D$ into the system $D'$.
 \end{maar}
-The proof of the following two theorems can be obtained by using the method of dualization described in the definition \ref{dualdefinition} on the proof of Lemma \ref{inversemorphismexistence} and Lemma \ref{compositionlimitmorphism} respectively.
+The proof of all the following theorems can be obtained by using the method of dualization described in the definition \ref{dualdefinition} on the proof of Lemma \ref{inversemorphismexistence} and Lemma \ref{compositionlimitmorphism} respectively.
 \begin{lem}
 	Let  $(D,\lambda)$ and $(D',\lambda')$ be directed systems for which the limit exists. Let $\{f_a\}$ be directed system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim D \rightarrow \lim D'$ for which the condition $u_{D', \phi(a)} \circ \lim f  =  f_a \circ u_{D,a}$ holds for every $a \in \lambda'$ .
 \begin{diagram}\label{morphismbetweenlimits2}
@@ -788,6 +788,10 @@ The proof of the following two theorems can be obtained by using the method of d
 		\end{tikzpicture}
 		$$
 \end{lem}
+Like in the case of Inverse system, it will be shown that the limit operator is a functor between Directed systems and some category $C$. Nothing new is learned from this theorem, however it provides a summary of previous lemmas and can be used to shorten notation.
+\begin{lause}
+	Let $D(C)$ be a category of directed systems over category $C$. Assume that limit exists for every object in $D(C)$ and we have equated all the isomorphic objects in the category $C$. Then the operator $\lim$ is a functor from category of directed systems to the image category of the corresponding systems. 
+\end{lause}
 
 \subsection{Finality properties of subsystems}
 Final and cofinal functors can be defined in a more general way [\ref{categorytheory}]. However, because we are mainly interested in properties of systems, in this section we will investigate the properties of those specific functors only in that special case. In the case of general categories, cofinality includes a concept of connectedness defined in [\ref{categorytheory}] page 217. In our definition we will use a stronger version of that concept.
@@ -1334,7 +1338,7 @@ Lemma \ref{preimageorder} states that $f^{-1}\beta$ is refinement of $f^{-1}\alp
 \chapter{\v{C}ech constructions}
 
 \section{\v{C}ech homology}
-In this section we will construct \v{C}ech homology and prove the main results related to it.  We will first define an inverse system of homology groups of the nerves.
+In this section we will give construction of \v{C}ech homology. It will be shown that \v{C}ech homology satisfies almost all the Eilenberg-Steenrod axioms. We will show that the \v{C}ech homology is a functor in details and provide a reference for the proofs of all the other axioms.
 
 \subsection{Functorial properties}
 \subsubsection{The construction}
@@ -1357,13 +1361,16 @@ Now we are ready to define the \v{C}ech homology groups $ \check{\mathrm{H}}_n$.
 Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the \v{C}ech homology groups with coefficients $G$ are defined to be inverse limits of the corresponding functors $I$. Simply denoted  $$\check{\mathrm{H}}_q(X,A;G,q) = \lim_{\rightarrow}I_q(X,A;G)$$
 
 \end{maar}
-Because coverings can be infinite the limits are not necessary defined. However there is a way to evade this problem. 
 
 \subsubsection{Induced homomorphisms}
 In this section we will investigate properties of induced homomorphisms. Earlier we defined \v{C}ech homology groups to be the limits of the groups induced by coverings of pairs. In section \ref{limitmorphism} we defined the concept of a limit homomorphism. In the next theorem we will show that such homomorphism exists.
 
+\begin{maar}\label{Inducedhomomorphismdefinition}
+Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Let $$\mathcal{A}(f) = \{f_\alpha \mid \alpha \text{ is covering of the pair }(Y,B)\}$$ be a family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. 
+\end{maar}
+
 \begin{lause}
-Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Let $$\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of the pair }(Y,B)\}$$ be a family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces homomorphisms between corresponding \v{C}ech homology groups: $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
+Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Then the family $\mathcal{A}(f)$  induces homomorphisms between corresponding \v{C}ech homology groups: $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
 We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collection is a natural transformation of the \v{C}ech homology groups and the limit function is well defined. 
 \end{lause}
 \begin{proof}
@@ -1421,12 +1428,79 @@ Because $I_q$ is inverse system of abelian groups, the limit $\lim sI_q(X,A)$ is
 Let $(X,A)$ be a topological pair and let $\partial_\alpha:H_q(\mathcal{S}(X,A)_\alpha) \rightarrow H_{q-1}(\mathcal{S}(A)_\alpha) $ be a boundary map as in the definition of singular homology for every $\alpha \in \text{COV}(X,A)$. By defining $\phi:\text{COV}(X,A) \rightarrow \text{COV}(X,A)$ to be just the identity map, we obtain an inverse system of morphisms between systems $I_q(X,A)$ and $sI_{q-1}(X,A)$. We denote the limit morphisms of the system as $\partial_q'$.
 \end{maar}
 \begin{maar}
-Let $\phi:\text{COV(X,A)} \rightarrow \text{COV}(A)$ be the following map: Let $\alpha$ be a covering of the pair $(X,A)$ and let  $\mathcal{C}(\alpha_i, J, J')$ be its decomposition. Then $\phi(\alpha)$ is defined to be the covering $\mathcal{C}(\alpha'_i, J', \emptyset)$, where the corresponding open sets satisfy $\alpha'_i = \alpha_i \cap A$. Then we say that the map $\phi$ is natural projection from ${\text{COV}(X,A)}$ to ${\text{COV}}(A)$.
+Let $\phi:\text{COV(X,A)} \rightarrow \text{COV}(A)$ be the following map: Let $\alpha$ be a covering of the pair $(X,A)$ and let  $\mathcal{C}(\alpha_i, J, J')$ be its decomposition. Then $\phi(\alpha)$ is defined to be the covering $\mathcal{C}(\alpha'_i, P', \emptyset)$, where the corresponding open sets satisfy $\alpha'_i = \alpha_i \cap A$ and $P' \subset J'$ is indexation of non-empty elements $\alpha'_i$.  Then we say that the map $\phi$ is natural projection from ${\text{COV}(X,A)}$ to ${\text{COV}}(A)$.
 \end{maar}
-In the next definition we interpret $\check{H}_q(A)$ as an inverse system spanned by $\text{COV}(A)$ and $\check{H}'_q(A)$ as inverse system spanned by $\text{COV}(X,A)$.
 \begin{maar}
 Let $\phi:\text{COV(X,A)} \rightarrow \text{COV}(A)$ be a natural homomorphism. Let $$\Phi_{\alpha}: I_q(A)(\phi(\alpha)) \rightarrow sI_q(X,A)(\alpha) $$ be an identity map spanned by $\phi$ for every $\alpha$ and $q \in \N$. Then we define $\Phi = \lim \{\Phi_\alpha\}$.
 \end{maar}
+\begin{lem}\label{thereasonbehindcommutabilityofofthefunctors}
+Let $(X,A)$ and $(Y,B)$ be topological pairs and let $f:(X,A) \rightarrow (Y,B)$ be a continuous function. Then the following diagram commutes:
+	$$ 	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(\text{COV}(X,A)\)};
+	
+	\node (x) at (0,-2) {\(\text{COV}(Y,B)\)};
+	
+	\node (y) at (4,-2) {\(\text{COV}(B)\)};
+	
+	\node (z) at (4,0) {\(\text{COV}(A)\)};
+	
+	\node (f) at (2,-2.4) {\(\phi\)};
+	
+	\node (g) at (2,-0.4) {\(\phi\)};
+	
+	\node (s) at (0.5,-1) {\(f^{-1}\)};
+	
+	\node (s2) at (4.6,-1) {\(f^{-1} | A\)};	
+	
+	\draw[<-] (z) -- (y);
+	\draw[<-] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+\end{lem}
+\begin{proof}
+Let $\alpha \in \text{COV}(X,A)$, with decomposition $\mathcal{C}(\alpha_i, J, J')$. Then $\phi(\alpha) = \mathcal{C}(A \cap \alpha_i, P', \emptyset)$ and $f^{-1}(\phi(\alpha)) =\mathcal{C}(f^{-1}(A \cap \alpha_i), K', \emptyset)$, where $K' \subset P'$, for which $ f^{-1}(A \cap \alpha_i) $ is non-empty. On the other hand $f^{-1} \alpha = \mathcal{C}(f^{-1}\alpha_i, T, T')$, where $T$ is indexation of non-empty elements $f^{-1}\alpha_i$ and $\phi (f^{-1} (\alpha)) = \mathcal{C}(f^{-1}(A \cap \alpha_i), R', \emptyset)$. It is left to proof that $R' = K'$, this follows directly from the set-theoretical relation $f^{-1}U_i \cap A = f^{-1}(U_i \cap B) $ . Thus the claim holds.
+\end{proof}
+\begin{lem}\label{commutabilitythingy}
+Let $(X,A)$ be a topological pair and $f:(X,A) \rightarrow (Y,B)$ a continuous function. Then the following diagram commutes: 
+	$$ 	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(sI_q(X,A)(f^{-1})\alpha\)};
+	
+	\node (x) at (0,-2) {\(sI_q(Y,B)(\alpha)\)};
+	
+	\node (y) at (4,-2) {\(I_q(B)(\phi(\alpha))\)};
+	
+	\node (z) at (4,0) {\(I_q(A)(f^{-1}\phi(\alpha))\)};
+	
+	\node (f) at (2,-2.4) {\(\Phi_{\alpha}\)};
+	
+	\node (g) at (2,-0.4) {\(\Phi_{f^{-1}\alpha}\)};
+	
+	\node (s) at (0.4,-1) {\(f_\alpha\)};
+	
+	\node (s2) at (4.5,-1) {\(f_{\phi(\alpha)}\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[<-] (x) -- (y);
+	\draw[<-] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+\end{lem}
+\begin{proof}
+By Lemma $\ref{thereasonbehindcommutabilityofofthefunctors}$ the diagram is well-defined. The claim follows directly from the fact that morphisms $\Phi_\alpha$ are inclusions.
+\end{proof}
 \begin{lem}\label{isomorphismbetweenboundarythings}
 The homomorphism $\Phi$ defined above is isomorphism between $\lim I_q(X,A)$ and $\lim sI_q(X,A)$. 
 \end{lem}
@@ -1469,7 +1543,7 @@ From singular homology theory we know that the following diagram commutes:
 	
 	\end{tikzpicture}
 	$$
-Because limit if functor, we can take limit over the diagram. Combining the diagram above composed with limit functor and Lemma \ref{isomorphismbetweenboundarythings} we obtain the following diagram:
+Because limit if functor, we can take limit over the diagram. Combining the diagram above with diagram of Lemma \ref{commutabilitythingy } composed with limit functor and Lemma \ref{isomorphismbetweenboundarythings} we obtain the following diagram:
 	$$
 	\begin{tikzpicture}
 	
@@ -1489,25 +1563,25 @@ Because limit if functor, we can take limit over the diagram. Combining the diag
 	
 	\node (f) at (2,-2.4){\(\partial'_q\)};
 	
-	\node (f2) at (6,-2.4){\(\lim g\)};
+	\node (f2) at (6,-2.4){\(\Phi\)};
 	
 	\node (g) at (2,-0.4){\(\partial'_q\)};
 	
-	\node (g2) at (6,-0.4){\(g_{\phi(a)}\)};
+	\node (g2) at (6,-0.4){\(\Phi\)};
 	
 	\node (s) at (0.6,-1) {\(\lim f\)};
 	
 	\node (s2) at (4.6,-1) {\(\lim f'\)};		
 	
-	\node (s3) at (8.6,-1) {\(u_{I'', \phi' \phi a}\)};	
+	\node (s3) at (8.6,-1) {\(\lim f\)};	
 	
 	\draw[->] (z) -- (y);
 	\draw[->] (w) -- (x);
 	\draw[->] (x) -- (y);
 	\draw[->] (w) -- (z);
-	\draw[->] (y) -- (p2);
+	\draw[<-] (y) -- (p2);
 	\draw[->] (p) -- (p2);
-	\draw[->] (z) -- (p);
+	\draw[<-] (z) -- (p);
 	
 	
 	\end{tikzpicture}
@@ -1517,11 +1591,115 @@ Where $\lim f' = \lim f|\lim sI_{q-1}(X,A)$. The claim follows directly from thi
 
 \subsection{Other properties}
 In this section we will introduce most important properties of the \v{C}ech homology functor and show that in some special circumstances it satisfies all the Eilenberg-Steenrod axioms. However, because the theorems are technical we will omit the proofs and give the references to them instead. 
-
+\begin{lause}
+\textbf{Dimension Axiom}. Let $X = \{x\}$ be a space consisting of one point. Then the \v{C}ech homology groups $\check{\mathrm{H}}_n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
+\end{lause}
+\begin{proof}
+	For the space $X$ there exists only one open covering $\alpha = \{x\}$ and thus the inverse system of the corresponding singular homology groups is trivial. It is easy to see that the limit of this system is the group $H_q(\mathcal{S}(X)_a; G)$ together with the identity homomorphisms. The simplex $\mathcal{S}(X)_{\alpha}$ consists only of one edge and thus is homeomorphic to a one point space. From the dimension axiom of singular homology it is easy to see that
+	$$\check{\mathrm{H}}_n(X; G) = \left\{
+	\begin{array}{ll}
+	G  & \mbox{if } n = 0 \\
+	0 & \mbox{if } n \geq 1
+	\end{array}
+	\right. $$
+\end{proof}
+\begin{lause}
+\textbf{Homotopy Axiom}
+\end{lause}
+\begin{proof}
+Proof is presented in the section \ref{homotopyaxiom}.
+\end{proof}
+\begin{lause}
+\textbf{Excision Axiom}
+\end{lause}
+\begin{proof}
+Proof of this claim can be found in Eilenberg [\ref{Eilenberg}] theorem IX.6.1.
+\end{proof}
+\begin{lause}
+	\textbf{Additivity axiom}
+\end{lause}
+\begin{proof}
+Idea of the proof: Let $X = \bigsqcup_{i \in J} \{A_i\}$. Then it can be shown that $\text{COV}'(X) = \bigsqcup_{i \in J} \{\text{COV}(A_i)\} $ is cofinal in $\text{COV}(X)$. It is easy to see that an abstract simplex induced by $\text{COV}'(X)$ is disjoint union of simplices spanned by covering $\text{COV}(A_i)$, thus applying the additivity axiom of singular homology theory to the simplex we obtain the claim.
+\end{proof}
+The exactness axiom is not satisfied in general for the \v{C}ech homology. However for our purpose the following special case is essential:
+\begin{lause}
+\textbf{Exactness axiom}. Let $(X,A)$ be a compact pair and let $G$ be a vector space, then the \v{C}ech homology functor satisfies the exactness axiom. 
+\end{lause}
+\begin{proof}
+Proof of this claim can be found in Eilenberg [\ref{Eilenberg}] theorem IX.7.6.
+\end{proof}
 \section{\v{C}ech cohomology}
+Like in the case of \v{C}ech homology, we will provide detailed proofs only for the functonrial properties of the \v{C}ech cohomology. 
 \subsection{Functorial properties}
 \subsubsection{The construction}
+\begin{maar}
+	Let $\alpha$ be an element of $\text{COV}(X,A)$ and let $G$ be an abelian group. Then we can define the group $H^q_{\alpha}(X,A;G)$ using the singular cohomology groups in the following way: 
+	$$H^q_{\alpha}(X,A;G) = H^q(\mathcal{S}(X,A)_{\alpha};G).$$ 
+	Let $\alpha, \beta$ be coverings of $(X,A)$ for which relation $\alpha \leq \beta$ holds. Let $p^{\beta}_{\alpha}$ be some projection map between the coverings. Let
+	$$D^{\alpha}_{\beta}: H_{q,\beta} \rightarrow  H_{q,\alpha}$$ 
+	be the homomorphisms induced by $p^{\beta}_{\alpha}$. Since all projection maps $p^{\beta}_{\alpha}$ are contingous, it follows that $D^{\alpha}_{\beta}$ is independent of the choice of $p^{\beta}_{\alpha}$.
+\end{maar}
+\begin{lem}
+	Let $q \in \N$ be a fixed number. Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the groups $H^q_{\alpha}(X,A;G)$ together with maps $D_{\beta}^{\alpha}$ form an inverse system of groups.
+\end{lem}
+\begin{proof}
+	Lemma \ref{coviscategory} says that $\text{COV}(X,A)$ with the morphisms induced by the quasi-order relation forms a category. Let $I:\text{COV}(X,A) \rightarrow \text{Ab}$ be a functor which maps every covering to a corresponding abelian group $H^q_{\alpha}(X,A;G)$ and every morphism between the coverings to the induced homomorphism. Using lemmas \ref{projektiokuvauksetindusoivatsamathomomorfismit} and \ref{welldefinessofsystems} we see that the functor defined in this way is a well-defined functor and forms an inverse system. 
+\end{proof}
+The directed system functor defined above will be denoted as $D^q(X,A;G)$.
+\begin{maar}
+	Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the \v{C}ech cohomology groups with coefficients $G$ are defined to be inverse limits of the corresponding functors $D$. Simply denoted  $$\check{\mathrm{H}}^q(X,A;G,q) = \lim_{\rightarrow}I_q(X,A;G)$$
+	
+\end{maar}
+
 \subsubsection{Induced homomorphisms}
+\begin{lause}
+	Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Let $$\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of the pair }(Y,B)\}$$ be a family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces homomorphisms between corresponding \v{C}ech homology groups: $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
+	We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collection is a natural transformation of the \v{C}ech homology groups and the limit function is well defined. 
+\end{lause}
+\begin{proof}
+	We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(X,A)$ to map every object $\alpha$ to $f^{-1}\alpha$. By lemma \ref{preimageorder} this functor preserves order. Let $\beta$ and $\alpha$ be some coverings of the pair $(Y,B)$. We denote by $\alpha'$ and $\beta'$ the preimage categories of $\alpha$ and $\beta$ under the map $f$ respectively. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have the following commutable diagram:
+	$$
+	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(H_q(\mathcal{S}(X,A)_{\beta'})\)};
+	
+	\node (x) at (0,-2) {\(H_q(\mathcal{S}(Y,B)_{\beta})\)};
+	
+	\node (y) at (4,-2) {\(H_q(\mathcal{S}(Y,B)_{\alpha})\)};
+	
+	\node (z) at (4,0) {\(H_q(\mathcal{S}(X,A)_{\alpha'})\)};
+	
+	\node (f) at (2,-2.4){\(I^\beta_\alpha\)};
+	
+	\node (g) at (2,-0.4){\(I^{\beta'}_{\alpha'}\)};
+	
+	\node (s) at (0.4,-1) {\(f'_{\beta,q}\)};
+	
+	\node (s2) at (4.4,-1) {\(f'_{\alpha,q}\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+	
+	The fact that the collection $\mathcal{A}_q$ is a natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists a limit homomorphism $$f_q:\check{\mathrm{H}}_q(X,A;G) \rightarrow \check{\mathrm{H}}_q(Y,B;G) $$
+\end{proof}
+\begin{lause}
+	\v{C}ech homology groups are functors from the category of topological pairs to the category of abelian groups 
+\end{lause}
+\begin{proof}
+	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+		\item Every pair of spaces is mapped uniquely to some abelian group.
+		\item The limit of an identity map is an identity homomorphism.
+		\item Let $f:(X,A) \rightarrow (Y,B)$ and $g:(Y,B) \rightarrow (Z,C)$ be continuous maps between pairs. We know that $f$ and $g$ induce homomorphisms $$f_{*}:H_*(X,A) \rightarrow H_*(Y,B) \text{ and } g_{*}:H_*(X,A) \rightarrow H_*(Z,C).$$ Thus using axioms of singular homology theory we see that $(g \circ f)_{*} = g_* \circ f_*$ holds for the singular homology groups. Then by using theorem \ref{compositionlimitmorphism} we conclude that the limit homomorphism $\lim ((g \circ f)_*)$ equals $\lim g_* \circ \lim f_*$.
+	\end{enumerate}
+\end{proof}
 \subsubsection{Boundary maps}
 \subsection{Other properties}
 
@@ -1818,21 +1996,7 @@ In this section we introduce concepts and main result of algebraic mappings. The
 	Follows directly from theorem \ref{chainhomotopyinducesamemaps} and \ref{Algebraicmaplem}.
 \end{proof}
 
-\section{Dimension axiom}
-In this section we will prove that \v{C}ech homology theory satisfies the dimension axiom.
-\begin{lause}
-	Let $X = \{x\}$ be a space consisting of one point. Then the \v{C}ech homology groups $\check{\mathrm{H}}_n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
-\end{lause}
-\begin{proof}
-	For the space $X$ there exists only one open covering $\alpha = \{x\}$ and thus the inverse system of the corresponding singular homology groups is trivial. It is easy to see that the limit of this system is the group $H_q(\mathcal{S}(X)_a; G)$ together with the identity homomorphisms. The simplex $\mathcal{S}(X)_{\alpha}$ consists only of one edge and thus is homeomorphic to a one point space. From the dimension axiom of singular homology it is easy to see that
-	$$\check{\mathrm{H}}_n(X; G) = \left\{
-	\begin{array}{ll}
-	G  & \mbox{if } n = 0 \\
-	0 & \mbox{if } n \geq 1
-	\end{array}
-	\right. $$
-\end{proof}
-\section{Homotopy axiom}
+\section{Homotopy axiom}\label{homotopyaxiom}
 The main result of this section is the homotopy axiom of \v{C}ech homology which states that if two spaces are homotopic then they have isomorphic \v{C}ech homology groups for all $q \in \N$. In the beginning we will prove an important result regarding the singular homology groups of the nerve of the unit interval $[0,1]$. 
 
 \begin{maar}
