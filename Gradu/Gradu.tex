@@ -11,6 +11,7 @@
 \usepackage{fixltx2e}
 \usepackage{tikz}
 \usepackage{mathabx}
+\usepackage{mathrsfs}
 \usepackage[toc,page]{appendix}
 \usetikzlibrary{calc}
 
@@ -347,7 +348,8 @@ Let $F$ be an indexing functor and let $(N, \phi)$ and $(D, \omega)$ be colimits
 \begin{proof}
 Because $N$ and $D$ are both colimits there exist morphisms $u: N \rightarrow D$ and $v: D \rightarrow N $ as above. Because of the symmetry it is enough to show that $u \circ v = id_D$ holds. This follows from the equation $u \circ v \circ \omega_X = u \circ \phi_X = \omega_X$. The diagram commutes for $id_D$ and thus by the uniqueness condition we see that $u \circ v = id_D$. 
 \end{proof}
-\subsection{Direct and inverse systems}
+\section{Systems}
+\subsection{Construction}
 In this section we will give a categorical definition of direct and inverse systems. It appears that those concepts are dual to each other. We will begin by defining a quasi-ordering relation:
 
 \begin{maar}
@@ -372,15 +374,37 @@ $$\hom(a,b) = \left\{
 We assumed that $\lambda$ is a category, so every $\lambda^a_b(i) \circ \lambda^b_c(j)$ is well-defined. We denote the composition as $\lambda^a_c(i * j)$, where $*$ is operator of the indexation. 
 \end{maar}
 
+\subsubsection{Inverse systems}
 \begin{maar}\label{inversesystem}
-Let $\lambda$ be a quasi-ordered category with the corresponding class of morphisms. Let $C$ be a category and let $I:\lambda \rightarrow C$ be a covariant functor for which the following conditions are satisfied:
-\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-\item For every non-empty class of morphisms $\hom(a,b)$ there corresponds a morphism $I^a_b$ in the category $C$ for which $I(\hom(a,b)) = \{I^a_b\}$ holds.
-\item Every element in the class of morphisms of the form $\hom(a,a)$ is mapped to the morphism $id_{I(a)} $ 
-\end{enumerate}
-Then we say that $I$ is an inverse system indexed by the category $\lambda$. 
+	Let $\lambda$ be a quasi-ordered category with the corresponding class of morphisms. Let $C$ be a category and let $I:\lambda \rightarrow C$ be a covariant functor for which the following conditions are satisfied:
+	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+		\item For every non-empty class of morphisms $\hom(a,b)$ there corresponds a morphism $I^a_b$ in the category $C$ for which $I(\hom(a,b)) = \{I^a_b\}$ holds.
+		\item Every element in the class of morphisms of the form $\hom(a,a)$ is mapped to the morphism $id_{I(a)} $ 
+	\end{enumerate}
+	Then we say that $I$ is an inverse system indexed by the category $\lambda$. 
 \end{maar}
-The dual of the concept inverse system is direct system.
+\begin{lem}\label{welldefinessofsystems}
+	Inverse system functors are well-defined.
+\end{lem}
+\begin{proof}
+	Let $(I, \lambda)$ be arbitrary inverse system, then following conditions hold:
+	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+		\item Combining conditions (1) and (2) of the definition $\ref{inversesystem}$ and using the fact that every identity morphism can be found in collection $\hom_\lambda(a,a)$ we see that the condition $I(id_a) = id_{I(a)}$ is satisfied.
+		\item The condition $I(\lambda^a_b(i)) \circ I(\lambda^b_c(j)) = I^a_b \circ I^b_c = I^a_c = I(\lambda^a_c(i * j)) = I(\lambda^a_b(i) \circ \lambda^b_c(j){\tiny })$
+	\end{enumerate}
+\end{proof}
+ Earlier we defined the concept of limit for general indexing functors. We can interpret inverse system as indexing functors, taking $\lambda$ to be the indexing set. In general systems the limit may not exist. However, for our purpose it is enough to show that such limit exist in the categories of modules.
+ \begin{lause}
+ 	Let $I: \lambda \rightarrow AB$ be an inverse system of $R$-modules. Then the limit of this functor is the submodule $L = \{x \in \prod_{i \in \ob(\lambda)} I_i \mid x_a = I^b_ax_b $ for all $a \leq b\}$
+ \end{lause}
+ \begin{proof}
+ 	Let  $v$ be a family of module homomorphisms $\{v_a = pr_a: L \rightarrow I(a)\}_{a \in \lambda}$ which together with the group $L$ induce the cone $\bigtriangleup(I,L,v)$. Let $K$ be any other group and let $\phi$ be a family of module homomorphisms $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$ which induces the cone $\bigtriangleup(I,K,\phi)$ . \newline 
+ 	We construct a module homomorphism $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$ holds. Using lemma \ref{Universalpropertyproduct} we find a unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$ is satisfied. Let $u''$ be the homomorphism, where the image is restricted to subgroup $L$. We will show that the homomorphism is well-defined, specifically $u'$ maps every element inside the subgroup $L$. Assume that $b$ and $a$ are elements which satisfy the condition $a \leq b$. Then the following equation holds
+ 	$$I^{b}_a \circ pr_b \circ u'= I^{b}_a \circ \phi_b = \phi_a = pr_a \circ u'.$$
+ 	We can define $u$ to be $u''$. The uniqueness property of the homomorphism follows directly from the fact that $u'$ is unique. 
+ \end{proof}
+\subsubsection{Directed systems}
+
 \begin{maar}
 Let $\lambda$ be a quasi-ordered category with the corresponding class of morphisms. Let $C$ be a category and let $I:\lambda \rightarrow C$ be a contra-variant functor for which the following conditions are satisfied:
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
@@ -389,23 +413,17 @@ Let $\lambda$ be a quasi-ordered category with the corresponding class of morphi
 \end{enumerate}
 Then we say that $D$ is a directed system indexed by the category $\lambda$. 
 \end{maar}
-
-\begin{lem}\label{welldefinessofsystems}
-The direct and inverse system functors are well-defined.
+\begin{lem}\label{welldefinessofdirectedsystems}
+	Directed system functors are well-defined.
 \end{lem}
 \begin{proof}
-We write this proof only for inverse systems, the case of direct systems is similar. Let $(I, \lambda)$ be arbitrary inverse system, then following conditions hold:
-\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-	\item Combining conditions (1) and (2) of the definition $\ref{inversesystem}$ and using the fact that every identity morphism can be found in collection $\hom_\lambda(a,a)$ we see that the condition $I(id_a) = id_{I(a)}$ is satisfied.
-	\item The condition $I(\lambda^a_b(i)) \circ I(\lambda^b_c(j)) = I^a_b \circ I^b_c = I^a_c = I(\lambda^a_c(i * j)) = I(\lambda^a_b(i) \circ \lambda^b_c(j){\tiny })$
-\end{enumerate}
+The proof of this claim is almost identical to proof of Lemma \ref{welldefinessofsystems}.
 \end{proof}
 
 \begin{esim}
 Let SET be the category of sets with order relation defined by $U \leq V \Leftrightarrow U \subset V$. Now for every $U,V$ we define $D_U^V: U \rightarrow V $ to be the inclusion from $U$ to $V$. Clearly this forms a direct system. 
 \end{esim}
 
- Earlier we defined the concept of limit for general indexing functors. We can interpret direct and inverse system as indexing functors, taking $\lambda$ to be the indexing set. In general systems the limit may not exist. However, for our purpose it is enough to show that such limit can be found in the categories of modules.
 
 \begin{lause}
 Let $D:\lambda \rightarrow AB$ be a direct system of $R$-modules. For every $a \in \ob(\lambda)$ let $i_a: D(a) \rightarrow \bigoplus_{a \in \ob(\lambda)} D(a)$  be the inclusion and let $G$ be the submodule of $D = \bigoplus_{a \in \lambda} D(a) $ which is generated by elements of the form $\{r \cdot (i_ax_{a}-i_bD^b_ax_a)\}$, where $x \in D$ and $r \in R$. Then the colimit of this system is the quotient $R$-module $L = \bigoplus_{a \in \lambda} D(a) / G $.
@@ -417,15 +435,7 @@ Thus by linearity we see that every element in the module $L$ vanishes on map $u
 To prove that the homomorphism $u$ is unique we notice that if $x \in L$ , then $x = \sum_{a \in A \subset D} v_a(x_a) + G$.  Then the following equations hold  $$u(x) = u(\sum_{a \in A \subset D}v_a(x_a)) = \sum_{a \in A \subset D} u \circ v_a (x_a) = \sum_{a \in A \subset D} \phi_a(x_a)$$
 Thus $u(x)$ is determined by the sum of the module homomorphisms $\phi_a$. It follows that the map $u$ is unique.
 \end{proof}
-\begin{lause}
-Let $I: \lambda \rightarrow AB$ be an inverse system of $R$-modules. Then the limit of this functor is the submodule $L = \{x \in \prod_{i \in \ob(\lambda)} I_i \mid x_a = I^b_ax_b $ for all $a \leq b\}$
-\end{lause}
-\begin{proof}
-Let  $v$ be a family of module homomorphisms $\{v_a = pr_a: L \rightarrow I(a)\}_{a \in \lambda}$ which together with the group $L$ induce the cone $\bigtriangleup(I,L,v)$. Let $K$ be any other group and let $\phi$ be a family of module homomorphisms $\{\phi_a: K \rightarrow I(a)\}_{a \in \lambda}$ which induces the cone $\bigtriangleup(I,K,\phi)$ . \newline 
-We construct a module homomorphism $u: K \rightarrow L$ for which $v_a \circ u = \phi_a$ holds. Using lemma \ref{Universalpropertyproduct} we find a unique homomorphism $u':K \rightarrow \prod_{i \in J}I_i$ for which $pr_a \circ u' = \phi_a$ is satisfied. Let $u''$ be the homomorphism, where the image is restricted to subgroup $L$. We will show that the homomorphism is well-defined, specifically $u'$ maps every element inside the subgroup $L$. Assume that $b$ and $a$ are elements which satisfy the condition $a \leq b$. Then the following equation holds
- $$I^{b}_a \circ pr_b \circ u'= I^{b}_a \circ \phi_b = \phi_a = pr_a \circ u'.$$
-  We can define $u$ to be $u''$. The uniqueness property of the homomorphism follows directly from the fact that $u'$ is unique. 
-\end{proof}
+
 \begin{huom}
 In the theorems above we showed that, there exists a limit for the inverse system functor and colimit for the corresponding functor of directed system. Because it is clear from the context, which of the limits is being used from now on we will denote both concepts for systems simply as $\lim$ .
 \end{huom}
@@ -445,8 +455,63 @@ Let $I$ be an inverse system and $\phi: \lambda' \rightarrow \lambda$ an order p
 \begin{maar}
 Let $(I,\lambda)$ and $(I',\lambda')$ be inverse systems and $\phi:\lambda' \rightarrow \lambda$ an order preserving functor. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \lambda\}$ be a natural transformation between $I\phi$ and $I'$. Then we say that $\{f_a\}_{a \in \lambda}$ is an inverse system of morphisms corresponding to the functor $\phi$ from the system $I$ into the system $I'$.
 \end{maar}
-
-In the next theorem we will prove that it is possible to define the limit of morphisms between systems in a unique way. We recall that existence of limit implies that for every objects of a category $I$ there exists unique functor $u_{I,a}:\lim I \rightarrow I(a)$.
+We denote all such transformations between systems $(I,\lambda)$ and $(I',\lambda')$ as $\text{Transf}(I,I')$. We will show that inverse systems together with the transformations form a category
+\begin{lem}\label{inversesystemstransformationlemma}
+Let $(I, \lambda)$, $(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems and let $\phi:\lambda' \rightarrow \lambda$ and $\phi':\lambda'' \rightarrow \lambda'$ functors between systems. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \phi'(\lambda'')\}$ and $ \{g_a:I'(\phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$ be inverse systems of morphisms corresponding to $\phi$ and $\phi'$. Then
+ $\{g_af_{\phi(a)}:I(\phi (\phi'(a))) \rightarrow I''(a) \mid a \in \lambda''\}$ is inverse system of morphisms corresponding to composition $\phi \circ \phi'$.
+\end{lem}
+\begin{proof}
+The claim follows directly from the following diagram:
+	$$
+	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(I(\phi(\phi'(b)))\)};
+	
+	\node (x) at (0,-2) {\(I(\phi(\phi'(a)))\)};
+	
+	\node (y) at (4,-2) {\(I'(\phi'(a))\)};
+	
+	\node (z) at (4,0) {\(I'(\phi'(b))\)};
+	
+	\node (p) at (8,0) {\(I''(b)\)};
+	
+	\node (p2) at (8,-2) {\(I''(a)\)};
+	
+	\node (f) at (2,-2.4){\(f_{\phi'(a)}\)};\
+	
+	\node (f2) at (6,-2.4){\(g_{a}\)};
+	
+	\node (g) at (2,-0.4){\(f_{\phi'(b)}\)};
+	
+	\node (g2) at (6,-0.4){\(g_{b}\)};
+	
+	\node (s) at (0.8,-1) {\(I^{\phi''(\phi'(b))}_{\phi''(\phi'(a))}\)};
+	
+	\node (s2) at (4.6,-1) {\(I^{\phi'(b)}_{\phi'(a)}\)};	
+	
+	\node (s3) at (8.6,-1) {\(I^{b}_{a}\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (z);
+	\draw[->] (y) -- (p2);
+	\draw[->] (p) -- (p2);
+	\draw[->] (z) -- (p);
+	
+	
+	\end{tikzpicture}
+	$$
+\end{proof}
+\begin{lause}\label{Inversesystemsformacategory}
+Inverse systems over category $C$ together with inverse systems of morphisms form a category.
+\end{lause}
+\begin{proof}
+The composition of two such transformation is a transformation by Lemma \ref{inversesystemstransformationlemma}. For every inverse system, the identity morphism is defined as transformation ${\text{id}_a: I(a) \rightarrow I(a)}$ corresponding to a functor $\phi$ which maps every elements to itself.
+\end{proof}
+ In the next theorem we will prove that it is possible to define the limit of morphisms between systems in a unique way. We recall that existence of limit implies that for every objects of a category $I$ there exists unique functor $u_{I,a}:\lim I \rightarrow I(a)$.
 
 \begin{lem}\label{inversemorphismexistence}
 Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems for which limit exists. Let $\{f_a\}$ be inverse system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the condition $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for every $a \in \lambda'$ .
@@ -548,11 +613,11 @@ $$
 
 \end{tikzpicture}
 $$
-Then by definition of limit there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the diagram commutes. We will prove now that the universal property $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for this morphism. By diagram \ref{morphismbetweenlimits} and the fact that the family of functions $\{f_a\}$ is a natural transformation, in other words the condition $\omega'_a \circ f_n = f_a \circ \omega_{\phi(a)}$ holds, the following diagram commutes:
+Then by definition of limit there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the diagram commutes. We will prove now that the universal property $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for this morphism. By diagram \ref{morphismbetweenlimits} and the fact that the family of functions $\{f_a\}$ is a natural transformation, the following diagram commutes:
 $$
 \begin{tikzpicture}
 
-\node (w) at (2,0) {\(\lim I(\phi(n))\)};
+\node (w) at (2,0) {\(I(\phi(n))\)};
 
 \node (x2) at (0.5,-0.7) {\(f_a \omega_{\phi(a)}\)};
 
@@ -676,10 +741,13 @@ We have to show that the image is in the subgroup $$L = \{x \in \prod_{i \in \la
 \end{proof}
 \subsubsection{Morphisms between directed systems}
 \begin{maar}
-	Let $(D,\lambda)$ and $(D',\lambda')$ be inverse systems and $\phi:\lambda \rightarrow \lambda'$ an order preserving functor. Let $ \{f_a:I(a) \rightarrow I'(\phi(a)) \mid a \in \lambda\}$ be a natural transformation between $I$ and $I'\phi$. Then we say that $\{f_a\}_{a \in \lambda}$ is a directed system of morphisms corresponding to the functor $\phi$ from the system $D$ into the system $D'$.
+	Let $(D,\lambda)$ and $(D',\lambda')$ be directed systems and $\phi:\lambda \rightarrow \lambda'$ an order preserving functor. Let $ \{f_a:I(a) \rightarrow I'(\phi(a)) \mid a \in \lambda\}$ be a natural transformation between $I$ and $I'\phi$. Then we say that $\{f_a\}_{a \in \lambda}$ is a directed system of morphisms corresponding to the functor $\phi$ from the system $D$ into the system $D'$.
 \end{maar}
 The proof of all the following theorems can be obtained by using the method of dualization described in the definition \ref{dualdefinition} on the proof of Lemma \ref{inversemorphismexistence} and Lemma \ref{compositionlimitmorphism} respectively.
-\begin{lem}
+\begin{lause}\label{Directsystemsformacategory}
+	Direct systems over category $C$ together with directed system of morphism form a category.
+\end{lause}
+\begin{lem}\label{Directedsystemlimitexistence}
 	Let  $(D,\lambda)$ and $(D',\lambda')$ be directed systems for which the limit exists. Let $\{f_a\}$ be directed system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim D \rightarrow \lim D'$ for which the condition $u_{D', \phi(a)} \circ \lim f  =  f_a \circ u_{D,a}$ holds for every $a \in \lambda'$ .
 \begin{diagram}\label{morphismbetweenlimits2}
 	\begin{tikzpicture}
@@ -744,7 +812,7 @@ The proof of all the following theorems can be obtained by using the method of d
 \end{diagram}
 \end{lem}
 \begin{lem}\label{compositionlimitmorphismdirected}
-	Let $(D, \lambda)$, $(D',\lambda')$ and $(D'',\lambda'')$ be directed systems with limits and let $\phi:\lambda \rightarrow \lambda'$ and $\phi':\lambda' \rightarrow \lambda''$ functors between systems. Let $ \{f_a:D(a) \rightarrow D'(\phi(a)) \mid a \in \lambda\}$ and $ \{g_a:D'(a) \rightarrow D''(\phi'(a)) \mid a \in \phi(lambda)\}$ be families of morphisms corresponding to $\phi$ and $\phi'$. Let $\lim(f \circ g):I \rightarrow I''$ be the limit of the family $\{g_{\phi(a)}f_{a}:D(a) \rightarrow D''(\phi' \phi(a)) \mid a \in \lambda\}$.  Then $\lim(f \circ g) = \lim f \circ \lim g $ holds.
+	Let $(D, \lambda)$, $(D',\lambda')$ and $(D'',\lambda'')$ be directed systems with limits and let $\phi:\lambda \rightarrow \lambda'$ and $\phi':\lambda' \rightarrow \lambda''$ functors between systems. Let $ \{f_a:D(a) \rightarrow D'(\phi(a)) \mid a \in \lambda\}$ and $ \{g_a:D'(a) \rightarrow D''(\phi'(a)) \mid a \in \phi(\lambda)\}$ be families of morphisms corresponding to $\phi$ and $\phi'$. Let $\lim(f \circ g):I \rightarrow I''$ be the limit of the family $\{g_{\phi(a)}f_{a}:D(a) \rightarrow D''(\phi' \phi(a)) \mid a \in \lambda\}$.  Then $\lim(f \circ g) = \lim f \circ \lim g $ holds.
 		$$
 		\begin{tikzpicture}
 		
@@ -789,7 +857,7 @@ The proof of all the following theorems can be obtained by using the method of d
 		$$
 \end{lem}
 Like in the case of Inverse system, it will be shown that the limit operator is a functor between Directed systems and some category $C$. Nothing new is learned from this theorem, however it provides a summary of previous lemmas and can be used to shorten notation.
-\begin{lause}
+\begin{lause}\label{directedsystemlimitfunctor}
 	Let $D(C)$ be a category of directed systems over category $C$. Assume that limit exists for every object in $D(C)$ and we have equated all the isomorphic objects in the category $C$. Then the operator $\lim$ is a functor from category of directed systems to the image category of the corresponding systems. 
 \end{lause}
 
@@ -993,11 +1061,11 @@ Because limit morphisms are by Lemma \ref{inversemorphismexistence} unique, we c
 
 
 \begin{kor}\label{cofinalitypreservebijectivelimitmorphisms}
-Let $(I, \lambda)$ and $(I',\lambda')$ be inverse systems and let $\phi: \lambda \rightarrow \lambda'$ be an injective functor. Let $\{f_\alpha\}_{a \in \lambda'}$ be an inverse system of morphisms corresponding to $\phi$ and let $\varsigma$ be some subcategory of $\lambda$. Then if the following 3 conditions are satisfied, the limit homomorphism $\lim f = \{f_\alpha\}_{a \in \lambda'}$ is isomorphism.
+Let $(I, \lambda)$ and $(I',\lambda')$ be inverse systems and let $\phi: \lambda' \rightarrow \lambda$ be an injective functor. Let $\{f_\alpha\}_{a \in \lambda'}$ be an inverse system of morphisms corresponding to $\phi$ and let $\varsigma$ be some subcategory of $\lambda$. Then if the following 3 conditions are satisfied, the limit homomorphism $\lim f = \{f_\alpha\}_{a \in \lambda'}$ is isomorphism.
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 	\item $\varsigma$ is cofinal subcategory of $\lambda$.
 	\item $\phi(\varsigma)$ is cofinal subcategory of $\lambda'$.
-	\item $f_\alpha$ is bijective for every $\alpha \in \varsigma$
+	\item $f_\alpha$ is isomorphism for every $\alpha \in \varsigma$
 \end{enumerate}
 \end{kor}
 \begin{proof}
@@ -1064,6 +1132,17 @@ From Lemma \ref{isomorphismlimitmorphisminversesystem} we know that the limit mo
 	
 	\end{tikzpicture}
 	$$
+\end{proof}
+\begin{lause}\label{cofinalitypreservedirectedlimitmorphisms}
+	Let $(D, \lambda)$ and $(D',\lambda')$ be directed systems and let $\phi: \lambda \rightarrow \lambda'$ be an injective functor. Let $\{f_\alpha\}_{a \in \lambda}$ be directed system of morphisms corresponding to $\phi$ and let $\varsigma$ be some subcategory of $\lambda$. Then if the following 3 conditions are satisfied, the limit homomorphism $\lim f = \{f_\alpha\}_{a \in \lambda'}$ is isomorphism.
+	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+		\item $\varsigma$ is cofinal subcategory of $\lambda$.
+		\item $\phi(\varsigma)$ is cofinal subcategory of $\lambda'$.
+		\item $f_\alpha$ is isomorphism for every $\alpha \in \varsigma$
+	\end{enumerate}
+\end{lause}
+\begin{proof}
+The proof of this claim is dual of the Corollary \ref{cofinalitypreservebijectivelimitmorphisms}.
 \end{proof}
 \section{Nerve of covering}
 In this chapter we will give a definition of an abstract simplicial complex. 
@@ -1220,7 +1299,7 @@ Let $(X,A)$ and $(Y,B)$ be topological pairs. Let $\alpha = \mathcal{C}(\alpha_i
 We call the collection $\{\beta(x)\}_{x \in J}$ stacks of the covering. It is also notable that the fusioned covering over the collection $\{\beta(x) \mid x \in J\}$ is same as the collection which we get from $\gamma$ by composing it with projection function $\text{pr}_Y:(X \times Y, A, \times B) \rightarrow (Y,B)$.
 
 
-\subsection{The construction}
+\subsection{The construction}\label{theconstructionsection}
  Now we are ready to give the definition for the nerve of the covering.
 \begin{maar}
 Let $X$ be some set, then the operator $\text{CNI}(X)$ is the following subset of the set $2^{X}$: $$V \in \text{CNI}(X) \Leftrightarrow V \text{ is finite and intersection over all its elements is non-empty } $$ 
@@ -1258,7 +1337,7 @@ By Lemma \ref{Welldefinessofnerve}, the simplicial complexes are well-defined. W
 	Well-definiteness follows directly from the fact that the inducing map $p$ is well-defined. Let $s$ be a simplex in $\Gamma(X,A)_\beta$ spanned by some sets $\{U_i\}_{i \in J}$ such that $\bigcap_{i \in J}U_i \neq \emptyset $. Every $U_i$ is mapped to some vertex $V_i$ in $\Gamma(X,A)_\alpha$ for which $U_i \subset V_i$. Intersection $\bigcap_{i \in J}V_i$ is clearly non-empty, so edges of every simplex span some simplex in the image.
 \end{proof}
 
-All the lemmas and proofs have been presented only for the abstract simplicial complexes. The geometric realization of the nerve of the covering will be denoted simply as $\mathcal{S}(X,A)_\alpha$. The concept of projection map is being used in many different contexts. However, because it is clear from the context which definition is used in all the contexts we will denote the projection map to be simply $p'^\beta_\alpha$. It is also worth noticing that from lemma \ref{geometricrealizationsimplicial} it follows that the induced map $p^{\beta}_{\alpha}$ between the geometric realizations $\mathcal{S}(X,A)_\beta$ and $\mathcal{S}(X,A)_\alpha$ is also well-defined and simplicial. 
+All the lemmas and proofs have been presented only for the abstract simplicial complexes. The geometric realization of the nerve of the covering will be denoted simply as $\mathcal{S}(X,A)_\alpha$. The concept of projection map is being used in many different contexts. However, because it is clear from the context which definition is used in all the contexts we will denote the projection map to be simply $p^\beta_\alpha$. It is also worth noticing that from lemma \ref{geometricrealizationsimplicial} it follows that the induced map $p^{\beta}_{\alpha}$ between the geometric realizations $\mathcal{S}(X,A)_\beta$ and $\mathcal{S}(X,A)_\alpha$ is also well-defined and simplicial. 
  \newline
 Projection maps are not uniquely determined by coverings $\alpha$ and $\beta$, but any of those maps are contiguous thus they define the same homomorphisms between corresponding homology groups of spaces $\mathcal{S}(X,A)_\alpha$ and $\mathcal{S}(X,A)_\beta$.
 \begin{lem}\label{contiguouspropertyforprojectionmaps}
@@ -1276,7 +1355,7 @@ The claim follows directly by using lemma \ref{contiguouspropertyforprojectionma
 Thus we  can define the unique homomorphisms $I^{\beta}_{\alpha}:H_q(\mathcal{S}(X,A)_{\beta}) \rightarrow H_q(\mathcal{S}(X,A)_{\alpha})$ for every $q \in \N$.
 
 \begin{maar}
-%	Let $f:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. Let  $K_{\beta}$ be indexation of the elements $U_i$ for which the preimage under map $f$ is non-empty. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(V_i, K_{\beta}, K'_{\beta})$, where $V_i = f^{-1}U_i$ for all $i \in K_{\beta}$.
+	Let $f:(X,A) \rightarrow (Y,B)$ and let $\beta = \mathcal{C}(U_i, J_{\beta}, J'_{\beta}) $ be a covering of $(Y,A)$. Let  $K_{\beta}$ be indexation of the elements $U_i$ for which the preimage under map $f$ is non-empty. The covering $f^{-1}\beta$ is a covering of $(X,A)$ which is formed by the collection $\mathcal{C}(V_i, K_{\beta}, K'_{\beta})$, where $V_i = f^{-1}U_i$ for all $i \in K_{\beta}$.
 \end{maar}
 Note that the collection $\alpha = f^{-1}\beta$ above is defined in a such way, that for every element $U_i \in \beta$ we make copy, take preimage of it and add it to the collection $\alpha$.
 \begin{lem}\label{inducedmapf}
@@ -1366,7 +1445,7 @@ Let $(X,A)$ be a topological pair and let $G$ be an abelian group. Then the \v{C
 In this section we will investigate properties of induced homomorphisms. Earlier we defined \v{C}ech homology groups to be the limits of the groups induced by coverings of pairs. In section \ref{limitmorphism} we defined the concept of a limit homomorphism. In the next theorem we will show that such homomorphism exists.
 
 \begin{maar}\label{Inducedhomomorphismdefinition}
-Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Let $$\mathcal{A}(f) = \{f_\alpha \mid \alpha \text{ is covering of the pair }(Y,B)\}$$ be a family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. 
+Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces and let $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(X,A)$ be a functor, which maps every $\alpha$ to $f^{-1}\alpha$. Lemma states that \ref{preimageorder} $\phi$ is order preserving. We denote $$\mathcal{A}(f) = \{f_\alpha \mid \alpha \text{ is covering of the pair }(Y,B)\}$$ to be the family of inclusions defined in section \ref{theconstructionsection} corresponding to functor $\phi$. 
 \end{maar}
 
 \begin{lause}
@@ -1374,7 +1453,7 @@ Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces
 We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collection is a natural transformation of the \v{C}ech homology groups and the limit function is well defined. 
 \end{lause}
 \begin{proof}
-We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(X,A)$ to map every object $\alpha$ to $f^{-1}\alpha$. By lemma \ref{preimageorder} this functor preserves order. Let $\beta$ and $\alpha$ be some coverings of the pair $(Y,B)$. We denote by $\alpha'$ and $\beta'$ the preimage categories of $\alpha$ and $\beta$ under the map $f$ respectively. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have the following commutable diagram:
+ Let $\beta$ and $\alpha$ be some coverings of the pair $(Y,B)$. We denote by $\alpha'$ and $\beta'$ the preimage categories of $\alpha$ and $\beta$ under the map $f$ respectively. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have the following commutable diagram:
 	$$
 	\begin{tikzpicture}
 	
@@ -1405,7 +1484,7 @@ We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(X,A)$ to ma
 	\end{tikzpicture}
 	$$
 	
-The fact that the collection $\mathcal{A}_q$ is a natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists a limit homomorphism $$f_q:\check{\mathrm{H}}_q(X,A;G) \rightarrow \check{\mathrm{H}}_q(Y,B;G) $$
+The fact that the collection $\mathcal{A}_q$ is a natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{inversemorphismexistence} there exists a limit homomorphism $$f_q:\check{\mathrm{H}}_q(X,A;G) \rightarrow \check{\mathrm{H}}_q(Y,B;G) $$
 \end{proof}
 We will now show that \v{C}ech homology groups are functors. 
 \begin{lause}
@@ -1425,13 +1504,13 @@ Let $(X,A)$ be a topological pair. Then we denote the inverse system formed by $
 \end{maar}
 Because $I_q$ is inverse system of abelian groups, the limit $\lim sI_q(X,A)$ is well-defined for all $q$. 
 \begin{maar}
-Let $(X,A)$ be a topological pair and let $\partial_\alpha:H_q(\mathcal{S}(X,A)_\alpha) \rightarrow H_{q-1}(\mathcal{S}(A)_\alpha) $ be a boundary map as in the definition of singular homology for every $\alpha \in \text{COV}(X,A)$. By defining $\phi:\text{COV}(X,A) \rightarrow \text{COV}(X,A)$ to be just the identity map, we obtain an inverse system of morphisms between systems $I_q(X,A)$ and $sI_{q-1}(X,A)$. We denote the limit morphisms of the system as $\partial_q'$.
+Let $(X,A)$ be a topological pair and let $\partial_\alpha:H_q(\mathcal{S}(X,A)_\alpha) \rightarrow H_{q-1}(\mathcal{S}(A)_\alpha) $ be a boundary map as in the definition of singular homology for every $\alpha \in \text{COV}(X,A)$. By defining $\phi:\text{COV}(X,A) \rightarrow \text{COV}(X,A)$ to be just the identity map and noting that every $\partial_\alpha$ is a natural transformation, we obtain an inverse system of morphisms between systems $I_q(X,A)$ and $sI_{q-1}(X,A)$. We denote the limit morphisms of the system as $\partial_q'$.
 \end{maar}
 \begin{maar}
 Let $\phi:\text{COV(X,A)} \rightarrow \text{COV}(A)$ be the following map: Let $\alpha$ be a covering of the pair $(X,A)$ and let  $\mathcal{C}(\alpha_i, J, J')$ be its decomposition. Then $\phi(\alpha)$ is defined to be the covering $\mathcal{C}(\alpha'_i, P', \emptyset)$, where the corresponding open sets satisfy $\alpha'_i = \alpha_i \cap A$ and $P' \subset J'$ is indexation of non-empty elements $\alpha'_i$.  Then we say that the map $\phi$ is natural projection from ${\text{COV}(X,A)}$ to ${\text{COV}}(A)$.
 \end{maar}
 \begin{maar}
-Let $\phi:\text{COV(X,A)} \rightarrow \text{COV}(A)$ be a natural homomorphism. Let $$\Phi_{\alpha}: I_q(A)(\phi(\alpha)) \rightarrow sI_q(X,A)(\alpha) $$ be an identity map spanned by $\phi$ for every $\alpha$ and $q \in \N$. Then we define $\Phi = \lim \{\Phi_\alpha\}$.
+Let $\phi:\text{COV(X,A)} \rightarrow \text{COV}(A)$ be a natural homomorphism. Let $$\Phi_{\alpha}: I_q(A)(\phi(\alpha)) \rightarrow sI_q(X,A)(\alpha) $$ be an identity map spanned by $\phi$ for every $\alpha$ and $q \in \N$. Because every map $\Phi_{\alpha}$ is an inclusion, by lemma \ref{inclusionlemma} the morphisms form an inverse system of morphisms. Thus we can define $\Phi = \lim \{\Phi_\alpha\}$.
 \end{maar}
 \begin{lem}\label{thereasonbehindcommutabilityofofthefunctors}
 Let $(X,A)$ and $(Y,B)$ be topological pairs and let $f:(X,A) \rightarrow (Y,B)$ be a continuous function. Then the following diagram commutes:
@@ -1592,7 +1671,7 @@ Where $\lim f' = \lim f|\lim sI_{q-1}(X,A)$. The claim follows directly from thi
 \subsection{Other properties}
 In this section we will introduce most important properties of the \v{C}ech homology functor and show that in some special circumstances it satisfies all the Eilenberg-Steenrod axioms. However, because the theorems are technical we will omit the proofs and give the references to them instead. 
 \begin{lause}
-\textbf{Dimension Axiom}. Let $X = \{x\}$ be a space consisting of one point. Then the \v{C}ech homology groups $\check{\mathrm{H}}_n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
+\textbf{Dimension Axiom of \v{C}ech homology}. Let $X = \{x\}$ be a space consisting of one point. Then the \v{C}ech homology groups $\check{\mathrm{H}}_n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
 \end{lause}
 \begin{proof}
 	For the space $X$ there exists only one open covering $\alpha = \{x\}$ and thus the inverse system of the corresponding singular homology groups is trivial. It is easy to see that the limit of this system is the group $H_q(\mathcal{S}(X)_a; G)$ together with the identity homomorphisms. The simplex $\mathcal{S}(X)_{\alpha}$ consists only of one edge and thus is homeomorphic to a one point space. From the dimension axiom of singular homology it is easy to see that
@@ -1604,26 +1683,26 @@ In this section we will introduce most important properties of the \v{C}ech homo
 	\right. $$
 \end{proof}
 \begin{lause}
-\textbf{Homotopy Axiom}
+\textbf{Homotopy Axiom of \v{C}ech homology}
 \end{lause}
 \begin{proof}
 Proof is presented in the section \ref{homotopyaxiom}.
 \end{proof}
 \begin{lause}
-\textbf{Excision Axiom}
+\textbf{Excision Axiom of \v{C}ech homology}
 \end{lause}
 \begin{proof}
 Proof of this claim can be found in Eilenberg [\ref{Eilenberg}] theorem IX.6.1.
 \end{proof}
 \begin{lause}
-	\textbf{Additivity axiom}
+	\textbf{Additivity axiom of \v{C}ech homology}
 \end{lause}
 \begin{proof}
 Idea of the proof: Let $X = \bigsqcup_{i \in J} \{A_i\}$. Then it can be shown that $\text{COV}'(X) = \bigsqcup_{i \in J} \{\text{COV}(A_i)\} $ is cofinal in $\text{COV}(X)$. It is easy to see that an abstract simplex induced by $\text{COV}'(X)$ is disjoint union of simplices spanned by covering $\text{COV}(A_i)$, thus applying the additivity axiom of singular homology theory to the simplex we obtain the claim.
 \end{proof}
 The exactness axiom is not satisfied in general for the \v{C}ech homology. However for our purpose the following special case is essential:
 \begin{lause}
-\textbf{Exactness axiom}. Let $(X,A)$ be a compact pair and let $G$ be a vector space, then the \v{C}ech homology functor satisfies the exactness axiom. 
+\textbf{Exactness axiom of \v{C}ech homology}. Let $(X,A)$ be a compact pair and let $G$ be a vector space, then the \v{C}ech homology functor satisfies the exactness axiom. 
 \end{lause}
 \begin{proof}
 Proof of this claim can be found in Eilenberg [\ref{Eilenberg}] theorem IX.7.6.
@@ -1653,57 +1732,298 @@ The directed system functor defined above will be denoted as $D^q(X,A;G)$.
 
 \subsubsection{Induced homomorphisms}
 \begin{lause}
-	Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. Let $$\mathcal{A} = \{f_\alpha \mid \alpha \text{ is covering of the pair }(Y,B)\}$$ be a family of functions for which every element of the open covering $\alpha$ is mapped to its preimage. This family induces homomorphisms between corresponding \v{C}ech homology groups: $$f'_{\alpha,q}:H_q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) \rightarrow H_q(\mathcal{S}(Y,B)_{\alpha}; G)$$
-	We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}_q$. Then every such collection is a natural transformation of the \v{C}ech homology groups and the limit function is well defined. 
+	Let $f:(X,A) \rightarrow (Y,B)$ be a continuous function between pairs of spaces. The family $\mathcal{A}(f)$ induces homomorphisms between corresponding \v{C}ech homology groups: $$f^q_{\alpha}: H^q(\mathcal{S}(Y,B)_{\alpha}; G) \rightarrow  H^q(\mathcal{S}(X,A)_{f^{-1}\alpha}; G) $$
+	We denote a family of functions indexed by coverings of $(Y,B)$ described above with $\mathcal{A}^q$. Then every such collection is a natural transformation of the \v{C}ech homology groups and the limit function is well defined. 
 \end{lause}
 \begin{proof}
-	We can define a functor $\phi:\text{COV}(Y,B) \rightarrow \text{COV}(X,A)$ to map every object $\alpha$ to $f^{-1}\alpha$. By lemma \ref{preimageorder} this functor preserves order. Let $\beta$ and $\alpha$ be some coverings of the pair $(Y,B)$. We denote by $\alpha'$ and $\beta'$ the preimage categories of $\alpha$ and $\beta$ under the map $f$ respectively. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have the following commutable diagram:
+ Let $\beta$ and $\alpha$ be some coverings of the pair $(Y,B)$. We denote by $\alpha'$ and $\beta'$ the preimage categories of $\alpha$ and $\beta$ under the map $f$ respectively. The diagram of lemma \ref{squarelemmaforcoverings} shows that the corresponding maps between coverings commute. Thus we have the following commutable diagram:
 	$$
 	\begin{tikzpicture}
 	
 	
 	
-	\node (w) at (0,0) {\(H_q(\mathcal{S}(X,A)_{\beta'})\)};
+	\node (w) at (0,0) {\(H^q(\mathcal{S}(X,A)_{\beta'})\)};
 	
-	\node (x) at (0,-2) {\(H_q(\mathcal{S}(Y,B)_{\beta})\)};
+	\node (x) at (0,-2) {\(H^q(\mathcal{S}(Y,B)_{\beta})\)};
 	
-	\node (y) at (4,-2) {\(H_q(\mathcal{S}(Y,B)_{\alpha})\)};
+	\node (y) at (4,-2) {\(H^q(\mathcal{S}(Y,B)_{\alpha})\)};
 	
-	\node (z) at (4,0) {\(H_q(\mathcal{S}(X,A)_{\alpha'})\)};
+	\node (z) at (4,0) {\(H^q(\mathcal{S}(X,A)_{\alpha'})\)};
 	
-	\node (f) at (2,-2.4){\(I^\beta_\alpha\)};
+	\node (f) at (2,-2.4){\(D^\beta_\alpha\)};
 	
-	\node (g) at (2,-0.4){\(I^{\beta'}_{\alpha'}\)};
+	\node (g) at (2,-0.4){\(D^{\beta'}_{\alpha'}\)};
 	
-	\node (s) at (0.4,-1) {\(f'_{\beta,q}\)};
+	\node (s) at (0.4,-1) {\(f^q_{\beta}\)};
 	
-	\node (s2) at (4.4,-1) {\(f'_{\alpha,q}\)};	
+	\node (s2) at (4.4,-1) {\(f^q_{\alpha}\)};	
 	
-	\draw[->] (z) -- (y);
-	\draw[->] (w) -- (x);
+	\draw[<-] (z) -- (y);
+	\draw[<-] (w) -- (x);
+	\draw[<-] (x) -- (y);
+	\draw[<-] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+	
+	The fact that the collection $\mathcal{A}^q$ is a natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{Directedsystemlimitexistence} there exists a limit homomorphism $$f^q:\check{\mathrm{H}}^q(Y,B;G) \rightarrow  \check{\mathrm{H}}^q(X,A;G) $$
+\end{proof}
+\begin{lause}
+	\v{C}ech cohomology groups are contra-variant functors from the category of topological pairs to the category of abelian groups 
+\end{lause}
+\begin{proof}
+	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+		\item Every pair of spaces is mapped uniquely to some abelian group.
+		\item The limit of an identity map is an identity homomorphism.
+		\item Let $f:(X,A) \rightarrow (Y,B)$ and $g:(Y,B) \rightarrow (Z,C)$ be continuous maps between pairs. We know that $f$ and $g$ induce homomorphisms $$f^{*}:H^q(Y,B) \rightarrow H^q(X,A)  \text{ and } g^{*}:H^q(Z,C) \rightarrow H^q(Y,B) \text{ for every } q \in \N.$$ Thus using axioms of singular homology theory we see that $(g \circ f)^{*} = f^* \circ g^*$ holds for the singular homology groups. Then by using theorem \ref{compositionlimitmorphism} we conclude that  $$\lim ((g \circ f)^*) = \lim (f^* \circ g^*) =\lim f^* \circ \lim g^*.$$
+	\end{enumerate}
+\end{proof}
+\subsubsection{Boundary maps}
+\begin{maar}
+	Let $(X,A)$ be a topological pair. Then we denote the directed system formed by $(\{H^q(\mathcal{S}(A)_\alpha)\}, \text{COV}(X,A))$ simply as $sD^q(X,A)$
+\end{maar}
+
+\begin{maar}
+	Let $(X,A)$ be a topological pair and let $\partial_\alpha: H^{q-1}(\mathcal{S}(A)_\alpha) \rightarrow H^q(\mathcal{S}(X,A)_\alpha) $ be a boundary map as in the definition of singular cohomology for every $\alpha \in \text{COV}(X,A)$. By defining $\phi:\text{COV}(X,A) \rightarrow \text{COV}(X,A)$ to be just the identity map and noting that every $\partial^\alpha$ is a natural transformation, we obtain a directed system of morphisms between systems $D^q(X,A)$ and $sD^{q-1}(X,A)$. We denote the limit morphisms of the system as $\partial^{q}_{*}$
+\end{maar}
+%%
+\begin{maar}
+	Let $\phi:\text{COV(X,A)} \rightarrow \text{COV}(A)$ be a natural homomorphism. Let $$\Phi^{\alpha}: D^q(X,A)(\alpha)  \rightarrow D^q(A)(\phi(\alpha)) $$ be an identity map spanned by $\phi$ for every $\alpha$ and $q \in \N$. Because every map $\Phi^{\alpha}$ is an inclusion, by Lemma \ref{inclusionlemma} the morphisms form an inverse system of morphisms. Thus we can define $\Phi^{\text{op}} = \lim \{\Phi^\alpha\}$.
+\end{maar}
+
+\begin{lem}\label{commutabilitythingy2}
+	Let $(X,A)$ be a topological pair and $f:(X,A) \rightarrow (Y,B)$ a continuous function. Then the following diagram commutes: 
+	$$ 	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(sD^q(X,A)(f^{-1}\alpha)\)};
+	
+	\node (x) at (0,-2) {\(sD^q(Y,B)(\alpha)\)};
+	
+	\node (y) at (4,-2) {\(D^q(B)(\phi(\alpha))\)};
+	
+	\node (z) at (4,0) {\(D^q(A)(f^{-1}\phi(\alpha))\)};
+	
+	\node (f) at (2,-2.4) {\(\Phi^{\alpha}\)};
+	
+	\node (g) at (2,-0.4) {\(\Phi^{f^{-1}\alpha}\)};
+	
+	\node (s) at (0.4,-1) {\(f^\alpha\)};
+	
+	\node (s2) at (4.5,-1) {\(f^{\phi(\alpha)}\)};	
+	
+	\draw[<-] (z) -- (y);
+	\draw[<-] (w) -- (x);
 	\draw[->] (x) -- (y);
 	\draw[->] (w) -- (z);
 	
 	
 	\end{tikzpicture}
 	$$
-	
-	The fact that the collection $\mathcal{A}_q$ is a natural transformation of the groups follows directly from the above diagram. Thus by lemma \ref{limitmorphismgroup} there exists a limit homomorphism $$f_q:\check{\mathrm{H}}_q(X,A;G) \rightarrow \check{\mathrm{H}}_q(Y,B;G) $$
+\end{lem}
+\begin{proof}
+	By Lemma $\ref{thereasonbehindcommutabilityofofthefunctors}$ the diagram is well-defined. The claim follows directly from the fact that morphisms $\Phi^\alpha$ are inclusions.
 \end{proof}
+\begin{lem}\label{isomorphismbetweenboundarythings1}
+	The homomorphism $\Phi$ defined above is isomorphism between $\lim sD^q(X,A)$ and $\lim D^q(X,A)$. 
+\end{lem}
+\begin{proof}
+	By proof of the corresponding Lemma for \v{C}ech homology, the conditions for Theorem \ref{cofinalitypreservedirectedlimitmorphisms} are satisfied. The claim follows directly from this.
+\end{proof}
+\begin{maar}
+	Boundary homomorphism $\partial^q:\check{H}^{q-1}(A) \rightarrow \check{H}^q(X,A)$ is defined as $\partial^q = \partial^{q}_{*} \circ \Phi^{-1}$.
+\end{maar}
 \begin{lause}
-	\v{C}ech homology groups are functors from the category of topological pairs to the category of abelian groups 
+	The boundary homomorphism $\partial^q$ is natural transformation between $\check{H}^{q-1}(A)$ and $\check{H}^q(X,A)$.
 \end{lause}
 \begin{proof}
-	\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
-		\item Every pair of spaces is mapped uniquely to some abelian group.
-		\item The limit of an identity map is an identity homomorphism.
-		\item Let $f:(X,A) \rightarrow (Y,B)$ and $g:(Y,B) \rightarrow (Z,C)$ be continuous maps between pairs. We know that $f$ and $g$ induce homomorphisms $$f_{*}:H_*(X,A) \rightarrow H_*(Y,B) \text{ and } g_{*}:H_*(X,A) \rightarrow H_*(Z,C).$$ Thus using axioms of singular homology theory we see that $(g \circ f)_{*} = g_* \circ f_*$ holds for the singular homology groups. Then by using theorem \ref{compositionlimitmorphism} we conclude that the limit homomorphism $\lim ((g \circ f)_*)$ equals $\lim g_* \circ \lim f_*$.
-	\end{enumerate}
-\end{proof}
-\subsubsection{Boundary maps}
-\subsection{Other properties}
+We obtain the following diagram from singular cohomology theory:			
+	$$ 	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(H^q(\mathcal{S}(X,A)_{f^{-1}\alpha})\)};
+	
+	\node (x) at (0,-2) {\(H^q(\mathcal{S}(Y,B)_{\alpha})\)};
+	
+	\node (y) at (4,-2) {\(H^q(\mathcal{S}(B)_{\alpha})\)};
+	
+	\node (z) at (4,0) {\(H^q(\mathcal{S}(A)_{f^{-1}\alpha})\)};
+	
+	\node (f) at (2,-2.4) {\(\partial'^{\alpha}\)};
+	
+	\node (g) at (2,-0.4) {\(\partial'^{f^{-1}\alpha}\)};
+	
+	\node (s) at (0.4,-1) {\(f^\alpha\)};
+	
+	\node (s2) at (5.6,-1) {\(f^\alpha|H_q(\mathcal{S}(A)^{f^{-1}\alpha})\)};	
+	
+	\draw[<-] (z) -- (y);
+	\draw[<-] (w) -- (x);
+	\draw[<-] (x) -- (y);
+	\draw[<-] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+	Because limit is functor in category of directed systems, we can take limit over the diagram. Combining the diagram above with diagram of Lemma \ref{commutabilitythingy2} composed with limit functor and Lemma \ref{isomorphismbetweenboundarythings1} we obtain the following diagram:
+	$$
+	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(\check{H}^q(X,A)\)};
+	
+	\node (x) at (0,-2) {\(\check{H}^q(Y,B)\)};
+	
+	\node (y) at (4,-2) {\(\lim sD^{q-1}(Y,B)\)};
+	
+	\node (z) at (4,0) {\(\lim sD^{q-1}(X,A)\)};
+	
+	\node (p) at (8,0) {\(\check{H}^{q-1}(A)\)};
+	
+	\node (p2) at (8,-2) {\(\check{H}^{q-1}(B)\)};
+	
+	\node (f) at (2,-2.4){\(\partial^q_{*}\)};
+	
+	\node (f2) at (6,-2.4){\(\Phi^{\text{op}}\)};
+	
+	\node (g) at (2,-0.4){\(\partial^q_{*}\)};
+	
+	\node (g2) at (6,-0.4){\(\Phi^{\text{op}}\)};
+	
+	\node (s) at (0.6,-1) {\(\lim f\)};
+	
+	\node (s2) at (4.6,-1) {\(\lim f'\)};		
+	
+	\node (s3) at (8.6,-1) {\(\lim f\)};	
+	
+	\draw[<-] (z) -- (y);
+	\draw[<-] (w) -- (x);
+	\draw[<-] (x) -- (y);
+	\draw[<-] (w) -- (z);
 
+	\draw[<-] (p) -- (p2);
+	\draw[->] (z) -- (p);
+	
+	\draw[->] (y) -- (p2);
+	\end{tikzpicture}
+	$$	
+	Where $\lim f' = \lim f|\lim sD^{q-1}(X,A)$. The claim follows directly from this.
+\end{proof}
+\subsection{Other properties}
+\begin{lause}
+	\textbf{Dimension Axiom of \v{C}ech cohomology}. Let $X = \{x\}$ be a space consisting of one point. Then the \v{C}ech clhomology groups $\check{\mathrm{H}}^n(X; G) $ are trivial groups for $n \geq 1$ and isomorphic to $G$ when $n = 0$.
+\end{lause}
+\begin{proof}
+	For the space $X$ there exists only one open covering $\alpha = \{x\}$ and thus the directed system of the corresponding singular homology groups is trivial. It is easy to see that the limit of this system is the group $H^n(\mathcal{S}(X)_a; G)$ together with the identity homomorphisms. The simplex $\mathcal{S}(X)_{\alpha}$ consists only of one edge and thus is homeomorphic to a one point space. From the dimension axiom of singular homology it is easy to see that
+	$$\check{\mathrm{H}}^n(X; G) = \left\{
+	\begin{array}{ll}
+	G  & \mbox{if } n = 0 \\
+	0 & \mbox{if } n \geq 1
+	\end{array}
+	\right. $$
+\end{proof}
+\begin{lause}
+	\textbf{Homotopy Axiom for \v{C}ech cohomology }
+\end{lause}
+\begin{proof}
+	Proof is presented in the section \ref{homotopyaxiom}.
+\end{proof}
+\begin{lause}
+	\textbf{Excision Axiom for \v{C}ech cohomology}
+\end{lause}
+\begin{proof}
+	Proof of this claim can be found in Eilenberg [\ref{Eilenberg}] theorem IX.6.1.
+\end{proof}
+\begin{lause}
+	\textbf{Additivity axiom for \v{C}ech cohomology}
+\end{lause}
+\begin{proof}
+Follows directly from proof of the Additivity axiom for \v{C}ech cohomology, expect we use the additivity axiom of singular homology in the end of the proof.
+\end{proof}
+Unlike \v{C}ech homology, the cohomology satisfies the Exactness axiom. 
+\begin{lause}
+	\textbf{Exactness axiom for \v{C}ech cohomology}
+\end{lause}
+\begin{proof}
+	Proof of this claim can be found in Eilenberg [\ref{Eilenberg}] theorem IX.7.6.
+\end{proof}
+
+\section{\v{C}ech homology with compact carriers}
+Because the \v{C}ech homology does not satisfy the exactness axiom for all spaces, we will present a modication of the theory using compact carriers. In this section we assume that the coefficent group $G$ has vector space structure. The idea of the construction is to use a directed system of compact pairs, where every pair is mapped to the corresponding \v{C}ech homology group and use limit functor to define the groups. Recall that the \v{C}ech homology functor satisfies all of the Eilenberg-Steenrod axioms for compact pairs with coefficents in vector spaces. We will show that the limit functor preserves all the properties and thus it will be shown the functor with compact carriers is a homology theory.
+\begin{lem}\label{compactspacesrelation}
+Let $\mathscr{C}$ be collection of all compact spaces. Then relation induced by $$ (X,A) \leq (Y,B) \Leftrightarrow X \subset Y \text{ and } A \subset B $$
+is quasi-order. We denote the relation simply as $R(\mathscr{C})$
+\end{lem}
+\begin{proof}
+Follows directly from the fact order-relation is transitive.
+\end{proof}
+\begin{lause}
+Compact spaces together with inclusions as morphisms form a category $\text{CAT}(\mathscr{C})$ corresponding to relation $R(\mathscr{C})$. 
+\end{lause}
+\begin{proof}
+The composition of two inclusions is inclusions. The identity morphism defined as $id:(X,A) \rightarrow (X,A)$ is clearly an inclusion. Also, the transitivity axiom is satisfied, because inclusions are functions. It is easy to see that there exists an inclusion between pairs $(X,A)$ and $(Y,B)$ only and only if $X \subset Y$ and $A \subset B$. Thus the category corresponds to relation.
+\end{proof}
+Every such inclusion $i:(X,A) \rightarrow (Y,B)$ induces homomorphism  $$i_{*}:\check{H}(X,A) \rightarrow \check{H}(Y,B)$$
+between the corresponding groups.
+\begin{maar}
+Let $(X,A)$ be a topological pair, then a directed system $cD_q(X,A)$ is defined in the following way: 
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+\item We define the spanning category $\lambda(X,A)$ to be subcategory of $\text{CAT}(\mathscr{C})$ consisting of all compact pairs $(U,V)$, for which $U \subset X$ and $V \subset A$ holds. 
+\item The functor $cD_q(X,A)$ maps every object and morphism to image of functor $\check{H}_q$ 
+\end{enumerate}
+
+\end{maar}
+Because $cD_q(X,A)$ is a directed system of abelian groups, the limit of it is well defined. Recall that the Lemma \ref{directedsystemlimitfunctor} states that the limit is functor in category of directed systems.
+\begin{maar}
+The \v{C}ech groups with compact carriers is defined as $$\bar{H}_q(X,A) = \lim cD_q(X,A) $$
+\end{maar}
+We aim to proof that the \v{C}ech groups with compact carriers can be extended to a functor. Thus we have to define induced homomorphisms. We do it in the following way:
+\begin{maar}
+Let  $f:(X,A) \rightarrow (Y,B)$ be a continuous function and let $$\phi:cD_q(X,A) \rightarrow cD_q(Y,B)$$ be functor, which maps a compact pair $(U,V)$ to pair $(F(U),F(V))$. This functor is well-defined, because $f$ is continuous and following from properties of the functions it is order-preserving. Define system $$\{f_\alpha:cD_q(X,A)(\alpha) \rightarrow cD_q(Y,B)(\phi(\alpha)) \mid \alpha \in \lambda(X,A)\} $$
+where every $f_{(U,V)} = f | (U,V)$. We say that the system described above is natural respect to function $f$.
+\end{maar}
+\begin{huom}
+From the lemma \ref{inclusionlemma} and fact that $\check{H}_q(X,A)$ is functor, it follows that every family of morphism $\{f_a:cD_q(X,A) \rightarrow cD_q(Y,B)\}$ is natural transformation.
+\end{huom}
+\begin{maar}
+We define $\bar{H}$ to be functor from category of topological pairs $\text{TOP}^2$ to category of abelian groups Ab, where every object $(X,A)$ is mapped to $\bar{H}(X,A)$ and every function $f$ to limit $\lim \{f_\alpha\}$ of natural directed system corresponding to $f$.
+\end{maar}
+The well-definedness of the functor defined above follows directly from the \mbox{theorem \ref{directedsystemlimitfunctor}.} The boundary homomorphism is defined in the following way:
+\begin{maar}
+Let $(X,A)$ be a topological pair and let $$\phi:cD_q(X,A) \rightarrow cD_{q-1}(A)$$ be a map which maps every $(U,V) \in cD_q(X,A)$ to $(V,\emptyset) \in cD_{q-1}(A,\emptyset) $. The functor is clearly order preserving. Define a directed system of morphisms as 
+$$\{\partial'_{(U,V)}:cD_q(X,A)(U,V) \rightarrow cD_q(A)(V) \}$$
+where every $\partial'_{(U,V)} $ is the corresponding natural transformation of \v{C}ech homology.
+\end{maar}
+\begin{lause}
+$\partial_q = \lim (\partial_q')$ forms a natural transformation between $\bar{H}_q(X,A)$ and $\bar{H}_{q-1}(A)$
+\end{lause}
+\begin{proof}
+Follows directly from the fact $\partial_q$ is natural transformation, applying functor $\lim$ to the diagram of transformations we obtain the claim.
+\end{proof}
+Proof of the other Eilenberg-Steenrod axioms is compressed in the following theorem:
+\begin{lause}
+\v{C}ech homology with compact carriers satisfied all of them Eilenberg-Steenrod axioms.
+\end{lause}
+\begin{proof}
+\begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
+	\item \textbf{Homotopy axiom:} Let $f,g:(X,A) \rightarrow (Y,B)$ be homotopic functions. Then $(f|(U,V))_{*} = (g|(U,V))_{*}$ for all the induced homomorphisms of \v{C}ech groups for all compact pairs $(U,V) \subset (X,A)$. Taking limit of the induced maps we obtain the claim.
+	\item \textbf{Excision axiom:} Let $(X,A)$ be a topological pair and let $U$ be subset of $X$, for which conditions of excision are satisfied. 	Let $(C,C')$ be arbitrary pair for which $C \subset X$ and $C' \subset A$ . From \v{C}ech homology theory, we know that 
+		$$\check{H}_n(i):\check{H}_n(C \setminus U,C' \setminus U) \rightarrow \check{H}_n(X,A)$$
+	is an isomorphism. Thus there exists an inverse to this $p_{(X,A)}$.
+
+\end{enumerate}
+\end{proof}
+If $(X,A)$ is a topological pair and $U$ subset of the space $X$ for which $\bar{U} \subset \mathring{A}$ holds, then the inclusion $(X \setminus U, A \setminus U) \subset (X,A)$ induces the following isomorphism for all $n$: $$H_n(i):H_n(X \setminus U,A \setminus U) \rightarrow H_n(X,A)$$
 \chapter{Applications}
+
+\section{Tools}
+
+\subsection{Lefschetz number}
+
 
 \section{Lefschetz fixed-point theorem}
 [Theory of this will be presented later]
@@ -2093,6 +2413,38 @@ Let $X$ and $Y$ be some sets and $f:X \rightarrow Y$ function between them. Let 
 \begin{proof}
 There exists some $x \in \bigcap_{i \in J}f^{-1}V_i$. The conditions $x \in f^{-1}V_i$ and $f(x) \in V_i$ hold for all $i \in J$. Thus $f(x) \in \bigcap_{i \in J}V_i $ and $\bigcap_{i \in J}V_i \neq \emptyset$.
 \end{proof}
+\begin{lem}\label{inclusionlemma}
+	Let $X$ and $Y$ be some sets and $f:X \rightarrow Y$ be a function between the sets  Let $A \subset X$ and $B \subset Y$. Then the following diagram commutes:
+		$$
+		\begin{tikzpicture}
+		
+		
+		
+		\node (w) at (0,0) {\(A\)};
+		
+		\node (x) at (0,-2) {\(X\)};
+		
+		\node (y) at (4,-2) {\(Y)\)};
+		
+		\node (z) at (4,0) {\(B\)};
+		
+		\node (f) at (2,-2.4){\(f\)};
+		
+		\node (g) at (2,-0.4){\(f|A\)};
+		
+		\node (s) at (0.4,-1) {\(i_A\)};
+		
+		\node (s2) at (4.4,-1) {\(i_B\)};	
+		
+		\draw[->] (z) -- (y);
+		\draw[->] (w) -- (x);
+		\draw[->] (x) -- (y);
+		\draw[->] (w) -- (z);
+		
+		
+		\end{tikzpicture}
+		$$
+\end{lem}
 \end{appendices}
 
 

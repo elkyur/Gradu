@@ -152,3 +152,8 @@ Let $(X,A)$ and $(Y,B)$ be pairs of geometric complexes and let $f$ be a continu
 \end{maar}
 
 Let $C_{*}$ be a chain complex of topological space $X$ with coefficients $G$. Then we define homomorphism $\text{Ind}_{(X,G)}$ to be special case of homomorphism $\text{In}_M$, where we choose $M$ to be the 0th element of the chain complex $C_0(X;G)$.
+
+\subsection{Preservation of isomorphism in limits}
+\begin{lause}
+Let $F:J \rightarrow C$ and $G:J' \rightarrow C$ be indexing functor, for which limits $\lim F$ and $\lim G$ exist. Assume that there exists a family of homomorphisms $$f_{\alpha}: $$
+\end{lause}
