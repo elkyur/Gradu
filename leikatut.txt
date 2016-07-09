@@ -153,7 +153,15 @@ Let $(X,A)$ and $(Y,B)$ be pairs of geometric complexes and let $f$ be a continu
 
 Let $C_{*}$ be a chain complex of topological space $X$ with coefficients $G$. Then we define homomorphism $\text{Ind}_{(X,G)}$ to be special case of homomorphism $\text{In}_M$, where we choose $M$ to be the 0th element of the chain complex $C_0(X;G)$.
 
-\subsection{Preservation of isomorphism in limits}
 \begin{lause}
-Let $F:J \rightarrow C$ and $G:J' \rightarrow C$ be indexing functor, for which limits $\lim F$ and $\lim G$ exist. Assume that there exists a family of homomorphisms $$f_{\alpha}: $$
+\textbf{Excision axiom} for \v{C}ech homology with compact carriers 
 \end{lause}
+\begin{proof}
+
+
+	 Let $(X,A)$ be a topological pair and let $U$ be subset of $X$, for which conditions of excision are satisfied. 	Let $(C,C')$ be arbitrary pair for which $C \subset X$ and $C' \subset A$ . From \v{C}ech homology theory, we know that 
+		$$\check{H}_n(i):\check{H}_n(C \setminus U,C' \setminus U) \rightarrow \check{H}_n(X,A)$$
+	is an isomorphism. Thus there exists an inverse to this $p_{(X,A)}$.
+
+
+\end{proof}
