@@ -946,6 +946,12 @@ Let $\lim I'$ be the limit of the inverse system $I'$. It is enough to show that
 
 \end{proof}
 
+%% *General approach:  
+
+
+
+%% *General approach
+
 \begin{lem}\label{inversesystemscofinalitymorphismlemma}
 Let $(I, \lambda)$ and $(I',\lambda')$ be inverse systems with property of having a limit and let $\phi: \lambda' \rightarrow \lambda$ be a functor. Let $f = \{f_\alpha\}_{a \in \lambda'}$ be an inverse system of morphisms corresponding to $\phi$ and let $\varsigma$ be cofinal subcategory of $\lambda'$, for which $\phi(\varsigma)$ is cofinal in $\lambda$. Then limit morphism $\lim f'$ of $\{f_a\}_{a \in \varsigma}$ forms a following commutable diagram: 
 	$$ 	\begin{tikzpicture}
@@ -2012,6 +2018,7 @@ Unlike \v{C}ech homology, the cohomology satisfies the Exactness axiom.
 
 \section{\v{C}ech homology with compact carriers}
 Because the \v{C}ech homology does not satisfy the exactness axiom for all spaces, we will present a modication of the theory using compact carriers. In this section we assume that the coefficent group $G$ has vector space structure. The idea of the construction is to use a directed system of compact pairs, where every pair is mapped to the corresponding \v{C}ech homology group and use limit functor to define the groups. Recall that the \v{C}ech homology functor satisfies all of the Eilenberg-Steenrod axioms for compact pairs with coefficents in vector spaces. We will show that the limit functor preserves all the properties and thus it will be shown the functor with compact carriers is a homology theory.
+\subsection{Functorial properties}
 \begin{lem}\label{compactspacesrelation}
 Let $\mathscr{C}$ be collection of all compact spaces. Then relation induced by $$ (X,A) \leq (Y,B) \Leftrightarrow X \subset Y \text{ and } A \subset B $$
 is quasi-order. We denote the relation simply as $R(\mathscr{C})$
@@ -2027,7 +2034,7 @@ The composition of two inclusions is inclusions. The identity morphism defined a
 \end{proof}
 Every such inclusion $i:(X,A) \rightarrow (Y,B)$ induces homomorphism  $$i_{*}:\check{H}(X,A) \rightarrow \check{H}(Y,B)$$
 between the corresponding groups.
-\begin{maar}
+\begin{maar}\label{definitioncompactcarriersystem}
 Let $(X,A)$ be a topological pair, then a directed system $cD_q(X,A)$ is defined in the following way: 
 \begin{enumerate}[label=(\arabic*),ref=(\arabic*)]
 \item We define the spanning category $\lambda(X,A)$ to be subcategory of $\text{CAT}(\mathscr{C})$ consisting of all compact pairs $(U,V)$, for which $U \subset X$ and $V \subset A$ holds. 
@@ -2050,7 +2057,19 @@ From the lemma \ref{inclusionlemma} and fact that $\check{H}_q(X,A)$ is functor,
 \begin{maar}
 We define $\bar{H}$ to be functor from category of topological pairs $\text{TOP}^2$ to category of abelian groups Ab, where every object $(X,A)$ is mapped to $\bar{H}(X,A)$ and every function $f$ to limit $\lim \{f_\alpha\}$ of natural directed system corresponding to $f$.
 \end{maar}
-The well-definedness of the functor defined above follows directly from the \mbox{theorem \ref{directedsystemlimitfunctor}.} The boundary homomorphism is defined in the following way:
+The well-definedness of the functor defined above follows directly from the \mbox{theorem \ref{directedsystemlimitfunctor}.} 
+\subsection{Boundary homomorphism and exactness}
+To define an exact sequence we need the following two systems
+\begin{maar}
+Let $(X,A)$ be a topological pair and let $\lambda(X,A)$ be as in the \mbox{definition \ref{definitioncompactcarriersystem}}. Let $sT:\lambda(X,A) \rightarrow \lambda(A,\emptyset)$ be a functor which maps every compact pair $(K,K')$ to pair $(K',\emptyset)$. Then we define the system $sD_q(X,A)$ as a system for which we use $cD_q(A)$ as the functor and which is spanned by elements $sT \circ \lambda(X,A)$.
+\end{maar}
+Similarly for system over first parameter we define
+\begin{maar}
+Let $(X,A)$ be a topological pair. Let $fT:\lambda(X,A) \rightarrow \lambda(X,\emptyset)$ be a functor which maps every compact pair $(K,K')$ to pair $(K,\emptyset)$. Then we define the system $fD(X,A)$ as a system for which we use $cD_q(X)$ as the functor and which is spanned by elements $fT \circ \lambda(X,A)$.
+\end{maar}
+\begin{lem}
+Let $ $
+\end{lem}
 \begin{maar}
 Let $(X,A)$ be a topological pair and let $$\phi:cD_q(X,A) \rightarrow cD_{q-1}(A)$$ be a map which maps every $(U,V) \in cD_q(X,A)$ to $(V,\emptyset) \in cD_{q-1}(A,\emptyset) $. The functor is clearly order preserving. Define a directed system of morphisms as 
 $$\{\partial'_{(U,V)}:cD_q(X,A)(U,V) \rightarrow cD_q(A)(V) \}$$
@@ -2063,12 +2082,6 @@ $\partial_q = \lim (\partial_q')$ forms a natural transformation between $\bar{H
 Follows directly from the fact $\partial_q$ is natural transformation, applying functor $\lim$ to the diagram of transformations we obtain the claim.
 \end{proof}
 
-\begin{lause}
-\textbf{Homotopy axiom} for {C}ech homology with compact carriers  
-\end{lause}
-\begin{proof}
-Let $f,g:(X,A) \rightarrow (Y,B)$ be homotopic functions. Then $(f|(U,V))_{*} = (g|(U,V))_{*}$ for all the induced homomorphisms of \v{C}ech groups for all compact pairs $(U,V) \subset (X,A)$. Taking limit of the induced maps we obtain the claim.
-\end{proof}
 \begin{lause}
 	\textbf{Exactness} for {C}ech homology with compact carriers  
 \end{lause}
@@ -2104,6 +2117,14 @@ $$
 \end{tikzpicture}
 $$
 The idea is to apply theorem $\ref{exactnesspres}$ to every connected triple in the sequence. $()$
+\end{proof}
+\subsection{Other properties}
+
+\begin{lause}
+\textbf{Homotopy axiom} for {C}ech homology with compact carriers  
+\end{lause}
+\begin{proof}
+Let $f,g:(X,A) \rightarrow (Y,B)$ be homotopic functions. Then $(f|(U,V))_{*} = (g|(U,V))_{*}$ for all the induced homomorphisms of \v{C}ech groups for all compact pairs $(U,V) \subset (X,A)$. Taking limit of the induced maps we obtain the claim.
 \end{proof}
 
 \chapter{Applications}
