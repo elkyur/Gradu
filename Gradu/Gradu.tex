@@ -445,16 +445,46 @@ We proved that limit can be defined for the systems of $R$-modules. The correspo
 
 \subsection{Morphisms between systems}\label{limitmorphism}
 
-To be able to define morphisms between \v{C}ech homology and cohomology groups we need the concept of a limit homomorphism. In this section we will define the limit morphism between systems and investigate properties of it. Concepts used in this chapter can be presented in a more general way. However, for our use it is enough to restrict ourselves to the direct and inverse system.
+To be able to define morphisms between \v{C}ech homology and cohomology groups we need the concept of a limit homomorphism. In this section we will define the limit morphism between systems and investigate properties of it. Concepts used in this chapter can be presented in a more general way. However, for our use it is enough to restrict ourselves to the direct and inverse system. Unless otherwise stated, in this section we assume that all the systems are such that the limit exists for them.
 \begin{maar}
 	Let $C$ and $D$ be categories with order relation. A functor $\phi:C \rightarrow D$ is order preserving if for every pair $a \leq b$ in the category $C$, the condition $\phi(a) \leq \phi(b)$ is satisfied.
 \end{maar}
-Let $I$ be an inverse system and $\phi: \lambda' \rightarrow \lambda$ an order preserving functor. Then the inverse system $(I \phi, \lambda' )$ consist of objects $\{I(\phi(a)) \mid a \in \ob(\lambda')\}$ and morphisms $\{I^{\phi(b)}_{\phi(a)}\mid a \leq b \}$. For directed systems we define the system $(D \phi, \lambda' )$ respectively.
+     
+\begin{maar}
+    Let $C$ and $D$ be categories with order relation. A functor $\phi:C \rightarrow D$ is backward compatible, if for every pair $a \leq b$ in the category $D$, there exists $a' \leq b'$ for which $\phi(a') = a$ and $\phi(b') = b$ holds.
+\end{maar}
+Let $I$ be an inverse system and $\phi: \lambda' \rightarrow \lambda$ an order preserving functor. Then the inverse system $(I \phi, \lambda' )$ consist of objects $\{I(\phi(a)) \mid a \in \ob(\lambda')\}$ and morphisms $\{I^{\phi(b)}_{\phi(a)}\mid a \leq b \}$. For directed systems we define the system $(D \phi, \lambda' )$ respectively. The next definition is a general statement for both directed and inverse systems.
+
+\begin{maar}
+	Let $(S,\lambda)$ and $(S',\lambda')$ be systems and let $\phi:\lambda' \rightarrow \lambda$ be an order preserving functor. Let $ \{f_a:S(\phi(a)) \rightarrow S'(a) \mid a \in \lambda\}$ be a natural transformation between $S\phi$ and $S'$. Then we say that $\{f_a\}_{a \in \lambda}$ is an inverse system of morphisms corresponding to the functor $\phi$ from the system $S$ into the system $S'$.
+\end{maar}
+Respectively we have following definition of directed system of the morphisms.
+\begin{maar}
+	Let $(S,\lambda)$ and $(S',\lambda')$ be systems and let $\phi:\lambda \rightarrow \lambda'$ be an order preserving functor. Let $ \{f_a:S(a) \rightarrow S'(\phi(a)) \mid a \in \lambda\}$ be a natural transformation between $I$ and $I'\phi$. Then we say that $\{f_a\}_{a \in \lambda}$ is a directed system of morphisms corresponding to the functor $\phi$ from the system $S$ into the system $S'$.
+\end{maar}
+We will next give definition of limit morphism. We denote the morphisms of both limits and colimits as $\rho_a$ for every $a$ in the category which spans the limit.
+\begin{maar}
+Let $f$ be a system of morphisms between systems $(S,\lambda)$ and $(S', \lambda')$. Let $\lim f: \lim S \rightarrow S'$ be a morphism, then it is a limit morphism if the corresponding condition in the table is satisfied:
+
+\begin{tabular}{ l | c r }
+& \text{directed system} & \text{inverse system} \\ \hline
+\text{directed system of morphisms} & $\lim f \circ \rho_{a} = \rho_{\phi(a)} \circ f_a$ &$\rho_{a} \circ \lim f = f_a \circ \rho_{\phi(a)}$ \\
+\text{inverse system of morphisms} & $\lim f \circ \rho_{\phi(a)} = \rho_{a} \circ f_a$ & $\rho_{\phi(a)} \circ \lim f = f_a \circ \rho_{a}$ \\
+\end{tabular}
+ 
+\end{maar}
+
+It is not clear from the definitions that there exists an unique morphism. However, in the most practical one can find a unique limit homomorphism. The statements of theorems regarding existence of limit morphism can be compressed in the following table. Assume that the systems are such for which limit exists. Then the following assumptions guarantee existence of limit of morphisms.
+$$
+\begin{tabular}{ l | c r }
+& \text{directed system} & \text{inverse system} \\ \hline
+\text{directed system of morphisms} & \text{always exists unique} & \text{cofinality required} \\
+\text{inverse system of morphisms} & \text{cofinality required} & \text{always exists unique} \\
+\end{tabular}
+$$
 
 \subsubsection{Morphisms between inverse systems}
-\begin{maar}
-Let $(I,\lambda)$ and $(I',\lambda')$ be inverse systems and $\phi:\lambda' \rightarrow \lambda$ an order preserving functor. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \lambda\}$ be a natural transformation between $I\phi$ and $I'$. Then we say that $\{f_a\}_{a \in \lambda}$ is an inverse system of morphisms corresponding to the functor $\phi$ from the system $I$ into the system $I'$.
-\end{maar}
+
 We denote all such transformations between systems $(I,\lambda)$ and $(I',\lambda')$ as $\text{Transf}(I,I')$. We will show that inverse systems together with the transformations form a category
 \begin{lem}\label{inversesystemstransformationlemma}
 Let $(I, \lambda)$, $(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems and let $\phi:\lambda' \rightarrow \lambda$ and $\phi':\lambda'' \rightarrow \lambda'$ functors between systems. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \phi'(\lambda'')\}$ and $ \{g_a:I'(\phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$ be inverse systems of morphisms corresponding to $\phi$ and $\phi'$. Then
@@ -511,23 +541,18 @@ Inverse systems over category $C$ together with inverse systems of morphisms for
 \begin{proof}
 The composition of two such transformation is a transformation by Lemma \ref{inversesystemstransformationlemma}. For every inverse system, the identity morphism is defined as transformation ${\text{id}_a: I(a) \rightarrow I(a)}$ corresponding to a functor $\phi$ which maps every elements to itself.
 \end{proof}
- In the next theorem we will prove that it is possible to define the limit of morphisms between systems in a unique way. We recall that existence of limit implies that for every objects of a category $I$ there exists unique functor $u_{I,a}:\lim I \rightarrow I(a)$.
+ In the next theorem we will prove that it is possible to define the limit of morphisms between systems in a unique way. We recall that existence of limit implies that for every objects of a category $I$ there exists a morphism $\rho_{a}:\lim I \rightarrow I(a)$, for which the triangle condition is satisfied.
 
 \begin{lem}\label{inversemorphismexistence}
-Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems for which limit exists. Let $\{f_a\}$ be inverse system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the condition $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for every $a \in \lambda'$ .
+Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems. Let $\{f_a\}$ be inverse system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the condition $\rho_{\phi(a)} \circ \lim f = f_a \circ \rho_{a}$ holds for every $a \in \lambda'$ .
 \end{lem}
 \begin{proof}
 Consider the following diagram
 \begin{diagram}\label{morphismbetweenlimits}
 	\begin{tikzpicture}
 	
-	\node (w) at (2,0,0) {\(I(\phi(n))\)};
-	
-	\node (x2) at (0.7,-0.7,0) {\(\omega_{\phi(a)}\)};
 	
 	\node (x) at (0,-2,0) {\(I(\phi(a))\)};
-	
-	\node (y2) at (3.3,-0.7,0) {\(\omega_{\phi(b)}\)};
 	
 	\node (y) at (4,-2,0) {\(I(\phi(b))\)};
 	
@@ -538,43 +563,32 @@ Consider the following diagram
 	\node (phid) at (1.4,-1.6,0){\(\rho_{\phi(a)}\)};
 	\node (phid2) at (2.6,-1.6,0){\(\rho_{\phi(b)}\)};
 	
-	\node (w2) at (2,0,-7) {\(I'(n)\)};
+	\node (x2) at (0,-2,-5) {\(I'(a)\)};
 	
-	\node (x22) at (0.7,-0.7,-7) {\(\omega'_a\)};
+	\node (y2) at (4,-2,-5) {\(I'(b)\)};
 	
-	\node (x2) at (0,-2,-7) {\(I'(a)\)};
+	\node (f2) at (2,-2.4,-5){\(I'^{a}_{b}\)};
 	
-	\node (y22) at (3.3,-0.7,-7) {\(\omega'_b\)};
+	\node (d2) at (2,-1,-5){\(\lim I'\)};
 	
-	\node (y2) at (4,-2,-7) {\(I'(b)\)};
+	\node (phid2) at (1.4,-1.6,-5){\(\rho'_a\)};
+	\node (phid22) at (2.6,-1.6,-5){\(\rho'_b\)};
 	
-	\node (f2) at (2,-2.4,-7){\(I'^{a}_{b}\)};
-	
-	\node (d2) at (2,-1,-7){\(\lim I'\)};
-	
-	\node (phid2) at (1.4,-1.6,-7){\(\rho'_a\)};
-	\node (phid22) at (2.6,-1.6,-7){\(\rho'_b\)};
-	
-	\draw[->] (w) -- (y);
-	\draw[->] (w) -- (x);
+
 	\draw[->] (x) -- (y);
-	\draw[->] (w) -- (d);
 	\draw[->] (d) -- (x);
 	\draw[->] (d) -- (y);
 	
-	\draw[->] (w2) -- (y2);
-	\draw[->] (w2) -- (x2);
+
 	\draw[->] (x2) -- (y2);
-	\draw[->] (w2) -- (d2);
 	\draw[->] (d2) -- (x2);
 	\draw[->] (d2) -- (y2);
 	
-	\draw[->] (w) |- (w2);
 	\draw[->] (x) |- (x2);
 	\draw[->] (y) -| (y2);
 	
 	
-	\draw[dashed][->](d) -- (d2);
+	\draw[dashed][->](d) -| (d2);
 	
 	
 	\end{tikzpicture}
@@ -613,52 +627,109 @@ $$
 
 \end{tikzpicture}
 $$
-Then by definition of limit there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the diagram commutes. We will prove now that the universal property $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for this morphism. By diagram \ref{morphismbetweenlimits} and the fact that the family of functions $\{f_a\}$ is a natural transformation, the following diagram commutes:
-$$
-\begin{tikzpicture}
-
-\node (w) at (2,0) {\(I(\phi(n))\)};
-
-\node (x2) at (0.5,-0.7) {\(f_a \omega_{\phi(a)}\)};
-
-\node (x) at (0,-2) {\(I'(a)\)};
-
-\node (y2) at (3.5,-0.7) {\(f_b \omega_{\phi(b)}\)};
-
-\node (y) at (4,-2) {\(I'(b)\)};
-
-\node (f) at (2,-2.4){\(I'^{a}_{b}\)};
-
-\node (d) at (2,-1){\(\lim I'\)};
-
-\node (phid) at (1.4,-1.6){\(\rho'_a\)};
-\node (phid2) at (2.6,-1.6){\(\rho'_b\)};
-
-
-\draw[->] (w) -- (y);
-\draw[->] (w) -- (x);
-\draw[->] (x) -- (y);
-\draw[dashed][->] (w) -- (d);
-\draw[->] (d) -- (x);
-\draw[->] (d) -- (y);
-
-
-\end{tikzpicture}
-$$
-Both maps $\lim f \circ u_{I, \phi(a)}$ and $u_{I',a} \circ f_a$ complete the diagram. Thus by uniqueness of the map corresponding to limit, we can conclude that the functions are same.
-
+Then by definition of limit there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the diagram commutes. 
 \end{proof}
+\begin{lem}\label{inversemorphismexistencedirected}
+	Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems. Let $\{f_a:I(a) \rightarrow I(\phi(a))\}$ be a directed system of morphisms corresponding to a functor $\phi:\lambda \rightarrow \lambda'$ and let $R = \lim (I',\phi(\lambda))$. Then there exists a morphism $\lim f:\lim (I,\lambda) \rightarrow R$ for which the condition $\lim f \circ u_{I, a} = u_{I',\phi(a)} \circ f_a$ holds for every $a \in \lambda'$ .
+\end{lem}
+\begin{proof}
+	Let $a'$ and $b'$ be an arbitrary elements for which condition $a' \leq b'$ holds. By assumption there exists $a \leq b$, for which $\phi(a) = a'$ and $\phi(b) = b'$.
+	\begin{diagram}\label{morphismbetweenlimitsdirected}
+		\begin{tikzpicture}
+		
+		
 
+		
+		\node (x) at (0,-2,0) {\(I(a)\)};
+	
+		
+		\node (y) at (4,-2,0) {\(I(b)\)};
+		
+		\node (f) at (2,-2.4,0){\(I^{a}_{b}\)};
+		
+		\node (d) at (2,-1,0){\(\lim I\)};
+		
+		\node (phid) at (1.4,-1.6,0){\(\rho_{a}\)};
+		\node (phid2) at (2.6,-1.6,0){\(\rho_{b}\)};
+		
+		
+		\node (x2) at (0,-2,-5) {\(I'(a')\)};
+		
+		\node (y2) at (4,-2,-5) {\(I'(b')\)};
+		
+		\node (f2) at (2,-2.4,-5){\(I'^{a'}_{b'}\)};
+		
+		\node (d2) at (2,-1,-5){\(R\)};
+		
+		\node (phid2) at (1.4,-1.6,-5){\(\rho'_{a'}\)};
+		\node (phid22) at (2.6,-1.6,-5){\(\rho'_{b'}\)};
+		
+
+		\draw[->] (x) -- (y);
+		\draw[->] (d) -- (x);
+		\draw[->] (d) -- (y);
+	
+		\draw[->] (x2) -- (y2);
+
+		\draw[->] (d2) -- (x2);
+		\draw[->] (d2) -- (y2);
+		
+
+		\draw[->] (x) |- (x2);
+		\draw[->] (y) -| (y2);
+		
+		
+		\draw[dashed][->](d) -| (d2);
+		
+		
+		\end{tikzpicture}
+	\end{diagram}
+	
+	To prove that the limit morphism exists we form the following triangle out of the diagram described above:
+	
+	$$
+	\begin{tikzpicture}
+	
+	\node (w) at (2,0) {\(\lim I\)};
+	
+	\node (x2) at (0.5,-0.7) {\(f_{a} \rho_{a}\)};
+	
+	\node (x) at (0,-2) {\(I'(a')\)};
+	
+	\node (y2) at (3.5,-0.7) {\(f_{b} \rho_{b}\)};
+	
+	\node (y) at (4,-2) {\(I'(b')\)};
+	
+	\node (f) at (2,-2.4){\(I'^{a'}_{b'}\)};
+	
+	\node (d) at (2,-1){\(\lim R\)};
+	
+	\node (phid) at (1.4,-1.6){\(\rho'_{a'}\)};
+	\node (phid2) at (2.6,-1.6){\(\rho'_{b'}\)};
+	
+	
+	\draw[->] (w) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[dashed][->] (w) -- (d);
+	\draw[->] (d) -- (x);
+	\draw[->] (d) -- (y);
+	
+	
+	\end{tikzpicture}
+	$$
+Now from properties of limit we can conclude that there exists a unique $\lim f:\lim I \rightarrow R$.
+\end{proof}
 \begin{lem}\label{limitofidentityisidentity}
 Let $(I,\lambda)$ be an inverse system with property of having a limit and let $\phi: \lambda \rightarrow \lambda$ be a functor which maps every object to itself. Let $h = \{id_a\}$ be an inverse system of morphisms corresponding to the functor $\phi$. Then $\lim h$ is an identity morphism.
 \end{lem}
 \begin{proof}
 Let $a \in \lambda$ be an arbitrary element and $u_a:I(a) \rightarrow \lim I$ be the universal morphism corresponding to it. Then clearly $\text{id}_{\lim I} \circ u_a = u_a \circ \text{id}_a$ holds and thus by uniqueness property the limiting morphism is $\text{id}_{\lim I}$.
 \end{proof}
-For composition of two limits we have following result:
+For composition of limits we have the following results:
 
 \begin{lem}\label{compositionlimitmorphism}
-Let $(I, \lambda)$, $(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems with limits and let $\phi:\lambda' \rightarrow \lambda$ and $\phi':\lambda'' \rightarrow \lambda'$ functors between systems. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \phi'(\lambda'')\}$ and $ \{g_a:I'(\phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$ be families of morphisms corresponding to $\phi$ and $\phi'$. Let $\lim(f \circ g):I \rightarrow I''$ be the limit of the family $\{g_af_{\phi(a)}:I(\phi \phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$.  Then $\lim(f \circ g) = \lim f \circ \lim g $ holds.
+Let $(I, \lambda)$, $(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems and let $\phi:\lambda' \rightarrow \lambda$ and $\phi':\lambda'' \rightarrow \lambda'$ be functors between systems. Let $ \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \phi'(\lambda'')\}$ and $ \{g_a:I'(\phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$ be families of morphisms corresponding to $\phi$ and $\phi'$. Let $\lim(f \circ g):I \rightarrow I''$ be the limit of the family $\{g_af_{\phi(a)}:I(\phi \phi'(a)) \rightarrow I''(a) \mid a \in \lambda''\}$.  Then $\lim(f \circ g) = \lim f \circ \lim g $ holds.
 \end{lem}
 \begin{proof}
 To prove this we will use previous lemma and following commutative diagram:
@@ -687,28 +758,32 @@ To prove this we will use previous lemma and following commutative diagram:
 	
 	\node (g2) at (6,-0.4){\(g_{a}\)};
 	
-	\node (s) at (0.6,-1) {\(u_{I,\phi \phi'a}\)};
+	\node (s) at (0.6,-1) {\(\rho_{I,\phi \phi'a}\)};
 	
-	\node (s2) at (4.6,-1) {\(u_{I', \phi'a}\)};	
+	\node (s2) at (4.6,-1) {\(\rho_{I', \phi'a}\)};	
 	
-	\node (s3) at (8.6,-1) {\(u_{I'', a}\)};	
+	\node (s3) at (8.6,-1) {\(\rho_{I'', a}\)};	
 	
-	\draw[->] (z) -- (y);
-	\draw[->] (w) -- (x);
+	\draw[<-] (z) -- (y);
+	\draw[<-] (w) -- (x);
 	\draw[dashed][->] (x) -- (y);
 	\draw[->] (w) -- (z);
 	\draw[dashed][->] (y) -- (p2);
-	\draw[->] (p) -- (p2);
+	\draw[<-] (p) -- (p2);
 	\draw[->] (z) -- (p);
 	
 	
 	\end{tikzpicture}
 	$$
-	By definition of limit morphism the condition $\lim (f \circ g) \circ u_{I, \phi(\phi'(a))} = u_{I'',a} \circ (g_a \circ f_{\phi(a)})$ holds for the limit of the composition. By uniqueness of the limit homomorphism it is enough to show that the composition of two limit functors satisfies the condition. This follows from the following equations:
-	$$\lim g \circ \lim f \circ u_{I, \phi(\phi'(a))} = \lim g  \circ u_{I', \phi'(a)} \circ f_{\phi'(a)} = u_{I'',a} \circ g_a \circ f_{\phi'(a)} $$
+	By definition of limit morphism the condition $\rho_{I'',a} \circ \lim (g \circ f) =  (g_a \circ f_{\phi(a)}) \circ \rho_{I, \phi(\phi'(a))}$ holds for the limit of the composition. By uniqueness of the limit homomorphism it is enough to show that the composition of two limit functors satisfies the condition. This follows from the following equations:
+	$$\rho_{I'',a}  \circ \lim g \circ \lim f = \lim g  \circ \rho_{I', \phi'(a)} \circ f_{\phi'(a)} =  g_a \circ f_{\phi'(a)} \circ \rho_{I, \phi(\phi'(a))}$$
 	
 
 \end{proof}
+
+\begin{lem}
+T‰h‰n paikalle tulee ylemp‰‰ lemmaa vastaava juttu 
+\end{lem}
 
 \begin{lem}\label{isomorphismlimitmorphisminversesystem}
 Let $(I,\lambda)$ and $(I, \lambda')$ be inverse systems with property of having a limit and let $\phi:\lambda' \rightarrow \lambda$ be an order preserving injective functor. Let $f = \{f_a\}_{a \in \lambda'}$ be a family of morphisms between the systems corresponding to the functor $\phi$. Assume that every $f_a$ in the collection is an isomorphism, then $\lim \{f_a\}$ is an isomorphism.
@@ -740,9 +815,7 @@ is a well defined module homomorphism between the limit modules.
 We have to show that the image is in the subgroup $$L = \{x \in \prod_{i \in \lambda'} I'(i) \mid x_a = I^b_ax_b \text{ for all } a \leq b \}.$$ Let $b$ be some index, then: $I'^{b}_{a}x'_b = I'^{b}_{a}f_b(x_{\phi(b)}) = f_bI'^{\phi(b)}_{\phi(a)}(x_{\phi(b)}) = f_ax_{\phi(a)} = x'_a$ . In this equation we used the property which says that the morphisms define a natural transformation.
 \end{proof}
 \subsubsection{Morphisms between directed systems}
-\begin{maar}
-	Let $(D,\lambda)$ and $(D',\lambda')$ be directed systems and $\phi:\lambda \rightarrow \lambda'$ an order preserving functor. Let $ \{f_a:I(a) \rightarrow I'(\phi(a)) \mid a \in \lambda\}$ be a natural transformation between $I$ and $I'\phi$. Then we say that $\{f_a\}_{a \in \lambda}$ is a directed system of morphisms corresponding to the functor $\phi$ from the system $D$ into the system $D'$.
-\end{maar}
+
 The proof of all the following theorems can be obtained by using the method of dualization described in the definition \ref{dualdefinition} on the proof of Lemma \ref{inversemorphismexistence} and Lemma \ref{compositionlimitmorphism} respectively.
 \begin{lause}\label{Directsystemsformacategory}
 	Direct systems over category $C$ together with directed system of morphism form a category.
@@ -860,6 +933,7 @@ Like in the case of Inverse system, it will be shown that the limit operator is 
 \begin{lause}\label{directedsystemlimitfunctor}
 	Let $D(C)$ be a category of directed systems over category $C$. Assume that limit exists for every object in $D(C)$ and we have equated all the isomorphic objects in the category $C$. Then the operator $\lim$ is a functor from category of directed systems to the image category of the corresponding systems. 
 \end{lause}
+
 
 \subsection{Finality properties of subsystems}
 Final and cofinal functors can be defined in a more general way [\ref{categorytheory}]. However, because we are mainly interested in properties of systems, in this section we will investigate the properties of those specific functors only in that special case. In the case of general categories, cofinality includes a concept of connectedness defined in [\ref{categorytheory}] page 217. In our definition we will use a stronger version of that concept.
@@ -1478,7 +1552,7 @@ Lemma \ref{preimageorder} states that $f^{-1}\beta$ is refinement of $f^{-1}\alp
 \end{proof}
 
 
-\chapter{\v{C}ech constructions}
+%%\chapter{\v{C}ech constructions}
 
 \section{\v{C}ech homology}
 In this section we will give construction of \v{C}ech homology. It will be shown that \v{C}ech homology satisfies almost all the Eilenberg-Steenrod axioms. We will show that the \v{C}ech homology is a functor in details and provide a reference for the proofs of all the other axioms.

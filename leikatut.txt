@@ -165,3 +165,140 @@ Let $C_{*}$ be a chain complex of topological space $X$ with coefficients $G$. T
 
 
 \end{proof}
+
+
+\begin{lem}\label{inversemorphismexistence}
+Let  $(I,\lambda)$ and $(I',\lambda')$ be inverse systems for which limit exists. Let $\{f_a\}$ be inverse system of morphisms corresponding to that pair. Then there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the condition $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for every $a \in \lambda'$ .
+\end{lem}
+\begin{proof}
+\textbf{Existence:} Consider the following diagram
+\begin{diagram}\label{morphismbetweenlimits}
+	\begin{tikzpicture}
+	
+	\node (w) at (2,0,0) {\(I(\phi(n))\)};
+	
+	\node (x2) at (0.7,-0.7,0) {\(I^{\phi(n)}_{\phi(a)}\)};
+	
+	\node (x) at (0,-2,0) {\(I(\phi(a))\)};
+	
+	\node (y2) at (3.3,-0.7,0) {\(I^{\phi(n)}_{\phi(b)}\)};
+	
+	\node (y) at (4,-2,0) {\(I(\phi(b))\)};
+	
+	\node (f) at (2,-2.4,0){\(I^{\phi(a)}_{\phi(b)}\)};
+	
+	\node (d) at (2,-1,0){\(\lim I\)};
+	
+	\node (phid) at (1.4,-1.6,0){\(\rho_{\phi(a)}\)};
+	\node (phid2) at (2.6,-1.6,0){\(\rho_{\phi(b)}\)};
+	
+	\node (w2) at (2,0,-7) {\(I'(n)\)};
+	
+	\node (x22) at (0.7,-0.7,-7) {\(I'^{n}_{a}\)};
+	
+	\node (x2) at (0,-2,-7) {\(I'(a)\)};
+	
+	\node (y22) at (3.3,-0.7,-7) {\(I'^{n}_{b}\)};
+	
+	\node (y2) at (4,-2,-7) {\(I'(b)\)};
+	
+	\node (f2) at (2,-2.4,-7){\(I'^{a}_{b}\)};
+	
+	\node (d2) at (2,-1,-7){\(\lim I'\)};
+	
+	\node (phid2) at (1.4,-1.6,-7){\(\rho'_a\)};
+	\node (phid22) at (2.6,-1.6,-7){\(\rho'_b\)};
+	
+	\draw[->] (w) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[->] (x) -- (y);
+	\draw[->] (w) -- (d);
+	\draw[->] (d) -- (x);
+	\draw[->] (d) -- (y);
+	
+	\draw[->] (w2) -- (y2);
+	\draw[->] (w2) -- (x2);
+	\draw[->] (x2) -- (y2);
+	\draw[->] (w2) -- (d2);
+	\draw[->] (d2) -- (x2);
+	\draw[->] (d2) -- (y2);
+	
+	\draw[->] (w) |- (w2);
+	\draw[->] (x) |- (x2);
+	\draw[->] (y) -| (y2);
+	
+	
+	\draw[dashed][->](d) -- (d2);
+	
+	
+	\end{tikzpicture}
+\end{diagram}
+
+To prove that the limit morphism exists we form the following triangle out of the diagram described above:
+
+$$
+\begin{tikzpicture}
+
+\node (w) at (2,0) {\(\lim I\)};
+
+\node (x2) at (0.5,-0.7) {\(f_a \rho_{\phi(a)}\)};
+
+\node (x) at (0,-2) {\(I'(a)\)};
+
+\node (y2) at (3.5,-0.7) {\(f_b \rho_{\phi(b)}\)};
+
+\node (y) at (4,-2) {\(I'(b)\)};
+
+\node (f) at (2,-2.4){\(I'^{a}_{b}\)};
+
+\node (d) at (2,-1){\(\lim I'\)};
+
+\node (phid) at (1.4,-1.6){\(\rho'_a\)};
+\node (phid2) at (2.6,-1.6){\(\rho'_b\)};
+
+
+\draw[->] (w) -- (y);
+\draw[->] (w) -- (x);
+\draw[->] (x) -- (y);
+\draw[dashed][->] (w) -- (d);
+\draw[->] (d) -- (x);
+\draw[->] (d) -- (y);
+
+
+\end{tikzpicture}
+$$
+Then by definition of limit there exists a unique morphism $\lim f:\lim I \rightarrow \lim I'$ for which the diagram commutes. We will prove now that the universal property $\lim f \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ holds for this morphism. By diagram \ref{morphismbetweenlimits} and the fact that the family of functions $\{f_a\}$ is a natural transformation, the following diagram commutes:
+$$
+\begin{tikzpicture}
+
+\node (w) at (2,0) {\(I(\phi(n))\)};
+
+\node (x2) at (0.5,-0.7) {\(f_a \omega_{\phi(a)}\)};
+
+\node (x) at (0,-2) {\(I'(a)\)};
+
+\node (y2) at (3.5,-0.7) {\(f_b \omega_{\phi(b)}\)};
+
+\node (y) at (4,-2) {\(I'(b)\)};
+
+\node (f) at (2,-2.4){\(I'^{a}_{b}\)};
+
+\node (d) at (2,-1){\(\lim I'\)};
+
+\node (phid) at (1.4,-1.6){\(\rho'_a\)};
+\node (phid2) at (2.6,-1.6){\(\rho'_b\)};
+
+
+\draw[->] (w) -- (y);
+\draw[->] (w) -- (x);
+\draw[->] (x) -- (y);
+\draw[dashed][->] (w) -- (d);
+\draw[->] (d) -- (x);
+\draw[->] (d) -- (y);
+
+
+\end{tikzpicture}
+$$
+Both maps $\lim f \circ u_{I, \phi(a)}$ and $u_{I',a} \circ f_a$ complete the diagram. Thus by uniqueness of the map corresponding to limit, we can conclude that the functions are same. \newline
+\textbf{Uniqueness:} Assume that there exists another morphism $g: \lim I \rightarrow \lim I'$, for which $g \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ for all $a \in \lambda'$. 
+\end{proof}
