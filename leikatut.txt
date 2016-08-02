@@ -302,3 +302,7 @@ $$
 Both maps $\lim f \circ u_{I, \phi(a)}$ and $u_{I',a} \circ f_a$ complete the diagram. Thus by uniqueness of the map corresponding to limit, we can conclude that the functions are same. \newline
 \textbf{Uniqueness:} Assume that there exists another morphism $g: \lim I \rightarrow \lim I'$, for which $g \circ u_{I, \phi(a)} = u_{I',a} \circ f_a$ for all $a \in \lambda'$. 
 \end{proof}
+
+
+By assumption for every $f_a$ there exists a morphism $g_{\phi(a)}$, for which $f_a \circ g_{\phi(a)} = \text{id}_{\phi(a)}$ and $g_{\phi(a)} \circ f_a = \text{id}_{a}$. Because $\phi$ is injective, we can now define $\psi:\phi(\lambda) \rightarrow \lambda'$ in such way that it maps $\phi(a)$ to $a$. Now collection $g = \{g_{\phi(a)}\}_{a \in \lambda'}$ forms an inverse system of morphisms, which corresponds to $\psi$. Applying Lemma \ref{compositionlimitmorphism} and Lemma \ref{limitofidentityisidentity} we obtain the following equations: $$\lim f \circ \lim g = \lim (f \circ g) = \lim(\text{id}) = \text{id} \text{ and similarly } \lim g \circ \lim f = \text{id}$$
+Thus $\lim f$ is an isomorphism with inverse $\lim g$.

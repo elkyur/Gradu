@@ -782,16 +782,10 @@ To prove this we will use previous lemma and following commutative diagram:
 \end{proof}
 
 \begin{lem}
-Let $(I,\lambda)$,$(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems and let $\phi:\lambda' \rightarrow \lambda$ be an order preserving functor and $\psi:\lambda' \rightarrow \lambda''$ backward order preserving functor. Let $f = \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \lambda'\}$ and $g = \{g_a:I'(a) \rightarrow I''(\psi(a)) \mid a \in \lambda'\}$ be systems of morphisms corresponding to $\phi$ and $\psi$.
+Let $(I,\lambda)$,$(I',\lambda')$ and $(I'',\lambda'')$ be inverse systems and let $\phi:\lambda' \rightarrow \lambda$ be an order preserving functor and $\psi:\lambda' \rightarrow \lambda''$ backward order preserving functor. Let $f = \{f_a:I(\phi(a)) \rightarrow I'(a) \mid a \in \lambda'\}$ be an inverse system of morphisms corresponding to $\phi$ and $g = \{g_a:I'(a) \rightarrow I''(\psi(a)) \mid a \in \lambda'\}$ be a direct system of morphisms \mbox{corresponding to $\psi$.} Then 
 \end{lem}
 
-\begin{lem}\label{isomorphismlimitmorphisminversesystem}
-Let $(I,\lambda)$ and $(I, \lambda')$ be inverse systems with property of having a limit and let $\phi:\lambda' \rightarrow \lambda$ be an order preserving injective functor. Let $f = \{f_a\}_{a \in \lambda'}$ be a family of morphisms between the systems corresponding to the functor $\phi$. Assume that every $f_a$ in the collection is an isomorphism, then $\lim \{f_a\}$ is an isomorphism.
-\end{lem}
-\begin{proof}
-By assumption for every $f_a$ there exists a morphism $g_{\phi(a)}$, for which $f_a \circ g_{\phi(a)} = \text{id}_{\phi(a)}$ and $g_{\phi(a)} \circ f_a = \text{id}_{a}$. Because $\phi$ is injective, we can now define $\psi:\phi(\lambda) \rightarrow \lambda'$ in such way that it maps $\phi(a)$ to $a$. Now collection $g = \{g_{\phi(a)}\}_{a \in \lambda'}$ forms an inverse system of morphisms, which corresponds to $\psi$. Applying Lemma \ref{compositionlimitmorphism} and Lemma \ref{limitofidentityisidentity} we obtain the following equations: $$\lim f \circ \lim g = \lim (f \circ g) = \lim(\text{id}) = \text{id} \text{ and similarly } \lim g \circ \lim f = \text{id}$$
-Thus $\lim f$ is an isomorphism with inverse $\lim g$.
-\end{proof}
+
 Content of this section can be compressed in the following theorem
 \begin{lause}
 Let $I(C)$ be a category inverse systems over category $C$. Assume that limit exists for every object in $I(C)$ and we have equated all the isomorphic objects in the category $C$. Then the operator $\lim$ is a functor from category of inverse systems to the image category of the corresponding systems. 
@@ -1022,7 +1016,41 @@ Let $\lim I'$ be the limit of the inverse system $I'$. It is enough to show that
 
 %% *General approach:  
 
-
+\begin{lem}\label{isomorphismlimitmorphisminversesystem}
+	Let $(I,\lambda)$ and $(I, \lambda')$ be inverse systems with property of having a limit and let $\phi:\lambda' \rightarrow \lambda$ be an order preserving functor. Let $$f = \{f_a:I(\phi(a)) \rightarrow I(a) \mid a \in \lambda'\}$$ be a family of morphisms between the systems corresponding to the functor $\phi$. Assume that every $f_a$ in the collection is an isomorphism, then $\lim f$ is an isomorphism between $(I,\phi(\lambda'))$ and $(I',\lambda')$.
+\end{lem}
+\begin{proof}
+	For every $a$ there exists an inverse $g_a$ for $f_a$. Define $$g = \{g_a:I(a) \rightarrow I(\phi(a)) \mid a \in \lambda'\}$$ as a directed system of morphism from $(I',\lambda')$ to $(I',\phi(\lambda'))$. The well-definedness of the system follows from the following diagram:
+	$$ 	\begin{tikzpicture}
+	
+	
+	
+	\node (w) at (0,0) {\(I(\phi(b))\)};
+	
+	\node (x) at (0,-2) {\(I(\phi(a))\)};
+	
+	\node (y) at (4,-2) {\(I'(a)\)};
+	
+	\node (z) at (4,0) {\(I'(b)\)};
+	
+	\node (f) at (2,-2.4){\(g_a\)};
+	
+	\node (g) at (2,-0.4){\(g_b\)};
+	
+	\node (s) at (0.5,-1) {\(I^{\phi(b)}_{\phi(a)}\)};
+	
+	\node (s2) at (4.4,-1) {\(I^{b}_{a}\)};	
+	
+	\draw[->] (z) -- (y);
+	\draw[->] (w) -- (x);
+	\draw[<-] (x) -- (y);
+	\draw[<-] (w) -- (z);
+	
+	
+	\end{tikzpicture}
+	$$
+Thus there exists a limit morphism $\lim g$. We will show that $\lim g$ is inverse of $\lim f$.
+\end{proof}
 
 %% *General approach
 
